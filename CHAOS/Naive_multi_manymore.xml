@@ -1,0 +1,75 @@
+<queryplan>
+	<operator id ="1" className="StreamSinkOperatorDemo" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<output name = "SEQ-q1"/>
+	</classVariables>
+	<children>
+	<child id = "2"/>
+	</children>
+	</operator>
+	<operator id="2" className="com.hp.hpl.CHAOS.Aggregation.NaiveMultiQAggOperator" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<query name = "COUNT SEQ(DELL,INTC,RIMM,ORCL,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT) id=1 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,RIMM,ORCL,YHOO,IPIX,CSCO,MSFT,QQQ,AMAT) id=2 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,QQQ,AMAT,RIMM,ORCL,YHOO,IPIX,CSCO,MSFT) id=3 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL) id=4 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL,QQQ,AMAT) id=5 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,YHOO,IPIX,CSCO,MSFT,QQQ,AMAT,RIMM,ORCL) id=6 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,DELL,INTC,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT) id=7 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,DELL,INTC,YHOO,IPIX,CSCO,MSFT,QQQ,AMAT) id=8 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,QQQ,AMAT,DELL,INTC,YHOO,IPIX,CSCO,MSFT) id=9 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,DELL,INTC) id=10 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,YHOO,IPIX,CSCO,MSFT,DELL,INTC,QQQ,AMAT) id=11 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,YHOO,IPIX,CSCO,MSFT,QQQ,AMAT,DELL,INTC) id=12 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,DELL,INTC,RIMM,ORCL,YHOO,IPIX,CSCO,MSFT) id=13 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,DELL,INTC,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL) id=14 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,RIMM,ORCL,DELL,INTC,YHOO,IPIX,CSCO,MSFT) id=15 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,RIMM,ORCL,YHOO,IPIX,CSCO,MSFT,DELL,INTC) id=16 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,DELL,INTC,RIMM,ORCL) id=17 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL,DELL,INTC) id=18 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,DELL,INTC,RIMM,ORCL,QQQ,AMAT) id=19 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,DELL,INTC,QQQ,AMAT,RIMM,ORCL) id=20 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,RIMM,ORCL,DELL,INTC,QQQ,AMAT) id=21 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,RIMM,ORCL,QQQ,AMAT,DELL,INTC) id=22 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,QQQ,AMAT,DELL,INTC,RIMM,ORCL) id=23 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,QQQ,AMAT,RIMM,ORCL,DELL,INTC) id=24 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,RIMM,ORCL,QQQ,AMAT) id=25 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,QQQ,AMAT,RIMM,ORCL) id=26 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,DELL,INTC,QQQ,AMAT) id=27 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,QQQ,AMAT,DELL,INTC) id=28 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,DELL,INTC,RIMM,ORCL) id=29 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,RIMM,ORCL,DELL,INTC) id=30 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,RIMM,ORCL,YHOO,IPIX,CSCO,MSFT) id=31 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL) id=32 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,DELL,INTC,YHOO,IPIX,CSCO,MSFT) id=33 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,YHOO,IPIX,CSCO,MSFT,DELL,INTC) id=34 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,DELL,INTC,RIMM,ORCL) id=35 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,RIMM,ORCL,DELL,INTC) id=36 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,RIMM,ORCL,YHOO,IPIX,CSCO,MSFT) id=37 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL) id=38 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT) id=39 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,YHOO,IPIX,CSCO,MSFT,QQQ,AMAT) id=40 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,QQQ,AMAT,RIMM,ORCL) id=41 window=50"/>
+<query name = "COUNT SEQ(YHOO,IPIX,CSCO,MSFT,RIMM,ORCL,QQQ,AMAT) id=42 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,RIMM,ORCL) id=43 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT) id=44 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,QQQ,AMAT,YHOO,IPIX,CSCO,MSFT) id=45 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL,DELL,INTC) id=46 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,DELL,INTC) id=47 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,YHOO,IPIX,CSCO,MSFT,RIMM,ORCL) id=48 window=50"/>
+<query name = "COUNT SEQ(DELL,INTC) id=49 window=50"/>
+<query name = "COUNT SEQ(RIMM,ORCL) id=50 window=50"/>
+<query name = "COUNT SEQ(QQQ,AMAT,YHOO,IPIX,CSCO,MSFT) id=51 window=50"/>
+	</classVariables>
+	<children>
+		<child id = "newStream.xml"/>
+	</children>
+	</operator>
+</queryplan>
+

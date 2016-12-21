@@ -1,0 +1,501 @@
+
+======result======6
+0	0	0	0	INTC                	29869.188	RIMM                	29879.137	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29879.137	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29879.137	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29879.137	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29537.925	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29537.925	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29537.925	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29519.825	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29519.825	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29519.825	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29473.412	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29473.412	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29473.412	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29473.359	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29473.359	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29473.359	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29473.245	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29473.245	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29473.245	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29452.265	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29452.265	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29452.265	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29394.579	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29394.579	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29394.579	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29382.98	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29382.98	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29382.98	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29382.149	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29382.149	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29382.149	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29382.12	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29382.12	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29382.12	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29325.853	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29325.853	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29325.853	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29192.185	RIMM                	29233.592	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29233.592	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29233.592	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29177.752	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29177.752	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29110.394	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29110.394	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29077.34	RIMM                	29079.724	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29079.724	AMAT                	29939.579	
+======result======6
+0	0	0	0	INTC                	29067.17	RIMM                	29072.534	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29869.188	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29192.185	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29177.752	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29177.752	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29110.394	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29110.394	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29077.34	RIMM                	29079.724	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29079.724	AMAT                	29939.579	
+reuse for query: 5
+0	0	0	0	INTC                	29067.17	RIMM                	29072.534	AMAT                	29939.579	
+======result======5
+0	0	0	0	MSFT                	29683.506	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29869.188	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29192.185	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29177.752	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29177.752	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29110.394	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29110.394	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29077.34	RIMM                	29079.724	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29079.724	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	INTC                	29067.17	RIMM                	29072.534	AMAT                	29939.579	
+reuse for query: 4
+0	0	0	0	MSFT                	29683.506	RIMM                	29879.137	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29631.637	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29621.999	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29621.993	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29426.293	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29390.901	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29351.893	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29210.501	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29191.483	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29168.146	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29115.524	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29097.204	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29094.454	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29078.81	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29078.424	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29077.155	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29066.598	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29058.617	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	29013.917	AMAT                	29939.579	
+======result======1
+0	0	0	0	QQQ                 	28962.69	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29869.188	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29879.137	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29537.925	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29519.825	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29473.412	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29473.359	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29473.245	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29452.265	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29394.579	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29382.98	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29382.149	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29382.12	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29325.853	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29192.185	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29233.592	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29177.752	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29177.752	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29110.394	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29110.394	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29077.34	RIMM                	29079.724	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29079.724	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	INTC                	29067.17	RIMM                	29072.534	AMAT                	29939.579	
+reuse for query: 0
+0	0	0	0	MSFT                	29683.506	RIMM                	29879.137	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29631.637	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29631.637	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29631.637	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29621.999	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29621.999	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29621.999	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29621.993	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29621.993	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29621.993	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29426.293	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29426.293	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29426.293	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29390.901	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29390.901	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29390.901	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29351.893	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29351.893	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29351.893	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	QQQ                 	29210.501	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29210.501	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29210.501	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29191.483	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29191.483	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29168.146	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29168.146	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29115.524	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29115.524	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29097.204	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29097.204	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29094.454	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29094.454	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29078.81	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29078.81	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	QQQ                 	29078.424	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29078.424	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	QQQ                 	29077.155	AMAT                	29939.579	
+======result======0
+0	0	0	0	MSFT                	29683.506	YHOO                	29833.986	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29192.185	YHOO                	29833.986	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29077.34	YHOO                	29833.986	AMAT                	29939.579	
+======result======0
+0	0	0	0	INTC                	29067.17	YHOO                	29833.986	AMAT                	29939.579	

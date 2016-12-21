@@ -1,0 +1,15 @@
+enterClock 6 7 ident 1 memory 888 nothing 0
+clean 6 7 ident 1 duration 0.2 nothing 0
+work 8 14 ident 1 where 4 duration 6
+goHome 14.5 16 ident 1 vehicle 99 nothing 0
+eat 17 17.5 ident 1 duration 0.5 food 99
+relax 18 20 ident 1 duration 2 what 111
+getFat 20.1 20.4 ident 1 duration 0.3 food 555
+clean 20.5 20.9 ident 1 duration 0.4 nothing 0 
+doHomework 21 23.5 ident 1 duration 2.5 nothing 0
+beginSleep 23.5 24 ident 1 duration 0.5 nothing 0 
+beginSleep 24.2 25 ident 1 duration 0.8 nothing 0
+dreamSleep 26 29.5 ident 1 duration 3.5 dream 007
+dreamSleep 29.6 33 ident 1 duration 3.4 dream 009
+awake 33.5 36 ident 1 nothing 0 nothing 0
+endDay 36.5 37 ident 1 memory 900 nothing 0

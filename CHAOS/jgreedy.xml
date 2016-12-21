@@ -1,0 +1,24 @@
+<queryplan>
+	<operator id ="1" className="StreamSinkOperatorDemo" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<output name = "J_A_SINGLE_LAZY"/>
+	</classVariables>
+	<children>
+	<child id = "2"/>
+	</children>
+	</operator>
+	<operator id="2" className="com.hp.hpl.CHAOS.AnormalDetection.Greedy" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<query name = "id=1 range=100 num=5 window=20 slide=10"/>
+	</classVariables>
+	<children>
+		<child id = "J_EVENT1.xml"/>
+	</children>
+	</operator>
+</queryplan>

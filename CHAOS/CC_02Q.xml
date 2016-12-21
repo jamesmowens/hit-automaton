@@ -1,0 +1,30 @@
+<queryplan>
+	<operator id ="1" className="StreamSinkOperatorDemo" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<output name = "SEQ-q1"/>
+	</classVariables>
+	<children>
+	<child id = "2"/>
+	</children>
+	</operator>
+	<operator id="2" className="com.hp.hpl.CHAOS.Aggregation.MultiQAggCCOperator" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<query name = "COUNT SEQ(DELL,INTC,QQQ,AMAT,IPIX,ORCL,RIMM,CSCO) id=1 window=50 subList=(1,2,3,4)"/>
+		<query name = "COUNT SEQ(RIMM,CSCO,IPIX,ORCL,QQQ,AMAT,DELL,INTC) id=2 window=50 subList=(4,3,2,1)"/>
+		<subseq name = "COUNT SEQ(DELL,INTC) id=1 window=50"/>
+		<subseq name = "COUNT SEQ(QQQ,AMAT) id=2 window=50"/>
+		<subseq name = "COUNT SEQ(IPIX,ORCL) id=3 window=50"/>
+		<subseq name = "COUNT SEQ(RIMM,CSCO) id=4 window=50"/>
+	</classVariables>
+	<children>
+		<child id = "newStream.xml"/>
+	</children>
+	</operator>
+</queryplan>
+

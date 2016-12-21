@@ -1,0 +1,32 @@
+<queryplan>
+	<operator id ="1" className="StreamSinkOperatorDemo" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<output name = "SEQ-q1"/>
+	</classVariables>
+	<children>
+	<child id = "2"/>
+	</children>
+	</operator>
+	<operator id="2" className="com.hp.hpl.CHAOS.ECube.Top_down_MegaSEQoperator" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<query name = "SEQ(Computer,Finance,Education)"/>
+		<query name = "SEQ(Computer,Finance)"/>
+		<query name = "SEQ(INTC,QQQ)"/>
+		<query name = "SEQ(INTC,QQQ,Education)"/>
+		<query name = "SEQ(INTC,QQQ,IPIX)"/>
+		<query name = "SEQ(Computer,RIMM,Education)"/>
+		<query name = "SEQ(Computer,RIMM,AMAT)"/>
+		<query name = "SEQ(INTC,RIMM,AMAT)"/>	
+	</classVariables>
+	<children>
+		<child id = "event1.xml"/>
+	</children>
+	</operator>
+</queryplan>
+

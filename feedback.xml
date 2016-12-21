@@ -1,0 +1,565 @@
+<feedback>
+<steps>
+	<step>
+		<source></source>
+		<target>A0</target>
+		<label>a:auctionBegin(auctionID(A*))</label>
+	</step>
+	<step>
+		<source>A0</source>
+		<target>B0</target>
+		<label>enrollmentBegin(auctionID(A),enrollID(E*));this.end-a.end&lt;20</label>
+	</step>
+	<step>
+		<source>B0</source>
+		<target>B1</target>
+		<label>bidderData(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>b:BidderEnrollment(auctionlID(A),enrollID(E))</source>
+		<target>B0</target>
+		<label>enrollmentBegin(auctionID(A),enrollID(E*));this.end-a.end&lt;20</label>
+	</step>
+	<step>
+		<source>B1</source>
+		<target>B0</target>
+		<label>authData(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B0</source>
+		<target>B2</target>
+		<label>authAttempt(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B0</source>
+		<target>B1</target>
+		<label>bidderData(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B1</source>
+		<target>B0</target>
+		<label>authData(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B0</source>
+		<target>B2</target>
+		<label>authAttempt(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B2</source>
+		<target>B3</target>
+		<label>bidderEnrolled(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B2</source>
+		<target>B3</target>
+		<label>bidderEnrolled(auctionID(A),enrollID(E))</label>
+	</step>
+	<step>
+		<source>B3</source>
+		<target>I0</target>
+		<label>itemDescription(auctionID(A),itemID(I*),price(P*));20&lt;=this.end-a.end;b.countFinished&gt;=2</label>
+	</step>
+	<step>
+		<source>I0</source>
+		<target>I1</target>
+		<label>bid(auctionID(A),itemID(I),price(P*));i.P&lt;=this.price</label>
+	</step>
+	<step>
+		<source>I1</source>
+		<target>I2</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I2</source>
+		<target>I3</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I3</source>
+		<target>I4</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I4</source>
+		<target>I5</target>
+		<label>sell(auctionID(A),itemID(I))</label>
+	</step>
+	<step>
+		<source>I5</source>
+		<target>I0</target>
+		<label>itemDescription(auctionID(A),itemID(I*),price(P*))</label>
+	</step>
+	<step>
+		<source>I0</source>
+		<target>I1</target>
+		<label>bid(auctionID(A),itemID(I),price(P*));i.P&lt;=this.price</label>
+	</step>
+	<step>
+		<source>I1</source>
+		<target>I1</target>
+		<label>bid(auctionID(A),itemID(I),price(P*));i.P&lt;this.price</label>
+	</step>
+	<step>
+		<source>I1</source>
+		<target>I2</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I2</source>
+		<target>I1</target>
+		<label>bid(auctionID(A),itemID(I),price(P*));i.P&lt;this.price</label>
+	</step>
+	<step>
+		<source>I1</source>
+		<target>I1</target>
+		<label>bid(auctionID(A),itemID(I),price(P*));i.P&lt;this.price</label>
+	</step>
+	<step>
+		<source>I1</source>
+		<target>I1</target>
+		<label>bid(auctionID(A),itemID(I),price(P*));i.P&lt;this.price</label>
+	</step>
+	<step>
+		<source>I1</source>
+		<target>I2</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I2</source>
+		<target>I3</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I3</source>
+		<target>I4</target>
+		<label>hammerBeat(auctionID(A),itemID(I));1&lt;=this.end-last.end</label>
+	</step>
+	<step>
+		<source>I4</source>
+		<target>I5</target>
+		<label>sell(auctionID(A),itemID(I))</label>
+	</step>
+	<step>
+		<source>I5</source>
+		<target>A1</target>
+		<label>auctionEnd(auctionID(A))</label>
+	</step>
+</steps>
+<activeStates>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = A0
+substitutions = {last->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) }
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->enrollmentBegin( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B0
+substitutions = {last->enrollmentBegin( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) last->bidderData( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B1
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->bidderData( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->enrollmentBegin( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B1
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->bidderData( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B0
+substitutions = {last->enrollmentBegin( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->authData( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B0
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authData( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B0
+substitutions = {last->enrollmentBegin( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->authAttempt( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B2
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authAttempt( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B0
+substitutions = {last->enrollmentBegin( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bidderData( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B2
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authAttempt( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B1
+substitutions = {E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->bidderData( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->authData( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B2
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authAttempt( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B0
+substitutions = {E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authData( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->authAttempt( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B2
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authAttempt( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B2
+substitutions = {E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authAttempt( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bidderEnrolled( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B2
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->authAttempt( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B3
+substitutions = {E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->bidderEnrolled( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = b:BidderEnrollment( auctionlID(A) enrollID(E) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bidderEnrolled( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(2.0) )
+activeState = B3
+substitutions = {E*->2.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->bidderEnrolled( auctionID(1.0) enrollID(2.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+Process with 
+name = BidderEnrollment( auctionlID(1.0) enrollID(3.0) )
+activeState = B3
+substitutions = {E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) last->bidderEnrolled( auctionID(1.0) enrollID(3.0) ) with occurrence time [3.0,4.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->itemDescription( auctionID(1.0) itemID(3.0) price(6.0) ) with occurrence time [5.0,23.0] I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) }
+
+Process with 
+name = ItemOffer( itemID(3.0) )
+activeState = I0
+substitutions = {last->itemDescription( auctionID(1.0) itemID(3.0) price(6.0) ) with occurrence time [5.0,23.0] I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) last->bid( auctionID(1.0) itemID(3.0) price(60.0) ) with occurrence time [23.0,24.0] }
+
+Process with 
+name = ItemOffer( itemID(3.0) )
+activeState = I1
+substitutions = {I*->3.0 i->ItemOffer( itemID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bid( auctionID(1.0) itemID(3.0) price(60.0) ) with occurrence time [23.0,24.0] P*->60.0 }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) last->hammerBeat( auctionID(1.0) itemID(3.0) ) with occurrence time [25.0,25.0] }
+
+Process with 
+name = ItemOffer( itemID(3.0) )
+activeState = I2
+substitutions = {I*->3.0 i->ItemOffer( itemID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->60.0 last->hammerBeat( auctionID(1.0) itemID(3.0) ) with occurrence time [25.0,25.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) last->hammerBeat( auctionID(1.0) itemID(3.0) ) with occurrence time [26.0,26.0] }
+
+Process with 
+name = ItemOffer( itemID(3.0) )
+activeState = I3
+substitutions = {I*->3.0 i->ItemOffer( itemID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->60.0 last->hammerBeat( auctionID(1.0) itemID(3.0) ) with occurrence time [26.0,26.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) last->hammerBeat( auctionID(1.0) itemID(3.0) ) with occurrence time [27.0,27.0] }
+
+Process with 
+name = ItemOffer( itemID(3.0) )
+activeState = I4
+substitutions = {I*->3.0 i->ItemOffer( itemID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->60.0 last->hammerBeat( auctionID(1.0) itemID(3.0) ) with occurrence time [27.0,27.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->3.0 P*->6.0 i->ItemOffer( itemID(3.0) ) last->sell( auctionID(1.0) itemID(3.0) ) with occurrence time [28.0,29.0] }
+
+Process with 
+name = ItemOffer( itemID(3.0) )
+activeState = I5
+substitutions = {I*->3.0 i->ItemOffer( itemID(3.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->60.0 last->sell( auctionID(1.0) itemID(3.0) ) with occurrence time [28.0,29.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->itemDescription( auctionID(1.0) itemID(4.0) price(6.0) ) with occurrence time [30.0,31.0] I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I0
+substitutions = {last->itemDescription( auctionID(1.0) itemID(4.0) price(6.0) ) with occurrence time [30.0,31.0] I*->4.0 P*->6.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->bid( auctionID(1.0) itemID(4.0) price(61.0) ) with occurrence time [31.0,31.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I1
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bid( auctionID(1.0) itemID(4.0) price(61.0) ) with occurrence time [31.0,31.0] P*->61.0 }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->bid( auctionID(1.0) itemID(4.0) price(63.0) ) with occurrence time [31.0,31.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I1
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bid( auctionID(1.0) itemID(4.0) price(63.0) ) with occurrence time [31.0,31.0] P*->63.0 }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [32.0,32.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I2
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->63.0 last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [32.0,32.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->bid( auctionID(1.0) itemID(4.0) price(65.0) ) with occurrence time [32.0,32.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I1
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bid( auctionID(1.0) itemID(4.0) price(65.0) ) with occurrence time [32.0,32.0] P*->65.0 }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->bid( auctionID(1.0) itemID(4.0) price(66.0) ) with occurrence time [32.0,32.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I1
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bid( auctionID(1.0) itemID(4.0) price(66.0) ) with occurrence time [32.0,32.0] P*->66.0 }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->bid( auctionID(1.0) itemID(4.0) price(67.0) ) with occurrence time [32.0,32.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I1
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) last->bid( auctionID(1.0) itemID(4.0) price(67.0) ) with occurrence time [32.0,32.0] P*->67.0 }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [33.0,33.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I2
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->67.0 last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [33.0,33.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [34.0,34.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I3
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->67.0 last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [34.0,34.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [35.0,35.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I4
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->67.0 last->hammerBeat( auctionID(1.0) itemID(4.0) ) with occurrence time [35.0,35.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = i:ItemOffer( itemID(I) )
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->sell( auctionID(1.0) itemID(4.0) ) with occurrence time [36.0,36.0] }
+
+Process with 
+name = ItemOffer( itemID(4.0) )
+activeState = I5
+substitutions = {I*->4.0 i->ItemOffer( itemID(4.0) ) a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) P*->67.0 last->sell( auctionID(1.0) itemID(4.0) ) with occurrence time [36.0,36.0] }
+parent process = Auction( auctionID(1.0) )
+
+	</activeState>
+	<activeState>
+Process with 
+name = Auction( auctionID(1.0) )
+activeState = A1
+substitutions = {a->auctionBegin( auctionID(1.0) ) with occurrence time [1.0,2.0] A*->1.0 j->Auction( auctionID(1.0) ) E*->3.0 b->BidderEnrollment( auctionlID(1.0) enrollID(2.0) ) BidderEnrollment( auctionlID(1.0) enrollID(3.0) ) I*->4.0 P*->6.0 i->ItemOffer( itemID(3.0) ) ItemOffer( itemID(4.0) ) last->auctionEnd( auctionID(1.0) ) with occurrence time [17.0,18.0] }
+
+	</activeState>
+</activeStates>
+</feedback>
+

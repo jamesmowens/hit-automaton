@@ -1,0 +1,19 @@
+<operator id = "HIT_config_1.xml" className="StreamSourceOperator" log ="true">
+	<schema>
+		<schemaElement type="String"/>
+		<schemaElement type="Double"/>
+		<schemaElement type="Double"/>
+		<schemaElement type="String"/>
+		<schemaElement type="Double"/>
+		<schemaElement type="String"/>
+		<schemaElement type="Double"/>
+		<schemaElement type="String"/>
+		<schemaElement type="Double"/>
+	</schema>
+	<classVariables>
+		<InputStreamWrapper name = "TestFormat"/>
+		<source name = "HIT_stream_1.txt"/>
+		<arrival rate = "29"/>
+		<loop value = "false"/>
+	</classVariables>
+</operator>

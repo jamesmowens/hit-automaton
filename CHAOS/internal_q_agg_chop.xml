@@ -1,0 +1,41 @@
+<queryplan>
+	<operator id ="1" className="StreamSinkOperatorDemo" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<output name = "SEQ-q1"/>
+	</classVariables>
+	<children>
+	<child id = "2"/>
+	</children>
+	</operator>
+	<operator id="2" className="com.hp.hpl.CHAOS.Aggregation.MultiQAggCCOperator" log = "false">
+	<Statistic>
+		<StatisticElement name = "ElapseTime"/>
+	</Statistic>
+	<classVariables>
+		<query name = "COUNT SEQ(DELL,INTC,QQQ,AMAT,IPIX) id=1 window=50"/>
+		<query name = "COUNT SEQ(DELL,INTC,QQQ,ORCL,RIMM,CSCO) id=2 window=50"/>
+		<subseq name = "COUNT SEQ(DELL,INTC,QQQ) id=1 window=50 queryList=(1,2) SSList=(0)"/>
+		<subseq name = "COUNT SEQ(AMAT,IPIX) id=2 window=50 queryList=(1) SSList=(1)"/>
+		<subseq name = "COUNT SEQ(ORCL,RIMM,CSCO) id=3 window=50 queryList=(2) SSList=(1)"/>
+	</classVariables>
+	<children>
+		<child id = "939808384"/>
+	</children>
+	</operator>
+<operator id = "939808384" className="StreamSourceOperator" log ="true">
+	<schema>
+		<schemaElement type="String"/>
+		<schemaElement type="Double"/> 
+	</schema>
+	<classVariables>
+		<InputStreamWrapper name = "TestFormat"/>
+		<source name = "samplestream.txt"/>
+		<arrival rate = "2000"/>
+		<loop value = "false"/>
+	</classVariables>
+</operator>
+</queryplan>
+
