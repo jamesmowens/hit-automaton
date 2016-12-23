@@ -48,6 +48,7 @@ import edu.usfca.xj.appkit.update.XJUpdateManager;
 import edu.usfca.xj.foundation.XJSystem;
 
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 public class VisualAutomataSimulator extends XJApplicationDelegate {
 
@@ -199,6 +200,19 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
     }
 
     public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    //Set the look and feel.
+                    initLookAndFeel();
+
+                    //Make sure we have nice window decorations.
+                    JFrame.setDefaultLookAndFeelDecorated(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
         if (args.length == 7 && args[0].equals("-t")) {
             new Test(Integer.parseInt(args[1]), Integer.parseInt(args[2]),
                     Integer.parseInt(args[3]), Integer.parseInt(args[4]),
@@ -210,6 +224,27 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         }
 
         XJApplication.run(new VisualAutomataSimulator(), args);
+    }
+
+    private static void initLookAndFeel() {
+        SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
+        try {
+
+            // SynthLookAndFeel load() method throws a checked exception
+            // (java.text.ParseException) so it must be handled
+            lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("synthDemo.xml"),
+                    VisualAutomataSimulator.class);
+            UIManager.setLookAndFeel(lookAndFeel);
+        }
+
+        catch (Exception e) {
+            System.err.println("Couldn't get specified look and feel ("
+                    + lookAndFeel
+                    + "), for some reason.");
+            System.err.println("Using the default look and feel.");
+            e.printStackTrace();
+        }
+
     }
 
     public void appDidLaunch(String[] args) {
