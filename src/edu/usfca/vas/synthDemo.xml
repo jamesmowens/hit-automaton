@@ -5,8 +5,8 @@
         <opaque value="TRUE"/>
         <font name="Dialog" size="14"/>
         <state>
-            <color value="#D8D987" type="BACKGROUND"/>
-            <color value="RED" type="FOREGROUND"/>
+            <color value="#044C65" type="BACKGROUND"/>
+            <color value="WHITE" type="FOREGROUND"/>
         </state>
     </style>
     <bind style="backingStyle" type="region" key=".*"/>
