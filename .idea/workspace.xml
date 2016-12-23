@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="2d21224d-f20d-4fff-9322-777f691a3786" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/button_over.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/button_press.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/checkbox_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/checkbox_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/textfield.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/synthDemo.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/button.png" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/images/button.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/button_over.png" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/images/button_over.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/button_press.png" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/images/button_press.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/checkbox_off.png" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/images/checkbox_off.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/checkbox_on.png" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/images/checkbox_on.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/images/textfield.png" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/images/textfield.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/VisualAutomataSimulator.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/VisualAutomataSimulator.java" />
     </list>
     <ignored path="hit-automaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +45,8 @@
       <file leaf-file-name="VisualAutomataSimulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/VisualAutomataSimulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="227" column="0" lean-forward="true" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+            <state relative-caret-position="141">
+              <caret line="205" column="17" lean-forward="false" selection-start-line="205" selection-start-column="17" selection-end-line="205" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#10786#11196#0" expanded="true" />
@@ -298,10 +293,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="window" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -642,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482521294149</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Skinning kind of works??? It breaks everything but is definitely doing something.">
+      <created>1482523736666</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1482523736666</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -727,7 +725,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New branch for layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="New branch for layout" />
+    <MESSAGE value="Skinning kind of works??? It breaks everything but is definitely doing something." />
+    <option name="LAST_COMMIT_MESSAGE" value="Skinning kind of works??? It breaks everything but is definitely doing something." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1127,8 +1126,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/VisualAutomataSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="227" column="0" lean-forward="true" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+        <state relative-caret-position="141">
+          <caret line="205" column="17" lean-forward="false" selection-start-line="205" selection-start-column="17" selection-end-line="205" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#10786#11196#0" expanded="true" />
