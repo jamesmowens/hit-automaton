@@ -1,7 +1,7 @@
 <synth>
-    <!--  Style that all regions will use  -->
+     Style that all regions will use 
     <style id="backingStyle">
-        <!--  Make all the regions opaque -->
+<!--          Make all the regions opaque -->
         <opaque value="TRUE"/>
         <font name="Dialog" size="14"/>
         <state>
@@ -10,6 +10,8 @@
         </state>
     </style>
     <bind style="backingStyle" type="region" key=".*"/>
+
+
  
     <style id="textfield">
         <insets top="4" left="6" bottom="4" right="6"/>
@@ -25,15 +27,52 @@
 
     <style id="menu">
         <state>
-            <color value="#000000" type="BACKGROUND"/>
+            <color value="#044C65" type="BACKGROUND"/>
             <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
         </state>
          <state value="MOUSE_OVER">
-            <color value="#000000" type="BACKGROUND"/>
+            <color value="#044C65" type="BACKGROUND"/>
             <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
         </state>        
     </style>
     <bind style="menu" type="region" key="Menu"/>
+ 
+ 
+    <style id="scrollpane">
+            <opaque value="TRUE"/>
+            <state>
+            <color value="#FFFF00" type="BACKGROUND"/>
+            <color value="#FFFF00" type="FOREGROUND"/>
+      </state>
+    </style>
+    <bind style="scrollpane" type="region" key="ScrollPane"/>
+ 
+    <style id="scrollbar">
+            <opaque value="TRUE"/>
+            <state>
+            <color value="#FFFF00" type="BACKGROUND"/>
+            <color value="#FFFF00" type="FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="scrollbar" type="region" key="ScrollBar"/>
+ 
+    <style id="scrollbarthumb">
+            <opaque value="TRUE"/>
+            <state>
+            <color value="#D1D1D1" type="BACKGROUND"/>
+            <color value="#D1D1D1" type="FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="scrollbarthumb" type="region" key="ScrollBarThumb"/>
+ 
+    <style id="scrollbartrack">
+            <opaque value="TRUE"/>
+            <state>
+            <color value="#F2F2F2" type="BACKGROUND"/>
+            <color value="#F2F2F2" type="FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="scrollbartrack" type="region" key="ScrollBarTrack"/>
     
     
     
