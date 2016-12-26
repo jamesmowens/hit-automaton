@@ -10,34 +10,52 @@
         </state>
     </style>
     <bind style="backingStyle" type="region" key=".*"/>
+ 
     <style id="textfield">
         <insets top="4" left="6" bottom="4" right="6"/>
         <state>
             <font name="Verdana" size="14"/>
-            <color value="#D2DFF2" type="BACKGROUND"/>
-            <color value="#000000" type="TEXT_FOREGROUND"/>
+            <color value="#76dbd3" type="BACKGROUND"/>
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
         </state>
         <imagePainter method="textFieldBorder" path="images/textfield.png" sourceInsets="4 6 4 6" paintCenter="false"/>
     </style>
     <bind style="textfield" type="region" key="TextField"/>
+    
+
+    <style id="menu">
+        <state>
+            <color value="#000000" type="BACKGROUND"/>
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+        </state>
+         <state value="MOUSE_OVER">
+            <color value="#000000" type="BACKGROUND"/>
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+        </state>        
+    </style>
+    <bind style="menu" type="region" key="Menu"/>
+    
+    
+    
     <style id="button">
         <!--  Shift the text one pixel when pressed  -->
         <property key="Button.textShiftOffset" type="integer" value="1"/>
-        <!--  set size of buttons  -->
-        <insets top="15" left="20" bottom="15" right="20"/>
+<!--          set size of buttons  -->
+        <insets top="5" left="20" bottom="5" right="20"/>
         <state>
-            <imagePainter method="buttonBackground" path="images/button.png" sourceInsets="10 10 10 10"/>
-            <font name="Dialog" size="16"/>
+            <imagePainter method="buttonBackground" path="images/button.png" sourceInsets="20 20 20 20"/>
+<!--             <font name="Dialog" size="20"/> -->
             <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
         </state>
         <state value="PRESSED">
-            <imagePainter method="buttonBackground" path="images/button_press.png" sourceInsets="10 10 10 10"/>
+            <imagePainter method="buttonBackground" path="images/button_press.png" sourceInsets="20 20 20 20"/>
         </state>
         <state value="MOUSE_OVER">
-            <imagePainter method="buttonBackground" path="images/button_over.png" sourceInsets="10 10 10 10"/>
+            <imagePainter method="buttonBackground" path="images/button_over.png" sourceInsets="20 20 20 20"/>
         </state>
     </style>
     <bind style="button" type="region" key="Button"/>
+    
     <style id="checkbox">
         <imageIcon id="check_off" path="images/checkbox_off.png"/>
         <imageIcon id="check_on" path="images/checkbox_on.png"/>
@@ -47,4 +65,7 @@
         </state>
     </style>
     <bind style="checkbox" type="region" key="Checkbox"/>
+    
+    
+    
 </synth>
