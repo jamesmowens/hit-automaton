@@ -200,19 +200,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
     }
 
     public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    //Set the look and feel.
-                    initLookAndFeel();
-
-                    //Make sure we have nice window decorations.
-                    JFrame.setDefaultLookAndFeelDecorated(true);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
+        setTheme();
         if (args.length == 7 && args[0].equals("-t")) {
             new Test(Integer.parseInt(args[1]), Integer.parseInt(args[2]),
                     Integer.parseInt(args[3]), Integer.parseInt(args[4]),
@@ -226,12 +214,25 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         XJApplication.run(new VisualAutomataSimulator(), args);
     }
 
+    private static void setTheme() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    //Set the look and feel.
+                    initLookAndFeel();
+
+                    //Make sure we have nice window decorations.
+                    //JFrame.setDefaultLookAndFeelDecorated(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
     private static void initLookAndFeel() {
         SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
         try {
-
-            // SynthLookAndFeel load() method throws a checked exception
-            // (java.text.ParseException) so it must be handled
             lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("synthDemo.xml"),
                     VisualAutomataSimulator.class);
             UIManager.setLookAndFeel(lookAndFeel);

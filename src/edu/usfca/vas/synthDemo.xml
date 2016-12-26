@@ -26,6 +26,7 @@
     
 
     <style id="menu">
+        <insets top="5" bottom="5" left="5" right="5"/>
         <state>
             <color value="#044C65" type="BACKGROUND"/>
             <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
@@ -36,11 +37,24 @@
         </state>        
     </style>
     <bind style="menu" type="region" key="Menu"/>
- 
- 
+
+    <style id="menuitem">
+        <font name="Dialog" size="24"/>
+        <state>
+            <color value="#000000" type="BACKGROUND"/>
+            <color value="#000000" type="TEXT_FOREGROUND"/>
+        </state>
+        <state value="MOUSE_OVER">
+            <color value="#044C65" type="BACKGROUND"/>
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="menuitem" type="region" key="MenuItem"/>
+
+
     <style id="scrollpane">
             <opaque value="TRUE"/>
-            <state>
+        <state>
             <color value="#FFFF00" type="BACKGROUND"/>
             <color value="#FFFF00" type="FOREGROUND"/>
       </state>
@@ -104,6 +118,8 @@
         </state>
     </style>
     <bind style="checkbox" type="region" key="Checkbox"/>
+
+
     
     
     
