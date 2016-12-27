@@ -27,8 +27,6 @@ public class GElementFANickName extends JPanel {
 	//present active states
 	JLabel activeStateLabel = new JLabel();	
 	JPanel linkPanel;
-	JPanel elementPanel;
-	JPanel executionPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
 	
@@ -40,27 +38,14 @@ public class GElementFANickName extends JPanel {
 		tabs.setPreferredSize(new Dimension(950, 180));
 		//this.add(tabs);
 		this.linkPanel = new JPanel();
-		this.elementPanel = new JPanel();
-		this.executionPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		executionPanel.add(activeStateLabel);
-		//this.linkPanel.setSize(new Dimension(600, 100));
-		//this.elementPanel.setSize(new Dimension(600, 100));
 		tabs.addTab("Transition Labels", this.linkPanel);
-		tabs.addTab("State Names", this.elementPanel);
-		tabs.addTab("Process Summaries", this.executionPanel);
-		//tabs.addTab("New Tab", null);
+		
 		tabs.setVisible(true);
 		setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
 		scroll.setPreferredSize(new Dimension(950, 190));
 		this.add(scroll);
-		
-		//this.setSize(new Dimension(600, 100));
-		//return namingPanel;
-		
 	}
 	
 	//gets a state based on its name 
@@ -87,28 +72,18 @@ public class GElementFANickName extends JPanel {
 		if (!glinks.contains(newLink)){
 			glinks.add(newLink);
 		}
-		
-		//if it already exists, remove it
-		//removeLink(newLink);
 		//we are adding a new Link that already exists somewhere else (same name) set the nickname
 		boolean exists = false;
 		for (JLabel test : labels){
 			if (test.getText().equals(newLink.getPattern()))
 				exists = true;
 		}
-		//System.out.println("Exists: " + exists);
 		if (exists) {
 			if (newLink.getNickname() == null){
 				//get the nickname from some other link with the same pattern
 				for (GLink test: glinks){
 					if (newLink.getPattern().equals(test.getPattern())){
 						newLink.setNickname(test.getNickname());
-						//glinks.add(newLink);
-						//System.out.println("adding new instance: " + newLink.getPattern());
-						//System.out.println("Links: ");
-						for (GLink link: glinks){
-							//System.out.println("Pattern: " + link.getPattern() + " Nickname: " + link.getNickname());
-						}
 						return;
 					}
 				}
@@ -118,34 +93,20 @@ public class GElementFANickName extends JPanel {
 				//update the textfield
 				for (JLabel test: labels){
 					if (test.getText().equals(newLink.getPattern())){
-						//System.out.println("setting " + test.getText() + " to " + newLink.getNickname());
 						textfields.get(k).setText(newLink.getNickname());
 						break;
 					}
 					k++;
 				}
-				//System.out.println("Links: ");
-				for (GLink link: glinks){
-					//System.out.println("Pattern: " + link.getPattern() + " Nickname: " + link.getNickname());
-				}
 				//update every link with the same pattern
 				for (GLink test: glinks){
 					if (test.getPattern().equals(newLink.getPattern())){
-						//System.out.println("settingLink " + test.getPattern() + " to " + newLink.getNickname());
 						test.setNickname(newLink.getNickname());
 					}
-				}
-				//glinks.add(newLink);
-				//System.out.println("updating nickname: " + newLink.getPattern());
-				//System.out.println("Links: ");
-				for (GLink link: glinks){
-					//System.out.println("Pattern: " + link.getPattern() + " Nickname: " + link.getNickname());
 				}
 				return;
 			}
 		}
-		//System.out.println("Adding brand new link: " + newLink.getPattern());
-		
 		//this is a new link, nothing has the same pattern
 		//get the spacing right (so the "is" lines up on all of the links)
 		int max = labels.size()+1;
@@ -184,21 +145,13 @@ public class GElementFANickName extends JPanel {
 				}
 			}
 		});
-		
-		//glinks.add(newLink);
 		textfields.add(tf2);
 		labels.add(tf);
 		panels.add(p);
-		//this.linkPanel.setVisible(true);
-		//System.out.println("Links: ");
-		for (GLink link: glinks){
-			//System.out.println("Pattern: " + link.getPattern() + " Nickname: " + link.getNickname());
-		}
 	 }
 	 
 	 //updates the nickname, and color of a GLink
 	 public void updateLink(GLink link){
-		 //System.out.println("UpdateLink");
 		 int i = 0;
 		 for (GLink test: glinks){
 			 if (test.pattern.equals(link.pattern)){
@@ -216,7 +169,6 @@ public class GElementFANickName extends JPanel {
 		 
 	//updates the name, nickname, and color of a GLink based on the old name
 	 public void updateLinkName(String oldName, GLink link){
-		 //System.out.println("UpdateName");
 		 int i = 0;
 		 for (GLink test: glinks){
 			 if (test.pattern.equals(oldName)){
@@ -236,7 +188,6 @@ public class GElementFANickName extends JPanel {
 	 
 	 //deletes a link
 	 public void removeLink(GLink link){
-		 //System.out.println("Removing: " + link.getPattern());
 		 int max = glinks.size()-1;
 			if (glinks.size() < gelements.size())
 				max = gelements.size();
@@ -260,7 +211,6 @@ public class GElementFANickName extends JPanel {
 				 stillExists = true;
 			 }
 		 }
-		// System.out.println("still exists: " + stillExists);
 		 //if there are no longer one of these transitions, remove it
 		 if (!stillExists){
 			 for(JLabel label: labels){
@@ -281,7 +231,6 @@ public class GElementFANickName extends JPanel {
 	 
 	 //clears all the links from the naming panel
 	 public void clearLink(){
-		 //System.out.println("clearLink");
 		 int i = 0;
 		 this.linkPanel = new JPanel();
 		 this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -293,7 +242,6 @@ public class GElementFANickName extends JPanel {
 	 
 	 //finds a transition with a longname that contains this string and highlights it. 
 	 public void highlight(String name){
-		 //System.out.println("highlighting with name: " + name);
 		 int j = -1;
 		 for (JTextField test: textfields){
 			 if (test.getText().contains(name)){
@@ -309,8 +257,6 @@ public class GElementFANickName extends JPanel {
  
 	 //colors a entry (label and textfield) red to indicate that it is being looked at
 	 public void highlightLink(GLink link){
-		 
-		 //System.out.println(link.getPattern());
 		 int i = 0;
 		 for (JLabel test: labels){
 			 if (test.getText().equals(link.getPattern())){
@@ -351,7 +297,7 @@ public class GElementFANickName extends JPanel {
 		 return;
 	 }
 	 
-	 //colors a entry (label and textfield) bnlue to indicate that it is being looked at, unhighlight all others
+	 //colors a entry (label and textfield) blue to indicate that it is being looked at, unhighlights all others
 	 public void hoverLink(GLink link){
 		 int i = 0;
 		 for (GLink test: glinks){
@@ -368,7 +314,7 @@ public class GElementFANickName extends JPanel {
 		 return;
 	 }
 	 
-	//colors a entry (label and textfield) bnlue to indicate that it is being looked at, unhighlight all others
+	//colors a entry (label and textfield) blue to indicate that it is being looked at, unhighlight all others
 		 public void hoverElement(GElement element){
 			 int i = 0;
 			 for (GLink test: glinks){
@@ -410,7 +356,6 @@ public class GElementFANickName extends JPanel {
 			tf2.setText(newElement.getNickname());
 			tf2.setForeground(Color.BLACK);
 			p.add(tf2);
-			this.elementPanel.add(p);
 			tf2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				//if the user enters a new nickname, update the GLink to show that
@@ -422,7 +367,6 @@ public class GElementFANickName extends JPanel {
 			Etextfields.add(tf2);
 			Elabels.add(tf);
 			Epanels.add(p);
-			//this.linkPanel.setVisible(true);
 		 }
 		 
 		 //updates the nickname, and color of a GLink
@@ -475,7 +419,6 @@ public class GElementFANickName extends JPanel {
 			 for (GElement test: gelements){
 				 if (test == element){
 					 gelements.remove(element);
-					 elementPanel.remove(Epanels.get(i));
 					 Epanels.remove(i);
 					 Elabels.remove(i);
 					 Etextfields.remove(i);
@@ -527,8 +470,6 @@ public class GElementFANickName extends JPanel {
 			 labels.clear();
 			 glinks.clear(); 
 			 //get rid of all the elements
-			 elementPanel.removeAll();
-			 elementPanel.updateUI();
 			 Epanels.clear();
 			 Etextfields.clear();
 			 Elabels.clear();
