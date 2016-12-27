@@ -24,5 +24,4 @@ public abstract class BinDoubleRetExp extends DoubleRetExp {
 	public void setERight(DoubleRetExp right) {
 		eRight = right;
 	}
-
 }

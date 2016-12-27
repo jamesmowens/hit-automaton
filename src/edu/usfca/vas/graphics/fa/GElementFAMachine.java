@@ -518,31 +518,6 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
        // updateAll();
         machine.addState(state); // add state to FAMachine
         GElementFAStateDoubleCircle newFAState = new GElementFAStateDoubleCircle(state, x, y,this); // create GElement
-        // pop-up for color
-        /*Object[] possibilities = {"Black", "Blue", "Yellow", "Green"};
-    	String s2 = (String)JOptionPane.showInputDialog(null, "Choose Color", "Choose Color", JOptionPane.PLAIN_MESSAGE, null, possibilities, 
-    			"Black");
-    	Color c;
-    	if (s2.equals("Black"))
-    		c = Color.BLACK;
-    	//else if (s2.equals("Red"))
-    		//c = Color.RED;
-    	else if (s2.equals("Blue"))
-    		c = Color.BLUE;
-    	else if (s2.equals("Yellow"))
-    		c = Color.YELLOW;
-    	else if (s2.equals("Green"))
-    		c = Color.GREEN;
-    	else
-    		c = Color.BLACK;
-        // set color
-    	newFAState.setColor(c);
-		newFAState.setColor2(c);
-		newFAState.setColor3(c);
-		newFAState.getPosition().color = c;*/
-        
-        
-    	
         addElement(newFAState); // add GElement to GElement array
         // add element to nickname panel
         getMachine().getNaming().addElement(newFAState);
@@ -561,7 +536,6 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
      * @param controller - controls if first coordinate or second coordinate
      */
     public void addNonAtomicStateAtXY(String s, double x, double y, int controller) {
-       // updateAll();
     	// if it is first coordinate
     	if (controller == 0){
         	State state = new FAState(s); // make state
@@ -589,11 +563,6 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
             Object[] possibilities = {"Black", "Blue", "Brown", "Gold", "Green", "DarkGreen", "LightBlue","Orange", "Pink", "Violate"};
         	String s2 = (String)JOptionPane.showInputDialog(null, "Choose Color", "Choose Color", JOptionPane.PLAIN_MESSAGE, null, possibilities, 
         			"Black");
-        	//JCheckBox checkbox = new JCheckBox("Make all contained states same color");
-        	//String message = "Make contained states the same color";
-        	//Object[] params = {message, checkbox};
-            //int n = JOptionPane.showConfirmDialog(null, params, "Disconnect Products", JOptionPane.YES_NO_OPTION);
-            //boolean isChecked = checkbox.isSelected();
         	Color c;
         	if (s2.equals("Black"))
         		c = Color.BLACK;

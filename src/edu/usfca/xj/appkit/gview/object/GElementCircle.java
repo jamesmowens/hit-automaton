@@ -167,8 +167,6 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 	@Override
 	public boolean isInside(GElement e) {
 		
-		//System.out.println("in");
-		
 		if(!(e instanceof GElementFAStateRectangle) && !(e instanceof GElementFAStateDoubleRectangle)) {
 			return false;
 		}
@@ -181,11 +179,7 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
         int eX = (int)(e.getPositionX());
         int eY = (int)(e.getPositionY());
         int eX2 = (int)(e.getPositionX2());
-        int eY2 = (int)(e.getPositionY2()); 
-        
-        /*System.out.println("checking " + label + " " + e.getLabel());
-        System.out.println(thisX + " " + thisY + " " + thisX2 + " " + thisY2);
-        System.out.println(eX + " " + eY + " " + eX2 + " " + eY2);*/
+        int eY2 = (int)(e.getPositionY2());
         
         if(thisX>=eX && thisY>=eY && thisX2<=eX2 && thisY2<=eY2) return true;
         return false;

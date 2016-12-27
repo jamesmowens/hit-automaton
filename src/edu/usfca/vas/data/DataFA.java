@@ -31,8 +31,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.data;
 
-
-
 public class DataFA extends DataAbstract {
 
     public DataFA() {
