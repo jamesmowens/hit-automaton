@@ -154,14 +154,21 @@ public abstract class GElementDoubleCircle extends GElement implements XJXMLSeri
 
     public void drawShape(Graphics2D g) {
         super.drawShape(g);
-
-        //color = getPosition().color; 
         
         int x = (int)(getPositionX()-radius);
         int y = (int)(getPositionY()-radius);
 
         g.drawOval(x, y, (int)(radius*2), (int)(radius*2));
-        //g.drawOval(x + 4, y + 4, (int)(radius2*2), (int)(radius2*2));   //this is done in GElementFAStateDouble
+    }
+    
+    //I put this in.
+    public void drawOvalShape(Graphics2D g) {
+        super.drawShape(g);
+        
+        int x = (int)(getPositionX()-radius);
+        int y = (int)(getPositionY()-radius);
+
+        g.drawOval(x, y, (int)(2.5*(radius*2)), (int)(radius*2));
     }
 
 	@Override

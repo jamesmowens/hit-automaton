@@ -123,7 +123,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     }
 
     public void drawShape(Graphics2D g) {
-        super.drawShape(g);
+        super.drawOvalShape(g);
 
         color = getPosition().color; 
         
@@ -138,9 +138,9 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
             startArrow.draw(g);
         }
         
-        g.drawOval(x, y, (int)(getRadius()*2), (int)(getRadius()*2)); //draw outer circle
+        g.drawOval(x, y, (int)(2.5*(getRadius()*2)), (int)(getRadius()*2)); //draw outer circle
         if(state.accepted){
-        	g.drawOval(x + 4, y + 4, (int)(getRadius2() *2), (int)(getRadius2()*2));  //draw inner circle
+        	g.drawOval(x + 4, y + 4, (int)(2.5*(getRadius2() *2)), (int)(getRadius2()*2));  //draw inner circle
         }
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();

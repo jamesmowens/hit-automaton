@@ -163,6 +163,17 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 
         g.drawOval(x, y, (int)(radius*2), (int)(radius*2));
     }
+    
+    public void drawOvalShape(Graphics2D g){
+    	super.drawShape(g);
+
+        //color = getPosition().color;
+        
+        int x = (int)(getPositionX()-radius);
+        int y = (int)(getPositionY()-radius);
+
+        g.drawOval(x, y, (int)(2.5*(radius*2)), (int)(radius*2));
+    }
 
 	@Override
 	public boolean isInside(GElement e) {
