@@ -233,7 +233,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
     private static void initLookAndFeel() {
         SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
         try {
-            lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("synthDemo.xml"),
+            lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("theme.xml"),
                     VisualAutomataSimulator.class);
             UIManager.setLookAndFeel(lookAndFeel);
         }

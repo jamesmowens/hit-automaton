@@ -1,104 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- <!DOCTYPE synth SYSTEM "synth.dtd"> -->
+
+
 <synth>
-     Style that all regions will use 
+    Style that all regions will use
     <style id="backingStyle">
-<!--          Make all the regions opaque -->
-        <opaque value="TRUE"/>
+        <!--          Make all the regions opaque -->
+        <opaque value="true"/>
         <font name="Dialog" size="14"/>
         <state>
-            <color value="#044C65" type="BACKGROUND"/>
+            <color value="#13223D" type="BACKGROUND"/>
             <color value="WHITE" type="FOREGROUND"/>
+            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
         </state>
     </style>
-    <bind style="backingStyle" type="region" key=".*"/>
+    <bind style="backingStyle" type="REGION" key=".*"/>
 
 
- 
     <style id="textfield">
         <insets top="4" left="6" bottom="4" right="6"/>
         <state>
             <font name="Verdana" size="14"/>
             <color value="#76dbd3" type="BACKGROUND"/>
-            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
         </state>
         <imagePainter method="textFieldBorder" path="images/textfield.png" sourceInsets="4 6 4 6" paintCenter="false"/>
     </style>
-    <bind style="textfield" type="region" key="TextField"/>
-    
+    <bind style="textfield" type="REGION" key="TextField"/>
+
 
     <style id="menu">
         <insets top="5" bottom="5" left="5" right="5"/>
-        <state>
-            <color value="#044C65" type="BACKGROUND"/>
-            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
-        </state>
-         <state value="MOUSE_OVER">
-            <color value="#044C65" type="BACKGROUND"/>
-            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
-        </state>        
-    </style>
-    <bind style="menu" type="region" key="Menu"/>
-
-    <style id="menuitem">
         <font name="Dialog" size="24"/>
         <state>
-            <color value="#000000" type="BACKGROUND"/>
-            <color value="#000000" type="TEXT_FOREGROUND"/>
+            <color value="#044C65" type="BACKGROUND"/>
+            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
         </state>
         <state value="MOUSE_OVER">
             <color value="#044C65" type="BACKGROUND"/>
             <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
         </state>
     </style>
-    <bind style="menuitem" type="region" key="MenuItem"/>
+    <bind style="menu" type="REGION" key="Menu"/>
+
+    <style id="menuitem">
+        <insets top="5" bottom="5" left="5" right="5"/>
+        <font name="Dialog" size="24"/>
+        <state>
+            <!-- <color value="#000000" type="BACKGROUND"/> -->
+            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
+        </state>
+        <state value="MOUSE_OVER">
+            <color value="#044C65" type="BACKGROUND"/>
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="menuitem" type="REGION" key="MenuItem"/>
 
 
     <style id="scrollpane">
-            <opaque value="TRUE"/>
+        <opaque value="true"/>
         <state>
-            <color value="#FFFF00" type="BACKGROUND"/>
-            <color value="#FFFF00" type="FOREGROUND"/>
-      </state>
-    </style>
-    <bind style="scrollpane" type="region" key="ScrollPane"/>
- 
-    <style id="scrollbar">
-            <opaque value="TRUE"/>
-            <state>
             <color value="#FFFF00" type="BACKGROUND"/>
             <color value="#FFFF00" type="FOREGROUND"/>
         </state>
     </style>
-    <bind style="scrollbar" type="region" key="ScrollBar"/>
- 
+    <bind style="scrollpane" type="REGION" key="ScrollPane"/>
+
+    <style id="scrollbar">
+        <opaque value="true"/>
+        <state>
+            <color value="#FFFF00" type="BACKGROUND"/>
+            <color value="#FFFF00" type="FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="scrollbar" type="REGION" key="ScrollBar"/>
+
     <style id="scrollbarthumb">
-            <opaque value="TRUE"/>
-            <state>
+        <opaque value="true"/>
+        <state>
             <color value="#D1D1D1" type="BACKGROUND"/>
             <color value="#D1D1D1" type="FOREGROUND"/>
         </state>
     </style>
-    <bind style="scrollbarthumb" type="region" key="ScrollBarThumb"/>
- 
+    <bind style="scrollbarthumb" type="REGION" key="ScrollBarThumb"/>
+
     <style id="scrollbartrack">
-            <opaque value="TRUE"/>
-            <state>
+        <opaque value="true"/>
+        <state>
             <color value="#F2F2F2" type="BACKGROUND"/>
             <color value="#F2F2F2" type="FOREGROUND"/>
         </state>
     </style>
-    <bind style="scrollbartrack" type="region" key="ScrollBarTrack"/>
-    
-    
-    
+    <bind style="scrollbartrack" type="REGION" key="ScrollBarTrack"/>
+
+
     <style id="button">
         <!--  Shift the text one pixel when pressed  -->
         <property key="Button.textShiftOffset" type="integer" value="1"/>
-<!--          set size of buttons  -->
+        <!--          set size of buttons  -->
         <insets top="5" left="20" bottom="5" right="20"/>
         <state>
             <imagePainter method="buttonBackground" path="images/button.png" sourceInsets="20 20 20 20"/>
-<!--             <font name="Dialog" size="20"/> -->
-            <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+            <!--             <font name="Dialog" size="20"/> -->
+            <color type="TEXT_FOREGROUND" value="#9DC3E6"/>
         </state>
         <state value="PRESSED">
             <imagePainter method="buttonBackground" path="images/button_press.png" sourceInsets="20 20 20 20"/>
@@ -107,8 +112,8 @@
             <imagePainter method="buttonBackground" path="images/button_over.png" sourceInsets="20 20 20 20"/>
         </state>
     </style>
-    <bind style="button" type="region" key="Button"/>
-    
+    <bind style="button" type="REGION" key="Button"/>
+
     <style id="checkbox">
         <imageIcon id="check_off" path="images/checkbox_off.png"/>
         <imageIcon id="check_on" path="images/checkbox_on.png"/>
@@ -117,10 +122,7 @@
             <property key="CheckBox.icon" value="check_on"/>
         </state>
     </style>
-    <bind style="checkbox" type="region" key="Checkbox"/>
+    <bind style="checkbox" type="REGION" key="Checkbox"/>
 
 
-    
-    
-    
 </synth>
