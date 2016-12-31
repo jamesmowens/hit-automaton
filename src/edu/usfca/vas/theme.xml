@@ -21,7 +21,7 @@
         <insets top="4" left="6" bottom="4" right="6"/>
         <state>
             <font name="Verdana" size="14"/>
-            <color value="#76dbd3" type="BACKGROUND"/>
+            <color value="#0000FF" type="BACKGROUND"/>
             <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
         </state>
         <imagePainter method="textFieldBorder" path="images/textfield.png" sourceInsets="4 6 4 6" paintCenter="false"/>
@@ -31,7 +31,7 @@
 
     <style id="menu">
         <insets top="5" bottom="5" left="5" right="5"/>
-        <font name="Dialog" size="24"/>
+        <font name="Dialog" size="14"/>
         <state>
             <color value="#044C65" type="BACKGROUND"/>
             <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
@@ -45,7 +45,7 @@
 
     <style id="menuitem">
         <insets top="5" bottom="5" left="5" right="5"/>
-        <font name="Dialog" size="24"/>
+        <font name="Dialog" size="14"/>
         <state>
             <!-- <color value="#000000" type="BACKGROUND"/> -->
             <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
