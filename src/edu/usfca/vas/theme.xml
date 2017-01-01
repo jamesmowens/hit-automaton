@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- <!DOCTYPE synth SYSTEM "synth.dtd"> -->
-
-
 <synth>
-    Style that all regions will use
+    <!-- Style that all regions will use -->
     <style id="backingStyle">
         <!--          Make all the regions opaque -->
         <opaque value="true"/>
@@ -123,6 +120,25 @@
         </state>
     </style>
     <bind style="checkbox" type="REGION" key="Checkbox"/>
+
+    <style id="lowerPanelTabs">
+        <insets right="10"/>
+        <state>
+            <font name="Dialog" size="24"/>
+            <color value="#BBBBBB" type="BACKGROUND"/>
+            <color value="#BBBBBB" type="FOREGROUND"/>
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="lowerPanelTabs" type="NAME" key="LowerPanelTabs"/>
+
+    <style id="lowerPanel">
+        <state>
+            <color value="#FFFFFF" type="BACKGROUND"/>
+            <color value="#FFFFFF" type="FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="lowerPanel" type="NAME" key="LowerPanel"/>
 
 
 </synth>
