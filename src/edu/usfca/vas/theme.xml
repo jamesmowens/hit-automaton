@@ -125,7 +125,7 @@
     <style id="lowerPanelTabs">
         <insets right="10"/>
         <state>
-            <font name="Dialog" size="24"/>
+            <font name="Dialog" size="14"/>
             <color value="#BBBBBB" type="BACKGROUND"/>
             <color value="#BBBBBB" type="FOREGROUND"/>
             <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
