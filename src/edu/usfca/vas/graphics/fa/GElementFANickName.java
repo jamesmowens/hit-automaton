@@ -37,7 +37,7 @@ public class GElementFANickName extends JPanel {
 		super();
 		this.setName("LowerPanel");
 		this.tabs = new JTabbedPane();
-		this.tabs.setName("LowerPanelTabs");
+		this.tabs.setName("LowerPanelTabs"); //Named this so it can be used in xml file
 		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		tabs.setPreferredSize(new Dimension(950, 180));
 		//this.add(tabs);
