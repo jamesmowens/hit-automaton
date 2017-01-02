@@ -11,6 +11,10 @@ import edu.usfca.xj.appkit.gview.base.Vector2D;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
 import java.awt.*;
 
+/**
+ * Used to handle the console during runtime, showing each step.
+ */
+
 public class GElementFAStateRectangle extends GElementRectangle 
 	implements GElementFAStateInterface, XJXMLSerializable {
 

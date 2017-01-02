@@ -43,6 +43,10 @@ import edu.usfca.xj.appkit.gview.shape.SArrow;
 import edu.usfca.xj.foundation.XJXMLSerializable;
 import java.awt.*;
 
+/**
+ * Handles drawing circles (atomic states) and their properties.
+ */
+
 public class GElementFAState extends GElementCircle implements XJXMLSerializable, GElementFAStateInterface {
 
     protected State state = new FAState();

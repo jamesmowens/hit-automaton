@@ -11,6 +11,10 @@ import javax.swing.*;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
+/**
+ * Sets up the stream side-panel, handles the stream.
+ */
+
 public class GElementFASidePanel extends JPanel {
 
 	private static final long serialVersionUID = -511482713793989551L;

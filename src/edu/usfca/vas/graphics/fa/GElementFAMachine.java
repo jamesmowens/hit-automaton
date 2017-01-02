@@ -53,6 +53,11 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+/**
+ * Handles drawing elements (states & transitions), collapsing, expanding, setting to accepting, 
+ * coloring, etc.....
+ */
+
 public class GElementFAMachine extends GElement implements XJXMLSerializable {
 
 	public static final int STATE_STOPPED = 0;

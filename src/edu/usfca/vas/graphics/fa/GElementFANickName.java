@@ -11,6 +11,10 @@ import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
+/**
+ * Sets up the bottom panel, handles the long names.
+ */
+
 public class GElementFANickName extends JPanel {
 
 	private static final long serialVersionUID = -511482713793989551L;
