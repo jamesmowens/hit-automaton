@@ -35,6 +35,11 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
+/**
+ * Deals with refreshing the panels.
+ */
+
+
 public class WindowMachineFAOverlay {
 
     public static final int DEFAULT_WIDTH = 300;

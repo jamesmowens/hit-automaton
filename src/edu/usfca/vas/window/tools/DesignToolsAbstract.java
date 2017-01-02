@@ -43,6 +43,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Functions used for the below two classes.
+ */
+
 public class DesignToolsAbstract extends JPanel {
 
     protected List toolsButton = new ArrayList();

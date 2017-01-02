@@ -67,6 +67,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Handles the Machine menu and the former run menu.
+ */
+
 public abstract class WindowAbstract extends XJWindow implements XJMenuItemDelegate {
 
     // ** Menu constants

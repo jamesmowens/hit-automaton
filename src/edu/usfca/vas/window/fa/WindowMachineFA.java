@@ -74,6 +74,10 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+/**
+ * Creates the panels for the application, the Load, Next, Back buttons are declared here.
+ */
+
 public class WindowMachineFA extends WindowMachineAbstract {
 
     protected WindowMachineFASettings settings = null;

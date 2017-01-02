@@ -38,6 +38,10 @@ import edu.usfca.vas.graphics.IconManager;
 
 import javax.swing.*;
 
+/**
+ * Creates the edit boxes (or used to).
+ */
+
 /*
  * Creates the state buttons and input box for naming them
  */

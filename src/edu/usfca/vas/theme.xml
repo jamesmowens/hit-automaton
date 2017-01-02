@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- SKINS FOR ALL UI ELEMENTS. Handles style (SYNTH) appearance of application -->
+
 <!-- test -->
 <synth>
     <!-- Style that all regions will use -->
