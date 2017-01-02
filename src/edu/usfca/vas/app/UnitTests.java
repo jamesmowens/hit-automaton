@@ -36,6 +36,11 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
+/**
+ * Tests written by the original program creator to test the program.
+ */
+
+
 public class UnitTests {
 
     public UnitTests() {
