@@ -148,7 +148,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         	case 10:
         		XJAlert.display(null, "Colors",
                         "Colors for states & transitions can be changed by double clicking or right clicking on" +
-                        " a state/transition. For contains color any states contained inside will be given" +
+                        " a sxtate/transition. For contains color any states contained inside will be given" +
                         " the selected color. Transitions will not be affected.");
         		break;
         	case 11:
