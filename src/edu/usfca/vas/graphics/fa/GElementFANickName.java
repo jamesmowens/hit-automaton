@@ -46,6 +46,7 @@ public class GElementFANickName extends JPanel {
 		tabs.setPreferredSize(new Dimension(950, 180));
 		//this.add(tabs);
 		this.linkPanel = new JPanel();
+		this.linkPanel.setBackground(Color.white); 
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -291,7 +292,7 @@ public class GElementFANickName extends JPanel {
 		 int i = 0;
 		 this.linkPanel = new JPanel();
 		 this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		 panels.clear();
+	     panels.clear();
 		 labels.clear();
 		 textfields.clear();
 		 linkPanel.updateUI();

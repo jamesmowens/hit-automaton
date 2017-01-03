@@ -36,6 +36,7 @@ public class GElementFASidePanel extends JPanel {
 		this.setPreferredSize(new Dimension(100, 500));
 		setVisible(true);
 		panel = new JPanel();
+        panel.setBackground(Color.white); 
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);

@@ -589,6 +589,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     //makes the side panel
     public JPanel createSidePanel() {
     	GElementFASidePanel side = new GElementFASidePanel();
+        //side.setBackground(Color.white);
     	//side.setSize(new Dimension(250, 400)); // Why commented?
     	sidePanel=side;
     	//sidePanel.setLayout(new GridLayout(0,1));
