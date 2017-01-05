@@ -45,7 +45,7 @@
     <bind style="menu" type="REGION" key="Menu"/>
 
     <style id="menuitem">
-        <insets top="5" bottom="5" left="5" right="5"/>
+        <insets top="5" bottom="5" left="20" right="5"/>
         <font name="Dialog" size="14"/>
         <state>
             <!-- <color value="#000000" type="BACKGROUND"/> -->
@@ -102,18 +102,48 @@
         <!--          set size of buttons  -->
         <insets top="5" left="20" bottom="5" right="20"/>
         <state>
-            <imagePainter method="buttonBackground" path="images/button.png" sourceInsets="20 20 20 20"/>
+            <imagePainter method="buttonBackground" path="images/btnImgs/blue.png" sourceInsets="0 0 0 0"/>
             <!--             <font name="Dialog" size="20"/> -->
-            <color type="TEXT_FOREGROUND" value="#9DC3E6"/>
+            <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
         </state>
-        <state value="PRESSED">
-            <imagePainter method="buttonBackground" path="images/button_press.png" sourceInsets="20 20 20 20"/>
-        </state>
+        <!-- <state value="PRESSED">
+            <imagePainter method="buttonBackground" path="images/btnImgs/blue_pressed.png" sourceInsets="0 0 0 0"/>
+        </state> -->
         <state value="MOUSE_OVER">
-            <imagePainter method="buttonBackground" path="images/button_over.png" sourceInsets="20 20 20 20"/>
+            <imagePainter method="buttonBackground" path="images/btnImgs/blue_pressed.png" sourceInsets="0 0 0 0"/>
         </state>
     </style>
     <bind style="button" type="REGION" key="Button"/>
+
+    <style id="loadButton">
+        <state>
+            <imagePainter method="buttonBackground" path="images/btnImgs/blue.png" sourceInsets="0 0 0 0"/>
+        </state>
+        <state value="MOUSE_OVER">
+            <imagePainter method="buttonBackground" path="images/btnImgs/blue_pressed.png" sourceInsets="0 0 0 0"/>
+        </state>
+    </style>
+    <bind style="loadButton" type="NAME" key="LoadButton"/>
+
+    <style id="nextButton">
+        <state>
+            <imagePainter method="buttonBackground" path="images/btnImgs/green.png" sourceInsets="0 0 0 0"/>
+        </state>
+        <state value="MOUSE_OVER">
+            <imagePainter method="buttonBackground" path="images/btnImgs/green_pressed.png" sourceInsets="0 0 0 0"/>
+        </state>
+    </style>
+    <bind style="nextButton" type="NAME" key="NextButton"/>
+
+    <style id="backButton">
+        <state>
+            <imagePainter method="buttonBackground" path="images/btnImgs/red.png" sourceInsets="0 0 0 0"/>
+        </state>
+        <state value="MOUSE_OVER">
+            <imagePainter method="buttonBackground" path="images/btnImgs/red_pressed.png" sourceInsets="0 0 0 0"/>
+        </state>
+    </style>
+    <bind style="backButton" type="NAME" key="BackButton"/>
 
     <style id="checkbox">
         <imageIcon id="check_off" path="images/checkbox_off.png"/>
@@ -137,12 +167,13 @@
     <bind style="lowerPanelTabs" type="NAME" key="LowerPanelTabs"/>
 
     <style id="lowerPanel">
+        <!-- <property key="Component.setComponentZOrder" value="10"/> -->
         <state>
-            <color value="#FFFFFF" type="BACKGROUND"/>
-            <color value="#FFFFFF" type="FOREGROUND"/>
+            <color value="#FFFF00" type="BACKGROUND"/>
+            <color value="#FFFF00" type="FOREGROUND"/>
         </state>
     </style>
-    <bind style="lowerPanel" type="NAME" key="LowerPanel"/>
+    <bind style="lowerPanel" type="NAME" key="SidePanel"/>
 
 
 </synth>

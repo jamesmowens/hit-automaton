@@ -46,25 +46,26 @@ public class GElementFANickName extends JPanel {
 		tabs.setPreferredSize(new Dimension(950, 180));
 		//this.add(tabs);
 		this.linkPanel = new JPanel();
-		this.linkPanel.setBackground(Color.white); 
+		linkPanel.setName("LinkPanel");
+		this.linkPanel.setBackground(Color.white);
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		executionPanel.add(activeStateLabel);
-		//this.linkPanel.setSize(new Dimension(600, 100));
+ 		//this.linkPanel.setSize(new Dimension(600, 100));
 		//this.elementPanel.setSize(new Dimension(600, 100));
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("State Names", this.elementPanel);
 		tabs.addTab("Process Summaries", this.executionPanel);
 		//tabs.addTab("New Tab", null);
 		tabs.setVisible(true);
-		setVisible(true);
+		linkPanel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
+		scroll.setName("LowerScrollPane");
 		scroll.setPreferredSize(new Dimension(950, 190));
 		this.add(scroll);
-		
 		//this.setSize(new Dimension(600, 100));
 		//return namingPanel;
 		
@@ -404,6 +405,7 @@ public class GElementFANickName extends JPanel {
 			else 
 				this.tabs.setPreferredSize(new Dimension(950, 180));
 		 	JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		 	p.setName("TabsPanel");
 			JLabel tf = new JLabel(newElement.getLabel());
 			int width = tf.getBounds().width;
 			tf.setForeground(newElement.getColor());

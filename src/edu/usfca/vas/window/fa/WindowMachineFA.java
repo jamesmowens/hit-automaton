@@ -243,6 +243,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
+        next.setName("NextButton");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//getWindowFA().run();
@@ -279,6 +280,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         //Load Button
         JButton load = new JButton(Localized.getString("faWMLoad"));
+        load.setName("LoadButton");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
@@ -356,6 +358,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         //Back Button
         JButton back = new JButton(Localized.getString("faWMBack"));
+        back.setName("BackButton");
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//getWindowFA().run();
