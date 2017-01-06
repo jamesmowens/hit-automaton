@@ -50,6 +50,7 @@ public class CHAOSConnection {
 	
 	public static void processData() {
 		
+		//an array list of strings that contain all the events of the process
 		ArrayList<String> eventList = new ArrayList<String>();
 		
 		String inputFile = "input.xml";
@@ -60,15 +61,18 @@ public class CHAOSConnection {
 			{
 				Document doc = fileParser(inputFile); // parse into DOM document
 
+				//this transforms the document made into a list that the java machine can manipulate
 				NodeList EventListDoc = doc.getElementsByTagName("event");
 				for(int i=0;i<EventListDoc.getLength();i++) {
+					//for each node(event) in the NodeList, you fetch the node and then add the node to
+					//the arrayList of strings
 					Node eventDoc = EventListDoc.item(i);
 					eventList.add(getEachEvent(eventDoc));
 				}
 			}
 			else
 			{
-				System.out					.println("The system cannot find the file specified)");
+				System.out.println("The system cannot find the file specified)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,15 +80,18 @@ public class CHAOSConnection {
 		
 		int maxNumArgs = 0;
 		for(String s: eventList) {
+			//gets the max number of arguments in the list
 			int numArg = countNumArgs(s);
 			if(numArg>maxNumArgs) {
 				maxNumArgs=numArg;
 			}
 		}
 		
+		//This is the string that will be printed with all the info.
 		String data = new String("");
 		for(String s: eventList) {
 			for(int i=countNumArgs(s);i<maxNumArgs;i++) {
+				//prints the nothing argument for the leftover space
 				s+=" nothing 0";
 			}
 			data+=s;

@@ -27,6 +27,8 @@ public class GElementFANickName extends JPanel {
 	//present active states
 	JLabel activeStateLabel = new JLabel();	
 	JPanel linkPanel;
+	//This is the query panel for requesting a query.
+	JPanel queryPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
 	
@@ -38,9 +40,15 @@ public class GElementFANickName extends JPanel {
 		tabs.setPreferredSize(new Dimension(950, 180));
 		//this.add(tabs);
 		this.linkPanel = new JPanel();
+		this.queryPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		tabs.addTab("Transition Labels", this.linkPanel);
+		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		
+		//This makes it print the summaries, though I am trying to make some buttons in it for queries
+		queryPanel.add(activeStateLabel);
+		
+		tabs.addTab("Transition Labels", this.linkPanel);
+		tabs.addTab("Queries", this.queryPanel);
 		tabs.setVisible(true);
 		setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check

@@ -11,4 +11,11 @@ public interface Context extends Comparable<Context> {
 	 * @return the result of the evaluation.
 	 */
 	public boolean evaluate(int parameter);
+	
+	/**
+	 * This just returns the description of the context at hand	
+	 * @return some string that describes the context
+	 */
+	public String description();
+	
 }

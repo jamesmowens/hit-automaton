@@ -5,13 +5,14 @@ import java.util.HashSet;
 /**
  * This Query is the class that is used for query definitions
  * It includes the use of the Context class in the query package
- * This calss also contains statistics for a given context, such as the number of times the context was evaluated, or the success rates of the context
+ * This class also contains statistics for a given context, such as the number of times the context was evaluated, or the success rates of the context
  * @author Nicholas Fajardo
  */
 public class Query {
 	
 	/**
 	 * These private instance variables are used to keep track of statistics and the context to evaluate.
+	 * The context is the belonging situation of the query.
 	 */
 	private Context context;
 	private int numberOfEvaluated;
@@ -35,6 +36,16 @@ public class Query {
 	public Context fetchContext()
 	{
 		return this.context;
+	}
+	
+	/**
+	 * Sets the context of the situation.
+	 * @param situation (is a context)
+	 */
+	public void setContext(Context situation)
+	{
+		this.context = situation;
+		System.out.println("Current situation is "+ situation.description());
 	}
 	
 	/**
