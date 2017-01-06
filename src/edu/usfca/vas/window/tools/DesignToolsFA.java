@@ -57,9 +57,9 @@ public class DesignToolsFA extends DesignToolsAbstract {
     // initializes menu buttons
     public DesignToolsFA() {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-
         // creates menu buttons for states
         mouseButton = createDesignToolButton(IconManager.ICON_ARROW, Localized.getString("faDTSelect"), TOOL_ARROW);
+        //mouseButton.setBackground(Color.decode("#D3D3D3"));
         createDesignToolSeparator(20);
         createDesignToolButton(IconManager.ICON_LINK, Localized.getString("faDTLink"), TOOL_LINK);
         createDesignToolButton(IconManager.ICON_STATE, Localized.getString("faDTState"), TOOL_STATE);

@@ -173,7 +173,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     public JPanel createUpperPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setMaximumSize(new Dimension(99999, 30));
-
+        //panel.setBackground(Color.decode("#0A7FA6"));
         panel.add(designToolFA = new DesignToolsFA(), BorderLayout.WEST);
         panel.add(createControlPanel(), BorderLayout.EAST);
 
@@ -184,6 +184,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     public JPanel createControlPanel() {
         JPanel panel = new JPanel();
+        panel.setBackground(Color.decode("#EBCF31"));
         panel.setMaximumSize(new Dimension(99999, 30));
 
         //Not needed anymore, was for NFA/DFA details
