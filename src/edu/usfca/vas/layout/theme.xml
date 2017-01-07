@@ -8,11 +8,14 @@
     <style id="backingStyle">
         <!--          Make all the regions opaque -->
         <opaque value="true"/>
+        <!-- <insets top="0" bottom="0" left="0" right="0"/> -->
         <font name="Dialog" size="14"/>
         <state>
-            <color value="#13223D" type="BACKGROUND"/>
+            <!-- <color value="#13223D" type="BACKGROUND"/> -->
+            <color value="#F2F2F2" type="BACKGROUND"/>
             <color value="WHITE" type="FOREGROUND"/>
-            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#9DC3E6" type="TEXT_FOREGROUND"/> -->
+            <color value="#1E1E1E" type="TEXT_FOREGROUND"/>
         </state>
     </style>
     <bind style="backingStyle" type="REGION" key=".*"/>
@@ -23,11 +26,16 @@
         <state>
             <font name="Verdana" size="14"/>
             <color value="#0000FF" type="BACKGROUND"/>
-            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#9DC3E6" type="TEXT_FOREGROUND"/> -->
         </state>
-        <imagePainter method="textFieldBorder" path="images/textfield.png" sourceInsets="4 6 4 6" paintCenter="false"/>
+        <imagePainter method="textFieldBorder" path="images/box.png" sourceInsets="0 0 0 0" paintCenter="true"/>
     </style>
     <bind style="textfield" type="REGION" key="TextField"/>
+
+    <!-- <style id="toggleButton">
+        <color value="#13223D" type="BACKGROUND"/>
+    </style>
+    <bind style="toggleButton" type="REGION" key="ToggleButton"/> -->
 
 
     <style id="menu">
@@ -35,11 +43,11 @@
         <font name="Dialog" size="14"/>
         <state>
             <color value="#044C65" type="BACKGROUND"/>
-            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#9DC3E6" type="TEXT_FOREGROUND"/> -->
         </state>
         <state value="MOUSE_OVER">
             <color value="#044C65" type="BACKGROUND"/>
-            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#FFFFFF" type="TEXT_FOREGROUND"/> -->
         </state>
     </style>
     <bind style="menu" type="REGION" key="Menu"/>
@@ -49,11 +57,11 @@
         <font name="Dialog" size="14"/>
         <state>
             <!-- <color value="#000000" type="BACKGROUND"/> -->
-            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#9DC3E6" type="TEXT_FOREGROUND"/> -->
         </state>
         <state value="MOUSE_OVER">
             <color value="#044C65" type="BACKGROUND"/>
-            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#FFFFFF" type="TEXT_FOREGROUND"/> -->
         </state>
     </style>
     <bind style="menuitem" type="REGION" key="MenuItem"/>
@@ -61,10 +69,10 @@
 
     <style id="scrollpane">
         <opaque value="true"/>
-        <state>
+        <!-- <state>
             <color value="#FFFF00" type="BACKGROUND"/>
             <color value="#FFFF00" type="FOREGROUND"/>
-        </state>
+        </state> -->
     </style>
     <bind style="scrollpane" type="REGION" key="ScrollPane"/>
 
@@ -145,7 +153,7 @@
     </style>
     <bind style="backButton" type="NAME" key="BackButton"/>
 
-    <style id="checkbox">
+    <!-- <style id="checkbox">
         <imageIcon id="check_off" path="images/checkbox_off.png"/>
         <imageIcon id="check_on" path="images/checkbox_on.png"/>
         <property key="CheckBox.icon" value="check_off"/>
@@ -153,7 +161,7 @@
             <property key="CheckBox.icon" value="check_on"/>
         </state>
     </style>
-    <bind style="checkbox" type="REGION" key="Checkbox"/>
+    <bind style="checkbox" type="REGION" key="Checkbox"/> -->
 
     <style id="lowerPanelTabs">
         <insets right="10"/>

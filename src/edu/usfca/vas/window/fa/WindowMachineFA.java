@@ -184,7 +184,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     public JPanel createControlPanel() {
         JPanel panel = new JPanel();
-        panel.setBackground(Color.decode("#EBCF31"));
+        //panel.setBackground(Color.decode("#EBCF31"));
         panel.setMaximumSize(new Dimension(99999, 30));
 
         //Not needed anymore, was for NFA/DFA details

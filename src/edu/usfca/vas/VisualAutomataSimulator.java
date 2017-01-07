@@ -219,11 +219,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    //Set the look and feel.
                     initLookAndFeel();
-
-                    //Make sure we have nice window decorations.
-                    //JFrame.setDefaultLookAndFeelDecorated(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -234,7 +230,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
     private static void initLookAndFeel() {
         SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
         try {
-            lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("theme.xml"),
+            lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("layout/theme.xml"),
                     VisualAutomataSimulator.class);
             UIManager.setLookAndFeel(lookAndFeel);
         }

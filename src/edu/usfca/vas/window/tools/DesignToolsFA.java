@@ -69,6 +69,7 @@ public class DesignToolsFA extends DesignToolsAbstract {
         createDesignToolButton(IconManager.ICON_ENDNONATOMIC, Localized.getString("faDTEndnonatomic"), TOOL_ENDNONATOMIC); /* faDTEndnonatomic */
 
         selectButton(mouseButton);
+        //this.setBackground(Color.BLUE);
     }
 
     
