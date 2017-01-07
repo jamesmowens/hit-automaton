@@ -199,6 +199,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         }
     }
 
+    //This is what launches the GUI
     public static void main(String[] args) {
         if (args.length == 7 && args[0].equals("-t")) {
             new Test(Integer.parseInt(args[1]), Integer.parseInt(args[2]),
@@ -210,6 +211,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
             return;
         }
 
+        //Launches up the GUI
         XJApplication.run(new VisualAutomataSimulator(), args);
     }
 

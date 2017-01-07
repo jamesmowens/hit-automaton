@@ -11,7 +11,7 @@ import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
-public class GElementFANickName extends JPanel {
+public class GElementFANickName extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = -511482713793989551L;
 	//hold the links stuff (for links)
@@ -45,7 +45,17 @@ public class GElementFANickName extends JPanel {
 		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		
 		//This makes it print the summaries, though I am trying to make some buttons in it for queries
-		queryPanel.add(activeStateLabel);
+		//queryPanel.add(activeStateLabel);
+		
+		//Attempt at adding the buttons
+		JButton queryOver = new JButton("Number of bids over 100");
+		JButton queryBids = new JButton("Number of bids");
+		queryOver.addActionListener(this);
+		queryBids.addActionListener(this);
+		queryOver.setActionCommand("start bids over 100 search");
+		queryBids.setActionCommand("start bids total search");
+		this.queryPanel.add(queryOver);
+		this.queryPanel.add(queryBids);
 		
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("Queries", this.queryPanel);
@@ -54,6 +64,17 @@ public class GElementFANickName extends JPanel {
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
 		scroll.setPreferredSize(new Dimension(950, 190));
 		this.add(scroll);
+	}
+	
+	//this is the method that needs to be implemented for the actionListener on the buttons for my example of the queries
+	public void actionPerformed(ActionEvent e ){
+		if("start bids over 100 search".equals(e.getActionCommand())){
+			System.out.println("It works(the 100 one that is)");
+		}
+		else if("start bids total search".equals(e.getActionCommand())){
+			System.out.println("It works(the total bids that is)");
+		}
+		else{}
 	}
 	
 	//gets a state based on its name 
@@ -493,6 +514,10 @@ public class GElementFANickName extends JPanel {
 			this.mac = faGraphicPanel;
 		}
 
+		/**
+		 * This is the method that prints all the updates from the console feed
+		 * @param string
+		 */
 		public void setActiveStates(String string) {
 			activeStateLabel.setText(convertToMultiline(string));
 		}
