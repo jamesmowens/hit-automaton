@@ -56,6 +56,7 @@ import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
+import bidDatabase.BidDatabase;
 import connection.Connection;
 import connection.Step;
 import connection.StreamXMLGenerator;
@@ -182,85 +183,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
         JPanel panel = new JPanel();
         panel.setMaximumSize(new Dimension(99999, 30));
 
-        //Not needed anymore, was for NFA/DFA details
-        
-//        panel.add(new JLabel(Localized.getString("faWMAutomaton")));
-//        typeComboBox = new JComboBox(new String[] { Localized.getString("DFA"),
-//                                                    Localized.getString("NFA") });
-//        typeComboBox.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                int type = typeComboBox.getSelectedIndex();
-//                if(type !=getDataWrapperFA().getMachineType()) {
-//                    getDataWrapperFA().setMachineType(type);
-//                    changeOccured();
-//                }
-//            }
-//        });
-//
-//        panel.add(typeComboBox);
-//
-//        panel.add(new JLabel(Localized.getString("faWMAlphabet")));
-//
-//        alphabetTextField = new JTextField(getDataWrapperFA().getSymbolsString());
-//        alphabetTextField.setPreferredSize(new Dimension(100, 20));
-//        alphabetTextField.addCaretListener(new CaretListener() {
-//            public void caretUpdate(CaretEvent e) {
-//                handleAlphabetTextFieldEvent();
-//            }
-//
-//        });
-//
-//        alphabetTextField.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                handleAlphabetTextFieldEvent();
-//            }
-//        });
-//
-//        panel.add(alphabetTextField);
-//
-//        panel.add(new JLabel(Localized.getString("faWMString")));
-//
-//        stringTextField = new JTextField("");
-//        stringTextField.setPreferredSize(new Dimension(100, 20));
-//        stringTextField.addCaretListener(new CaretListener() {
-//            public void caretUpdate(CaretEvent e) {
-//                handleStringTextFieldEvent();
-//            }
-//
-//        });
-//
-//        stringTextField.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                handleStringTextFieldEvent();
-//            }
-//        });
-//
-//        panel.add(stringTextField);
-        
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//getWindowFA().run();
-            	//unhighlight everything
-            	/*unHighlight();
-            	namingPanel.unColor();
-            	String next = sidePanel.highlightNext();
-            	//if something is highlighted, highlight it in the naming panel and drawing as well
-            	GLink transition = sidePanel.getTransition();
-            	GElement target = sidePanel.getTarget();
-            	if (next != null){
-            		//highlight in the namingPanel
-            		namingPanel.highlightLink(transition);
-            		namingPanel.highlightElement(target);
-            		//highlight in the drawingPanel
-            		machine.highlightShape(transition);
-            		machine.highlightShape(transition.getTarget());
-            		highlighted.add(transition);
-            		highlighted.add(transition.getTarget());
-            	}
-            	getWindowFA().updateExecutionComponents();*/
-            	
             	stopPlaying();
             	
             	unHighLightObject(sidePanel.getCurrent());
@@ -307,46 +233,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	}
             	
             	currentDocPath = docPath;
-            	
-//            	  System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
-//            	sidePanel.clear();
-//            	ArrayList<String> input = new ArrayList<String>();
-//            	input.add("auctionBegin 1 2 auctionID 1 from_start_to_A0 start A0 auctionBegin(auctionID(A*)) true true false");
-//            	input.add("auctionBid 3 4 auctionID 1 bidPrice 5 from_A0_to_A1 A0 A1 auctionBid(bidPrice(A*)) true true false");
-//            	input.add("auctionBid 5 6 auctionID 1 bidPrice 10 from_A1_to_A2 A1 A2 auctionBid(bidPrice(A*)) true true false");
-//            	input.add("auctionEnd 7 8 auctionID 1 auctionPrice 3 from_A2_to_end A2 end auctionEnd(auctionPrice(A*)) true true false");
-//            	
-            	/*for(String event: input){
-            		String delims = "[ ]+";
-            		String[] tokens = event.split(delims);
-            		int i = 0;
-            		while (!tokens[i].startsWith("from")){
-            			i++;
-            		}
-     
-                	GElement source = namingPanel.getElement(tokens[i+1]);
-                	GElement target = namingPanel.getElement(tokens[i+2]);
-                	GLink transition = namingPanel.getLink(source, target, tokens[i+3]);
-            		sidePanel.add(event, transition, source, target);
-            	}
-            	
-        		GLink transition = sidePanel.getTransition();
-            	GElement target = sidePanel.getTarget();
-            	if (transition != null){
-            		//highlight in the naming panel
-            		namingPanel.highlightLink(transition);
-            		namingPanel.highlightElement(target);
-            		//highlight in the drawing panel
-            		machine.highlightShape(transition);
-            		machine.highlightShape(transition.getTarget());
-            		highlighted.add(transition);
-            		highlighted.add(transition.getTarget());
-            		
-            	
-            	}
-            	getWindowFA().updateExecutionComponents();*/
             }
-          
         });
         
         
@@ -354,27 +241,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
         JButton back = new JButton(Localized.getString("faWMBack"));
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//getWindowFA().run();
-            	//unhighlight
-            	/*unHighlight();
-            	namingPanel.unColor();
-            	String back = sidePanel.highlightPrevious();
-            	///if something is highlighted, highlight it in the naming panel and drawing as well
-            	GLink transition = sidePanel.getTransition();
-            	GElement target = sidePanel.getTarget();
-            	if (back != null){
-            		//highlight in the namingPanel
-            		namingPanel.highlightLink(transition);
-            		namingPanel.highlightElement(target);
-            		//highlight in the drawing panel
-            		machine.highlightShape(transition);
-            		machine.highlightShape(transition.getTarget());
-            		highlighted.add(transition);
-            		highlighted.add(transition.getTarget());
-            	
-            	}
-            	getWindowFA().updateExecutionComponents();*/
-
             	stopPlaying();
             	
             	unHighLightObject(sidePanel.getCurrent());
@@ -384,6 +250,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
             }
           
         });
+        
         //Play Button
         startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
@@ -435,44 +302,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
         			WindowMachineFA.this.setStart(true);
         			WindowMachineFA.this.startButton.setLabel("Start");
         		}
-
-        		//next();
-
-        		/*//unhighlight
-            	String next = "hi";
-            	for (int i = 0; i < sidePanel.getStrings().size(); i++){
-            		System.out.println("Highlight Next");
-            		try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-
-            		unHighlight();
-                	namingPanel.unColor();
-                	next = sidePanel.highlightNext();
-                	//if something is highlighted, highlight it in the naming panel and drawing as well
-                	GLink transition = sidePanel.getTransition();
-                	GElement target = sidePanel.getTarget();
-                	if (next != null){
-                		//highlight in the namingPanel
-                		System.out.println(transition.getPattern());
-                		namingPanel.highlightLink(transition);
-                		namingPanel.highlightElement(target);
-                		//highlight in the drawingPanel
-                		machine.highlightShape(transition);
-                		machine.highlightShape(transition.getTarget());
-                		highlighted.add(transition);
-                		highlighted.add(transition.getTarget());
-
-                	}
-                	getWindowFA().updateExecutionComponents();
-                	repaint();
-
-
-
-            	}*/
-
         	}
         });
 
@@ -727,17 +556,34 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		if(i>=0 && i<stepList.size()) {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);	
+				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
+				updateDatabaseWithPrices(currentStep);
 			}
 			else
 			{
 				System.out.println("can't find transition " + currentStep.getSource() + " " + currentStep.getTarget());
 			}
+			
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
 			}
 			repaint();
 		}
+	}
+
+	
+	private void updateDatabaseWithPrices(Step step){
+		int price = 0;
+		String action = step.toString();
+		int beginningIndex = 0;
+		String word = "";
+		int i = 0;
+		reader: while(!action.substring(i, i+1).equals("p") && i < action.length()){
+			word = word + action.substring(i, i+1);
+			i++;
+		}
+		
+		BidDatabase.bids.add(price);
 	}
 	
 	private void setActiveStates(int i) {

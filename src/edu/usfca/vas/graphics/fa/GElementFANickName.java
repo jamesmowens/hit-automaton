@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import auction.*;
+import bidDatabase.BidDatabase;
 import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
@@ -31,6 +33,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	JPanel queryPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
+	//this is the context for the example I will run showing the number of bids over 100 on an item
+	AuctionQuery Query = new AuctionQuery();
 	
 	//creates the naming panel
 	public GElementFANickName() {
@@ -47,15 +51,17 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		//This makes it print the summaries, though I am trying to make some buttons in it for queries
 		//queryPanel.add(activeStateLabel);
 		
-		//Attempt at adding the buttons
+		//Adds the button for the query
 		JButton queryOver = new JButton("Number of bids over 100");
-		JButton queryBids = new JButton("Number of bids");
 		queryOver.addActionListener(this);
-		queryBids.addActionListener(this);
 		queryOver.setActionCommand("start bids over 100 search");
-		queryBids.setActionCommand("start bids total search");
 		this.queryPanel.add(queryOver);
+		/*
+		JButton queryBids = new JButton("Number of bids");
+		queryBids.addActionListener(this);
+		queryBids.setActionCommand("start bids total search");
 		this.queryPanel.add(queryBids);
+		*/
 		
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("Queries", this.queryPanel);
@@ -66,15 +72,31 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		this.add(scroll);
 	}
 	
-	//this is the method that needs to be implemented for the actionListener on the buttons for my example of the queries
+	public AuctionQuery fetchQuery(){
+		return this.Query;
+	}
+	
+	public void updateQuery(int arg)
+	{
+		Query.evaluateContext(arg);
+	}
+	
+	//this is the method that implements the actionListener on the button for my example of the query.
 	public void actionPerformed(ActionEvent e ){
 		if("start bids over 100 search".equals(e.getActionCommand())){
-			System.out.println("It works(the 100 one that is)");
+			for(int bid: BidDatabase.bids)
+			{
+				Query.evaluateContext(bid);
+			}
+			int bidsOver = Query.fetchPasses();
+			System.out.println("The amount of bids for the item at hand over 100: " + bidsOver);
+			System.out.println("The amount of total bids is: " + (Query.fetchFails() + bidsOver));
 		}
+		/*
 		else if("start bids total search".equals(e.getActionCommand())){
 			System.out.println("It works(the total bids that is)");
 		}
-		else{}
+		*/
 	}
 	
 	//gets a state based on its name 

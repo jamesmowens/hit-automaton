@@ -16,6 +16,11 @@ public class Connection {
     static BufferedReader in = null;
     final static String endingString = "-----END-----";
 
+    /**
+     * Only method in this class. It is used to send the data from HITvis to the back end (CHAOS)
+     * @param dataString
+     * @return
+     */
 	public static boolean sendData(String dataString) {   
 		 
         try {

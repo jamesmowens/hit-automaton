@@ -84,6 +84,7 @@ public class XMLParser {
 		return new Step(source,target,label);
 	}
 
+	//not implemented, does it need to be?
 	public static void sendEventStreamtoServer() {
 		// TODO: send stream to server
 	}

@@ -23,7 +23,6 @@ public class GElementFASidePanel extends JPanel {
 	static ArrayList<GElement> starts = new ArrayList<GElement>();
 	static ArrayList<GElement> targets = new ArrayList<GElement>();
 	int currentIndex = -1;
-	 
 
 	//creates the side panel
 	public GElementFASidePanel() {
@@ -41,6 +40,7 @@ public class GElementFASidePanel extends JPanel {
 		
 		
 	}
+
 //gets the transition that should be highlighted
 	public GLink getTransition(){
 		int i = 0;
@@ -96,23 +96,10 @@ public class GElementFASidePanel extends JPanel {
 		
 		parsed = parsed.concat(")");
 		parsed = parsed.concat(" at [" + tokens[1] + "," + tokens[2] + "]");
-		
-		//get the transition and target state starting with the 10th elements 
-		//System.out.println("Start: " + tokens[i+1]);
-		//System.out.println("Target: " + tokens[i+2]);
-		//System.out.println("Transition: " + tokens[i+3]);
-		//GLink transition = null;
-		//GElement start = null;
-		//GElement target = null;
-		
-		//tokens[9] 
-		//transitions.add(transition);
-		//starts.add(target);
-		//targets.add(target);
-		
 				
 		return parsed;
 	}
+	
 	//figures out if something is an integer
 	public static boolean isInteger(String s) {
 	    try { 
@@ -134,6 +121,7 @@ public class GElementFASidePanel extends JPanel {
 		transitions.add(transition);
 		starts.add(start);
 		targets.add(target);
+		
 		//highlight in the flow panel
 		strings.add(flow);
 		panel.setPreferredSize(new Dimension(500, strings.size()*25));
@@ -143,7 +131,6 @@ public class GElementFASidePanel extends JPanel {
 		JLabel tf = new JLabel(flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
-		//this.add(p);
 		panel.add(p);
 		labels.add(tf);
 		panels.add(p);
@@ -161,7 +148,6 @@ public class GElementFASidePanel extends JPanel {
 		JLabel tf = new JLabel(flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
-		//this.add(p);
 		panel.add(p);
 		labels.add(tf);
 		panels.add(p);
@@ -189,16 +175,14 @@ public class GElementFASidePanel extends JPanel {
 		return;
 	}
 
-	//colors a entry (label ) red to indicate that it is being looked at. 
+	//colors a entry (label) red to indicate that it is being looked at. 
 	public void highlightFlow(String flow){
 		
-		if (!strings.contains(flow)) //if the flow doesnt exist, we cant highlight it
+		if (!strings.contains(flow)) //if the flow does not exist, we can not highlight it
 			return;
 		int i = 0;
-		//System.out.println("high");
 		for (String test: strings){
-			if (test.equals(flow)){
-				//System.out.println("highlighting"); 
+			if (test.equals(flow)){ 
 				labels.get(i).setForeground(Color.RED);
 				return;
 			}
@@ -216,7 +200,6 @@ public class GElementFASidePanel extends JPanel {
 				i = j;
 			j++;
 		}
-		
 		
 		//make sure there is something highlighted... 
 		if (i == -1 && labels.size() > 0){

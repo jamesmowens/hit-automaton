@@ -9,7 +9,8 @@ public class AuctionContext implements Context{
 	@Override
 	/**
 	 * This is not necessary to implement right now, but for later use I believe
-	 * having the power to compare a context to another one is important
+	 * having the power to compare a context to another one is important.
+	 * Perhaps being able to compare them with an integer value for order of context/state is good?
 	 * @param Context
 	 */
 	public int compareTo(Context o) {

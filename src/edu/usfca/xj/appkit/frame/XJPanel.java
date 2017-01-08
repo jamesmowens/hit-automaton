@@ -31,15 +31,25 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.xj.appkit.frame;
 
+import java.util.ArrayList;
+
 import edu.usfca.xj.appkit.menu.XJMainMenuBar;
 import edu.usfca.xj.appkit.menu.XJMenuItem;
 import edu.usfca.xj.foundation.XJSystem;
 
 public class XJPanel extends XJWindow {
 
+	/*
+	protected ArrayList<Integer> prices = new ArrayList();
+	
+	public void updatePrice(int price){
+		prices.add(price);
+	}
+*/
     public XJPanel() {
     }
 
+	
     public void menuItemState(XJMenuItem item) {
         super.menuItemState(item);
         
