@@ -39,7 +39,7 @@ public enum SettingsAccessor {
             String json = new Scanner(new File(path)).useDelimiter("\\Z").next();
             result = gson.fromJson(json, new TypeToken<Map<String, String>>(){}.getType());
         } catch (FileNotFoundException e) {
-            System.err.println("Couldn't find colors.json" + " cwd: " + new File(".").getAbsoluteFile());
+            System.err.println("Couldn't find " + path + ". CWD: " + new File(".").getAbsoluteFile());
             result = new HashMap<String, String>();
             e.printStackTrace();
         }
