@@ -42,7 +42,7 @@ public class SLabel implements XJXMLSerializable {
     protected Vector2D position = null;
     protected String title = null;
     protected Color color = Color.black;
-    protected boolean visible = true;
+    protected boolean visible = false;
 
     public SLabel() {
 
