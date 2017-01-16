@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import auction.*;
-import bidDatabase.BidDatabase;
+import bidDatabase.*;
+
 import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
@@ -33,37 +34,31 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	JPanel queryPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
-	//this is the context for the example I will run showing the number of bids over 100 on an item
-	AuctionQuery Query = new AuctionQuery();
 	
-	//creates the naming panel
+	//this is the context for the example I will run showing the number of bids over 100 on an item
+	BidDatabaseImpl bids = new BidDatabaseImpl();
+	
+	//creates the naming and bottom panel
 	public GElementFANickName() {
 		super();
 		this.tabs = new JTabbedPane();
 		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		tabs.setPreferredSize(new Dimension(950, 180));
-		//this.add(tabs);
+		
 		this.linkPanel = new JPanel();
-		this.queryPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		tabs.addTab("Transition Labels", this.linkPanel);
+		
+		this.queryPanel = new JPanel();
 		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		
-		//This makes it print the summaries, though I am trying to make some buttons in it for queries
-		//queryPanel.add(activeStateLabel);
+		JButton add = new JButton("+");
+		add.addActionListener(this);
+		add.setActionCommand("add a context");
+		JComponent context = makeTextPanel("Context");
+		this.queryPanel.add(context);
+		this.queryPanel.add(add);
 		
-		//Adds the button for the query
-		JButton queryOver = new JButton("Number of bids over 100");
-		queryOver.addActionListener(this);
-		queryOver.setActionCommand("start bids over 100 search");
-		this.queryPanel.add(queryOver);
-		/*
-		JButton queryBids = new JButton("Number of bids");
-		queryBids.addActionListener(this);
-		queryBids.setActionCommand("start bids total search");
-		this.queryPanel.add(queryBids);
-		*/
-		
-		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("Queries", this.queryPanel);
 		tabs.setVisible(true);
 		setVisible(true);
@@ -72,32 +67,21 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		this.add(scroll);
 	}
 	
-	public AuctionQuery fetchQuery(){
-		return this.Query;
-	}
-	
-	public void updateQuery(int arg)
-	{
-		Query.evaluateContext(arg);
-	}
-	
 	//this is the method that implements the actionListener on the button for my example of the query.
 	public void actionPerformed(ActionEvent e ){
-		if("start bids over 100 search".equals(e.getActionCommand())){
-			for(int bid: BidDatabase.bids)
-			{
-				Query.evaluateContext(bid);
-			}
-			int bidsOver = Query.fetchPasses();
-			System.out.println("The amount of bids for the item at hand over 100: " + bidsOver);
-			System.out.println("The amount of total bids is: " + (Query.fetchFails() + bidsOver));
+		if("add a context".equals(e.getActionCommand())){
+			System.out.println("added the following context: " + "");
 		}
-		/*
-		else if("start bids total search".equals(e.getActionCommand())){
-			System.out.println("It works(the total bids that is)");
-		}
-		*/
 	}
+	
+	private JComponent makeTextPanel(String text) {
+        JPanel panel = new JPanel(false);
+        JLabel filler = new JLabel(text);
+        filler.setHorizontalAlignment(JLabel.CENTER);
+        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
 	
 	//gets a state based on its name 
 	public GElement getElement(String name){

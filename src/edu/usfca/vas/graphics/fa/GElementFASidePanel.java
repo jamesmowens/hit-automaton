@@ -36,12 +36,10 @@ public class GElementFASidePanel extends JPanel {
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(325, 345));
-		this.add(scroll);
-		
-		
+		this.add(scroll);		
 	}
 
-//gets the transition that should be highlighted
+	//gets the transition that should be highlighted
 	public GLink getTransition(){
 		int i = 0;
 		for (JLabel label: labels){
@@ -51,7 +49,6 @@ public class GElementFASidePanel extends JPanel {
 			i++;
 		}
 		return null;
-		
 	}
 	
 	//gets the state that should be highlighted
@@ -236,7 +233,7 @@ public class GElementFASidePanel extends JPanel {
 			return null;
 		}
 	
-	//unhighlights everything
+	//un-highlights everything
 	public void unHighlight(){
 		int i = 0;
 		for (JLabel test: labels){

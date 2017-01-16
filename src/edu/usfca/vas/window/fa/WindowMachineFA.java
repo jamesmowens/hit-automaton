@@ -32,6 +32,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
+import bidDatabase.*;
+
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.xj.appkit.utils.XJAlert;
@@ -57,6 +59,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import bidDatabase.BidDatabase;
+import bidDatabase.BidDatabaseImpl;
 import connection.Connection;
 import connection.Step;
 import connection.StreamXMLGenerator;
@@ -79,6 +82,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
+    private BidDatabaseImpl bids = new BidDatabaseImpl();
 
     protected JTextField alphabetTextField;
     protected JTextField stringTextField;
@@ -557,7 +561,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
 				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
-				updateDatabaseWithPrices(currentStep);
+				//updateDatabaseWithPrices(currentStep);
 			}
 			else
 			{
@@ -583,7 +587,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			i++;
 		}
 		
-		BidDatabase.bids.add(price);
+		bids.updateInfo(price);
 	}
 	
 	private void setActiveStates(int i) {

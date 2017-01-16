@@ -2,6 +2,8 @@ package bidDatabase;
 
 import java.util.*;
 
-public class BidDatabase {
-	public static ArrayList<Integer> bids = new ArrayList();
+public interface BidDatabase {
+	public void updateInfo(int bid);
+	public ArrayList<Integer> returnBids();
+	public ArrayList<Integer> returnConstrainedBids(int lowerBound, int upperBound);
 }
