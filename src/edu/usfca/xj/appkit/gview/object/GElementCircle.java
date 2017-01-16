@@ -45,10 +45,8 @@ import java.awt.*;
 public abstract class GElementCircle extends GElement implements XJXMLSerializable {
 
     public static final int DEFAULT_RADIUS = 20;
-    public static final int DEFAULT_RADIUS_INNER = 16;
 
     protected double radius = DEFAULT_RADIUS;
-    protected double radius2 = DEFAULT_RADIUS_INNER;
     //protected Color color = Color.BLACK;
     
     protected GElementFAMachine machine;
@@ -79,10 +77,6 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
     
     public double getRadius() { //returns the constant defined above
         return radius;
-    }
-    
-    public double getRadius2(){ //returns the constant defined above
-    	return radius2;
     }
 
     public void updateAnchors() {
@@ -152,18 +146,6 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 		
 	}
 
-	// draws the circle
-    public void drawShape(Graphics2D g) {
-        super.drawShape(g);
-
-        //color = getPosition().color;
-        
-        int x = (int)(getPositionX()-radius);
-        int y = (int)(getPositionY()-radius);
-
-        g.drawOval(x, y, (int)(radius*2), (int)(radius*2));
-    }
-    
     public void drawOvalShape(Graphics2D g){
     	super.drawShape(g);
 

@@ -189,9 +189,11 @@
 						</state>
 					</contains>
 					<outgoingTransitions>
+						<transition>from_I5_to_I0_label_iD</transition>
 						<transition>from_I5_to_A1_label_aE</transition>
 					</outgoingTransitions>
 					<ingoingTransitions>
+						<transition>from_I5_to_I0_label_iD</transition>
 						<transition>from_B3_to_I0_label_iDc</transition>
 					</ingoingTransitions>
 				</state>
@@ -340,9 +342,9 @@
 			<target>I0</target>
 			<label>itemDescription(auctionID(A),itemID(I*),price(P*))</label>
 			<entering>false</entering>
-			<instantiating>false</instantiating>
-			<terminating>false</terminating>
-			<container>i:ItemOffer(itemID(I))</container>
+			<instantiating>true</instantiating>
+			<terminating>true</terminating>
+			<container>j:Auction(auctionID(A))</container>
 		</transition>
 		<transition>
 			<identifier>from_B3_to_I0_label_iDc</identifier>
