@@ -93,7 +93,7 @@ public class GElementFAStateDoubleCircle extends GElementDoubleCircle
     }
     
     public void drawShape(Graphics2D g) {
-        super.drawOvalShape(g);
+        super.drawShape(g);
 
         color = getPosition().color; 
         
@@ -109,20 +109,19 @@ public class GElementFAStateDoubleCircle extends GElementDoubleCircle
         }
         
         //The 2.5 factor in the x axis is to account for the oval shape so that we can fit the names.
-        g.drawOval(x, y, (int)(2.5*(getRadius()*2)), (int)(getRadius()*2));
+        g.drawOval(x, y, (int)((getRadius()*2)), (int)(getRadius()*2));
         
         if(state.accepted){
-            g.drawOval(x + 10, y + 4, (int)(2.6 * (getRadius2() *2)), (int)(getRadius2()*2));
+            g.drawOval(x + 4, y + 4, (int)((getRadius2() *2)), (int)(getRadius2()*2));
         }
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width
         	//This is the two circles
         	g.drawOval(x, y, (int)(2.5*(getRadius() *2)), (int)(getRadius()*2));
-        	g.drawOval(x + 10, y + 4, (int)(2.6 * (getRadius2() *2)), (int)(getRadius2()*2));
+        	g.drawOval(x + 4, y + 4, (int)(2.6 * (getRadius2() *2)), (int)(getRadius2()*2));
         	g.setStroke(previousStroke);
         }
-        
     }
 
 	@Override

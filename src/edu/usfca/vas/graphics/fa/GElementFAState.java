@@ -62,7 +62,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         setDraggable(true);
     }
     
-    public GElementFAState(State state, double x, double y,GElementFAMachine machine) {
+    public GElementFAState(State state, double x, double y, GElementFAMachine machine) {
     	super(machine);
         setState(state);
         setPosition(x, y);
@@ -123,12 +123,18 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     }
 
     public void drawShape(Graphics2D g) {
-        super.drawOvalShape(g);
+        //super.drawShape(g);
 
         color = getPosition().color; 
         
         int x = (int)(getPositionX()-getRadius());
         int y = (int)(getPositionY()-getRadius());
+        
+        String stateName = state.getName();
+        FontMetrics fm = g.getFontMetrics();
+        int xString = (int)(fm.stringWidth(stateName));
+        System.out.println("String: " + stateName + "Length " + xString);
+        int yString = (int)(fm.getHeight());
 
         if(state.start) {
             startArrow.setAnchor(x, y+getRadius());
@@ -138,11 +144,22 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
             startArrow.draw(g);
         }
         
+<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
         g.drawOval(x, y, (int)(2.5*(getRadius()*2)), (int)(getRadius()*2)); //draw outer circle
+=======
+        g.drawOval(x, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw outer circle
+        
+        /*
+        if(state.accepted){
+        	g.drawOval(x + 4, y + 4, (int)((getRadius2()*2)), (int)(getRadius2()*2));  //draw inner circle
+        }
+        */
+        
+>>>>>>> 1fae682 Makes Strings centered in the ovals
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width
-        	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()*2));
+        	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()));
         	g.setStroke(previousStroke);
         }
     }

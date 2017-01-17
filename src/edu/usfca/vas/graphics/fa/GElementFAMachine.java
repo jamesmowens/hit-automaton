@@ -427,7 +427,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     	// create new state and GElement
     	State state = new FAState(s);
         machine.addState(state);
-        GElementFAStateDoubleCircle newFAState = new GElementFAStateDoubleCircle(state, x, y,this);
+        GElementFAStateDoubleCircle newFAState = new GElementFAStateDoubleCircle(state, x, y, this);
         // set color
         newFAState.setColor(c);
 		newFAState.setColor2(c);
@@ -491,9 +491,8 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
      */
     public void addEndAtomicStateAtXY(String s, double x, double y) {
         State state = new FAState(s); // create state
-       // updateAll();
         machine.addState(state); // add state to FAMachine
-        GElementFAStateDoubleCircle newFAState = new GElementFAStateDoubleCircle(state, x, y,this); // create GElement
+        GElementFAStateDoubleCircle newFAState = new GElementFAStateDoubleCircle(state, x, y, this); // create GElement
         addElement(newFAState); // add GElement to GElement array
         // add element to nickname panel
         getMachine().getNaming().addElement(newFAState);

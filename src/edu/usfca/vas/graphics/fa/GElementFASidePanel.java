@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import bidDatabase.BidDatabase;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
@@ -23,6 +24,8 @@ public class GElementFASidePanel extends JPanel {
 	static ArrayList<GElement> starts = new ArrayList<GElement>();
 	static ArrayList<GElement> targets = new ArrayList<GElement>();
 	int currentIndex = -1;
+	
+	public static ArrayList<Integer> bids = new ArrayList();
 
 	//creates the side panel
 	public GElementFASidePanel() {
@@ -36,7 +39,11 @@ public class GElementFASidePanel extends JPanel {
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(325, 345));
+<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
 		this.add(scroll);		
+=======
+		this.add(scroll);
+>>>>>>> 1fae682 Makes Strings centered in the ovals
 	}
 
 	//gets the transition that should be highlighted
@@ -186,6 +193,22 @@ public class GElementFASidePanel extends JPanel {
 			i++;
 		}
 		this.updateUI();
+	}
+	
+	public void runDatabaseManagement(String flow){
+		int i = 0;
+		String price = "";
+		while((i+1 < flow.length()) && !(flow.substring(i, i+1).equals("p")))
+		{
+			i++;
+		}
+		if(i+1 < flow.length())
+		{
+			i = i+6;
+			price = price + flow.substring(i);
+		}
+		int bid = Integer.parseInt(price);
+		bids.add(bid);
 	}
 	
 	//highlights the next thing in the stream (if there is a next thing.) 

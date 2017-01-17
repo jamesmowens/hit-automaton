@@ -143,9 +143,22 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 			}
 		}
 		return parent;
-		
 	}
 
+<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
+=======
+	// draws the circle
+    public void drawShape(Graphics2D g) {
+        super.drawShape(g);
+
+        int x = (int)(getPositionX()-radius);
+        int y = (int)(getPositionY()-radius);
+
+        g.drawOval(x, y, (int)(radius*2), (int)(radius*2));
+    }
+    
+    /*
+>>>>>>> 1fae682 Makes Strings centered in the ovals
     public void drawOvalShape(Graphics2D g){
     	super.drawShape(g);
 
@@ -156,6 +169,7 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 
         g.drawOval(x, y, (int)(2.5*(radius*2)), (int)(radius*2));
     }
+    */
 
 	@Override
 	public boolean isInside(GElement e) {

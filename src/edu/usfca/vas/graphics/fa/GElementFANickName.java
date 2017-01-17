@@ -59,6 +59,23 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		this.queryPanel.add(context);
 		this.queryPanel.add(add);
 		
+<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
+=======
+		//Adds the button for the query
+		JButton queryOver = new JButton("Number of bids over 100");
+		queryOver.addActionListener(this);
+		queryOver.setActionCommand("start bids over 100 search");
+		this.queryPanel.add(queryOver);
+		
+		/*
+		JButton queryBids = new JButton("Number of bids");
+		queryBids.addActionListener(this);
+		queryBids.setActionCommand("start bids total search");
+		this.queryPanel.add(queryBids);
+		*/
+		
+		tabs.addTab("Transition Labels", this.linkPanel);
+>>>>>>> 1fae682 Makes Strings centered in the ovals
 		tabs.addTab("Queries", this.queryPanel);
 		tabs.setVisible(true);
 		setVisible(true);
@@ -69,8 +86,19 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	
 	//this is the method that implements the actionListener on the button for my example of the query.
 	public void actionPerformed(ActionEvent e ){
+<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
 		if("add a context".equals(e.getActionCommand())){
 			System.out.println("added the following context: " + "");
+=======
+		if("start bids over 100 search".equals(e.getActionCommand())){
+			for(int bid: GElementFASidePanel.bids)
+			{
+				Query.evaluateContext(bid);
+			}
+			int bidsOver = Query.fetchPasses();
+			System.out.println("The amount of bids for the item at hand over 100: " + bidsOver);
+			System.out.println("The amount of total bids is: " + (Query.fetchFails() + bidsOver));
+>>>>>>> 1fae682 Makes Strings centered in the ovals
 		}
 	}
 	
