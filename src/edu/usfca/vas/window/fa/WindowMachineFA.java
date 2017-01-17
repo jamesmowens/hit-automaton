@@ -561,10 +561,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
 				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
-<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
+//<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
 				//updateDatabaseWithPrices(currentStep);
-=======
->>>>>>> 1fae682 Makes Strings centered in the ovals
+//=======
+//>>>>>>> 1fae682 Makes Strings centered in the ovals
 			}
 			else
 			{
@@ -576,7 +576,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			repaint();
 		}
-<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
+//<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
 	}
 
 	
@@ -592,8 +592,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		}
 		
 		bids.updateInfo(price);
-=======
->>>>>>> 1fae682 Makes Strings centered in the ovals
+//=======
+//>>>>>>> 1fae682 Makes Strings centered in the ovals
 	}
 	
 	private void setActiveStates(int i) {

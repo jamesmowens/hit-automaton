@@ -39,12 +39,8 @@ public class GElementFASidePanel extends JPanel {
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(325, 345));
-<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
-		this.add(scroll);		
-=======
-		this.add(scroll);
->>>>>>> 1fae682 Makes Strings centered in the ovals
-	}
+//<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
+		this.add(scroll);	}
 
 	//gets the transition that should be highlighted
 	public GLink getTransition(){

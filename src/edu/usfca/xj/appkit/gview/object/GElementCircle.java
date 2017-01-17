@@ -145,8 +145,9 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 		return parent;
 	}
 
+	/*
 <<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
-=======
+=======*/
 	// draws the circle
     public void drawShape(Graphics2D g) {
         super.drawShape(g);

@@ -144,9 +144,9 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
             startArrow.draw(g);
         }
         
-<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
-        g.drawOval(x, y, (int)(2.5*(getRadius()*2)), (int)(getRadius()*2)); //draw outer circle
-=======
+//<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
+        //g.drawOval(x, y, (int)(2.5*(getRadius()*2)), (int)(getRadius()*2)); //draw outer circle
+//=======
         g.drawOval(x, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw outer circle
         
         /*
@@ -155,7 +155,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         }
         */
         
->>>>>>> 1fae682 Makes Strings centered in the ovals
+//>>>>>>> 1fae682 Makes Strings centered in the ovals
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width
