@@ -133,8 +133,8 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         String stateName = state.getName();
         FontMetrics fm = g.getFontMetrics();
         int xString = (int)(fm.stringWidth(stateName));
-        System.out.println("String: " + stateName + "Length " + xString);
-        int yString = (int)(fm.getHeight());
+        //System.out.println("String: " + stateName + "Length " + xString);
+        //int yString = (int)(fm.getHeight());
 
         if(state.start) {
             startArrow.setAnchor(x, y+getRadius());

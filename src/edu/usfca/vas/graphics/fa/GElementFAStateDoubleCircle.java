@@ -2,6 +2,7 @@ package edu.usfca.vas.graphics.fa;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 
@@ -93,13 +94,18 @@ public class GElementFAStateDoubleCircle extends GElementDoubleCircle
     }
     
     public void drawShape(Graphics2D g) {
-        super.drawShape(g);
+        //super.drawShape(g);
 
         color = getPosition().color; 
         
         int x = (int)(getPositionX()-getRadius());
         int y = (int)(getPositionY()-getRadius());
 
+        String stateName = state.getName();
+        FontMetrics fm = g.getFontMetrics();
+        int xString = (int)(fm.stringWidth(stateName));
+        //System.out.println("String: " + stateName + "Length " + xString);
+        
         if(state.start) {
             startArrow.setAnchor(x, y+getRadius());
             startArrow.setDirection(startArrowDirection);
@@ -108,11 +114,11 @@ public class GElementFAStateDoubleCircle extends GElementDoubleCircle
             startArrow.draw(g);
         }
         
-        //The 2.5 factor in the x axis is to account for the oval shape so that we can fit the names.
-        g.drawOval(x, y, (int)((getRadius()*2)), (int)(getRadius()*2));
+        g.drawOval(x, y, (int)((xString + getRadius())), (int)(getRadius()*2));
+        //g.drawOval(x, y, (int)((getRadius()*2)), (int)(getRadius()*2));
         
         if(state.accepted){
-            g.drawOval(x + 4, y + 4, (int)((getRadius2() *2)), (int)(getRadius2()*2));
+            g.drawOval(x + 4, y + 4, (int)(xString + getRadius2() - 4), (int)(getRadius2()*2));
         }
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();

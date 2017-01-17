@@ -102,9 +102,9 @@ public class SLabel implements XJXMLSerializable {
     public static void drawCenteredString(String s, double x, double y, Graphics g) {
         if(s != null) {
             FontMetrics fm = g.getFontMetrics();
-            int xx = (int)(x-fm.stringWidth(s)*0.50);
+            //int xx = (int)(x-fm.stringWidth(s)*0.50);
             int yy = (int)(y+fm.getHeight()*0.5);
-            g.drawString(s, (int)x - 12 , yy);
+            g.drawString(s, (int)x - 11 , yy - 2);
         }
     }
 
