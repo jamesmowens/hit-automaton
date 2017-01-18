@@ -11,11 +11,11 @@
         <!-- <insets top="0" bottom="0" left="0" right="0"/> -->
         <font name="Dialog" size="14"/>
         <state>
-            <!-- <color value="#13223D" type="BACKGROUND"/> -->
-            <color value="#F2F2F2" type="BACKGROUND"/>
+            <color value="#13223D" type="BACKGROUND"/>
+            <!-- <color value="#F2F2F2" type="BACKGROUND"/> -->
             <color value="WHITE" type="FOREGROUND"/>
-            <!-- <color value="#9DC3E6" type="TEXT_FOREGROUND"/> -->
-            <color value="#1E1E1E" type="TEXT_FOREGROUND"/>
+            <color value="#9DC3E6" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#1E1E1E" type="TEXT_FOREGROUND"/> -->
         </state>
     </style>
     <bind style="backingStyle" type="REGION" key=".*"/>
@@ -61,7 +61,7 @@
         </state>
         <state value="MOUSE_OVER">
             <color value="#044C65" type="BACKGROUND"/>
-            <!-- <color value="#FFFFFF" type="TEXT_FOREGROUND"/> -->
+            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
         </state>
     </style>
     <bind style="menuitem" type="REGION" key="MenuItem"/>
@@ -169,7 +169,7 @@
             <font name="Dialog" size="14"/>
             <color value="#BBBBBB" type="BACKGROUND"/>
             <color value="#BBBBBB" type="FOREGROUND"/>
-            <color value="#FFFFFF" type="TEXT_FOREGROUND"/>
+            <!-- <color value="#FFFFFF" type="TEXT_FOREGROUND"/> -->
         </state>
     </style>
     <bind style="lowerPanelTabs" type="NAME" key="LowerPanelTabs"/>
@@ -182,6 +182,20 @@
         </state>
     </style>
     <bind style="lowerPanel" type="NAME" key="SidePanel"/>
+
+    <style id="tabbedPane">
+        <state>
+            <font name="Dialog" size="14"/>
+            <color value="#BBBBBB" type="BACKGROUND"/>
+            <color value="#BBBBBB" type="FOREGROUND"/>
+            <color value="#FF0000" type="TEXT_FOREGROUND"/>
+        </state>
+    </style>
+    <bind style="tabbedPane" type="REGION" key="TabbedPane"/>
+
+    <style id="comboBox">
+        <imagePainter method="textFieldBorder" path="images/box.png" sourceInsets="0 0 0 0" paintCenter="true"/>
+    </style>
 
 
 </synth>

@@ -19,12 +19,14 @@ public enum SettingsAccessor {
     INSTANCE;
 
     private Map<String, String> colors;
+    private Map<String, String> leftSideBar;
 
     /**
      * Creates the instance (INSTANCE) of SettingsAccessor, reading json file(s)
      */
     SettingsAccessor() {
         colors = accessSettings("src/edu/usfca/vas/layout/colors.json");
+        leftSideBar = accessSettings("src/edu/usfca/vas/layout/sidebar.json");
     }
 
     /**
@@ -60,6 +62,18 @@ public enum SettingsAccessor {
         } catch (NumberFormatException n) {
             System.err.println("Bad format under \"" + key + "\" in colors.json");
             return Color.GRAY;
+        }
+    }
+
+    public static String getImgPath(String key) {
+        try {
+            return INSTANCE.leftSideBar.get(key);
+        } catch (NullPointerException n) {
+            System.err.println("No matching entry for \"" + key + "\" in sidebar.json");
+            return "";
+        } catch (NumberFormatException n) {
+            System.err.println("Bad format under \"" + key + "\" in sidebar.json");
+            return "";
         }
     }
 }

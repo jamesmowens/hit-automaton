@@ -32,6 +32,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
+import edu.usfca.vas.layout.ICard;
+import edu.usfca.vas.layout.LeftSideBar;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.xj.appkit.utils.XJAlert;
@@ -78,7 +80,7 @@ import java.util.ArrayList;
  * Creates the panels for the application, the Load, Next, Back buttons are declared here.
  */
 
-public class WindowMachineFA extends WindowMachineAbstract {
+public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 
     protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
@@ -86,7 +88,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected JTextField alphabetTextField;
     protected JTextField stringTextField;
     protected JComboBox typeComboBox;
-    protected JPanel mainPanel;
+    protected JPanel mainPanel; // LAYOUTTODO Make accessible via an interface for cardlayout
+
     protected GElementFANickName namingPanel;
     protected GElementFASidePanel sidePanel;
     protected JSplitPane mainPanelSplit;
@@ -108,6 +111,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
     Object playingFlagLock = new Object();
 	boolean playingFlag = false;
 	int timeBetweenStep = 1500;
+
+	LeftSideBar leftSidebar;
 
     public WindowMachineFA(XJFrame parent) {
         super(parent);
@@ -156,6 +161,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
         overlay = new WindowMachineFAOverlay(parent.getJFrame(), mainPanel);
         overlay.setStringField(stringTextField);
+        leftSidebar = new LeftSideBar(JTabbedPane.LEFT);
+        //LAYOUTTODO Figure out where to put this
+        leftSidebar.addTab(split2, "Model View");
+        leftSidebar.addTab(new JPanel(), "Analytics View");
+        leftSidebar.addTab(new JPanel(), "Map View");
+        add(leftSidebar);
     }
 
     public WindowFA getWindowFA() {
@@ -572,6 +583,11 @@ public class WindowMachineFA extends WindowMachineAbstract {
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(mainPanelScrollPane, BorderLayout.CENTER);
 
+        //LAYOUTTODO sidebar in WindowMachineFA
+//		leftSidebar = new LeftSideBar();
+//		leftSidebar.addTab(mainPanel, "Model View");
+//		add(leftSidebar);
+
         return mainPanel;
     }
     
@@ -774,5 +790,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void setStart(boolean start) {
 		this.start = start;
+	}
+
+	@Override
+	public Component getMasterComp() {
+		return mainPanel;
 	}
 }
