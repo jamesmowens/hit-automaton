@@ -118,9 +118,27 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         return true;
     }
 
+    /*
     public void updateAnchors() {
-        setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
+    	if(position.x > (getRadius())){
+    		if(state.name.equals("ATerm")){
+    			System.out.println("State: " + state.name + ", Position of x: " + position.x + ", Radius: " + getRadius());}
+    		Vector2D alteredPosition = new Vector2D(position.x + increment*.5, position.y);
+    		setAnchor(ANCHOR_CENTER, alteredPosition, Anchor2D.DIRECTION_FREE);}
+    	else
+    		setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);		
     }
+	*/
+    
+    public void updateAnchors() {
+    	Vector2D alteredPosition = new Vector2D((int)(position.x + INCREMENT*.25), position.y);
+    	
+        setAnchor(ANCHOR_CENTER, alteredPosition, Anchor2D.DIRECTION_FREE);
+        //setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius-INCREMENT*.25, 0)), Anchor2D.DIRECTION_LEFT);
+        //setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius+INCREMENT*.25, 0)), Anchor2D.DIRECTION_RIGHT);
+    }
+    
+    private int INCREMENT;
 
     public void drawShape(Graphics2D g) {
         //super.drawShape(g);
@@ -143,19 +161,11 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
             startArrow.setAngle(30);
             startArrow.draw(g);
         }
-        
-//<<<<<<< Upstream, based on branch 'machineGUI' of https://github.com/jamesmowens/hit-automaton
-        //g.drawOval(x, y, (int)(2.5*(getRadius()*2)), (int)(getRadius()*2)); //draw outer circle
-//=======
+
         g.drawOval(x, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw outer circle
         
-        /*
-        if(state.accepted){
-        	g.drawOval(x + 4, y + 4, (int)((getRadius2()*2)), (int)(getRadius2()*2));  //draw inner circle
-        }
-        */
+        INCREMENT = (int)(xString);       
         
-//>>>>>>> 1fae682 Makes Strings centered in the ovals
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width

@@ -349,11 +349,6 @@ public class GLink extends GElement implements XJXMLSerializable {
 
     private Color findColor() {
 		GElement container = findContainer();
-		/*System.out.println("This link: " + label);
-		if(container!=null) 
-		System.out.println("container = " + container.getLabel());
-		else 
-			System.out.println("container = null");*/
 		if(container==null) {
 			return Color.BLACK;
 		}

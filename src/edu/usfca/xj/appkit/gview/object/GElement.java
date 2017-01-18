@@ -32,6 +32,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package edu.usfca.xj.appkit.gview.object;
 
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
+import edu.usfca.vas.graphics.fa.GElementFAState;
 import edu.usfca.xj.appkit.gview.GView;
 import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Rect;
