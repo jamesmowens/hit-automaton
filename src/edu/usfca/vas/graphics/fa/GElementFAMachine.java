@@ -103,11 +103,14 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     		colors.add(oldColor);
     		highlighted.add(ge);
     		ge.setColor(Color.RED);
+    		System.out.println("Set Color happened");
     		ge.getPosition().color = Color.RED;
     		if (ge instanceof GElementFAState){
     			((GElementFAState)ge).setColor2(Color.RED);
     			((GElementFAState)ge).setColor3(Color.RED);
     			((GElementFAState)ge).highlighted = true;
+    			System.out.println("GElementFAMachine highlightShape");
+    			((GElementFAState)ge).runQuery();
     		}
     		if (ge instanceof GElementFAStateDoubleCircle){
     			((GElementFAStateDoubleCircle)ge).setColor2(Color.RED);

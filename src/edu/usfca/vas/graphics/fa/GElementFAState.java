@@ -42,6 +42,10 @@ import edu.usfca.xj.appkit.gview.object.GElementRectangle;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
 import edu.usfca.xj.foundation.XJXMLSerializable;
 import java.awt.*;
+import query.Query;
+import java.util.LinkedList;
+
+
 
 public class GElementFAState extends GElementCircle implements XJXMLSerializable, GElementFAStateInterface {
 
@@ -51,6 +55,8 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     protected transient SArrow startArrow = new SArrow();
     protected transient Vector2D startArrowDirection = new Vector2D(-1, 0);
     public boolean highlighted = false;
+    
+    private LinkedList<Query> queries = new LinkedList();
 
     public GElementFAState() {
     	super();
@@ -143,11 +149,17 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         	g.drawOval(x + 4, y + 4, (int)(getRadius2() *2), (int)(getRadius2()*2));  //draw inner circle
         }
         if(highlighted == true){
+        	System.out.println("GElementFAState drawShape highlighted==true");
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width
         	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()*2));
         	g.setStroke(previousStroke);
         }
+    }
+    
+    public boolean runQuery() {
+    	System.out.println("runQuery has been used");
+    	return true;
     }
 
 	@Override

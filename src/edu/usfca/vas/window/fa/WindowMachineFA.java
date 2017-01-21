@@ -508,7 +508,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
         	unHighLightObject(sidePanel.getCurrent());
         	sidePanel.setCurrent(sidePanel.getCurrent()+1);
         	highLightObject(sidePanel.getCurrent());
-        	setActiveStates(sidePanel.getCurrent());    		
+        	setActiveStates(sidePanel.getCurrent());    	
+        	System.out.println("WindowMachineFA startPlaying()");
     	}
     	while(sidePanel.getCurrent()!=stepList.size()-1);
     	
@@ -536,7 +537,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     		namingPanel.highlightElement(target);
     		//highlight in the drawingPanel
     		machine.highlightShape(transition);
-    		machine.highlightShape(transition.getTarget());
+    		machine.highlightShape(transition.getTarget()); //TODO machine highlight?
     		highlighted.add(transition);
     		highlighted.add(transition.getTarget());
     	}
@@ -728,6 +729,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
 				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);	
+				System.out.println("WindowMachineFA highlightObject label true");
 			}
 			else
 			{
@@ -735,6 +737,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
+				System.out.println("WindowMachineFA highlightObject target true");
+
 			}
 			repaint();
 		}
