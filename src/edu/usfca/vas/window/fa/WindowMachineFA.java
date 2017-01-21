@@ -729,7 +729,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
 				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);	
-				System.out.println("WindowMachineFA highlightObject label true");
+				System.out.println("WindowMachineFA highlightObject label true"); //highlighting transition arrow
 			}
 			else
 			{
@@ -737,7 +737,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
-				System.out.println("WindowMachineFA highlightObject target true");
+				machine.findState(currentStep.getTarget()).runQuery();
+				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
 
 			}
 			repaint();

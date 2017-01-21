@@ -37,10 +37,12 @@ import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Rect;
 import edu.usfca.xj.appkit.gview.base.Vector2D;
 import edu.usfca.xj.foundation.XJXMLSerializable;
+import query.Query;
 
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import query.Query;
 
 public abstract class GElement implements XJXMLSerializable {
 
@@ -82,6 +84,8 @@ public abstract class GElement implements XJXMLSerializable {
     protected final Object lock = new Object();
     
     protected boolean highlight = false;
+    
+    protected LinkedList<Query> queries = new LinkedList();
 
 	public GElement () {
     }
@@ -628,4 +632,11 @@ public abstract class GElement implements XJXMLSerializable {
     public boolean isHighlight() {
 		return highlight;
 	}
+    
+    /* Runs a list of queries associated with that particular element */
+    public boolean runQuery() {
+    	System.out.println("GElement runQuery()");
+    	return true;
+    }
+    
 }

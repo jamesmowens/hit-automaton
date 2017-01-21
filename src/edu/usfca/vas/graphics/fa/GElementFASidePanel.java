@@ -217,7 +217,6 @@ public class GElementFASidePanel extends JPanel {
 			j++;
 		}
 		
-		
 		//make sure there is something highlighted... 
 		if (i == -1 && labels.size() > 0){
 			labels.get(0).setForeground(Color.RED);

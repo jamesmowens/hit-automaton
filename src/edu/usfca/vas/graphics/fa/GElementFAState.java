@@ -56,8 +56,6 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     protected transient Vector2D startArrowDirection = new Vector2D(-1, 0);
     public boolean highlighted = false;
     
-    private LinkedList<Query> queries = new LinkedList();
-
     public GElementFAState() {
     	super();
         setDraggable(true);
@@ -155,11 +153,6 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()*2));
         	g.setStroke(previousStroke);
         }
-    }
-    
-    public boolean runQuery() {
-    	System.out.println("runQuery has been used");
-    	return true;
     }
 
 	@Override
