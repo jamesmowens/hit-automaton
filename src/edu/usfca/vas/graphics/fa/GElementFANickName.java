@@ -33,6 +33,9 @@ public class GElementFANickName extends JPanel {
 	JPanel  queryEditPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
+	ArrayList<String> contextDisplays = new ArrayList<String>();
+	ArrayList<String> contextApplications = new ArrayList<String>();
+	ArrayList<String> contextFrequency = new ArrayList<String>();
 	
 	//creates the naming panel
 	public GElementFANickName() {
@@ -44,27 +47,57 @@ public class GElementFANickName extends JPanel {
 		this.linkPanel = new JPanel();
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
-		this.queryPanel = new JPanel();
-		this.queryEditPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.queryEditPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		executionPanel.add(activeStateLabel);
 		//this.linkPanel.setSize(new Dimension(600, 100));
 		//this.elementPanel.setSize(new Dimension(600, 100));
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("State Names", this.elementPanel);
 		tabs.addTab("Process Summaries", this.executionPanel);
+		
+		//Query Creation
+		this.queryPanel = new JPanel();
+		this.queryEditPanel = new JPanel();
+		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.queryEditPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		tabs.addTab("Pertaining Queries", this.queryPanel);
 		tabs.addTab("Query Editor", this.queryEditPanel);
+		
 		//tabs.addTab("New Tab", null);
 		tabs.setVisible(true);
 		setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
 		scroll.setPreferredSize(new Dimension(950, 190));
-		this.add(scroll);		
+		this.add(scroll);
+		
+		JLabel context = new JLabel("Context");
+		JComboBox contextList = new JComboBox(new String[] {"sample", "sample 2"});
+		JButton addContext = new JButton("+");
+		JLabel pertaining =  new JLabel("For");
+		JComboBox pertainingList = new JComboBox(new String[] {"sample 3", "sample 4"});
+		JButton addPertain = new JButton("+");
+		JLabel frequency = new JLabel("Frequency");
+		JComboBox frequencyList = new JComboBox(new String[] {"once","continuous"});
+		JLabel condition = new JLabel("Condition");
+		JLabel set = new JLabel("set");
+		JLabel ghetto = new JLabel("<html> work? <br> work? </html>");
+		
+		queryPanel.add(context);
+		queryPanel.add(contextList);
+		queryPanel.add(addContext);
+		queryPanel.add(ghetto);
+		queryPanel.add(pertaining);
+		queryPanel.add(pertainingList);
+		queryPanel.add(addPertain);
+		queryPanel.add(ghetto);
+		queryPanel.add(frequency);
+		queryPanel.add(frequencyList);
+		queryPanel.add(ghetto);
+		queryPanel.add(condition);
+		queryPanel.add(ghetto);
+		queryPanel.add(set);
 	}
 	
 	//gets a state based on its name 
@@ -119,7 +152,7 @@ public class GElementFANickName extends JPanel {
 			}
 			else {
 				int k = 0;
-				//update the textfield
+				//update the text field
 				for (JLabel test: labels){
 					if (test.getText().equals(newLink.getPattern())){
 						//System.out.println("setting " + test.getText() + " to " + newLink.getNickname());
