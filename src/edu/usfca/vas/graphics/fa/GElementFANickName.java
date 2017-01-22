@@ -29,6 +29,8 @@ public class GElementFANickName extends JPanel {
 	JPanel linkPanel;
 	JPanel elementPanel;
 	JPanel executionPanel;
+	JPanel queryPanel;
+	JPanel  queryEditPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
 	
@@ -42,25 +44,27 @@ public class GElementFANickName extends JPanel {
 		this.linkPanel = new JPanel();
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
+		this.queryPanel = new JPanel();
+		this.queryEditPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.queryEditPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		executionPanel.add(activeStateLabel);
 		//this.linkPanel.setSize(new Dimension(600, 100));
 		//this.elementPanel.setSize(new Dimension(600, 100));
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("State Names", this.elementPanel);
 		tabs.addTab("Process Summaries", this.executionPanel);
+		tabs.addTab("Pertaining Queries", this.queryPanel);
+		tabs.addTab("Query Editor", this.queryEditPanel);
 		//tabs.addTab("New Tab", null);
 		tabs.setVisible(true);
 		setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
 		scroll.setPreferredSize(new Dimension(950, 190));
-		this.add(scroll);
-		
-		//this.setSize(new Dimension(600, 100));
-		//return namingPanel;
-		
+		this.add(scroll);		
 	}
 	
 	//gets a state based on its name 
