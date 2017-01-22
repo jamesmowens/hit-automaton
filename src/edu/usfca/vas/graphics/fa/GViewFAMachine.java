@@ -1823,10 +1823,12 @@ public class GViewFAMachine extends GView {
      * must use correct createLink version depending on target and source type b/c the type, GElement, cannot be used in this case
      */
     public void eventCreateLink(GElement source, String sourceAnchorKey, GElement target, String targetAnchorKey, int shape, Point p) {
+    	System.out.println("GViewFAMachine eventCreateLink method started"); //TODO happens after you click source and target
     	// Double Circle to DoubleCircle
     	if (source instanceof GElementFAStateDoubleCircle && target instanceof GElementFAStateDoubleCircle){
     		getMachine().createLinkEndToEnd((GElementFAStateDoubleCircle)source, sourceAnchorKey, (GElementFAStateDoubleCircle)target, targetAnchorKey, shape, p);
     		changeDone();
+    		System.out.println("GViewFAMachine eventCreateLink double circle to double circle");//TODO
     	} // Double Circle to Circle
     	if (source instanceof GElementFAStateDoubleCircle && target instanceof GElementFAState){
     		getMachine().createLinkEndToState((GElementFAStateDoubleCircle)source, sourceAnchorKey, (GElementFAState)target, targetAnchorKey, shape, p);
@@ -1839,6 +1841,7 @@ public class GViewFAMachine extends GView {
     	if (source instanceof GElementFAState && target instanceof GElementFAState){
     		getMachine().createLink((GElementFAState)source, sourceAnchorKey, (GElementFAState)target, targetAnchorKey, shape, p);
     		changeDone();
+    		System.out.println("GViewFAMachine eventCreateLink circle to circle");//TODO happens after you enter link name
     	} // Rectangle to State
     	if (source instanceof GElementFAStateRectangle && target instanceof GElementFAState) {
     		getMachine().createLinkRectangleToState((GElementFAStateRectangle)source, sourceAnchorKey, (GElementFAState)target, targetAnchorKey, shape, p); 

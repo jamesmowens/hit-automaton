@@ -118,18 +118,17 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         return true;
     }
 
-    /*
+    @Override
     public void updateAnchors() {
-    	if(position.x > (getRadius())){
-    		if(state.name.equals("ATerm")){
-    			System.out.println("State: " + state.name + ", Position of x: " + position.x + ", Radius: " + getRadius());}
-    		Vector2D alteredPosition = new Vector2D(position.x + increment*.5, position.y);
-    		setAnchor(ANCHOR_CENTER, alteredPosition, Anchor2D.DIRECTION_FREE);}
-    	else
-    		setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);		
+    	System.out.println("GElementFAState updateAnchors started"); //TODO
+    	// setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
+        setAnchor(ANCHOR_TOP, position.add(new Vector2D(0, -radius)), Anchor2D.DIRECTION_TOP);
+        setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(0, radius)), Anchor2D.DIRECTION_BOTTOM);
+        setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius, 0)), Anchor2D.DIRECTION_LEFT);
+        setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius, 0)), Anchor2D.DIRECTION_RIGHT); 	
     }
-	*/
     
+    /*
     public void updateAnchors() {
     	Vector2D alteredPosition = new Vector2D((int)(position.x + INCREMENT*.25), position.y);
     	
@@ -137,8 +136,8 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         //setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius-INCREMENT*.25, 0)), Anchor2D.DIRECTION_LEFT);
         //setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius+INCREMENT*.25, 0)), Anchor2D.DIRECTION_RIGHT);
     }
-    
     private int INCREMENT;
+    */
 
     public void drawShape(Graphics2D g) {
         //super.drawShape(g);
@@ -153,8 +152,10 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         int xString = (int)(fm.stringWidth(stateName));
         //System.out.println("String: " + stateName + "Length " + xString);
         //int yString = (int)(fm.getHeight());
+        // INCREMENT = (int)(xString); //commented out with updateAnchors      
 
         if(state.start) {
+        	System.out.println("GElementFAState drawShape() state.start"); //TODO
             startArrow.setAnchor(x, y+getRadius());
             startArrow.setDirection(startArrowDirection);
             startArrow.setLength(20);
@@ -162,9 +163,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
             startArrow.draw(g);
         }
 
-        g.drawOval(x, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw outer circle
-        
-        INCREMENT = (int)(xString);       
+        g.drawOval(x, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
         
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();

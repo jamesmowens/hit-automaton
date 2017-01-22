@@ -57,6 +57,7 @@ public class GEventCreateLinkElement extends GAbstractEvent {
     }
 
     public void mousePressed(MouseEvent e, Point mousePosition) {
+    	System.out.println("GEventCreateLinkElement mousePressed start"); //TODO happens each time a click is made in state area
         GElement selectedElement = delegate.eventQueryElementAtPoint(mousePosition);
 
         if(startElement != null) {
@@ -70,6 +71,7 @@ public class GEventCreateLinkElement extends GAbstractEvent {
                 delegate.eventCreateLink(startElement, startAnchorKey,
                                             selectedElement, selectedElement.getAnchorKeyClosestToPoint(mousePosition),
                                             type, mousePosition);
+                System.out.println("GEventCreateLinkElement mousePressed eventCreateLink"); //TODO happens when you finish a link (click on target)
             }
             removeExclusiveValue(GEventManager.EXCLUSIVE_CREATE_LINK_VALUE);
             startElement = null;
@@ -84,6 +86,7 @@ public class GEventCreateLinkElement extends GAbstractEvent {
 
         int mask = InputEvent.SHIFT_DOWN_MASK + InputEvent.BUTTON1_DOWN_MASK;
         if((e.getModifiersEx() & mask) == mask || delegate.eventCanCreateLink()) {
+        	System.out.println("GEventCreateLinkElement mousePressed if eventCanCreateLink"); //TODO happens when you start a link
             startElement = selectedElement;
             startAnchorKey = startElement.getAnchorKeyClosestToPoint(mousePosition);
 

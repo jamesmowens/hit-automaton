@@ -778,6 +778,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
      * creates a link between a GElementFAState and GElementFAState
      */
     public boolean createLink(GElementFAState source, String sourceAnchorKey, GElementFAState target, String targetAnchorKey, int shape, Point mouse) {
+    	System.out.println("GElementFAMachine createLink started"); //TODO happens after you click on source and target (before input box appears)
         //updateAll();
     	//pop-up for naming transition
     	String pattern = (String)JOptionPane.showInputDialog(null, Localized.getString("faNewLinkMessage"),
@@ -805,6 +806,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
         if(pattern != null) {
             machine.addTransitionPattern(source.state.name, pattern, target.state.name); // add transition to FAMachine
             // create graphical link
+            System.out.println("GElementFAMachine createLink create graphical link"); //TODO happens after you type in transition name
             GLink link = new GLink(source, sourceAnchorKey, target, targetAnchorKey, shape, pattern, mouse, GView.DEFAULT_LINK_FLATENESS,this);
             //link.setColor(c); // set color
             addElement(link); // add link to GElement array
