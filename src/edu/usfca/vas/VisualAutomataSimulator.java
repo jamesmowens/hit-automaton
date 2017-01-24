@@ -37,6 +37,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import java.awt.Frame;
 import java.awt.Window;
 import java.lang.reflect.Method;
+import java.net.URL;
 
 import edu.usfca.vas.app.*;
 import edu.usfca.vas.data.DataFA;
@@ -50,6 +51,9 @@ import edu.usfca.xj.foundation.XJSystem;
 
 import javax.swing.*;
 import javax.swing.plaf.synth.SynthLookAndFeel;
+
+import com.nilo.plaf.nimrod.NimRODLookAndFeel;
+import com.nilo.plaf.nimrod.NimRODTheme;
 
 public class VisualAutomataSimulator extends XJApplicationDelegate {
 
@@ -230,9 +234,13 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
     private static void initLookAndFeel() {
         SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
         try {
-            lookAndFeel.load(VisualAutomataSimulator.class.getResourceAsStream("layout/theme.xml"),
-                    VisualAutomataSimulator.class);
-            UIManager.setLookAndFeel(lookAndFeel);
+        	
+         UIManager.setLookAndFeel( new com.nilo.plaf.nimrod.NimRODLookAndFeel());
+         NimRODTheme nt = new NimRODTheme( "NimRODThemeFile.theme");
+         System.out.println(System.getProperty("user.dir"));
+       	 NimRODLookAndFeel nf = new NimRODLookAndFeel();
+        	 nf.setCurrentTheme(nt);
+        	 UIManager.setLookAndFeel( nf);
         }
 
         catch (Exception e) {
