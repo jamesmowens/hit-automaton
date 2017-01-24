@@ -31,15 +31,37 @@ public class QueryImpl implements Query{
 	}
 	
 	/**
-	 * Runs the query condition and returns the result
-	 * @return boolean signifying the result, and also represents if the result method is run
-	 */
-	@Override
-	public boolean evaluate() {
-		// TODO Parse the String "condition" into an expression and evaluate
-		return false;
-	}
+     * Runs the query condition and returns the result
+     * @return boolean signifying the result, and also represents if the result method is run
+     */
+    //@Override
+    public boolean evaluate() {
+        boolean result = false;
 
+        String c = this.condition;
+
+        //TODO
+
+        if (result) {
+            result();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Pulls the current value of a variable from global "variables" file
+     */
+    public int getVariable(String name) throws Exception{ //TODO replace with a generic
+
+        // input the file content to the String "input"
+       // BufferedReader file = new BufferedReader(new FileReader("variables.txt"));
+       // String line;
+       // String input = "";
+        return 0;
+    }
+    
 	/**
 	 * Runs the change that the query makes if the condition is met
 	 * @return boolean depending if it successfully ran or not
