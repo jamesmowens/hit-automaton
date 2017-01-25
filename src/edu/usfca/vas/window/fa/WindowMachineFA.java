@@ -554,7 +554,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					machine.findState(currentStep.getTarget()).runQuery();
 				}
 				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
-
 			}
 			repaint();
 		}

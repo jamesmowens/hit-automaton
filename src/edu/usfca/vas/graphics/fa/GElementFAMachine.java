@@ -1385,4 +1385,12 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 		}
 		return false;
 	}
+	
+	public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
+		String stateName = findState.getLabel();
+		for(int i = 0; i < elements.size(); i++){
+			if(stateName.equals(elements.get(i)))
+					elements.get(i).addQueries(updatedQueries);
+		}
+	}
 }

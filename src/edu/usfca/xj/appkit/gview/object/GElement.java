@@ -650,4 +650,11 @@ public abstract class GElement implements XJXMLSerializable {
 			queries.add(query);
 		}
 	}
+    
+    public void addQueries(LinkedList<Query> updatedQueries){
+    	for(Query query: updatedQueries)
+		{
+			queries.add(query);
+		}
+    }
 }
