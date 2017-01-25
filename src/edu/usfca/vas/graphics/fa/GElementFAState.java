@@ -66,7 +66,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         setDraggable(true);
     }
     
-    public GElementFAState(State state, double x, double y,GElementFAMachine machine) {
+    public GElementFAState(State state, double x, double y, GElementFAMachine machine) {
     	super(machine);
         setState(state);
         setPosition(x, y);

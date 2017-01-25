@@ -6,6 +6,17 @@ public class QueryImpl implements Query{
 	private String condition = new String();
 	private String set = new String();
 	
+	/**
+	 * Default frequency set by this constructor is once
+	 * @param condVal
+	 * @param setVal
+	 */
+	public QueryImpl(String condVal, String setVal){
+		this.condition = condVal;
+		this.set = setVal;
+		this.frequency = "once";
+	}
+	
 	public void setFrequency(String frequency) {
 		this.frequency = frequency;
 	}

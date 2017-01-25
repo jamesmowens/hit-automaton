@@ -639,4 +639,15 @@ public abstract class GElement implements XJXMLSerializable {
     	return true;
     }
     
+    public void addQuery(Query query){
+    	queries.add(query);
+    }
+    
+    public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
+		// TODO Auto-generated method stub
+		for(Query query: updatedQueries)
+		{
+			queries.add(query);
+		}
+	}
 }
