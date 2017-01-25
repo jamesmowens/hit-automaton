@@ -46,50 +46,41 @@ public class QueryImpl implements Query{
      * @return boolean signifying the result, and also represents if the result method is run
      */
     //@Override
-    public boolean evaluate() {
-        boolean result = false;
-
-        String c = this.condition;
-
-        //TODO
-
-        if (result) {
+    public boolean evaluate() throws Exception{ //TODO
+        if (Evaluator.evaluateLine(condition)) {
             result();
             return true;
-        } else {
-            return false;
         }
+            return false;
+    }
+
+    /** //TODO do we really need this??
+     * Runs the change that the query makes if the condition is met
+     * @return boolean depending if it successfully ran or not
+     */
+   // @Override
+    public boolean result() throws Exception {
+        return Evaluator.evaluateLine(set);
+
     }
 
     /**
-     * Pulls the current value of a variable from global "variables" file
+     * Access to a descriptive string of the query
+     * @return the description of the query
      */
-    public int getVariable(String name) throws Exception{ //TODO replace with a generic
-
-        // input the file content to the String "input"
-       // BufferedReader file = new BufferedReader(new FileReader("variables.txt"));
-       // String line;
-       // String input = "";
-        return 0;
-    }
+    //@Override
+    public String queryInfo() {
+        return new String("Frequency: "+frequency+", Condition: "+condition+", Set: "+set);
+    } 
     
-	/**
-	 * Runs the change that the query makes if the condition is met
-	 * @return boolean depending if it successfully ran or not
-	 */
-	@Override
-	public boolean result() {
-		// TODO run evaluate(), if TRUE, apply "set"
-		return false;
-	}
+    /*
+    public static void main(String args[]) throws Exception{
+        QueryImpl practice = new QueryImpl("x > 0","classes = classes + 1");
 
-	/**
-	 * Access to a descriptive string of the query
-	 * @return the description of the query
-	 */
-	@Override
-	public String queryInfo() {
-		return new String("Frequency: "+frequency+", Condition: "+condition+", Set: "+set);
-	}
-
+        practice.evaluate();
+    }
+    */
+    
+    
+    
 }
