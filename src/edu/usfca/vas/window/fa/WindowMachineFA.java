@@ -88,7 +88,7 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     protected JTextField alphabetTextField;
     protected JTextField stringTextField;
     protected JComboBox typeComboBox;
-    protected JPanel mainPanel; // LAYOUTTODO Make accessible via an interface for cardlayout
+    protected JPanel mainPanel;
 
     protected GElementFANickName namingPanel;
     protected GElementFASidePanel sidePanel;
@@ -161,12 +161,6 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 
         overlay = new WindowMachineFAOverlay(parent.getJFrame(), mainPanel);
         overlay.setStringField(stringTextField);
-        leftSidebar = new LeftSideBar(JTabbedPane.LEFT);
-        //LAYOUTTODO Figure out where to put this
-        leftSidebar.addTab(split2, "Model View");
-        leftSidebar.addTab(new JPanel(), "Analytics View");
-        leftSidebar.addTab(new JPanel(), "Map View");
-        add(leftSidebar);
     }
 
     public WindowFA getWindowFA() {
@@ -582,11 +576,6 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(mainPanelScrollPane, BorderLayout.CENTER);
-
-        //LAYOUTTODO sidebar in WindowMachineFA
-//		leftSidebar = new LeftSideBar();
-//		leftSidebar.addTab(mainPanel, "Model View");
-//		add(leftSidebar);
 
         return mainPanel;
     }

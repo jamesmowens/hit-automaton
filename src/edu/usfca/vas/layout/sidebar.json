@@ -1,5 +1,6 @@
 {
-  "Model View" : "SidebarIcons/ModelIcon.png",
-  "Analytics View" : "SidebarIcons/AnalyticsIcon.png",
-  "Map View" : "SidebarIcons/MapIcon.png"
+  "Logo" : "SidebarIcons/WPILogo.png",
+  "Model" : "SidebarIcons/ModelIcon.png",
+  "Analytics" : "SidebarIcons/AnalyticsIcon.png",
+  "Map" : "SidebarIcons/MapIcon.png"
 }

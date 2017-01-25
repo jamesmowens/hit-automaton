@@ -40,6 +40,7 @@ import edu.usfca.vas.graphics.IconManager;
 import edu.usfca.vas.graphics.device.Console;
 import edu.usfca.vas.graphics.device.OutputDevice;
 import edu.usfca.vas.VisualAutomataSimulator;
+import edu.usfca.vas.layout.MainWindow;
 import edu.usfca.xj.appkit.frame.XJWindow;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.menu.XJMainMenuBar;
@@ -49,6 +50,7 @@ import edu.usfca.xj.appkit.menu.XJMenuItemDelegate;
 import edu.usfca.xj.appkit.utils.XJAlert;
 import edu.usfca.xj.appkit.utils.XJFileChooser;
 import edu.usfca.xj.foundation.XJUtils;
+import sun.applet.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -71,7 +73,7 @@ import java.util.List;
  * Handles the Machine menu and the former run menu.
  */
 
-public abstract class WindowAbstract extends XJWindow implements XJMenuItemDelegate {
+public abstract class WindowAbstract extends MainWindow implements XJMenuItemDelegate {
 
     // ** Menu constants
 
@@ -121,6 +123,7 @@ public abstract class WindowAbstract extends XJWindow implements XJMenuItemDeleg
     protected int currentWindowMachineIndex = 0;
 
     public WindowAbstract() {
+        super();
         setSize(1000, 700);
     }
 

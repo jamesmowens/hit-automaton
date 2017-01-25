@@ -17,16 +17,22 @@ public class LeftSideBar extends JTabbedPane {
     int tabNo = 0;
 
     public void addTab(Component comp, String name) {
-        addTab("<html> <img src=" + getClass().getResource(SettingsAccessor.getImgPath(name)).toString() +
-                " height=25 width=25 hspace=10> <br> <p>" + name + "</p> </html>", comp);
-        /*JLabel lbl = new JLabel(name);
-        Icon icon = new ImageIcon(getClass().getResource(SettingsAccessor.getImgPath(name)));
-        lbl.setIcon(icon);
+        addTab("<html> " +
+                "<img src=" + getClass().getResource(SettingsAccessor.getImgPath(name)).toString() +
+                " height=25 width=25 hspace=10> " + //LAYOUTTODO Find a better sizing solution
+                "<br> " +
+                "<p>" + name + "</p> " +
+                "</html>", comp);
+    }
 
-        lbl.setIconTextGap(5);
-        lbl.setHorizontalTextPosition(SwingConstants.SOUTH);
-
-        setTabComponentAt(tabNo++, lbl);*/
+    public void addTab(Component comp, String name, boolean displayText) {
+        if(displayText) addTab(comp, name);
+        else {
+            addTab("<html> " +
+                    "<img src=" + getClass().getResource(SettingsAccessor.getImgPath(name)).toString() +
+                    " height=25 width=50 hspace=10> " + //LAYOUTTODO Find a better sizing solution
+                    "</html>", comp);
+        }
     }
 
     private Image getScaledImage(Image srcImg, int w, int h){
