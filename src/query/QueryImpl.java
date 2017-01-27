@@ -47,6 +47,7 @@ public class QueryImpl implements Query{
      */
     //@Override
     public boolean evaluate() throws Exception{ //TODO
+    	System.out.println("Evaluate is running");
         if (Evaluator.evaluateLine(condition)) {
             result();
             return true;
@@ -73,13 +74,13 @@ public class QueryImpl implements Query{
         return new String("Frequency: "+frequency+", Condition: "+condition+", Set: "+set);
     } 
     
-    /*
+    
     public static void main(String args[]) throws Exception{
         QueryImpl practice = new QueryImpl("x > 0","classes = classes + 1");
 
         practice.evaluate();
     }
-    */
+    
     
     
     

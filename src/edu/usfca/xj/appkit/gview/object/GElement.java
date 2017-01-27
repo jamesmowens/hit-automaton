@@ -636,8 +636,10 @@ public abstract class GElement implements XJXMLSerializable {
     /* Runs a list of queries associated with that particular element */
     public boolean runQuery() {
     	System.out.println("GElement runQuery()");
+    	System.out.println(queries.size());
     	for(Query query: queries){
     		try {
+    			System.out.println("About to run query: "+query.queryInfo());
 				query.evaluate();
 			} catch (Exception e) {
 				System.out.println("Query did not run");
