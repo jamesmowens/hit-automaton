@@ -715,13 +715,13 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 		public LinkedList<Query> getUpdatedQueries(GElement findState) {
 			String name = findState.getLabel();
-			System.out.println("Name of the query: "+name);
+			System.out.println("GElementFANickName getUpdatedQueries, Name of the query: "+name);
 			if(!(database.get(name) instanceof LinkedList<?>)){
 				System.out.println("It returned null");
 				return null;
 			}
 			for (Query n : database.get(name)) {
-				System.out.println(n.queryInfo());
+				System.out.println("GElementFANickName getUpdatedQueries, for query in database: "+n.queryInfo());
 			}
 			return database.get(name);
 		}

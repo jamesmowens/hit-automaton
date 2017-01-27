@@ -1350,6 +1350,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 		for(GElement e : elements) {
 			if(e instanceof GElementFAStateInterface) {
 				if(getStateFullName(e).equals(target)) {
+					System.out.println("GElementFAMachine findState: "+e);
 					return e;
 				}
 			}
@@ -1357,6 +1358,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 		for(GElement e : collapsed) {
 			if(e instanceof GElementFAStateInterface) {
 				if(getStateFullName(e).equals(target)) {
+					System.out.println("GElementFAMachine findState: "+e);
 					return e;
 				}
 			}
@@ -1389,8 +1391,13 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 	public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
 		String stateName = findState.getLabel();
 		for(int i = 0; i < elements.size(); i++){
-			if(stateName.equals(elements.get(i)))
-					elements.get(i).addQueries(updatedQueries);
+			System.out.println("GElementFAMachine addQueries, the for loop is running right now at iteration"+i);
+			if(stateName.equals(elements.get(i).getLabel())) {
+				elements.get(i).addQueries(updatedQueries);
+				System.out.println("GElementFAMachine addQueries, element was found: "+elements.get(i));
+			} else {
+				System.out.println("GElementFAMachine addQueries, element was not found");
+			}
 		}
 	}
 }

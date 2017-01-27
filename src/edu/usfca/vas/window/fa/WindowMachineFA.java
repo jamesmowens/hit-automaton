@@ -550,7 +550,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				//Runs the query
 				LinkedList<Query> updatedQueries = namingPanel.getUpdatedQueries(machine.findState(currentStep.getTarget()));
 				if(updatedQueries != null){
+					System.out.println("WindowMachineFA highlightObject if updatedQueries is not null");
 					machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
+					System.out.println("WindowMachineFA, Current step is: "+currentStep.getTarget());
 					machine.findState(currentStep.getTarget()).runQuery();
 				}
 				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state

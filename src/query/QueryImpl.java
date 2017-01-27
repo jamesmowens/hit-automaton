@@ -75,11 +75,13 @@ public class QueryImpl implements Query{
     } 
     
     
+    /*
     public static void main(String args[]) throws Exception{
         QueryImpl practice = new QueryImpl("x > 0","classes = classes + 1");
 
         practice.evaluate();
     }
+    */
     
     
     
