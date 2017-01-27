@@ -1395,6 +1395,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 			if(stateName.equals(elements.get(i).getLabel())) {
 				elements.get(i).addQueries(updatedQueries);
 				System.out.println("GElementFAMachine addQueries, element was found: "+elements.get(i));
+				break;
 			} else {
 				System.out.println("GElementFAMachine addQueries, element was not found");
 			}

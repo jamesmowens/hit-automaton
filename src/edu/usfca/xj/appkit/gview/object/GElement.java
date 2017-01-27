@@ -653,6 +653,7 @@ public abstract class GElement implements XJXMLSerializable {
     	queries.add(query);
     }
     
+    /*
     public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
 		// TODO Auto-generated method stub
 		for(Query query: updatedQueries)
@@ -660,8 +661,10 @@ public abstract class GElement implements XJXMLSerializable {
 			queries.add(query);
 		}
 	}
+	*/
     
     public void addQueries(LinkedList<Query> updatedQueries){
+    	queries.clear();
     	for(Query query: updatedQueries)
 		{
 			queries.add(query);
