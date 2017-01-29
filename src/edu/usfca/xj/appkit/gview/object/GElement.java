@@ -256,6 +256,7 @@ public abstract class GElement implements XJXMLSerializable {
         if(anchor == null) {
             anchor = new Anchor2D();
             anchors.put(key, anchor);
+            System.out.println("GElement, Anchor was put. Key: "+key+" Anchor: "+anchor);
         }
         anchor.setPosition(position);
         anchor.setDirection(direction);
@@ -274,8 +275,10 @@ public abstract class GElement implements XJXMLSerializable {
         Anchor2D anchor = getAnchorClosestToPoint(p);
         for (Iterator iterator = anchors.keySet().iterator(); iterator.hasNext();) {
             String key = (String) iterator.next();
-            if(anchors.get(key) == anchor)
+            if(anchors.get(key) == anchor) {
+            	System.out.println(key);
                 return key;
+            }
         }
         return "CENTER";
     }

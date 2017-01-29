@@ -51,6 +51,8 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     protected transient SArrow startArrow = new SArrow();
     protected transient Vector2D startArrowDirection = new Vector2D(-1, 0);
     public boolean highlighted = false;
+    
+    private int xString; //width of the string
 
     public GElementFAState() {
     	super();
@@ -118,15 +120,17 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         return true;
     }
 
+    
     @Override
     public void updateAnchors() {
     	System.out.println("GElementFAState updateAnchors started"); //TODO
     	// setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
-        setAnchor(ANCHOR_TOP, position.add(new Vector2D(0, -radius)), Anchor2D.DIRECTION_TOP);
-        setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(0, radius)), Anchor2D.DIRECTION_BOTTOM);
-        setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius, 0)), Anchor2D.DIRECTION_LEFT);
-        setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius, 0)), Anchor2D.DIRECTION_RIGHT); 	
+        setAnchor(ANCHOR_TOP, position.add(new Vector2D(xString, -radius)), Anchor2D.DIRECTION_TOP);
+        setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(xString, radius)), Anchor2D.DIRECTION_BOTTOM);
+        setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius-xString*.25, 0)), Anchor2D.DIRECTION_LEFT);
+        setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius+xString*.25, 0)), Anchor2D.DIRECTION_RIGHT); 	
     }
+    
     
     /*
     public void updateAnchors() {
@@ -138,6 +142,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     }
     private int INCREMENT;
     */
+    
 
     public void drawShape(Graphics2D g) {
         //super.drawShape(g);
@@ -149,7 +154,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         
         String stateName = state.getName();
         FontMetrics fm = g.getFontMetrics();
-        int xString = (int)(fm.stringWidth(stateName));
+        xString = (int)(fm.stringWidth(stateName));
         //System.out.println("String: " + stateName + "Length " + xString);
         //int yString = (int)(fm.getHeight());
         // INCREMENT = (int)(xString); //commented out with updateAnchors      
