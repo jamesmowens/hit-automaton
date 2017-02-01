@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="libs/orsonpdf-1.6-eval.jar"/>
 	<classpathentry kind="lib" path="libs/servlet.jar"/>
 	<classpathentry kind="lib" path="libs/swtgraphics2d.jar"/>
+	<classpathentry kind="lib" path="libs/nimrodlf-1.2d.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
