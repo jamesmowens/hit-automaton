@@ -1,6 +1,8 @@
 package com.hp.hpl.CHAOS.HIT;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
@@ -12,7 +14,7 @@ import org.w3c.dom.Element;
 import java.util.Vector;
 
 public class EventParser {
-	public static Vector<Event> parseEvents(String fileName) {
+	public static void parseEvents(String fileName) {
 		Vector<Event> eventList = new Vector<Event>();
 		try {
 			//Create the xml document reader for 
@@ -64,13 +66,82 @@ public class EventParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return eventList; 
+		 processesEventList(eventList); 
 	}
 	
-	public static void main(String [] args) {
-		parseEvents("input.xml");
+	/**
+	 * Adapted from output.java, this method fires all the transitions when an events happens
+	 * @param events A list of events
+	 */
+	private static void processesEventList(Vector<Event> events){
+		System.out.println("Writing Output.xml");
+		String steps = "<steps>\n";
+		String activeStates = "<activeStates>\n";
+		boolean flag = false;
+		String outputFile = "output.xml";
+		String inputFile = "CHAOS/input.xml";
+		
+		NonAtomicState auction = XMLParser.generateMachine(inputFile);
+		
+		// Configuration
+		Vector<StateInstance> configuration = new Vector<StateInstance>();
+		for(Event e:events) {
+		
+			// Trigger enter transitions  
+			for (Transition enter : auction.ingoingTransitions) {				
+				if (enter.isEnabled(e)) {
+					flag = true;
+					//enter.printPair(e);
+					steps += CHAOSConnection.getStep(enter);
+					
+					configuration = enter.fire(configuration, e); 	
+				}
+			}
+			
+			// Trigger other transitions
+			Vector<StateInstance> new_config = new Vector<StateInstance>(); 
+			for(StateInstance j : configuration) {
+	
+				for(Transition t : j.activeState.outgoingTransitions) {	
+					if (t.isEnabled(configuration, j, e)){
+						flag = true;
+						steps += CHAOSConnection.getStep(t);
+						//t.printPair(e);
+						if (t.container.equals(j.state)) {
+							new_config = t.fire(configuration, j, e); 
+						} else {
+							if (t.container == null) {
+								new_config = t.fire(configuration, e);
+							}}}}
+				if (!new_config.isEmpty()) {
+					configuration = new_config;
+					break;                      // an event can trigger only 1 transition in only 1 state instance                        
+				}
+			}
+		}
+		
+		steps += "</steps>\n";
+		activeStates += "</activeStates>\n";
+		
+		String feedback = "<feedback>\n";
+		feedback +=steps;
+		feedback +=activeStates;
+		feedback +="</feedback>\n";
+		
+		if(flag) {
+			try {
+				PrintWriter out = new PrintWriter(outputFile);
+				out.print(feedback);
+				out.flush();
+				out.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+			ServerLauncher.finishConnection();
+		}		
 		
 	}
-	
+		     			
 
 }
