@@ -150,12 +150,12 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         
         JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,createAutomataPanel(),createSidePanel());
         split1.setResizeWeight(1); // REIGHT view gets all extra space
-        split1.setEnabled(false); // Do not allow user to set divider
-        split1.setDividerLocation(625);
+        split1.setEnabled(true); // Do not allow user to set divider
+        split1.setDividerLocation(625); //625 original
                 
         JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why add(); ??
         split2.setResizeWeight(1);
-        split2.setDividerLocation(360);
+        split2.setDividerLocation(360); //360 original location
         
         add(split2);
 
@@ -568,7 +568,7 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 
     public JComponent createAutomataPanel() {
     	mainPanelScrollPane = new JScrollPane(getGraphicPanel());
-    	mainPanelScrollPane.setPreferredSize(new Dimension(640, 480));
+    	mainPanelScrollPane.setPreferredSize(new Dimension(600, 360)); //640, 480
     	mainPanelScrollPane.setWheelScrollingEnabled(true);
 
         mainPanelSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);

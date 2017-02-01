@@ -128,7 +128,7 @@ public abstract class WindowAbstract extends MainWindow implements XJMenuItemDel
 
     public WindowAbstract() {
         super();
-        setSize(1000, 700);
+        setSize(1150, 700);
     }
 
     public void awake() {
