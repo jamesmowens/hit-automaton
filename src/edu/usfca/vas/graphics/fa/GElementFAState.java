@@ -125,10 +125,10 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     public void updateAnchors() {
     	System.out.println("GElementFAState updateAnchors started"); //TODO
     	// setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
-        setAnchor(ANCHOR_TOP, position.add(new Vector2D(xString, -radius)), Anchor2D.DIRECTION_TOP);
-        setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(xString, radius)), Anchor2D.DIRECTION_BOTTOM);
-        setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius-xString*.25, 0)), Anchor2D.DIRECTION_LEFT);
-        setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius+xString*.25, 0)), Anchor2D.DIRECTION_RIGHT); 	
+        setAnchor(ANCHOR_TOP, position.add(new Vector2D(xString*0.5-radius*0.5, -radius)), Anchor2D.DIRECTION_TOP);
+        setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(xString*0.5-radius*0.5, radius)), Anchor2D.DIRECTION_BOTTOM);
+        setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius, 0)), Anchor2D.DIRECTION_LEFT);
+        setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius+xString, 0)), Anchor2D.DIRECTION_RIGHT); 	
     }
     
     

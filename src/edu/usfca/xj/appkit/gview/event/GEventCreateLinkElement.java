@@ -180,6 +180,8 @@ public class GEventCreateLinkElement extends GAbstractEvent {
         if(linkElement == null)
             return;
 
+    	System.out.println("GEventCreateLinkElement draw");
+
         linkElement.draw((Graphics2D)g);
     }
 }

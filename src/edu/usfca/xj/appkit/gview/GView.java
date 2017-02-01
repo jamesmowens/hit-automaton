@@ -394,6 +394,7 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
     }
 
     public void paintComponent(Graphics g) {
+    	System.out.println("GView paintComponent");
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D)g;
@@ -413,6 +414,7 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
         drawMagnetics(g2d);
         
         if(rootElement != null)
+        	System.out.println("GView paintComponent rootElement is not null");
             rootElement.drawRecursive(g2d);
 
         eventManager.performEventObjects(GEventManager.EVENT_DRAW, null, null, g);

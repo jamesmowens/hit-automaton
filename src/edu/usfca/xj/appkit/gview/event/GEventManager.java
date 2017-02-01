@@ -86,23 +86,29 @@ public class GEventManager {
     }
 
 	public void performEventObjects(int action, Object event, Point mousePosition, Object param) {
+		//System.out.println("GEventManager performEvents");
         Iterator iterator = eventObjects.iterator();
         while(iterator.hasNext()) {
             GAbstractEvent eventObject = (GAbstractEvent)iterator.next();
             switch(action) {
                 case EVENT_DRAW:
-                    eventObject.draw((Graphics)param);
+                	//System.out.println("GEventManager performEvents EVENT_DRAW");
+                    eventObject.draw((Graphics)param); //used to show the arrow as it is being dragged
                     break;
                 case EVENT_MOUSE_PRESSED:
+                	//System.out.println("GEventManager performEvents EVENT_MOUSE_PRESSED");
                     eventObject.mousePressed((MouseEvent)event, mousePosition);
                     break;
                 case EVENT_MOUSE_RELEASED:
+                	System.out.println("GEventManager performEvents EVENT_MOUSE_RELEASED");
                     eventObject.mouseReleased((MouseEvent)event, mousePosition);
                     break;
                 case EVENT_MOUSE_DRAGGED:
+                	System.out.println("GEventManager performEvents EVENT_MOUSE_DRAGGED");
                     eventObject.mouseDragged((MouseEvent)event, mousePosition);
                     break;
                 case EVENT_MOUSE_MOVED:
+                	//System.out.println("GEventManager performEvents EVENT_MOUSE_MOVED");
                     eventObject.mouseMoved((MouseEvent)event, mousePosition);
                     break;
             }
