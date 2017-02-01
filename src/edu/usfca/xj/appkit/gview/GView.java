@@ -583,6 +583,7 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
     }
 
     public void handleMousePressed(MouseEvent e) {
+    	System.out.println("GView MousePressed");
         eventManager.performEventObjects(GEventManager.EVENT_MOUSE_PRESSED, e, getMousePosition(e), null);
     }
 
@@ -601,6 +602,7 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
     }
 
     public void handleMouseEntered(MouseEvent e) {
+    	System.out.println("GView MouseEntered");
         selectionTimer.refresh();
         focusTimer.refresh();
     }
