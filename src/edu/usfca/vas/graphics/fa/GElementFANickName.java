@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import edu.usfca.vas.layout.SettingsAccessor;
-import edu.usfca.xj.appkit.frame.XJFrame;
+import edu.usfca.vas.layout.JSONReaders;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
@@ -48,7 +47,6 @@ public class GElementFANickName extends JPanel {
 		//this.add(tabs);
 		this.linkPanel = new JPanel();
 		linkPanel.setName("LinkPanel");
-		this.linkPanel.setBackground(SettingsAccessor.getColor("LinkPanel"));
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));

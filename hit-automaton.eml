@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="gson-2.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/gson-2.2.2.jar!/"/>
+	</lib>
+	<lib name="hamcrest-core-1.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/hamcrest-core-1.3.jar!/"/>
+	</lib>
+	<lib name="jcommon-1.0.23.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jcommon-1.0.23.jar!/"/>
+	</lib>
+	<lib name="jfreechart-1.0.19-experimental.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jfreechart-1.0.19-experimental.jar!/"/>
+	</lib>
+	<lib name="jfreechart-1.0.19-swt.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jfreechart-1.0.19-swt.jar!/"/>
+	</lib>
+	<lib name="jfreechart-1.0.19.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jfreechart-1.0.19.jar!/"/>
+	</lib>
+	<lib name="jfreesvg-2.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jfreesvg-2.0.jar!/"/>
+	</lib>
+	<lib name="junit-4.11.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/junit-4.11.jar!/"/>
+	</lib>
+	<lib name="orsoncharts-1.4-eval-nofx.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/orsoncharts-1.4-eval-nofx.jar!/"/>
+	</lib>
+	<lib name="orsonpdf-1.6-eval.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/orsonpdf-1.6-eval.jar!/"/>
+	</lib>
+	<lib name="servlet.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/servlet.jar!/"/>
+	</lib>
+	<lib name="swtgraphics2d.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/swtgraphics2d.jar!/"/>
+	</lib>
+	<levels>
+		<level name="nimrodlf-1.2d" value="project"/>
+	</levels>
+</component>

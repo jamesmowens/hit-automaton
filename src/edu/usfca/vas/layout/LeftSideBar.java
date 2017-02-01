@@ -2,7 +2,6 @@ package edu.usfca.vas.layout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by Thomas on 1/17/2017.
@@ -23,7 +22,7 @@ public class LeftSideBar extends JTabbedPane {
      */
     public void addTab(Component comp, String name, int width, int height) {
         addTab("<html> " +
-                "<img src=" + getClass().getResource(SettingsAccessor.getImgPath(name)).toString() +
+                "<img src=" + getClass().getResource(JSONReaders.SETTINGS.getValue("sidebar/" + name)).toString() +
                 " height=" + height +
                 " width=" + width +
                 " hspace=10> " +
@@ -45,7 +44,7 @@ public class LeftSideBar extends JTabbedPane {
         if(displayText) addTab(comp, name, width, height);
         else {
             addTab("<html> " +
-                    "<img src=" + getClass().getResource(SettingsAccessor.getImgPath(name)).toString() +
+                    "<img src=" + getClass().getResource(JSONReaders.SETTINGS.getValue("sidebar/" + name)).toString() +
                     " height=" + height +
                     " width=" + width +
                     " hspace=10> " +

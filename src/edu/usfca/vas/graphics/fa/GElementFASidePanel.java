@@ -2,13 +2,11 @@
 package edu.usfca.vas.graphics.fa;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
-import edu.usfca.vas.layout.SettingsAccessor;
+import edu.usfca.vas.layout.JSONReaders;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
@@ -38,7 +36,6 @@ public class GElementFASidePanel extends JPanel {
 		setVisible(true);
 		panel = new JPanel();
 		panel.setName("SidePanel");
-        panel.setBackground(SettingsAccessor.getColor("SidePanel"));
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
