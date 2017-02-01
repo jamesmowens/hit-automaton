@@ -71,6 +71,10 @@ import java.util.List;
 
 /**
  * Handles the Machine menu and the former run menu.
+ * EDIT by Thomas Schweich 2/1/2017: This class actually causes the creation of the entire contents of the window as
+ * it stood with only the model view. It is instantiated in the XJ library via reflection due to being added in
+ * VisualAutomataSimulator.java. This class is responsible only for generating the model view and the file menus, and
+ * other views are generated in MainWindow.java.
  */
 
 public abstract class WindowAbstract extends MainWindow implements XJMenuItemDelegate {
