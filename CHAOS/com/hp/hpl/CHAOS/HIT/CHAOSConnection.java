@@ -15,7 +15,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.hp.hpl.CHAOS.Component.CCHAOS;
 import com.hp.hpl.CHAOS.Expression.DoubleCompExp;
 
 public class CHAOSConnection {
@@ -170,7 +169,6 @@ public class CHAOSConnection {
 		
 		String s = "run hit_test_1.xml";
 		String[] splitString = s.split("\\s+");
-		//CCHAOS.execute(splitString);
 		
 		EventParser.parseEvents("input.xml");
 	}
