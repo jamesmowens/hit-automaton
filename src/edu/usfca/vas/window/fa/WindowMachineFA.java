@@ -83,7 +83,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected JTextField stringTextField;
     protected JComboBox typeComboBox;
     protected JPanel mainPanel;
+    //Bottom Panel
     protected GElementFANickName namingPanel;
+    //Side panel
     protected GElementFASidePanel sidePanel;
     protected JSplitPane mainPanelSplit;
     protected JScrollPane mainPanelScrollPane;
@@ -96,6 +98,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected WindowMachineFAOverlay overlay;
     protected boolean overlayVisible;
     
+    //This is the stepList that is set by the XML parser
     protected ArrayList<Step> stepList;
     JButton startButton;
     protected String currentDocPath;
@@ -113,7 +116,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     public void setMachine(GElementFAMachine machine){
     	this.machine = machine;
     }
-
+    
     public void init() {
         setGraphicPanel(new GViewFAMachine(parent,null));
         getFAGraphicPanel().setDelegate(this);
@@ -240,29 +243,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
         next.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	//getWindowFA().run();
-            	//unhighlight everything
-            	/*unHighlight();
-            	namingPanel.unColor();
-            	String next = sidePanel.highlightNext();
-            	//if something is highlighted, highlight it in the naming panel and drawing as well
-            	GLink transition = sidePanel.getTransition();
-            	GElement target = sidePanel.getTarget();
-            	if (next != null){
-            		//highlight in the namingPanel
-            		namingPanel.highlightLink(transition);
-            		namingPanel.highlightElement(target);
-            		//highlight in the drawingPanel
-            		machine.highlightShape(transition);
-            		machine.highlightShape(transition.getTarget());
-            		highlighted.add(transition);
-            		highlighted.add(transition.getTarget());
-            	}
-            	getWindowFA().updateExecutionComponents();*/
-            	
+            public void actionPerformed(ActionEvent e) {            	
             	stopPlaying();
             	
+            	/**
+            	 * Replace this logic (go form previous state to next)
+            	 * With new logic (Run queries on current state, and if a query that wants to change a state happens, we go to the next state)
+            	 */
             	unHighLightObject(sidePanel.getCurrent());
             	sidePanel.setCurrent(sidePanel.getCurrent()+1);
             	highLightObject(sidePanel.getCurrent());
@@ -307,44 +294,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	}
             	
             	currentDocPath = docPath;
-            	
-//            	  System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
-//            	sidePanel.clear();
-//            	ArrayList<String> input = new ArrayList<String>();
-//            	input.add("auctionBegin 1 2 auctionID 1 from_start_to_A0 start A0 auctionBegin(auctionID(A*)) true true false");
-//            	input.add("auctionBid 3 4 auctionID 1 bidPrice 5 from_A0_to_A1 A0 A1 auctionBid(bidPrice(A*)) true true false");
-//            	input.add("auctionBid 5 6 auctionID 1 bidPrice 10 from_A1_to_A2 A1 A2 auctionBid(bidPrice(A*)) true true false");
-//            	input.add("auctionEnd 7 8 auctionID 1 auctionPrice 3 from_A2_to_end A2 end auctionEnd(auctionPrice(A*)) true true false");
-//            	
-            	/*for(String event: input){
-            		String delims = "[ ]+";
-            		String[] tokens = event.split(delims);
-            		int i = 0;
-            		while (!tokens[i].startsWith("from")){
-            			i++;
-            		}
-     
-                	GElement source = namingPanel.getElement(tokens[i+1]);
-                	GElement target = namingPanel.getElement(tokens[i+2]);
-                	GLink transition = namingPanel.getLink(source, target, tokens[i+3]);
-            		sidePanel.add(event, transition, source, target);
-            	}
-            	
-        		GLink transition = sidePanel.getTransition();
-            	GElement target = sidePanel.getTarget();
-            	if (transition != null){
-            		//highlight in the naming panel
-            		namingPanel.highlightLink(transition);
-            		namingPanel.highlightElement(target);
-            		//highlight in the drawing panel
-            		machine.highlightShape(transition);
-            		machine.highlightShape(transition.getTarget());
-            		highlighted.add(transition);
-            		highlighted.add(transition.getTarget());
-            		
-            	
-            	}
-            	getWindowFA().updateExecutionComponents();*/
             }
           
         });
@@ -354,27 +303,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
         JButton back = new JButton(Localized.getString("faWMBack"));
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//getWindowFA().run();
-            	//unhighlight
-            	/*unHighlight();
-            	namingPanel.unColor();
-            	String back = sidePanel.highlightPrevious();
-            	///if something is highlighted, highlight it in the naming panel and drawing as well
-            	GLink transition = sidePanel.getTransition();
-            	GElement target = sidePanel.getTarget();
-            	if (back != null){
-            		//highlight in the namingPanel
-            		namingPanel.highlightLink(transition);
-            		namingPanel.highlightElement(target);
-            		//highlight in the drawing panel
-            		machine.highlightShape(transition);
-            		machine.highlightShape(transition.getTarget());
-            		highlighted.add(transition);
-            		highlighted.add(transition.getTarget());
-            	
-            	}
-            	getWindowFA().updateExecutionComponents();*/
-
             	stopPlaying();
             	
             	unHighLightObject(sidePanel.getCurrent());
@@ -384,7 +312,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
             }
           
         });
-        //Play Button
         startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
         	
@@ -435,44 +362,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
         			WindowMachineFA.this.setStart(true);
         			WindowMachineFA.this.startButton.setLabel("Start");
         		}
-
-        		//next();
-
-        		/*//unhighlight
-            	String next = "hi";
-            	for (int i = 0; i < sidePanel.getStrings().size(); i++){
-            		System.out.println("Highlight Next");
-            		try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-
-            		unHighlight();
-                	namingPanel.unColor();
-                	next = sidePanel.highlightNext();
-                	//if something is highlighted, highlight it in the naming panel and drawing as well
-                	GLink transition = sidePanel.getTransition();
-                	GElement target = sidePanel.getTarget();
-                	if (next != null){
-                		//highlight in the namingPanel
-                		System.out.println(transition.getPattern());
-                		namingPanel.highlightLink(transition);
-                		namingPanel.highlightElement(target);
-                		//highlight in the drawingPanel
-                		machine.highlightShape(transition);
-                		machine.highlightShape(transition.getTarget());
-                		highlighted.add(transition);
-                		highlighted.add(transition.getTarget());
-
-                	}
-                	getWindowFA().updateExecutionComponents();
-                	repaint();
-
-
-
-            	}*/
-
         	}
         });
 
@@ -680,10 +569,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
     public void rebuild() {
         super.rebuild();
         getFAGraphicPanel().setMachine(getDataWrapperFA().getGraphicMachine());
-        //Not Needed Anymore
-        //typeComboBox.setSelectedIndex(getDataWrapperFA().getMachineType());
-        //alphabetTextField.setText(getDataWrapperFA().getSymbolsString());
-        //stringTextField.setText(getDataWrapperFA().getString());
     }
 
     public void setTitle(String title) {

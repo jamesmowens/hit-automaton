@@ -96,20 +96,6 @@ public class GElementFASidePanel extends JPanel {
 		
 		parsed = parsed.concat(")");
 		parsed = parsed.concat(" at [" + tokens[1] + "," + tokens[2] + "]");
-		
-		//get the transition and target state starting with the 10th elements 
-		//System.out.println("Start: " + tokens[i+1]);
-		//System.out.println("Target: " + tokens[i+2]);
-		//System.out.println("Transition: " + tokens[i+3]);
-		//GLink transition = null;
-		//GElement start = null;
-		//GElement target = null;
-		
-		//tokens[9] 
-		//transitions.add(transition);
-		//starts.add(target);
-		//targets.add(target);
-		
 				
 		return parsed;
 	}
@@ -130,6 +116,7 @@ public class GElementFASidePanel extends JPanel {
 	}
 
 	//adds a flow element 
+	/*
 	public void add(String flow, GLink transition, GElement start, GElement target){
 		transitions.add(transition);
 		starts.add(start);
@@ -138,6 +125,7 @@ public class GElementFASidePanel extends JPanel {
 		strings.add(flow);
 		panel.setPreferredSize(new Dimension(500, strings.size()*25));
 		flow = parse(flow);
+		System.out.println("This is a flow: " + flow);
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		p.setSize(new Dimension(15, 500));
 		JLabel tf = new JLabel(flow);
@@ -152,6 +140,7 @@ public class GElementFASidePanel extends JPanel {
 		}
 		this.updateUI();
 	}
+	*/
 	
 	public void add(String flow) {
 		strings.add(flow);
@@ -159,9 +148,9 @@ public class GElementFASidePanel extends JPanel {
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		p.setSize(new Dimension(15, 500));
 		JLabel tf = new JLabel(flow);
+		System.out.println("This is a flow: " + flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
-		//this.add(p);
 		panel.add(p);
 		labels.add(tf);
 		panels.add(p);
@@ -177,7 +166,6 @@ public class GElementFASidePanel extends JPanel {
 		int i = 0;
 		for (JLabel test: labels){
 			if (test.getText().equals(flow)){
-				//this.remove(panels.get(i));
 				panel.remove(panels.get(i));
 				panels.remove(i);
 				labels.remove(i);
