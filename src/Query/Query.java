@@ -1,33 +1,40 @@
+/**
+ * Nicholas Fajardo
+ * nafajardo@wpi.edu
+ * The following signature indicates that the author above pertains all rights to any ideas implemented in the code below.
+ * Signature: Nicholas Fajardo
+ * --------------------------------------------------------------------------------------------------------------------------
+ */
+
 package Query;
 
-import edu.usfca.vas.window.fa.*;
-import connection.*;
+public abstract class Query {
 
-public class Query {
-
-	private String state;
-	private String toState;
-	private Expression ex;
-	private int argumentOne;
-	private int argumentTwo;
-	private Step step;
+	//This is the state the query belongs to
+	protected String state;
+	protected String info;
+	protected Condition ex;
 	
-	public Query(){
-		//TODO implement this
+	public Query(Condition expression, String pertainingState, String queryName){
+		this.ex = expression;
+		this.state = pertainingState;
+		constructInfo(queryName);
 	}
 	
-	public void run(){
-		if(ex != null){
-			if(ex.eval(argumentOne, argumentTwo)){
-				runStep();
-			}
-		}
-		else{
-			System.out.println("The query could not run because the expression was null");
-		}
+	//This is the method that will be run when the query is asked to check stuff
+	public abstract void run(int parameter);
+	
+	//This is the method that will be run when the query is asked for what it does and other information
+	public String queryInfo(){return "";}
+	
+	private void constructInfo(String name){
+		info = "Name of query: " + name + "\n belongs to this State: " + this.state + ".\nFunction of this query: " + ex.toString() + ".";
 	}
 	
-	private void runStep(){
-		//TODO implement this
+	public void printinfo(){
+		if(!info.isEmpty())
+			System.out.println(info);
+		else
+			System.out.println("the query does not contain any information or has not been instantiated.");
 	}
 }
