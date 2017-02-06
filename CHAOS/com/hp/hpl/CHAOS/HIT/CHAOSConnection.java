@@ -15,7 +15,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.hp.hpl.CHAOS.Component.CCHAOS;
 import com.hp.hpl.CHAOS.Expression.DoubleCompExp;
 
 public class CHAOSConnection {
@@ -63,7 +62,13 @@ public class CHAOSConnection {
 				NodeList EventListDoc = doc.getElementsByTagName("event");
 				for(int i=0;i<EventListDoc.getLength();i++) {
 					Node eventDoc = EventListDoc.item(i);
-					eventList.add(getEachEvent(eventDoc));
+					String event = getEachEvent(eventDoc);
+					if (event != null){
+						eventList.add(event);
+					} else {
+						System.out.print("how?");
+					}
+				
 				}
 			}
 			else
@@ -164,7 +169,8 @@ public class CHAOSConnection {
 		
 		String s = "run hit_test_1.xml";
 		String[] splitString = s.split("\\s+");
-		CCHAOS.execute(splitString);
+		
+		EventParser.parseEvents("input.xml");
 	}
 
 	private static int countNumArgs(String s) {
@@ -183,10 +189,17 @@ public class CHAOSConnection {
 	}
 
 	private static String getEachEvent(Node eventDoc) {
-		return eventDoc.getChildNodes().item(0).getTextContent();
+		Node aNode = eventDoc.getChildNodes().item(0);
+		if (aNode != null){
+			return aNode.getTextContent();
+		} else {
+			return null;
+		}
 	}
 	
 	public static void main(String[] args) {
+		System.out.print("Args to connection are: ");
+		System.out.println(args); 
 		CHAOSConnection connection = new CHAOSConnection();
 		connection.processData();
 	}
