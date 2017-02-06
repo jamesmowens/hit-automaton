@@ -11,8 +11,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import com.hp.hpl.CHAOS.Component.CCHAOS;
-
 public class ServerLauncher {
     static ServerSocket serverSocket = null;
 	static Socket clientSocket = null;
@@ -56,12 +54,6 @@ public class ServerLauncher {
         		}
         		flag = true;
         	}
-        	try {
-				CCHAOS.stop();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
         	getConnection();
         }
     }
