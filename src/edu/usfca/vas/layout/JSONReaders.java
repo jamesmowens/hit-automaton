@@ -1,6 +1,5 @@
 package edu.usfca.vas.layout;
 
-
 /**
  * Created by Thomas on 1/6/2017.
  *
@@ -11,9 +10,7 @@ public enum JSONReaders {
 
     JSONReader reader;
 
-    /**
-     * Sets the proper JSONReader to instances. EACH INSTANCE MUST HAVE A PROPER JSONReader!
-     */
+    // Sets the proper JSONReader to instances. EACH INSTANCE MUST HAVE A PROPER JSONReader!
     static {
         SETTINGS.reader = new JSONReader("src/edu/usfca/vas/layout/settings.json");
     }

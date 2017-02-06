@@ -38,6 +38,9 @@
 	<lib name="swtgraphics2d.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/swtgraphics2d.jar!/"/>
 	</lib>
+	<lib name="nimrodlf-1.2d.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/nimrodlf-1.2d.jar!/"/>
+	</lib>
 	<levels>
 		<level name="nimrodlf-1.2d" value="project"/>
 	</levels>

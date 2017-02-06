@@ -36,8 +36,9 @@ public abstract class MainWindow extends XJWindow {
     }
 
     /**
-     * Adds a JPanel whose image can be found under the given name in sidebar.json to the sidebar of main window
-     * @param tab The JPanel to display upon clicking the tab
+     * Adds a container (such as a JPanel) whose corresponding image icon can be found under the given name in
+     * settings.json to the sidebar of main window
+     * @param tab The Container to display upon clicking the tab
      * @param name The name to display under the tab and the string under which to look up the image in sidebar.json
      */
     public void addSideTab(Container tab, String name, int width, int height) {
@@ -45,9 +46,10 @@ public abstract class MainWindow extends XJWindow {
     }
 
     /**
-     * Adds a JPanel whose image can be found under the given name in sidebar.json to the sidebar of main window,
-     * displaying its name if displayText is set to true
-     * @param tab The JPanel to display upon clicking the tab
+     * Adds a Container (such as a JPanel) whose image can be found under the given name in settings.json to the sidebar
+     * of main window, displaying its name if displayText is set to true, and displaying the image at the given
+     * width and height dimensions
+     * @param tab The Container to display upon clicking the tab
      * @param name The name to display under the tab if displayText is true and the string under which to look up the
      *             image in sidebar.json
      */

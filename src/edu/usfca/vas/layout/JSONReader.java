@@ -33,7 +33,6 @@ public class JSONReader {
         String txt;
         try {
             txt = new Scanner(new File(path)).useDelimiter("\\Z").next();
-            System.out.println(txt);
             JsonObject json = new JsonParser().parse(txt).getAsJsonObject();
             String lastTerm;
             int lastSlashIndex = location.lastIndexOf("/");
@@ -50,21 +49,20 @@ public class JSONReader {
         return "";
     }
 
-    int i = 0;
     /**
      * Recursively finds the given setting under the given slash-separated path
      * @param location The location of the desired setting in slash-separated (filesystem-like) format
      * @param jsonObject The jsonObject to be searched
-     * @return
+     * @return The last JSONObject (dictionary-like) in the path -- NOT the result
      */
     private JsonObject getTerminalJsonObject(String location, JsonObject jsonObject) {
-        System.out.println("Iterations :" + ++i);
         final int slashLoc = location.indexOf("/");
         if(!(slashLoc > 0)) {
             return jsonObject;
         } else {
             final String currLoc = location.substring(0, slashLoc);
             final String nextLoc = location.substring(slashLoc + 1);
+
             return getTerminalJsonObject(nextLoc, jsonObject.get(currLoc).getAsJsonObject());
         }
     }
