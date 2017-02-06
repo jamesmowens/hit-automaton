@@ -4,14 +4,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 import javax.swing.*;
 
 import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
+import query.Query;
+import query.QueryImpl;
 
-public class GElementFANickName extends JPanel {
+public class GElementFANickName extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = -511482713793989551L;
 	//hold the links stuff (for links)
@@ -29,8 +34,24 @@ public class GElementFANickName extends JPanel {
 	JPanel linkPanel;
 	JPanel elementPanel;
 	JPanel executionPanel;
+	JPanel queryPanel;
+	JPanel  queryEditPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
+	DefaultComboBoxModel model = new DefaultComboBoxModel();
+	
+	JComboBox contextList = new JComboBox(model);
+	String condition = "";
+	String set = "";
+	ArrayList<String> states = new ArrayList<String>();
+	HashMap<String,JButton> buttonCache = new HashMap<String,JButton>();
+	TextField setFill = new TextField("Press enter to submit command", 20);
+	TextField conditionFill = new TextField("Press enter to submit command", 20);
+	HashMap<String, LinkedList<Query>> database = new HashMap();
+	
+	public void removeStateFromDropdown(String state){
+		
+	}
 	
 	//creates the naming panel
 	public GElementFANickName() {
@@ -51,16 +72,154 @@ public class GElementFANickName extends JPanel {
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("State Names", this.elementPanel);
 		tabs.addTab("Process Summaries", this.executionPanel);
+		
+		makeQueryStuff();
+		
 		//tabs.addTab("New Tab", null);
 		tabs.setVisible(true);
 		setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
 		scroll.setPreferredSize(new Dimension(950, 190));
 		this.add(scroll);
+			
+	}
+	
+	private void makeQueryStuff(){
+		//Query Creation
+		this.queryPanel = new JPanel();
+		this.queryEditPanel = new JPanel();
+		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.queryEditPanel.setLayout(new BoxLayout(queryEditPanel, BoxLayout.Y_AXIS));
+		tabs.addTab("Pertaining Queries", this.queryPanel);
+		tabs.addTab("Query Editor", this.queryEditPanel);
 		
-		//this.setSize(new Dimension(600, 100));
-		//return namingPanel;
+		JLabel context = new JLabel("Context");
+		JPanel contextPanel = new JPanel(); 
+		JButton addContext = new JButton("+");
+		contextPanel.setLayout(new BoxLayout(contextPanel, BoxLayout.X_AXIS));
+		contextPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		contextPanel.add(context);
+		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		contextPanel.add(contextList);
+		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		contextPanel.add(addContext);
+		contextPanel.add(Box.createRigidArea(new Dimension(700,0)));
 		
+		JLabel pertaining =  new JLabel("For");
+		JComboBox pertainingList = new JComboBox();
+		JButton addPertain = new JButton("+");
+		JPanel pertainPanel = new JPanel();
+		pertainPanel.setLayout(new BoxLayout(pertainPanel, BoxLayout.X_AXIS));
+		pertainPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		pertainPanel.add(pertaining);
+		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		pertainPanel.add(pertainingList);
+		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		pertainPanel.add(addPertain);
+		pertainPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
+		JPanel frequencyPanel = new JPanel();
+		JLabel frequency = new JLabel("Frequency");
+		JComboBox frequencyList = new JComboBox(new String[] {"once","continuous"});
+		frequencyPanel.setLayout(new BoxLayout(frequencyPanel, BoxLayout.X_AXIS));
+		frequencyPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		frequencyPanel.add(frequency);
+		frequencyPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		frequencyPanel.add(frequencyList);
+		frequencyPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
+		JPanel conditionPanel = new JPanel();
+		JLabel condition = new JLabel("Condition");
+		conditionFill.addActionListener(this);
+		conditionPanel.setLayout(new BoxLayout(conditionPanel, BoxLayout.X_AXIS));
+		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		conditionPanel.add(condition);
+		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		conditionPanel.add(conditionFill);
+		conditionPanel.add(Box.createRigidArea(new Dimension(693,0)));
+		
+		JPanel setPanel = new JPanel();
+		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		JLabel set = new JLabel("set");
+		setFill.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+			}
+		});
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		setPanel.add(set);
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		setPanel.add(setFill);
+		setPanel.add(Box.createRigidArea(new Dimension(656,0)));
+		
+		JPanel buttons = new JPanel();
+		JButton clear = new JButton("Clear");
+		clear.addActionListener(this);
+		JButton submit = new JButton("Submit");
+		submit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+			}
+		});
+		buttonCache.put("Clear", clear);
+		buttonCache.put("Submit", submit);
+		submit.addActionListener(this);
+		buttons.add(clear);
+		buttons.add(submit);
+				
+		queryEditPanel.add(contextPanel);
+		queryEditPanel.add(pertainPanel);
+		queryEditPanel.add(frequencyPanel);
+		queryEditPanel.add(conditionPanel);
+		queryEditPanel.add(setPanel);
+		queryEditPanel.add(buttons);
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource().equals(buttonCache.get("Clear"))){
+			conditionFill.setText("");
+			setFill.setText("");
+			System.out.println("Cleared");}
+		else if(e.getSource().equals(buttonCache.get("Submit"))){
+			String eval = conditionFill.getText();
+			String set = setFill.getText();
+			Query query = new QueryImpl(eval, set);
+			System.out.println(query.queryInfo());
+			//If its not in there, put it in there
+			if(database.get(contextList.getSelectedItem()) == null){
+				database.put((String)contextList.getSelectedItem(), new LinkedList<Query>());
+			}
+			database.get((String)contextList.getSelectedItem()).add(query);
+			System.out.println("Submitted");}
+	}
+	
+	private void updateQueryDropdown(String stateIn, Boolean flag){
+		//System.out.println("State in: " + stateIn);
+		for(String state: states)
+			if(state.equals(stateIn))
+			{
+				if(flag){
+					states.remove(stateIn);
+					model.removeElement(stateIn);
+					contextList.setModel(model);
+				}
+				else
+					return;
+			}
+		
+		states.add(stateIn);
+		model.addElement(stateIn);
+		contextList.setModel(model);
+		
+		String[] stuff = new String[states.size()];
+		int ind = 0;
+		for(String state: states){
+			stuff[ind] = state;
+			ind++;
+		}
+		
+		System.out.println(Arrays.toString(stuff));
 	}
 	
 	//gets a state based on its name 
@@ -93,8 +252,8 @@ public class GElementFANickName extends JPanel {
 		//we are adding a new Link that already exists somewhere else (same name) set the nickname
 		boolean exists = false;
 		for (JLabel test : labels){
-			if (test.getText().equals(newLink.getPattern()))
-				exists = true;
+			if (test.getText().equals(newLink.getPattern())){
+				exists = true;}
 		}
 		//System.out.println("Exists: " + exists);
 		if (exists) {
@@ -115,7 +274,7 @@ public class GElementFANickName extends JPanel {
 			}
 			else {
 				int k = 0;
-				//update the textfield
+				//update the text field
 				for (JLabel test: labels){
 					if (test.getText().equals(newLink.getPattern())){
 						//System.out.println("setting " + test.getText() + " to " + newLink.getNickname());
@@ -387,7 +546,7 @@ public class GElementFANickName extends JPanel {
 	 
 	//when a new GElement is added to the system.. add it with this function. 
 		 public void addElement(GElement newElement){
-			 removeElement(newElement);
+			removeElement(newElement);
 			int max = labels.size();
 			if (labels.size() < Elabels.size()+1)
 				 max = Elabels.size()+1;
@@ -398,6 +557,7 @@ public class GElementFANickName extends JPanel {
 				this.tabs.setPreferredSize(new Dimension(950, 180));
 		 	JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 			JLabel tf = new JLabel(newElement.getLabel());
+			updateQueryDropdown(newElement.getLabel(), false);
 			int width = tf.getBounds().width;
 			tf.setForeground(newElement.getColor());
 			//add spacing to make it look neat...
@@ -422,7 +582,6 @@ public class GElementFANickName extends JPanel {
 			Etextfields.add(tf2);
 			Elabels.add(tf);
 			Epanels.add(p);
-			//this.linkPanel.setVisible(true);
 		 }
 		 
 		 //updates the nickname, and color of a GLink
@@ -475,6 +634,7 @@ public class GElementFANickName extends JPanel {
 			 for (GElement test: gelements){
 				 if (test == element){
 					 gelements.remove(element);
+					 //updateQueryDropdown(element.getLabel(), true);
 					 elementPanel.remove(Epanels.get(i));
 					 Epanels.remove(i);
 					 Elabels.remove(i);
@@ -551,5 +711,18 @@ public class GElementFANickName extends JPanel {
 		public static String convertToMultiline(String orig)
 		{
 		    return "<html>" + orig.replaceAll("\n", "<br>");
+		}
+
+		public LinkedList<Query> getUpdatedQueries(GElement findState) {
+			String name = findState.getLabel();
+			System.out.println("GElementFANickName getUpdatedQueries, Name of the query: "+name);
+			if(!(database.get(name) instanceof LinkedList<?>)){
+				System.out.println("It returned null");
+				return null;
+			}
+			for (Query n : database.get(name)) {
+				System.out.println("GElementFANickName getUpdatedQueries, for query in database: "+n.queryInfo());
+			}
+			return database.get(name);
 		}
 }

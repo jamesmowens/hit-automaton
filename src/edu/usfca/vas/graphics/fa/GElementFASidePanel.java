@@ -161,7 +161,6 @@ public class GElementFASidePanel extends JPanel {
 		JLabel tf = new JLabel(flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
-		//this.add(p);
 		panel.add(p);
 		labels.add(tf);
 		panels.add(p);
@@ -216,7 +215,6 @@ public class GElementFASidePanel extends JPanel {
 				i = j;
 			j++;
 		}
-		
 		
 		//make sure there is something highlighted... 
 		if (i == -1 && labels.size() > 0){
