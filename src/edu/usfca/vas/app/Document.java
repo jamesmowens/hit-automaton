@@ -38,6 +38,11 @@ import edu.usfca.xj.appkit.document.XJDocument;
 
 import java.util.Iterator;
 
+/**
+ * Controls properties of document based information. For example, saving 
+ * and exporting XML documents. Calls functions in XJDocument.
+ */
+
 public class Document extends XJDocument {
 
     public Document() {

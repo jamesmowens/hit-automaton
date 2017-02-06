@@ -43,6 +43,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Functions used for the below two classes.
+ */
+
 public class DesignToolsAbstract extends JPanel {
 
     protected List toolsButton = new ArrayList();
@@ -55,6 +59,7 @@ public class DesignToolsAbstract extends JPanel {
     public DesignToolsTM.DesignToolButton createDesignToolButton(String iconFileName, String tooltip, int tool) {
         DesignToolsTM.DesignToolButton button = new DesignToolsTM.DesignToolButton(IconManager.getIcon(iconFileName), tool);
         button.setToolTipText(tooltip);
+        //button.setBackground(Color.decode("#D3D3D3"));
         button.setPreferredSize(new Dimension(42, 42));
         button.setMaximumSize(new Dimension(42, 42));
         button.addActionListener(new DesignToolsTM.DefaultActionListener());
@@ -82,7 +87,9 @@ public class DesignToolsAbstract extends JPanel {
     public void selectButton(DesignToolsTM.DesignToolButton button) {
         button.setSelected(true);
         button.requestFocus();
+        //button.setBackground(Color.decode("#D3D3D3"));
         selectedButton = button;
+
     }
 
     public void buttonActionPerformed(ActionEvent e) {
@@ -94,10 +101,13 @@ public class DesignToolsAbstract extends JPanel {
             button.locked = false;
             if(button != actionButton)
                 button.setSelected(false);
+            	//button.setBackground(Color.decode("#D3D3D3"));
+            
         }
 
         if(actionButton == mouseButton) {
             selectButton(mouseButton);
+            //mouseButton.setBackground(Color.decode("#D3D3D3"));
         } else {
             if(actionButton == selectedButton)
                 selectedButtonClickCount++;
@@ -125,6 +135,7 @@ public class DesignToolsAbstract extends JPanel {
         if(!selectedButton.locked) {
             selectedButton.setSelected(false);
             selectButton(mouseButton);
+            //mouseButton.setBackground(Color.decode("#D3D3D3"));
         }
     }
 

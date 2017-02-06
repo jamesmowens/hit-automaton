@@ -47,6 +47,10 @@ import java.util.LinkedList;
 
 
 
+/**
+ * Handles drawing circles (atomic states) and their properties.
+ */
+
 public class GElementFAState extends GElementCircle implements XJXMLSerializable, GElementFAStateInterface {
 
     protected State state = new FAState();

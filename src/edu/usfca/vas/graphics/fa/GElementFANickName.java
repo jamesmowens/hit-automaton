@@ -10,11 +10,12 @@ import java.util.LinkedList;
 
 import javax.swing.*;
 
-import edu.usfca.xj.appkit.frame.XJFrame;
+import edu.usfca.vas.layout.JSONReaders;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import query.Query;
 import query.QueryImpl;
+
 
 public class GElementFANickName extends JPanel implements ActionListener {
 
@@ -56,18 +57,21 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	//creates the naming panel
 	public GElementFANickName() {
 		super();
+		this.setName("LowerPanel");
 		this.tabs = new JTabbedPane();
+		this.tabs.setName("LowerPanelTabs"); //Named this so it can be used in xml file
 		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		tabs.setPreferredSize(new Dimension(950, 180));
 		//this.add(tabs);
 		this.linkPanel = new JPanel();
+		linkPanel.setName("LinkPanel");
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		executionPanel.add(activeStateLabel);
-		//this.linkPanel.setSize(new Dimension(600, 100));
+ 		//this.linkPanel.setSize(new Dimension(600, 100));
 		//this.elementPanel.setSize(new Dimension(600, 100));
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("State Names", this.elementPanel);
@@ -77,11 +81,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		
 		//tabs.addTab("New Tab", null);
 		tabs.setVisible(true);
-		setVisible(true);
+		linkPanel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
+		scroll.setName("LowerScrollPane");
 		scroll.setPreferredSize(new Dimension(950, 190));
 		this.add(scroll);
-			
+
 	}
 	
 	private void makeQueryStuff(){
@@ -444,7 +449,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		 int i = 0;
 		 this.linkPanel = new JPanel();
 		 this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		 panels.clear();
+	     panels.clear();
 		 labels.clear();
 		 textfields.clear();
 		 linkPanel.updateUI();
@@ -556,6 +561,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			else 
 				this.tabs.setPreferredSize(new Dimension(950, 180));
 		 	JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		 	p.setName("TabsPanel");
 			JLabel tf = new JLabel(newElement.getLabel());
 			updateQueryDropdown(newElement.getLabel(), false);
 			int width = tf.getBounds().width;

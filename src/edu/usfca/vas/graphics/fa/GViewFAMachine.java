@@ -45,6 +45,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Handles editing of already existing elements and sets up right click.
+ */
+
 public class GViewFAMachine extends GView {
 
     // ** Menu items

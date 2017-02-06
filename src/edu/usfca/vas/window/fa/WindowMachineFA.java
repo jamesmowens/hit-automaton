@@ -32,6 +32,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
+import edu.usfca.vas.layout.ICard;
+import edu.usfca.vas.layout.LeftSideBar;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.xj.appkit.utils.XJAlert;
@@ -76,7 +78,11 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class WindowMachineFA extends WindowMachineAbstract {
+/**
+ * Creates the panels for the application, the Load, Next, Back buttons are declared here.
+ */
+
+public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 
     protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
@@ -85,6 +91,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected JTextField stringTextField;
     protected JComboBox typeComboBox;
     protected JPanel mainPanel;
+
     //Use this!!
     protected GElementFANickName namingPanel;
     protected GElementFASidePanel sidePanel;
@@ -108,6 +115,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	boolean playingFlag = false;
 	int timeBetweenStep = 1500;
 
+	LeftSideBar leftSidebar;
+
     public WindowMachineFA(XJFrame parent) {
         super(parent);
         this.machine = machine;
@@ -130,12 +139,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,createAutomataPanel(),createSidePanel());
         split1.setResizeWeight(1); // REIGHT view gets all extra space
-        split1.setEnabled(false); // Do not allow user to set divider
-        split1.setDividerLocation(625);
+        split1.setEnabled(true); // Do not allow user to set divider
+        split1.setDividerLocation(625); //625 original
                 
         JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why add(); ??
         split2.setResizeWeight(1);
-        split2.setDividerLocation(360);
+        split2.setDividerLocation(360); //360 original location
         
         add(split2);
 
@@ -158,7 +167,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     public JPanel createUpperPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setMaximumSize(new Dimension(99999, 30));
-
+        //panel.setBackground(Color.decode("#0A7FA6"));
         panel.add(designToolFA = new DesignToolsFA(), BorderLayout.WEST);
         panel.add(createControlPanel(), BorderLayout.EAST);
 
@@ -169,10 +178,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     public JPanel createControlPanel() {
         JPanel panel = new JPanel();
+        //panel.setBackground(Color.decode("#EBCF31"));
         panel.setMaximumSize(new Dimension(99999, 30));
         
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
+        next.setName("NextButton");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	stopPlaying();
@@ -185,6 +196,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         //Load Button
         JButton load = new JButton(Localized.getString("faWMLoad"));
+        load.setName("LoadButton");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	String docPath = changeSave();
@@ -222,6 +234,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         //Back Button
         JButton back = new JButton(Localized.getString("faWMBack"));
+        back.setName("BackButton");
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -366,7 +379,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     public JComponent createAutomataPanel() {
     	mainPanelScrollPane = new JScrollPane(getGraphicPanel());
-    	mainPanelScrollPane.setPreferredSize(new Dimension(640, 480));
+    	mainPanelScrollPane.setPreferredSize(new Dimension(600, 360)); //640, 480
     	mainPanelScrollPane.setWheelScrollingEnabled(true);
 
         mainPanelSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -396,6 +409,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     //makes the side panel
     public JPanel createSidePanel() {
     	GElementFASidePanel side = new GElementFASidePanel();
+        //side.setBackground(Color.white);
     	//side.setSize(new Dimension(250, 400)); // Why commented?
     	sidePanel=side;
     	//sidePanel.setLayout(new GridLayout(0,1));
@@ -586,5 +600,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void setStart(boolean start) {
 		this.start = start;
+	}
+
+	@Override
+	public Component getMasterComp() {
+		return mainPanel;
 	}
 }

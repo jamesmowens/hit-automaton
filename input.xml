@@ -1,35 +1,5 @@
 <data>
 <stream>
-	<event>auctionBegin 1 2 auctionID 1</event>
-	<event>enrollmentBegin 3 4 auctionID 1 enrollID 2</event>
-	<event>bidderData 3 4 auctionID 1 enrollID 2</event>
-	<event>enrollmentBegin 3 4 auctionID 1 enrollID 3</event>
-	<event>authData 3 4 auctionID 1 enrollID 2</event>
-	<event>authAttempt 3 4 auctionID 1 enrollID 2</event>
-	<event>bidderData 3 4 auctionID 1 enrollID 3</event>
-	<event>authData 3 4 auctionID 1 enrollID 3</event>
-	<event>authAttempt 3 4 auctionID 1 enrollID 3</event>
-	<event>bidderEnrolled 3 4 auctionID 1 enrollID 3</event>
-	<event>bidderEnrolled 3 4 auctionID 1 enrollID 2</event>
-	<event>itemDescription 5 23 auctionID 1 itemID 3 price 6</event>
-	<event>bid 23 24 auctionID 1 itemID 3 price 60</event>
-	<event>hammerBeat 25 25 auctionID 1 itemID 3</event>
-	<event>hammerBeat 26 26 auctionID 1 itemID 3</event>
-	<event>hammerBeat 27 27 auctionID 1 itemID 3</event>
-	<event>sell 28 29 auctionID 1 itemID 3</event>
-	<event>itemDescription 30 31 auctionID 1 itemID 4 price 6</event>
-	<event>bid 31 31 auctionID 1 itemID 4 price 61</event>
-	<event>bid 31 31 auctionID 1 itemID 4 price 63</event>
-	<event>hammerBeat 32 32 auctionID 1 itemID 4</event>
-	<event>bid 32 32 auctionID 1 itemID 4 price 65</event>
-	<event>bid 32 32 auctionID 1 itemID 4 price 66</event>
-	<event>bid 32 32 auctionID 1 itemID 4 price 67</event>
-	<event>hammerBeat 33 33 auctionID 1 itemID 4</event>
-	<event>hammerBeat 34 34 auctionID 1 itemID 4</event>
-	<event>hammerBeat 35 35 auctionID 1 itemID 4</event>
-	<event>sell 36 36 auctionID 1 itemID 4</event>
-	<event>auctionEnd 17 18 auctionID 1</event>
-	<event></event>
 </stream>
 <machine>
 	<states>

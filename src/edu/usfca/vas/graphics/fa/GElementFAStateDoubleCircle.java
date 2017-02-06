@@ -16,6 +16,10 @@ import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Vector2D;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
 
+/**
+ * Handles drawing accepting atomic states and their properties.
+ */
+
 public class GElementFAStateDoubleCircle extends GElementDoubleCircle 
 	implements GElementFAStateInterface, XJXMLSerializable {
 

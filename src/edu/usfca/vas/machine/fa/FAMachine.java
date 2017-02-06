@@ -47,6 +47,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Handles drawing elements (states & transitions), collapsing, expanding, 
+ * setting to accepting, coloring, etc.....
+ */
+
 public class FAMachine implements XJXMLSerializable {
 
     public static final int MACHINE_TYPE_DFA = 0;

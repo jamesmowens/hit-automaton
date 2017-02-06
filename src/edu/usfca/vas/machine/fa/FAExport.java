@@ -11,6 +11,10 @@ import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GExport;
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
+/**
+ * Deals with contains.
+ */
+
 public class FAExport implements XJXMLSerializable {
 
 	protected List<GExport> export = new ArrayList<GExport>();
