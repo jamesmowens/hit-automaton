@@ -1,3 +1,8 @@
+/*
+ * MaryAnn VanValkenburg
+ * Created 01/22/2017
+ */
+
 package query;
 
 public class QueryImpl implements Query{
