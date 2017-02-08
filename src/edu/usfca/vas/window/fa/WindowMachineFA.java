@@ -74,9 +74,11 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import Query.*;
+
 public class WindowMachineFA extends WindowMachineAbstract {
 
-    protected WindowMachineFASettings settings = null;
+	protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
 
     protected JTextField alphabetTextField;
@@ -97,12 +99,15 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     protected WindowMachineFAOverlay overlay;
     protected boolean overlayVisible;
+    protected GElement currentState = null;
     
     //This is the stepList that is set by the XML parser
     protected ArrayList<Step> stepList;
     JButton startButton;
     protected String currentDocPath;
     protected ArrayList<String> activeStates;
+    
+    protected ArrayList<DataNode> dataList;
     
     Object playingFlagLock = new Object();
 	boolean playingFlag = false;
@@ -185,78 +190,22 @@ public class WindowMachineFA extends WindowMachineAbstract {
         JPanel panel = new JPanel();
         panel.setMaximumSize(new Dimension(99999, 30));
 
-        //Not needed anymore, was for NFA/DFA details
-        
-//        panel.add(new JLabel(Localized.getString("faWMAutomaton")));
-//        typeComboBox = new JComboBox(new String[] { Localized.getString("DFA"),
-//                                                    Localized.getString("NFA") });
-//        typeComboBox.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                int type = typeComboBox.getSelectedIndex();
-//                if(type !=getDataWrapperFA().getMachineType()) {
-//                    getDataWrapperFA().setMachineType(type);
-//                    changeOccured();
-//                }
-//            }
-//        });
-//
-//        panel.add(typeComboBox);
-//
-//        panel.add(new JLabel(Localized.getString("faWMAlphabet")));
-//
-//        alphabetTextField = new JTextField(getDataWrapperFA().getSymbolsString());
-//        alphabetTextField.setPreferredSize(new Dimension(100, 20));
-//        alphabetTextField.addCaretListener(new CaretListener() {
-//            public void caretUpdate(CaretEvent e) {
-//                handleAlphabetTextFieldEvent();
-//            }
-//
-//        });
-//
-//        alphabetTextField.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                handleAlphabetTextFieldEvent();
-//            }
-//        });
-//
-//        panel.add(alphabetTextField);
-//
-//        panel.add(new JLabel(Localized.getString("faWMString")));
-//
-//        stringTextField = new JTextField("");
-//        stringTextField.setPreferredSize(new Dimension(100, 20));
-//        stringTextField.addCaretListener(new CaretListener() {
-//            public void caretUpdate(CaretEvent e) {
-//                handleStringTextFieldEvent();
-//            }
-//
-//        });
-//
-//        stringTextField.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                handleStringTextFieldEvent();
-//            }
-//        });
-//
-//        panel.add(stringTextField);
-        
+        /*
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {            	
             	stopPlaying();
+
+            	//In this, we will put the methods to overwrite the steplist, and use the current "data piece" from side panel
             	
-            	/**
-            	 * Replace this logic (go form previous state to next)
-            	 * With new logic (Run queries on current state, and if a query that wants to change a state happens, we go to the next state)
-            	 */
             	unHighLightObject(sidePanel.getCurrent());
             	sidePanel.setCurrent(sidePanel.getCurrent()+1);
             	highLightObject(sidePanel.getCurrent());
             	setActiveStates(sidePanel.getCurrent());
             }
           
-        });
+        });*/
         
       
         
@@ -300,6 +249,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         
         //Back Button
+        /*
         JButton back = new JButton(Localized.getString("faWMBack"));
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -310,17 +260,18 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	highLightObject(sidePanel.getCurrent());
     			setActiveStates(sidePanel.getCurrent());
             }
-          
-        });
+        });*/
+
         startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
         	
         	public void actionPerformed(ActionEvent e) {
         		if(WindowMachineFA.this.isStart()) {
         			
+        			
         			String data = new String("<data>\n");
 
-        			data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
+        			//data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
         			
         			String systemXMLfile = getWindow().getDocument().getDocumentPath();
         	        systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
@@ -331,9 +282,14 @@ public class WindowMachineFA extends WindowMachineAbstract {
         	        
         	        if(!Connection.sendData(data)) return;
         	        
-        	        stepList = XMLParser.getListHighlightObjects();
-        	        activeStates = XMLParser.getActiveStates();
+        	        //This means that the step list only gets the first one, so after that the steps are recursive
+        	        stepList.add(XMLParser.getListHighlightObjects().get(0));
+        	        dataList = XMLParser.getListDataNodes();
+        	        //activeStates = XMLParser.getActiveStates();
 
+        	        //What step do we need to initialize this
+        	        //stepList.add(null);
+        	        //Guts sets the red highlighting in the side panel to the first
         			sidePanel.setCurrent(0);
         			highLightObject(0);
         			setActiveStates(0);
@@ -353,11 +309,15 @@ public class WindowMachineFA extends WindowMachineAbstract {
         		else {
         			
         			stopPlaying();
-        			
+
+					/**
+					 * Replace this logic (go form previous state to next)
+					 * With new logic (Run queries on current state, and if a query that wants to change a state happens, we go to the next state)
+					 */
         			unHighLightObject(sidePanel.getCurrent());
         			sidePanel.unHighlight();
         			stepList = new ArrayList<Step>();
-        			namingPanel.setActiveStates("");
+        			//namingPanel.setActiveStates("");
 
         			WindowMachineFA.this.setStart(true);
         			WindowMachineFA.this.startButton.setLabel("Start");
@@ -366,9 +326,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
         });
 
         panel.add(load);
-        panel.add(back);
+        //panel.add(back);
         panel.add(startButton);
-        panel.add(next);
+        //panel.add(next);
 
 
         return panel;
@@ -382,6 +342,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     	do
     	{
     		try {
+    			//This is what dictates the speed at which the switching occurs
 				Thread.sleep(timeBetweenStep);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -394,16 +355,23 @@ public class WindowMachineFA extends WindowMachineAbstract {
     			}
 			}
     		
+    		//This goes in order of the indexes of the current line in the flows of the side panel.
+    		//runQueriesOnCurrentStates();
         	unHighLightObject(sidePanel.getCurrent());
         	sidePanel.setCurrent(sidePanel.getCurrent()+1);
         	highLightObject(sidePanel.getCurrent());
         	setActiveStates(sidePanel.getCurrent());    		
     	}
+    	
     	while(sidePanel.getCurrent()!=stepList.size()-1);
     	
     	stopPlaying();
 	}
 
+    private void runQueriesOnCurrentStates(){
+    	//TODO implement
+    }
+    
 	private void stopPlaying() {
 		synchronized (playingFlagLock) {
 			playingFlag = false;
@@ -603,16 +571,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
         overlay.setString(original, original.length()-remaining.length());
     }
 
-    public void viewSizeDidChange() {
-        // do nothing
-    }
-
 
 	private void highLightObject(int i) {
-		if(i>=0 && i<stepList.size()) {
+		if(i>=0 && i < stepList.size()) {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);	
+				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
 			}
 			else
 			{
@@ -620,9 +584,19 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
+				GElement state = machine.findState(currentStep.getTarget());
+				while(state != null){
+					state.runQueries();
+					addSteps(state.grabStepList());
+					state = state.getParentState();
+				}
 			}
 			repaint();
 		}
+	}
+	
+	private void addSteps(ArrayList<Step> stepList){
+		//TODO implement and make it add only one step, which would be the latest one in the list insrted into here
 	}
 	
 	private void setActiveStates(int i) {
@@ -632,6 +606,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	}
 	
 	private void unHighLightObject(int i) {
+		//iterates through step list...keep this
 		if(i>=0 && i<stepList.size()) {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
@@ -650,5 +625,11 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void setStart(boolean start) {
 		this.start = start;
+	}
+
+	@Override
+	public void viewSizeDidChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }
