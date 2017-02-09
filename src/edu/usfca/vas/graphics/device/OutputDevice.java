@@ -33,6 +33,10 @@ package edu.usfca.vas.graphics.device;
 
 import javax.swing.text.SimpleAttributeSet;
 
+/**
+ * Used to handle the console during runtime, showing each step.
+ */
+
 public interface OutputDevice {
     public void clear();
 

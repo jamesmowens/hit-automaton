@@ -33,6 +33,10 @@ package edu.usfca.vas.machine.fa;
 
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
+/**
+ * Deals with rectangles.
+ */
+
 public class FANonatomicState extends State implements XJXMLSerializable {
 	
 	public static FANonatomicState createNonatomicState(String name) {

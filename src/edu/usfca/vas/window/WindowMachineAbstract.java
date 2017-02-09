@@ -39,6 +39,10 @@ import edu.usfca.xj.appkit.gview.object.GElement;
 
 import javax.swing.*;
 
+/**
+ * Header file for WindowAbstract.
+ */
+
 public abstract class WindowMachineAbstract extends JPanel implements GViewDelegate {
 
     protected WindowAbstract window = null;

@@ -2,14 +2,17 @@
 package edu.usfca.vas.graphics.fa;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
+import edu.usfca.vas.layout.JSONReaders;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
+
+/**
+ * Sets up the stream side-panel, handles the stream.
+ */
 
 public class GElementFASidePanel extends JPanel {
 
@@ -32,6 +35,7 @@ public class GElementFASidePanel extends JPanel {
 		this.setPreferredSize(new Dimension(100, 500));
 		setVisible(true);
 		panel = new JPanel();
+		panel.setName("SidePanel");
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
@@ -161,7 +165,6 @@ public class GElementFASidePanel extends JPanel {
 		JLabel tf = new JLabel(flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
-		//this.add(p);
 		panel.add(p);
 		labels.add(tf);
 		panels.add(p);
@@ -216,7 +219,6 @@ public class GElementFASidePanel extends JPanel {
 				i = j;
 			j++;
 		}
-		
 		
 		//make sure there is something highlighted... 
 		if (i == -1 && labels.size() > 0){

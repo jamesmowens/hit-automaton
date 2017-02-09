@@ -39,6 +39,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Keeps track of all the states.
+ */
+
 public class FAStates implements XJXMLSerializable {
 
     protected List<State> states = new ArrayList<State>();

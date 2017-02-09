@@ -33,6 +33,10 @@ package edu.usfca.vas.machine.fa;
 
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
+/**
+ * Defines an accepting atomic state.
+ */
+
 public class FAEndatomicState extends State implements XJXMLSerializable {
 
 	public static FAEndatomicState createEndatomicState(String name) {
