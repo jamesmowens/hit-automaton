@@ -1,0 +1,26 @@
+{
+  "Context" : {
+    "graph1Title" : "High Demand Occurrences",
+    "graph1X" : "Hour",
+    "graph1Y" : "Number of High Demand Occurrences",
+    "graph2Title" : "Average Duration of High Demand",
+    "graph2X" : "Hour",
+    "graph2Y" : "Average duration of high demand"
+  },
+  "Drivers" : {
+    "graph1Title" : "Driver Stuff",
+    "graph1X" : "Hour",
+    "graph1Y" : "Number of High Demand Occurrences",
+    "graph2Title" : "More Driver Stuff",
+    "graph2X" : "Hour",
+    "graph2Y" : "Average duration of high demand"
+  },
+  "Riders" : {
+    "graph1Title" : "Rider Stuff",
+    "graph1X" : "Hour",
+    "graph1Y" : "Number of High Demand Occurrences",
+    "graph2Title" : "More Rider Stuff",
+    "graph2X" : "Hour",
+    "graph2Y" : "Average duration of high demand"
+  }
+}

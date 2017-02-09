@@ -1,49 +1,77 @@
 package edu.usfca.vas.analytics;
 
+import edu.usfca.vas.layout.JSONReader;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Collection;
+import java.awt.geom.Ellipse2D;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 /**
- * Created by thoma on 2/1/2017.
+ * Created by Thomas Schweich on 2/1/2017.
+ *
+ * Class representing the Analytics View
  */
 public class AnalyticsView {
     JPanel panel;
     JFreeChart chart1;
     JFreeChart chart2;
+    JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+
+    private static final float[] xSample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private static final float[] ySample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
     public AnalyticsView() {
-
+        ArrayList<Float> xVals = new ArrayList<Float>(), yVals = new ArrayList<Float>();
+        for(float f : xSample) xVals.add(f);
+        for(float f : ySample) yVals.add(f);
+        panel = new JPanel(new BorderLayout());
+        JSONReader jsonReader;
+        try {
+            jsonReader = new JSONReader("src/edu/usfca/vas/analytics/analyticsSettings.json");
+        } catch (FileNotFoundException f) {
+            System.err.println("Couldn't find analyticsSettings.json");
+            f.printStackTrace();
+            return;
+        }
+        panel.add(tabbedPane);
+        XYDataset set1 = createDataset("Test1", xVals, yVals);
+        XYDataset set2 = createDataset("Test2", xVals, yVals);
+        AnalyticsPanel
+                context = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Context")), set1, set2),
+                drivers = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Drivers")), set1, set2),
+                riders = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Riders")), set1, set2);
+        tabbedPane.add(context);
+        tabbedPane.add(drivers);
+        tabbedPane.add(riders);
+        //populate(xVals, yVals);
+        panel.setVisible(true);
     }
 
-    private void populate(Collection<Float> set1, Collection<Float> set2) {
-        GridLayout grid = new GridLayout(2, 0);
-        panel.setLayout(grid);
-        JPanel graphPanel = new JPanel();
-        panel.add(graphPanel, 0);
-        ChartPanel chartPanel1 = new ChartPanel(chart1);
-        ChartPanel chartPanel2 = new ChartPanel(chart2);
-        graphPanel.add(chartPanel1);
-        graphPanel.add(chartPanel2);
+    public JPanel getPanel() {
+        return panel;
     }
 
-    private void createGraphs(Collection<Float> set1, Collection<Float> set2) {
-        DefaultCategoryDataset d1 = new DefaultCategoryDataset();
-        CategoryDataset d2 = new DefaultCategoryDataset();
-        for(float d : set1) {
-            d1.addValue((Number) d, 0, 0);
+    private XYDataset createDataset(String name, Collection<Float> xData, Collection<Float> yData) {
+        Iterator<Float> xIter = xData.iterator(), yIter = yData.iterator();
+        XYSeries series = new XYSeries(name);
+        while(xIter.hasNext() && yIter.hasNext()) {
+            series.add(xIter.next(), yIter.next());
         }
-        for(float d : set2) {
-            d1.addValue((Number) d, 0, 0);
-        }
-        chart1 = ChartFactory.createLineChart("Chart 1", "x", "x", d1);
-        chart2 = ChartFactory.createLineChart("Chart 1", "x", "x", d2);
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+        return dataset;
     }
 
 }
