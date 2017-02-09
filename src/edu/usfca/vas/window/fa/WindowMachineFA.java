@@ -413,9 +413,9 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     	//side.setSize(new Dimension(250, 400)); // Why commented?
     	sidePanel=side;
     	//sidePanel.setLayout(new GridLayout(0,1));
-    	sidePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5)); // Align to RIGHT
+    	//sidePanel.setLayout(new BorderLayout()); // Align to RIGHT
     	//sidePanel.setLayout(new BorderLayout());
-		sidePanel.setPreferredSize(new Dimension(350, 335));
+		//sidePanel.setPreferredSize(new Dimension(350, 335));
     	setVisible(true);
     	getDataWrapperFA().getMachine().setSide(sidePanel);
     	return sidePanel;
