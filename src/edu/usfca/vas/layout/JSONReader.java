@@ -6,12 +6,10 @@ import jdk.nashorn.internal.parser.JSONParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
+import java.util.*;
 
 /**
- * Created by Thomas on 2/1/2017.
+ * Created by Thomas Schweich on 2/1/2017.
  *
  * Class for reading JSON files in "root_setting/sub_setting/sub_setting2/..." format
  */
@@ -70,6 +68,16 @@ public class JSONReader {
      */
     public JsonArray getJsonArrayValue(String location) {
         return readTerminalElement(location).getAsJsonArray();
+    }
+
+    /**
+     * Gets the value stored under location in the JSON file as a Map with Strings as keys and values.
+     * Underlying map is a HashMap.
+     * @param location Slash-separated path to the desired setting
+     * @return The desired setting as a Map
+     */
+    public Map<String, String> getAsSSMap(String location) {
+        return (new Gson()).fromJson(readTerminalElement(location), (new HashMap<String, String>()).getClass());
     }
 
     /**

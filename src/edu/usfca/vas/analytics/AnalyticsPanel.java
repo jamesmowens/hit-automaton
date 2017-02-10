@@ -1,23 +1,11 @@
 package edu.usfca.vas.analytics;
 
 import edu.usfca.vas.layout.JSONReader;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.block.BlockBorder;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by Thomas Schweich on 2/8/2017.

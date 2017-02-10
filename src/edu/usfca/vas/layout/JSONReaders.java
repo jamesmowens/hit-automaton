@@ -3,7 +3,7 @@ package edu.usfca.vas.layout;
 import java.io.FileNotFoundException;
 
 /**
- * Created by Thomas on 1/6/2017.
+ * Created by Thomas Schweich on 1/6/2017.
  *
  * Enum for accessing settings stored as Strings in JSON format
  */

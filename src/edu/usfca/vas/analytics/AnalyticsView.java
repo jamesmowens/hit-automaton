@@ -1,22 +1,16 @@
 package edu.usfca.vas.analytics;
 
 import edu.usfca.vas.layout.JSONReader;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.block.BlockBorder;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * Created by Thomas Schweich on 2/1/2017.
@@ -25,8 +19,6 @@ import java.util.*;
  */
 public class AnalyticsView {
     JPanel panel;
-    JFreeChart chart1;
-    JFreeChart chart2;
     JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 
     private static final float[] xSample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -55,7 +47,6 @@ public class AnalyticsView {
         tabbedPane.add(context);
         tabbedPane.add(drivers);
         tabbedPane.add(riders);
-        //populate(xVals, yVals);
         panel.setVisible(true);
     }
 

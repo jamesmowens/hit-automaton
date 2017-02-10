@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d21224d-f20d-4fff-9322-777f691a3786" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/SideBar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/synth.dtd" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/ICard.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" />
     </list>
     <ignored path="hit-automaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,23 +43,19 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+            <state relative-caret-position="288">
+              <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnalyticsView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java">
+      <file leaf-file-name="GElementFASidePanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFASidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1098#1105#0" expanded="true" />
-                <element signature="e#1130#1137#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="842">
+              <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,46 +63,33 @@
       <file leaf-file-name="analyticsSettings.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+            <state relative-caret-position="410">
+              <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopBar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java">
+      <file leaf-file-name="AnalyticsView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="943">
+              <caret line="48" column="31" lean-forward="false" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#255#256#0" expanded="true" />
-                <element signature="e#293#294#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JSONReaders.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java">
+      <file leaf-file-name="GraphSettings.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+            <state relative-caret-position="779">
+              <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
               <folding>
-                <element signature="e#738#739#0" expanded="true" />
-                <element signature="e#767#768#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PiePanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -118,55 +97,49 @@
       <file leaf-file-name="AnalyticsPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="937">
-              <caret line="47" column="22" lean-forward="false" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlotPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="27" column="78" lean-forward="false" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+            <state relative-caret-position="604">
+              <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JSONReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java">
+      <file leaf-file-name="LeftSideBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-              <folding>
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1008#1009#0" expanded="true" />
-                <element signature="e#1316#1317#0" expanded="true" />
-                <element signature="e#1587#1588#0" expanded="true" />
-                <element signature="e#1653#1654#0" expanded="true" />
-                <element signature="e#1930#1931#0" expanded="true" />
-                <element signature="e#1996#1997#0" expanded="true" />
-                <element signature="e#2282#2283#0" expanded="true" />
-                <element signature="e#2351#2352#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="820">
+              <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SideBar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/SideBar.java">
+      <file leaf-file-name="PlotPanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1763">
-              <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#297#298#0" expanded="true" />
-                <element signature="e#326#327#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="188">
+              <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="820">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WindowMachineFA.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -240,36 +213,37 @@
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/CustomColor.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/customColors.json" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/colors.json" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/ICard.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/xj/appkit/gview/GView.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowFA.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/theme.xml" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/app/Document.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/VisualAutomataSimulator.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/sidebar.json" />
         <option value="$PROJECT_DIR$/hit-automaton.eml" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/window/WindowAbstract.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/SettingsAccessor.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/Settings.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/settings.json" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFASidePanel.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFANickName.java" />
         <option value="$PROJECT_DIR$/.classpath" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/sampleData.json" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/synth.dtd" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/SideBar.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/settings.json" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/ICard.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" />
       </list>
     </option>
   </component>
@@ -277,10 +251,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4109" />
+    <option name="x" value="-13" />
     <option name="y" value="-13" />
-    <option name="width" value="4122" />
-    <option name="height" value="2250" />
+    <option name="width" value="3026" />
+    <option name="height" value="1946" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -298,6 +272,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -429,7 +404,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -477,15 +451,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/HIT/CHAOSConnection.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/HIT/ServerLauncher.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFAMachine.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFANickName.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFASidePanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFAState.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/xj/appkit/gview/GView.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/xj/appkit/gview/object/GElement.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -493,16 +460,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.variables.txt.un~</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/HIT/EventParser.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/hit_test_1_id863016215.log</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/ComboBoxModelImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/query/Evaluator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/query/Query.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/query/QueryImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/query/QueryParameterDatabase.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/querybids/QueryParameterDatabaseImplBids.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/variables.txt</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -510,225 +467,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/AggQueryInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/Configure.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/EventTypeInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/EventTypeMapping.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/GenerateStream.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/MixCounter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/MixCounterList.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/MixCounterListMgr.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/MultiQAggCCOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/NaiveMultiQAggOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/PSNaiveMultiQAggOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/PredicatesCost.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/PrefixCounter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/PrefixCounterList.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/PrefixCounterListMgr.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/QueryPrefixInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/SeqMetaData.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/SingleQAggOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/SnapShot.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/SnapShotMap.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/SubsequenceInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/Utility.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Aggregation/XMLVarParser.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/GenerateStream.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/Greedy.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/ICDE.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/Lazy.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/SingleQAnormalDetectionGreedyOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/SingleQAnormalDetectionLazyOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/SingleQAnormalDetectionOriginalOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/Slide.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/Tuple.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/WindowSlideNotOverlapException.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/XMLVarParser.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/AnormalDetection/test.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/ACKCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/CmdMsg.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/CmdReceiver.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/ExecuteCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/ExitCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/InfoCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/PingCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/RemoveCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/StopCmd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/CommandProcess/Utility.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Component/CCHAOS.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Component/Constant.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Component/DCHAOS.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Component/DStreamGenerator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube.rar</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Bottomup_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/CompareEvent.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/ConceptBound.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/ConceptLevel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/ConceptNode.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/ConceptTree.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Configure.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/CostModel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Driver.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/EdgeLabel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/EventActiveInstanceQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/HierarchicalQueryPlan.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/MergedQueryInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Naive_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/PreviousCompositeTuples.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/PreviousTuples.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/QueryCompiler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/QueryInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/ResultCounter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/SimpleWin_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Statistics.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Trigger.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/Utility.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Executor/Executor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Executor/StreamEngineExecutor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Executor/StreamGeneratorExecutor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Executor/StreamStatisticExecutor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Executor/Test2.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Executor/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/BoolAssign.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/DoubleAssign.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/DoubleTerminal.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/Str20CompExp.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/Str20Constant.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/Str20Terminal.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Expression/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/HIT/Output.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/MST/AdjacencyList.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/MST/Edge.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/MST/Edmonds.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/MST/Node.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/MST/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/Constant.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/NetworkOutputQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/NetworkOutputQueueSocketChannelImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/NetworkOutputQueueSocketChannelImplLog.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/NetworkOutputQueueSocketImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/NetworkTupleReceiverSocketChannelImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/NetworkTupleReceiverSocketImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Network/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/QueryPlan/PlanDAG.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/QueryPlan/PlanNode.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/QueryPlan/RunTimeBlock.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/QueryPlan/RunTimeEnvironment.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/QueryPlan/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/LogQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderEventPointerQueueArrayImp.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderEventQueueArrayImp.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderLogQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderLogQueueSyn.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueArrayImp.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueArrayImpGeneric.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueArrayImpGenericSyn.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueArrayImpSyn.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueGeneric.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueGenericSyn.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderQueueSyn.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/SingleReaderTupleKeyQueueArrayImp.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/StreamQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/StreamQueueGeneric.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Queue/Utility.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ANDoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/CacheInterval.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/CacheResults.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/CachingNestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/CompareEvent.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ConceptBound.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ConceptLevel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ConceptNode.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ConceptTree.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Configure.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/CopyOfNaive_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/CostModel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Driver.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/EdgeLabel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/EventActiveInstanceQueue.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Flatten_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/HierarchicalQueryPlan.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/HybridCachingNestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Naive_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Naive_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/NegativeCache.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/NegativeCaching_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/NegativeCachingv2_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/NegativeCachingv3_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/NegativeCachingv4_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/PredicateCachingNestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/PreviousCompositeTuples.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/PreviousTuples.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/QueryCompiler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/QueryInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/QueryPlan.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ResultCounter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/ResultRVI.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/SEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/SemanticCache.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/SemanticCaching_NestMegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/SeqAndNestedOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/SeqAndNestedOperatorNOTINUSE.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Shared_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Statistics.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Super_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Top_down_MegaSEQoperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Trigger.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/Utility.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/cachingNestSEQ.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/childQueryInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/parentQueryInfo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Rewriting/test.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Scheduler/DummyRoundRobinScheduler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Scheduler/RoundRobinScheduler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Scheduler/Scheduler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Scheduler/StreamGeneratorSchedulerBatch.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Scheduler/StreamGeneratorSchedulerRealTimeClock.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/CountHashState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/CountNLState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/HashState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/NLState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/StreamState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/WindowHashState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/State/WindowNLState.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Statistics/ElapseTime.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Statistics/Selectivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/Statistics/StatisticElement.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/Constant.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/DoubleSchemaElement.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/IntSchemaElement.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/SchemaElement.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/SchemaMap.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/Str20SchemaElement.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/StreamAccessor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/StreamBufferManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/StreamTupleCreator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamData/Utility.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/MultiInputStreamOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/SingleInputStreamOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamBinaryWindowJoinHash.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamBinaryWindowJoinNL.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamMovingAVGOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamProjectOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamSelectOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamSinkOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamSinkOperatorDemo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamSinkOperatorDiscard.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/StreamSourceOperator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamOperator/Tester.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamWrapper/DefaultFormat.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamWrapper/InputStreamWrapper.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/StreamWrapper/TestFormat.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/queryplangenerator/IdExpressionPair.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/queryplangenerator/QueryPlanGenerator.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -1236,7 +974,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486344468009</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Rudimentary Analytics View Added&#10;&#10;Also:&#10;&#10;- Analytics branch created&#10;- Significant changes to JSONReader&#10;- Restructuring of LeftSideBar to inherit from a new SideBar class&#10;- Addition __but not use__ of a View interface. This will be used in the future.">
+      <created>1486618526788</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1486618526788</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1254,26 +999,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4109" y="-13" width="4122" height="2250" extended-state="6" />
+    <frame x="-13" y="-13" width="3026" height="1946" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28681254" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23809524" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23772915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2631579" sideWeight="0.5364011" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22305764" sideWeight="0.4635989" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.427998" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.222945" sideWeight="0.4635989" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22885866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34890598" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18712574" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978094" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18990384" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939088" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1339,7 +1084,8 @@
     <MESSAGE value="Changes to formatting and future-proofing sizing in LeftSideBar." />
     <MESSAGE value="Settings are far more versatile now. Began on analytics view." />
     <MESSAGE value="Up to date JSONReader class and addition of JFreeChart library." />
-    <option name="LAST_COMMIT_MESSAGE" value="Up to date JSONReader class and addition of JFreeChart library." />
+    <MESSAGE value="Rudimentary Analytics View Added&#10;&#10;Also:&#10;&#10;- Analytics branch created&#10;- Significant changes to JSONReader&#10;- Restructuring of LeftSideBar to inherit from a new SideBar class&#10;- Addition __but not use__ of a View interface. This will be used in the future." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rudimentary Analytics View Added&#10;&#10;Also:&#10;&#10;- Analytics branch created&#10;- Significant changes to JSONReader&#10;- Restructuring of LeftSideBar to inherit from a new SideBar class&#10;- Addition __but not use__ of a View interface. This will be used in the future." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1352,20 +1098,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/xj/appkit/XJControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/xj/foundation/XJObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/xj/appkit/frame/XJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -1477,13 +1209,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/colors.json" />
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFASidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="37" column="35" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFANickName.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1599">
@@ -1496,25 +1221,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
           <caret line="10" column="59" lean-forward="false" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/settings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/MegaSEQoperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="98" column="12" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CHAOS/com/hp/hpl/CHAOS/ECube/MegaSEQoperator.java" />
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowFA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -1531,14 +1241,6 @@
             <element signature="e#10902#10903#0" expanded="false" />
             <element signature="e#10998#10999#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14432">
-          <caret line="388" column="64" lean-forward="false" selection-start-line="388" selection-start-column="64" selection-end-line="388" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1581,7 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
           <caret line="265" column="16" lean-forward="false" selection-start-line="265" selection-start-column="16" selection-end-line="265" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1596,10 +1297,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/sampleData.json">
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/sampleData.json" />
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/synth.dtd" />
+    <entry file="file://$PROJECT_DIR$/allSwingUsages.txt" />
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/settings.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state relative-caret-position="451">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#255#256#0" expanded="false" />
+            <element signature="e#293#294#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2508">
+          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+          <folding>
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1262#1263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/SideBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1681">
+          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1612,121 +1363,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/synth.dtd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+        <state relative-caret-position="820">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        <state relative-caret-position="288">
+          <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFASidePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-          <folding>
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/SideBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1763">
-          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1316#1317#0" expanded="true" />
-            <element signature="e#1587#1588#0" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1996#1997#0" expanded="true" />
-            <element signature="e#2282#2283#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="27" column="78" lean-forward="false" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+        <state relative-caret-position="842">
+          <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="697">
+          <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        <state relative-caret-position="410">
+          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="937">
-          <caret line="47" column="22" lean-forward="false" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+        <state relative-caret-position="779">
+          <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1735,13 +1423,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        <state relative-caret-position="943">
+          <caret line="48" column="31" lean-forward="false" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1098#1105#0" expanded="true" />
-            <element signature="e#1130#1137#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
