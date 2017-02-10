@@ -1,26 +1,42 @@
 {
+  "_comment" : "Possible graph settings: title, xLabel, yLabel, background, lineColor, shape, shapeSize, gridColor",
   "Context" : {
-    "graph1Title" : "High Demand Occurrences",
-    "graph1X" : "Hour",
-    "graph1Y" : "Number of High Demand Occurrences",
-    "graph2Title" : "Average Duration of High Demand",
-    "graph2X" : "Hour",
-    "graph2Y" : "Average duration of high demand"
+    "graph1" : {
+      "title" : "High Demand Occurrences",
+      "xLabel" : "Hour",
+      "yLabel" : "Number of High Demand Occurrences",
+      "lineColor" : "#478DFF"
+    },
+    "graph2" : {
+      "title" : "Average Duration of High Demand",
+      "xLabel" : "Hour",
+      "yLabel" : "Duration",
+      "lineColor" : "#2CBA41"
+    }
   },
   "Drivers" : {
-    "graph1Title" : "Driver Stuff",
-    "graph1X" : "Hour",
-    "graph1Y" : "Number of High Demand Occurrences",
-    "graph2Title" : "More Driver Stuff",
-    "graph2X" : "Hour",
-    "graph2Y" : "Average duration of high demand"
+    "graph1" : {
+      "title" : "Driver Stuff",
+      "xLabel" : "",
+      "yLabel" : "",
+      "shape" : "square"
+    },
+    "graph2" : {
+      "title" : "More Driver Stuff",
+      "xLabel" : "",
+      "yLabel" : ""
+    }
   },
   "Riders" : {
-    "graph1Title" : "Rider Stuff",
-    "graph1X" : "Hour",
-    "graph1Y" : "Number of High Demand Occurrences",
-    "graph2Title" : "More Rider Stuff",
-    "graph2X" : "Hour",
-    "graph2Y" : "Average duration of high demand"
+    "graph1" : {
+      "title" : "Rider Stuff",
+      "xLabel" : "",
+      "yLabel" : ""
+    },
+    "graph2" : {
+      "title" : "More Rider Stuff",
+      "xLabel" : "",
+      "yLabel" : ""
+    }
   }
 }

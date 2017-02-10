@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d21224d-f20d-4fff-9322-777f691a3786" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/ICard.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hit-automaton.eml" afterPath="$PROJECT_DIR$/hit-automaton.eml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json" afterPath="$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json" />
     </list>
     <ignored path="hit-automaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,22 +36,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GElementFASidePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/graphics/fa/GElementFASidePanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="842">
               <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#508#516#0" expanded="false" />
+                <element signature="e#561#569#0" expanded="false" />
+                <element signature="e#615#623#0" expanded="false" />
+                <element signature="e#679#686#0" expanded="false" />
+                <element signature="e#740#750#0" expanded="false" />
+                <element signature="e#805#815#0" expanded="false" />
+                <element signature="e#3556#3557#0" expanded="false" />
+                <element signature="e#3577#3578#0" expanded="false" />
+                <element signature="e#7303#7304#0" expanded="false" />
+                <element signature="e#7329#7330#0" expanded="false" />
+                <element signature="e#7419#7427#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,7 +63,29 @@
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
-              <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TopBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="492">
+              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PiePanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -73,8 +94,8 @@
       <file leaf-file-name="AnalyticsView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="943">
-              <caret line="48" column="31" lean-forward="false" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+            <state relative-caret-position="1558">
+              <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,13 +103,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphSettings.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GraphSettings.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+            <state relative-caret-position="451">
+              <caret line="11" column="112" lean-forward="false" selection-start-line="11" selection-start-column="112" selection-end-line="11" selection-end-column="112" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1644#1645#0" expanded="true" />
+                <element signature="e#1672#1673#0" expanded="true" />
+                <element signature="e#1705#1706#0" expanded="true" />
+                <element signature="e#1734#1735#0" expanded="true" />
+                <element signature="e#1767#1768#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
+                <element signature="e#3340#3341#0" expanded="true" />
+                <element signature="e#3374#3375#0" expanded="true" />
+                <element signature="e#3418#3419#0" expanded="true" />
+                <element signature="e#3454#3455#0" expanded="true" />
+                <element signature="e#3498#3499#0" expanded="true" />
+                <element signature="e#3534#3535#0" expanded="true" />
+                <element signature="e#3586#3587#0" expanded="true" />
+                <element signature="e#3630#3631#0" expanded="true" />
+                <element signature="e#3680#3681#0" expanded="true" />
+                <element signature="e#3722#3723#0" expanded="true" />
+                <element signature="e#3764#3765#0" expanded="true" />
+                <element signature="e#3798#3799#0" expanded="true" />
+                <element signature="e#3848#3849#0" expanded="true" />
+                <element signature="e#3890#3891#0" expanded="true" />
+                <element signature="e#3940#3941#0" expanded="true" />
+                <element signature="e#3982#3983#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,8 +140,8 @@
       <file leaf-file-name="AnalyticsPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+            <state relative-caret-position="369">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -109,26 +152,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="820">
               <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlotPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlotPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="820">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="369">
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -139,7 +174,48 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="697">
               <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
-              <folding />
+              <folding>
+                <element signature="e#0#19513#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#3259#3269#0" expanded="false" />
+                <element signature="e#3883#3884#0" expanded="false" />
+                <element signature="e#3918#3919#0" expanded="false" />
+                <element signature="e#5104#5105#0" expanded="false" />
+                <element signature="e#5148#5149#0" expanded="false" />
+                <element signature="e#5195#5196#0" expanded="false" />
+                <element signature="e#5249#5250#0" expanded="false" />
+                <element signature="e#5298#5299#0" expanded="false" />
+                <element signature="e#5354#5355#0" expanded="false" />
+                <element signature="e#6148#6504#0" expanded="false" />
+                <element signature="e#6503#6504#0" expanded="false" />
+                <element signature="e#6674#7570#0" expanded="false" />
+                <element signature="e#6975#6983#0" expanded="false" />
+                <element signature="e#7569#7570#0" expanded="false" />
+                <element signature="e#7749#8125#0" expanded="false" />
+                <element signature="e#8124#8125#0" expanded="false" />
+                <element signature="e#8232#9976#0" expanded="false" />
+                <element signature="e#9425#9536#0" expanded="false" />
+                <element signature="e#9535#9536#0" expanded="false" />
+                <element signature="e#9975#9976#0" expanded="false" />
+                <element signature="e#14150#14341#0" expanded="false" />
+                <element signature="e#14340#14341#0" expanded="false" />
+                <element signature="e#14388#14389#0" expanded="false" />
+                <element signature="e#14415#14416#0" expanded="false" />
+                <element signature="e#14703#14704#0" expanded="false" />
+                <element signature="e#14745#14746#0" expanded="false" />
+                <element signature="e#15484#15485#0" expanded="false" />
+                <element signature="e#15532#15533#0" expanded="false" />
+                <element signature="e#15600#15601#0" expanded="false" />
+                <element signature="e#15671#15672#0" expanded="false" />
+                <element signature="e#16671#16672#0" expanded="false" />
+                <element signature="e#16735#16736#0" expanded="false" />
+                <element signature="e#17123#17124#0" expanded="false" />
+                <element signature="e#17177#17178#0" expanded="false" />
+                <element signature="e#19424#19425#0" expanded="false" />
+                <element signature="e#19443#19444#0" expanded="false" />
+                <element signature="e#19483#19484#0" expanded="false" />
+                <element signature="e#19508#19509#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -232,18 +308,18 @@
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/LeftSideBar.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/SideBar.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/settings.json" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReaders.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/View.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/ICard.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/window/fa/WindowMachineFA.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/layout/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java" />
         <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json" />
+        <option value="$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java" />
       </list>
     </option>
   </component>
@@ -981,7 +1057,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486618526788</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fixed resize issue with MainWindow.&#10;&#10;Also in process of making graphs more customizable.">
+      <created>1486701519219</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1486701519219</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1085,7 +1168,8 @@
     <MESSAGE value="Settings are far more versatile now. Began on analytics view." />
     <MESSAGE value="Up to date JSONReader class and addition of JFreeChart library." />
     <MESSAGE value="Rudimentary Analytics View Added&#10;&#10;Also:&#10;&#10;- Analytics branch created&#10;- Significant changes to JSONReader&#10;- Restructuring of LeftSideBar to inherit from a new SideBar class&#10;- Addition __but not use__ of a View interface. This will be used in the future." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rudimentary Analytics View Added&#10;&#10;Also:&#10;&#10;- Analytics branch created&#10;- Significant changes to JSONReader&#10;- Restructuring of LeftSideBar to inherit from a new SideBar class&#10;- Addition __but not use__ of a View interface. This will be used in the future." />
+    <MESSAGE value="Fixed resize issue with MainWindow.&#10;&#10;Also in process of making graphs more customizable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed resize issue with MainWindow.&#10;&#10;Also in process of making graphs more customizable." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1308,33 +1392,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#255#256#0" expanded="false" />
-            <element signature="e#293#294#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/layout/JSONReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2508">
           <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
           <folding>
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1262#1263#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="false" />
+            <element signature="e#1262#1263#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1383,7 +1447,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="842">
           <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#508#516#0" expanded="false" />
+            <element signature="e#561#569#0" expanded="false" />
+            <element signature="e#615#623#0" expanded="false" />
+            <element signature="e#679#686#0" expanded="false" />
+            <element signature="e#740#750#0" expanded="false" />
+            <element signature="e#805#815#0" expanded="false" />
+            <element signature="e#3556#3557#0" expanded="false" />
+            <element signature="e#3577#3578#0" expanded="false" />
+            <element signature="e#7303#7304#0" expanded="false" />
+            <element signature="e#7329#7330#0" expanded="false" />
+            <element signature="e#7419#7427#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1391,7 +1468,48 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="e#0#19513#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3259#3269#0" expanded="false" />
+            <element signature="e#3883#3884#0" expanded="false" />
+            <element signature="e#3918#3919#0" expanded="false" />
+            <element signature="e#5104#5105#0" expanded="false" />
+            <element signature="e#5148#5149#0" expanded="false" />
+            <element signature="e#5195#5196#0" expanded="false" />
+            <element signature="e#5249#5250#0" expanded="false" />
+            <element signature="e#5298#5299#0" expanded="false" />
+            <element signature="e#5354#5355#0" expanded="false" />
+            <element signature="e#6148#6504#0" expanded="false" />
+            <element signature="e#6503#6504#0" expanded="false" />
+            <element signature="e#6674#7570#0" expanded="false" />
+            <element signature="e#6975#6983#0" expanded="false" />
+            <element signature="e#7569#7570#0" expanded="false" />
+            <element signature="e#7749#8125#0" expanded="false" />
+            <element signature="e#8124#8125#0" expanded="false" />
+            <element signature="e#8232#9976#0" expanded="false" />
+            <element signature="e#9425#9536#0" expanded="false" />
+            <element signature="e#9535#9536#0" expanded="false" />
+            <element signature="e#9975#9976#0" expanded="false" />
+            <element signature="e#14150#14341#0" expanded="false" />
+            <element signature="e#14340#14341#0" expanded="false" />
+            <element signature="e#14388#14389#0" expanded="false" />
+            <element signature="e#14415#14416#0" expanded="false" />
+            <element signature="e#14703#14704#0" expanded="false" />
+            <element signature="e#14745#14746#0" expanded="false" />
+            <element signature="e#15484#15485#0" expanded="false" />
+            <element signature="e#15532#15533#0" expanded="false" />
+            <element signature="e#15600#15601#0" expanded="false" />
+            <element signature="e#15671#15672#0" expanded="false" />
+            <element signature="e#16671#16672#0" expanded="false" />
+            <element signature="e#16735#16736#0" expanded="false" />
+            <element signature="e#17123#17124#0" expanded="false" />
+            <element signature="e#17177#17178#0" expanded="false" />
+            <element signature="e#19424#19425#0" expanded="false" />
+            <element signature="e#19443#19444#0" expanded="false" />
+            <element signature="e#19483#19484#0" expanded="false" />
+            <element signature="e#19508#19509#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1399,51 +1517,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
           <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/TopBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PiePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1558">
+          <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/analyticsSettings.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
-          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="943">
-          <caret line="48" column="31" lean-forward="false" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/AnalyticsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/PlotPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+        <state relative-caret-position="369">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/usfca/vas/analytics/GraphSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="11" column="112" lean-forward="false" selection-start-line="11" selection-start-column="112" selection-end-line="11" selection-end-column="112" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1644#1645#0" expanded="true" />
+            <element signature="e#1672#1673#0" expanded="true" />
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#1767#1768#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#3340#3341#0" expanded="true" />
+            <element signature="e#3374#3375#0" expanded="true" />
+            <element signature="e#3418#3419#0" expanded="true" />
+            <element signature="e#3454#3455#0" expanded="true" />
+            <element signature="e#3498#3499#0" expanded="true" />
+            <element signature="e#3534#3535#0" expanded="true" />
+            <element signature="e#3586#3587#0" expanded="true" />
+            <element signature="e#3630#3631#0" expanded="true" />
+            <element signature="e#3680#3681#0" expanded="true" />
+            <element signature="e#3722#3723#0" expanded="true" />
+            <element signature="e#3764#3765#0" expanded="true" />
+            <element signature="e#3798#3799#0" expanded="true" />
+            <element signature="e#3848#3849#0" expanded="true" />
+            <element signature="e#3890#3891#0" expanded="true" />
+            <element signature="e#3940#3941#0" expanded="true" />
+            <element signature="e#3982#3983#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1504,6 +1664,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

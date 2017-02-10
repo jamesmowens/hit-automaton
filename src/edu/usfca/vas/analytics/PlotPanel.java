@@ -21,26 +21,23 @@ import java.util.Collection;
  */
 public class PlotPanel extends JPanel {
 
-    public PlotPanel(String graph1Title, String graph2Title, String graph1X, String graph2X, String graph1Y,
-                     String graph2Y, XYDataset dat1, XYDataset dat2) {
+    public PlotPanel(XYDataset dat1, XYDataset dat2, GraphSettings settings1, GraphSettings settings2) {
         super(new GridLayout(1, 2));
-        add(new ChartPanel(createChart(dat1, graph1Title, graph1X, graph1Y)));
-        add(new ChartPanel(createChart(dat2, graph2Title, graph2X, graph2Y)));
+        add(new ChartPanel(createChart(dat1, settings1)));
+        add(new ChartPanel(createChart(dat2, settings2)));
     }
 
     /**
      * Creates a line chart with the given labels and data
      * @param dataset The data to plot
-     * @param title The title of the graph
-     * @param xLabel The x-label of the graph
-     * @param yLabel The y-label of the graph
-     * @return JFreeChart with given specifications
+     * @param settings the GraphSettings associated with the plot
+     * @return A JFreeChart with given specifications
      */
-    private JFreeChart createChart(XYDataset dataset, String title, String xLabel, String yLabel) {
+    private JFreeChart createChart(XYDataset dataset, GraphSettings settings) {
         JFreeChart chart = ChartFactory.createXYLineChart(
-                title,
-                xLabel,
-                yLabel,
+                settings.getTitle(),
+                settings.getxLabel(),
+                settings.getyLabel(),
                 dataset,
                 PlotOrientation.VERTICAL,
                 true,
@@ -51,20 +48,18 @@ public class PlotPanel extends JPanel {
         XYPlot plot = chart.getXYPlot();
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesPaint(0, Color.BLUE);
+        renderer.setSeriesPaint(0, settings.getLineColor());
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
-        float radius = 5;
-        Shape circle = new Ellipse2D.Float(-radius, -radius, radius*2, radius*2);
-        renderer.setSeriesShape(0, circle);
+        renderer.setSeriesShape(0, settings.getShape());
 
         plot.setRenderer(renderer);
-        plot.setBackgroundPaint(Color.white);
+        plot.setBackgroundPaint(settings.getBackground());
 
         plot.setRangeGridlinesVisible(true);
-        plot.setRangeGridlinePaint(Color.BLACK);
+        plot.setRangeGridlinePaint(settings.getGridColor());
 
         plot.setDomainGridlinesVisible(true);
-        plot.setDomainGridlinePaint(Color.BLACK);
+        plot.setDomainGridlinePaint(settings.getGridColor());
 
         chart.getLegend().setFrame(BlockBorder.NONE);
         return chart;
