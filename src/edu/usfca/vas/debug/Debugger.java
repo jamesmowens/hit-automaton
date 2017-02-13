@@ -36,6 +36,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+ * Saves each run step in an array.
+ */
 
 public class Debugger {
 

@@ -1,5 +1,9 @@
 package connection;
 
+/**
+ * Data structure class for each step to be highlighted.
+ */
+
 public class Step {
 	final String source;
 	final String target;

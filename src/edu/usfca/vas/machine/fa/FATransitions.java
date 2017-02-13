@@ -37,6 +37,10 @@ import edu.usfca.xj.foundation.XJXMLSerializable;
 
 import java.util.*;
 
+/**
+ * Keeps track of all the transitions.
+ */
+
 public class FATransitions implements XJXMLSerializable {
 
     protected List<FATransition> transitions = new ArrayList<FATransition>();
