@@ -83,8 +83,12 @@ import java.util.LinkedList;
  */
 
 public class WindowMachineFA extends WindowMachineAbstract implements ICard {
+import Query.*;
 
-    protected WindowMachineFASettings settings = null;
+public class WindowMachineFA extends WindowMachineAbstract {
+
+
+	protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
 
     protected JTextField alphabetTextField;
@@ -93,7 +97,10 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     protected JPanel mainPanel;
 
     //Use this!!
+
+    //Bottom Panel
     protected GElementFANickName namingPanel;
+    //Side panel
     protected GElementFASidePanel sidePanel;
     protected JSplitPane mainPanelSplit;
     protected JScrollPane mainPanelScrollPane;
@@ -105,11 +112,15 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 
     protected WindowMachineFAOverlay overlay;
     protected boolean overlayVisible;
+    protected GElement currentState = null;
     
+    //This is the stepList that is set by the XML parser
     protected ArrayList<Step> stepList;
     JButton startButton;
     protected String currentDocPath;
     protected ArrayList<String> activeStates;
+    
+    protected ArrayList<DataNode> dataList;
     
     Object playingFlagLock = new Object();
 	boolean playingFlag = false;
@@ -125,7 +136,7 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     public void setMachine(GElementFAMachine machine){
     	this.machine = machine;
     }
-
+    
     public void init() {
         setGraphicPanel(new GViewFAMachine(parent,null));
         getFAGraphicPanel().setDelegate(this);
@@ -181,18 +192,26 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         //panel.setBackground(Color.decode("#EBCF31"));
         panel.setMaximumSize(new Dimension(99999, 30));
         
+
+        /*
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
         next.setName("NextButton");
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	stopPlaying();
+            public void actionPerformed(ActionEvent e) {            	
+            	stopPlaying();
+
+            	//In this, we will put the methods to overwrite the steplist, and use the current "data piece" from side panel
+            	
             	unHighLightObject(sidePanel.getCurrent());
             	sidePanel.setCurrent(sidePanel.getCurrent()+1);
             	highLightObject(sidePanel.getCurrent());
             	setActiveStates(sidePanel.getCurrent());
             }
-        });
+
+        });*/
         
         //Load Button
         JButton load = new JButton(Localized.getString("faWMLoad"));
@@ -233,6 +252,7 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         
         
         //Back Button
+        /*
         JButton back = new JButton(Localized.getString("faWMBack"));
         back.setName("BackButton");
         back.addActionListener(new ActionListener() {
@@ -245,18 +265,18 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
             	highLightObject(sidePanel.getCurrent());
     			setActiveStates(sidePanel.getCurrent());
             }
-          
-        });
-        //Play Button
+        });*/
+
         startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
         	
         	public void actionPerformed(ActionEvent e) {
         		if(WindowMachineFA.this.isStart()) {
         			
+        			
         			String data = new String("<data>\n");
 
-        			data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
+        			//data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
         			
         			String systemXMLfile = getWindow().getDocument().getDocumentPath();
         	        systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
@@ -267,9 +287,14 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         	        
         	        if(!Connection.sendData(data)) return;
         	        
-        	        stepList = XMLParser.getListHighlightObjects();
-        	        activeStates = XMLParser.getActiveStates();
+        	        //This means that the step list only gets the first one, so after that the steps are recursive
+        	        stepList.add(XMLParser.getListHighlightObjects().get(0));
+        	        dataList = XMLParser.getListDataNodes();
+        	        //activeStates = XMLParser.getActiveStates();
 
+        	        //What step do we need to initialize this
+        	        //stepList.add(null);
+        	        //Guts sets the red highlighting in the side panel to the first
         			sidePanel.setCurrent(0);
         			highLightObject(0);
         			setActiveStates(0);
@@ -289,11 +314,15 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         		else {
         			
         			stopPlaying();
-        			
+
+					/**
+					 * Replace this logic (go form previous state to next)
+					 * With new logic (Run queries on current state, and if a query that wants to change a state happens, we go to the next state)
+					 */
         			unHighLightObject(sidePanel.getCurrent());
         			sidePanel.unHighlight();
         			stepList = new ArrayList<Step>();
-        			namingPanel.setActiveStates("");
+        			//namingPanel.setActiveStates("");
 
         			WindowMachineFA.this.setStart(true);
         			WindowMachineFA.this.startButton.setLabel("Start");
@@ -302,9 +331,11 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         });
 
         panel.add(load);
-        panel.add(back);
+        //panel.add(back);
         panel.add(startButton);
-        panel.add(next);
+
+        //panel.add(next);
+
         return panel;
     }
 
@@ -316,6 +347,7 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     	do
     	{
     		try {
+    			//This is what dictates the speed at which the switching occurs
 				Thread.sleep(timeBetweenStep);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -328,17 +360,24 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     			}
 			}
     		
+    		//This goes in order of the indexes of the current line in the flows of the side panel.
+    		//runQueriesOnCurrentStates();
         	unHighLightObject(sidePanel.getCurrent());
         	sidePanel.setCurrent(sidePanel.getCurrent()+1);
         	highLightObject(sidePanel.getCurrent());
         	setActiveStates(sidePanel.getCurrent());    	
         	System.out.println("WindowMachineFA startPlaying()");
     	}
+    	
     	while(sidePanel.getCurrent()!=stepList.size()-1);
     	
     	stopPlaying();
 	}
 
+    private void runQueriesOnCurrentStates(){
+    	//TODO implement
+    }
+    
 	private void stopPlaying() {
 		synchronized (playingFlagLock) {
 			playingFlag = false;
@@ -505,10 +544,6 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     public void rebuild() {
         super.rebuild();
         getFAGraphicPanel().setMachine(getDataWrapperFA().getGraphicMachine());
-        //Not Needed Anymore
-        //typeComboBox.setSelectedIndex(getDataWrapperFA().getMachineType());
-        //alphabetTextField.setText(getDataWrapperFA().getSymbolsString());
-        //stringTextField.setText(getDataWrapperFA().getString());
     }
 
     public void setTitle(String title) {
@@ -543,17 +578,14 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
         overlay.setString(original, original.length()-remaining.length());
     }
 
-    public void viewSizeDidChange() {
-        // do nothing
-    }
-
 
 	private void highLightObject(int i) {
-		if(i>=0 && i<stepList.size()) {
+		if(i>=0 && i < stepList.size()) {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
 				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);	
 				System.out.println("WindowMachineFA highlightObject label true"); //highlighting transition arrow
+
 			}
 			else
 			{
@@ -570,9 +602,20 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 					machine.findState(currentStep.getTarget()).runQuery();
 				}
 				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
+
+				GElement state = machine.findState(currentStep.getTarget());
+				while(state != null){
+					state.runQueries();
+					addSteps(state.grabStepList());
+					state = state.getParentState();
+				}
 			}
 			repaint();
 		}
+	}
+	
+	private void addSteps(ArrayList<Step> stepList){
+		//TODO implement and make it add only one step, which would be the latest one in the list insrted into here
 	}
 	
 	private void setActiveStates(int i) {
@@ -582,6 +625,7 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 	}
 	
 	private void unHighLightObject(int i) {
+		//iterates through step list...keep this
 		if(i>=0 && i<stepList.size()) {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
@@ -605,5 +649,9 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 	@Override
 	public Component getMasterComp() {
 		return mainPanel;
+}
+	public void viewSizeDidChange() {
+		// TODO Auto-generated method stub
+		
 	}
 }

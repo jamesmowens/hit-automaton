@@ -44,6 +44,8 @@ import java.util.*;
 import java.util.List;
 import query.Query;
 
+import connection.Step;
+
 public abstract class GElement implements XJXMLSerializable {
 
     public static final String ANCHOR_CENTER = "CENTER";
@@ -670,4 +672,8 @@ public abstract class GElement implements XJXMLSerializable {
 			queries.add(query);
 		}
     }
+
+    public void runQueries(){}
+    public ArrayList<Step> grabStepList(){return null;}
+    public GElement getParentState(){return null;}
 }
