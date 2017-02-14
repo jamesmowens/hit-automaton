@@ -44,39 +44,44 @@ public class Condition {
 
 		// Searches for an alphabetic string
 		// TODO: Right now, variable name must be strictly alphabetic, maybe we want this to be alphanumeric later
-		Pattern pattern = Pattern.compile("([A-z]+).*");
+		Pattern pattern = Pattern.compile("([a-zA-Z_0-9]+).*");
+		//System.out.println(pattern.toString());
 		Matcher matcher = pattern.matcher(comparable);
-
-		// Extract the variable from the expression
-		String variable = matcher.group(0);
-		System.out.println(matcher.group(0));
-		/*if (matcher.matches()) {
-			variable = matcher.group(0);
-			// find match in variable list and deal with it from there
+		//System.out.println(matcher.toString());
+		String variable;
+		if(matcher.matches()) {
+			System.out.println("pattern matches");
+			System.out.println(matcher.group(1));
+			variable = matcher.group(1);
 		} else {
 			System.err.println("Expression not evaluable: no variable specified");
 			return false;
 		}
-		*/
-
+		
 		// Search for variable in global variable list. If exists, update comparable with value
 		// If does not exist, replaces variable with 0. That variable will then be added to the global var list
-		double var;
+		System.out.println("This is the variable we are searching for: "+variable);
+		double value;
 		try {
-			var = getVariable(variable);
+			value = getVariable(variable);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			return false;
 		}
-		comparable.replaceAll("[a-z]", ""+var);
+		System.out.println("This is the value we got: "+value);
+		
+		comparable = comparable.replaceAll(variable, ""+value);
+		System.out.println(comparable);
 
+		
 		try {
 			return simpleEvaluate(comparable);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return false;
 	}
 

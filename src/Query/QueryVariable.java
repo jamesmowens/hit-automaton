@@ -27,6 +27,7 @@ public class QueryVariable extends Query {
 		// An expression has an existing variable, a comparison operator, and a parameter to compare
 		// TODO parameter to compare is currently stored as "?" in expression string
 		String evaluable = expression.replace("?", ""+parameter);
+		System.out.println(evaluable);
 		// search expression, input parameter, evaluate new expression
 		boolean result = this.ex.evaluate(evaluable);
 		if(result){
@@ -41,8 +42,8 @@ public class QueryVariable extends Query {
 	/*
 	public static void main(String args[]) {
 	
-		Query test1 = new QueryVariable(new Condition("x > ?"), "B1", "X greater than", "x = 5");
-		test1.run(6);
+		Query test1 = new QueryVariable(new Condition("x > ?"), "B1", "X greater than", "x = 6");
+		test1.run(4);
 	}
 	*/
 	
