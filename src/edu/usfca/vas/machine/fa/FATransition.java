@@ -33,10 +33,6 @@ package edu.usfca.vas.machine.fa;
 
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
-/**
- * Deals with transitions.
- */
-
 public class FATransition implements XJXMLSerializable {
 
     public String s1;

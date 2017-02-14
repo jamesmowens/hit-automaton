@@ -41,10 +41,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Used to handle the FA Machine debugging/testing.
- */
-
 public class Test {
 
     public FAMachine machine = new FAMachine();

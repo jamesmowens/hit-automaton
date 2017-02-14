@@ -41,10 +41,6 @@ import edu.usfca.xj.appkit.text.XJURLLabel;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Controls properties of the about screen reached by going to the menu and selecting Help->About.
- */
-
 public class About extends XJPanel {
 
     public About() {

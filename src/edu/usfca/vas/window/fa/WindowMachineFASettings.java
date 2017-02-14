@@ -42,10 +42,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * JSONReaders for panels.
- */
-
 public class WindowMachineFASettings extends XJDialog {
 
     private WindowMachineFA wm = null;
@@ -130,7 +126,7 @@ public class WindowMachineFASettings extends XJDialog {
         CellConstraints cc = new CellConstraints();
 
         //======== this ========
-        setTitle("Machine JSONReaders");
+        setTitle("Machine Settings");
         Container contentPane2 = getContentPane();
         contentPane2.setLayout(new BorderLayout());
 

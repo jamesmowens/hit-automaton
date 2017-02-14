@@ -11,10 +11,6 @@ import edu.usfca.xj.appkit.gview.base.Vector2D;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
 import java.awt.*;
 
-/**
- * Handles drawing double rectangles and their properties.
- */
-
 public class GElementFAStateDoubleRectangle extends GElementDoubleRectangle 
 	implements GElementFAStateInterface, XJXMLSerializable {
 

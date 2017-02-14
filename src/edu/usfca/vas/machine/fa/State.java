@@ -2,10 +2,6 @@ package edu.usfca.vas.machine.fa;
 
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
-/**
- * Old function that dealt with circles.
- */
-
 public class State implements XJXMLSerializable {
 
 	public String name = null;

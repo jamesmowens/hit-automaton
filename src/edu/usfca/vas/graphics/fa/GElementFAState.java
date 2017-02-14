@@ -42,14 +42,6 @@ import edu.usfca.xj.appkit.gview.object.GElementRectangle;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
 import edu.usfca.xj.foundation.XJXMLSerializable;
 import java.awt.*;
-import query.Query;
-import java.util.LinkedList;
-
-
-
-/**
- * Handles drawing circles (atomic states) and their properties.
- */
 
 public class GElementFAState extends GElementCircle implements XJXMLSerializable, GElementFAStateInterface {
 
@@ -59,7 +51,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     protected transient SArrow startArrow = new SArrow();
     protected transient Vector2D startArrowDirection = new Vector2D(-1, 0);
     public boolean highlighted = false;
-    
+
     public GElementFAState() {
     	super();
         setDraggable(true);
@@ -70,7 +62,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         setDraggable(true);
     }
     
-    public GElementFAState(State state, double x, double y, GElementFAMachine machine) {
+    public GElementFAState(State state, double x, double y,GElementFAMachine machine) {
     	super(machine);
         setState(state);
         setPosition(x, y);
@@ -151,7 +143,6 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         	g.drawOval(x + 4, y + 4, (int)(getRadius2() *2), (int)(getRadius2()*2));  //draw inner circle
         }
         if(highlighted == true){
-        	System.out.println("GElementFAState drawShape highlighted==true");
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width
         	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()*2));

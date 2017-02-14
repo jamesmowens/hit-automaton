@@ -32,14 +32,11 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
-import edu.usfca.vas.layout.ICard;
-import edu.usfca.vas.layout.LeftSideBar;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.xj.appkit.utils.XJAlert;
 import edu.usfca.xj.appkit.utils.XJFileChooser;
 import edu.usfca.xj.appkit.utils.XJLocalizable;
-import query.Query;
 import edu.usfca.vas.app.Localized;
 import edu.usfca.vas.data.DataWrapperFA;
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
@@ -76,17 +73,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-/**
- * Creates the panels for the application, the Load, Next, Back buttons are declared here.
- */
-
-public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 import Query.*;
 
 public class WindowMachineFA extends WindowMachineAbstract {
-
 
 	protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
@@ -95,9 +85,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected JTextField stringTextField;
     protected JComboBox typeComboBox;
     protected JPanel mainPanel;
-
-    //Use this!!
-
     //Bottom Panel
     protected GElementFANickName namingPanel;
     //Side panel
@@ -126,8 +113,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	boolean playingFlag = false;
 	int timeBetweenStep = 1500;
 
-	LeftSideBar leftSidebar;
-
     public WindowMachineFA(XJFrame parent) {
         super(parent);
         this.machine = machine;
@@ -148,14 +133,28 @@ public class WindowMachineFA extends WindowMachineAbstract {
         
         add(createUpperPanel(), BorderLayout.NORTH);
         
+        /*
+        JSplitPane split1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, createAutomataPanel(), createSidePanel());
+        split1.setResizeWeight(0);
+        split1.setEnabled(false);
+        split1.setDividerLocation(335);
+        
+        JSplitPane split2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, split1, createNamingPanel());
+        split2.setResizeWeight(1);
+        split2.setDividerLocation(625);
+        
+        add(split2);
+        */
+        
+        
         JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,createAutomataPanel(),createSidePanel());
         split1.setResizeWeight(1); // REIGHT view gets all extra space
-        split1.setEnabled(true); // Do not allow user to set divider
-        split1.setDividerLocation(625); //625 original
+        split1.setEnabled(false); // Do not allow user to set divider
+        split1.setDividerLocation(625);
                 
         JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why add(); ??
         split2.setResizeWeight(1);
-        split2.setDividerLocation(360); //360 original location
+        split2.setDividerLocation(360);
         
         add(split2);
 
@@ -178,7 +177,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     public JPanel createUpperPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setMaximumSize(new Dimension(99999, 30));
-        //panel.setBackground(Color.decode("#0A7FA6"));
+
         panel.add(designToolFA = new DesignToolsFA(), BorderLayout.WEST);
         panel.add(createControlPanel(), BorderLayout.EAST);
 
@@ -189,17 +188,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     public JPanel createControlPanel() {
         JPanel panel = new JPanel();
-        //panel.setBackground(Color.decode("#EBCF31"));
         panel.setMaximumSize(new Dimension(99999, 30));
-        
 
         /*
         //Next Button
         JButton next = new JButton(Localized.getString("faWMNext"));
-        next.setName("NextButton");
         next.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	stopPlaying();
             public void actionPerformed(ActionEvent e) {            	
             	stopPlaying();
 
@@ -210,15 +204,18 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	highLightObject(sidePanel.getCurrent());
             	setActiveStates(sidePanel.getCurrent());
             }
-
+          
         });*/
+        
+      
         
         //Load Button
         JButton load = new JButton(Localized.getString("faWMLoad"));
-        load.setName("LoadButton");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	String docPath = changeSave();
+            	//System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
+                //TODO
+            	String docPath = changeSave();  //uncomment this to get doc path, save for Chaos, etc..
             	if (docPath == null){
             		return;
             	}
@@ -254,10 +251,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
         //Back Button
         /*
         JButton back = new JButton(Localized.getString("faWMBack"));
-        back.setName("BackButton");
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
             	stopPlaying();
             	
             	unHighLightObject(sidePanel.getCurrent());
@@ -333,8 +328,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
         panel.add(load);
         //panel.add(back);
         panel.add(startButton);
-
         //panel.add(next);
+
 
         return panel;
     }
@@ -365,8 +360,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         	unHighLightObject(sidePanel.getCurrent());
         	sidePanel.setCurrent(sidePanel.getCurrent()+1);
         	highLightObject(sidePanel.getCurrent());
-        	setActiveStates(sidePanel.getCurrent());    	
-        	System.out.println("WindowMachineFA startPlaying()");
+        	setActiveStates(sidePanel.getCurrent());    		
     	}
     	
     	while(sidePanel.getCurrent()!=stepList.size()-1);
@@ -399,7 +393,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     		namingPanel.highlightElement(target);
     		//highlight in the drawingPanel
     		machine.highlightShape(transition);
-    		machine.highlightShape(transition.getTarget()); //TODO machine highlight?
+    		machine.highlightShape(transition.getTarget());
     		highlighted.add(transition);
     		highlighted.add(transition.getTarget());
     	}
@@ -418,7 +412,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
     public JComponent createAutomataPanel() {
     	mainPanelScrollPane = new JScrollPane(getGraphicPanel());
-    	mainPanelScrollPane.setPreferredSize(new Dimension(600, 360)); //640, 480
+    	mainPanelScrollPane.setPreferredSize(new Dimension(640, 480));
     	mainPanelScrollPane.setWheelScrollingEnabled(true);
 
         mainPanelSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -448,7 +442,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
     //makes the side panel
     public JPanel createSidePanel() {
     	GElementFASidePanel side = new GElementFASidePanel();
-        //side.setBackground(Color.white);
     	//side.setSize(new Dimension(250, 400)); // Why commented?
     	sidePanel=side;
     	//sidePanel.setLayout(new GridLayout(0,1));
@@ -583,9 +576,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		if(i>=0 && i < stepList.size()) {
 			Step currentStep = stepList.get(i);
 			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);	
-				System.out.println("WindowMachineFA highlightObject label true"); //highlighting transition arrow
-
+				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
 			}
 			else
 			{
@@ -593,16 +584,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
-				//Runs the query
-				LinkedList<Query> updatedQueries = namingPanel.getUpdatedQueries(machine.findState(currentStep.getTarget()));
-				if(updatedQueries != null){
-					System.out.println("WindowMachineFA highlightObject if updatedQueries is not null");
-					machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
-					System.out.println("WindowMachineFA, Current step is: "+currentStep.getTarget());
-					machine.findState(currentStep.getTarget()).runQuery();
-				}
-				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
-
 				GElement state = machine.findState(currentStep.getTarget());
 				while(state != null){
 					state.runQueries();
@@ -647,9 +628,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	}
 
 	@Override
-	public Component getMasterComp() {
-		return mainPanel;
-}
 	public void viewSizeDidChange() {
 		// TODO Auto-generated method stub
 		

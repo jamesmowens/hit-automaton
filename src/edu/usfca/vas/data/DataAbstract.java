@@ -45,10 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
-/**
- * Handles saving data.
- */
-
 public abstract class DataAbstract extends XJDataXML {
 
     protected static List<DataWrapperAbstract> wrappers = new ArrayList<DataWrapperAbstract>();

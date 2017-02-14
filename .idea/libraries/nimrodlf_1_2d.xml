@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="nimrodlf-1.2d">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/lookAndFeelLib/nimrodlf-1.2d.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

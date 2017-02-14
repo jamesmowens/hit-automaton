@@ -33,10 +33,6 @@ package edu.usfca.vas.machine.fa;
 
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
-/**
- * Defines an accepting non-atomic state.
- */
-
 public class FAEndnonatomicState extends State implements XJXMLSerializable {
 
 	public static FAEndnonatomicState createEndnonatomicState(String name) {
