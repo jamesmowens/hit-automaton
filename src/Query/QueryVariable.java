@@ -22,7 +22,7 @@ public class QueryVariable extends Query {
 	 * @see Query.Query#run()
 	 */
 	@Override
-	public void run(int parameter){
+	public void run(int parameter){ //pass it null
 		String expression = ex.getExpression();
 		// An expression has an existing variable, a comparison operator, and a parameter to compare
 		// TODO parameter to compare is currently stored as "?" in expression string
@@ -37,4 +37,14 @@ public class QueryVariable extends Query {
 	private void execute(String set){
 		//Parse string, search for variable name and assignment operator
 	}
+	
+	/*
+	public static void main(String args[]) {
+	
+		Query test1 = new QueryVariable(new Condition("x > ?"), "B1", "X greater than", "x = 5");
+		test1.run(6);
+	}
+	*/
+	
+	
 }

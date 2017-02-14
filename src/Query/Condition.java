@@ -44,18 +44,20 @@ public class Condition {
 
 		// Searches for an alphabetic string
 		// TODO: Right now, variable name must be strictly alphabetic, maybe we want this to be alphanumeric later
-		Pattern pattern = Pattern.compile("*([A-z])*");
+		Pattern pattern = Pattern.compile("([A-z]+).*");
 		Matcher matcher = pattern.matcher(comparable);
 
 		// Extract the variable from the expression
-		String variable;
-		if (matcher.matches()) {
-			variable = matcher.group(1);
+		String variable = matcher.group(0);
+		System.out.println(matcher.group(0));
+		/*if (matcher.matches()) {
+			variable = matcher.group(0);
 			// find match in variable list and deal with it from there
 		} else {
 			System.err.println("Expression not evaluable: no variable specified");
 			return false;
 		}
+		*/
 
 		// Search for variable in global variable list. If exists, update comparable with value
 		// If does not exist, replaces variable with 0. That variable will then be added to the global var list

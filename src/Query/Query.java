@@ -21,6 +21,8 @@ public abstract class Query {
 		constructInfo(queryName);
 	}
 	
+	//TODO add evaluate method here
+	
 	//This is the method that will be run when the query is asked to check stuff
 	public abstract void run(int parameter);
 	
