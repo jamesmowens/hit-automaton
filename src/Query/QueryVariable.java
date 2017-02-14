@@ -3,6 +3,7 @@
  * nafajardo@wpi.edu
  * The following signature indicates that the author above pertains all rights to any ideas implemented in the code below.
  * Signature: Nicholas Fajardo
+ * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/06/2017, implemented method stubs
  */
 
 package Query;
@@ -21,17 +22,26 @@ public class QueryVariable extends Query {
 	 * @see Query.Query#run()
 	 */
 	@Override
-	public void run(int parameter){
-		boolean result = this.ex.evaluate(parameter);
+	public void run(){
+		String expression = ex.getExpression();
+		
+		boolean result = this.ex.evaluate(expression);
 		if(result){
-			
-		}
-		else{
-			
-		}
+			execute(set);
+		} //TODO else, execute different set?
 	}
 	
-	private void execute(){
-		//TODO 
+	private void execute(String set){
+		//Parse string, search for variable name and assignment operator
 	}
+	
+	
+	public static void main(String args[]) {
+	
+		Query test1 = new QueryVariable(new Condition("x > 4"), "B1", "X greater than", "x = 6");
+		test1.run();
+	}
+	
+	
+	
 }
