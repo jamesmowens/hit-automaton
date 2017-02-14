@@ -1,4 +1,3 @@
+x = 1
 classes = 4.0
 full = 0
-x = 5
-cars = 4
