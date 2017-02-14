@@ -37,12 +37,10 @@ import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Rect;
 import edu.usfca.xj.appkit.gview.base.Vector2D;
 import edu.usfca.xj.foundation.XJXMLSerializable;
-import query.Query;
 
 import java.awt.*;
 import java.util.*;
 import java.util.List;
-import query.Query;
 
 import connection.Step;
 
@@ -86,8 +84,6 @@ public abstract class GElement implements XJXMLSerializable {
     protected final Object lock = new Object();
     
     protected boolean highlight = false;
-    
-    protected LinkedList<Query> queries = new LinkedList();
 
 	public GElement () {
     }
@@ -635,44 +631,6 @@ public abstract class GElement implements XJXMLSerializable {
 		return highlight;
 	}
     
-    /* Runs a list of queries associated with that particular element */
-    public boolean runQuery() {
-    	System.out.println("GElement runQuery()");
-    	System.out.println("GElement runQuery(), Size of the queries: "+queries.size());
-    	for(Query query: queries){
-    		try {
-    			System.out.println("GElement runQuery(), About to run query: "+query.queryInfo());
-				query.evaluate();
-			} catch (Exception e) {
-				System.out.println("Query did not run");
-				e.printStackTrace();
-			}
-    	}
-    	return true;
-    }
-    
-    public void addQuery(Query query){
-    	queries.add(query);
-    }
-    
-    /*
-    public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
-		// TODO Auto-generated method stub
-		for(Query query: updatedQueries)
-		{
-			queries.add(query);
-		}
-	}
-	*/
-    
-    public void addQueries(LinkedList<Query> updatedQueries){
-    	queries.clear();
-    	for(Query query: updatedQueries)
-		{
-			queries.add(query);
-		}
-    }
-
     public void runQueries(){}
     public ArrayList<Step> grabStepList(){return null;}
     public GElement getParentState(){return null;}

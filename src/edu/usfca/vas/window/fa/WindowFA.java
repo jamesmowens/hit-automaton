@@ -56,10 +56,6 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-/**
- * Created the former tools menu & handled the button presses.
- */
-
 public class WindowFA extends WindowAbstract {
                  
     private static final int MI_DISPLAYTRANSITIONS = 100;
