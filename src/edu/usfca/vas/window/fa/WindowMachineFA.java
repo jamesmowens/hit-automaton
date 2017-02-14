@@ -584,6 +584,19 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
+<<<<<<< HEAD
+				//Runs the query
+				LinkedList<Query> updatedQueries = namingPanel.getUpdatedQueries(machine.findState(currentStep.getTarget()));
+				if(updatedQueries != null){
+					System.out.println("WindowMachineFA highlightObject if updatedQueries is not null");
+					machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
+					System.out.println("WindowMachineFA, Current step is: " + currentStep.getTarget());
+					//machine.findState(currentStep.getTarget()).runQuery();
+				}
+				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
+
+=======
+>>>>>>> origin/QueriesNewImplementation
 				GElement state = machine.findState(currentStep.getTarget());
 				while(state != null){
 					state.runQueries();
@@ -630,6 +643,5 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	@Override
 	public void viewSizeDidChange() {
 		// TODO Auto-generated method stub
-		
 	}
 }
