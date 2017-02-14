@@ -50,7 +50,6 @@ public class Condition {
 		//System.out.println(matcher.toString());
 		String variable;
 		if(matcher.matches()) {
-			System.out.println("pattern matches");
 			System.out.println(matcher.group(1));
 			variable = matcher.group(1);
 		} else {
@@ -60,7 +59,6 @@ public class Condition {
 		
 		// Search for variable in global variable list. If exists, update comparable with value
 		// If does not exist, replaces variable with 0. That variable will then be added to the global var list
-		System.out.println("This is the variable we are searching for: "+variable);
 		double value;
 		try {
 			value = getVariable(variable);
@@ -69,7 +67,6 @@ public class Condition {
 			e1.printStackTrace();
 			return false;
 		}
-		System.out.println("This is the value we got: "+value);
 		
 		comparable = comparable.replaceAll(variable, ""+value);
 		System.out.println(comparable);
@@ -97,6 +94,10 @@ public class Condition {
 		// Retrieves variables.txt from relative file path
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println(s);
+		
+		return 0;
+		/*
 		BufferedReader file = new BufferedReader(new FileReader(s +"/variables.txt")); //TODO stored in hit_automaton
 
 		// Checks for line matching
@@ -112,6 +113,7 @@ public class Condition {
 		System.err.println("Error: no variable of that name present"); //TODO
 		file.close();
 		return 0;
+		*/
 	}
 
 	private boolean simpleEvaluate(String comparable) { //TODO handle exception

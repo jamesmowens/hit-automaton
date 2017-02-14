@@ -22,30 +22,26 @@ public class QueryVariable extends Query {
 	 * @see Query.Query#run()
 	 */
 	@Override
-	public void run(int parameter){ //pass it null
+	public void run(){
 		String expression = ex.getExpression();
-		// An expression has an existing variable, a comparison operator, and a parameter to compare
-		// TODO parameter to compare is currently stored as "?" in expression string
-		String evaluable = expression.replace("?", ""+parameter);
-		System.out.println(evaluable);
-		// search expression, input parameter, evaluate new expression
-		boolean result = this.ex.evaluate(evaluable);
+		
+		boolean result = this.ex.evaluate(expression);
 		if(result){
 			execute(set);
-		}
+		} //TODO else, execute different set?
 	}
 	
 	private void execute(String set){
 		//Parse string, search for variable name and assignment operator
 	}
 	
-	/*
+	
 	public static void main(String args[]) {
 	
-		Query test1 = new QueryVariable(new Condition("x > ?"), "B1", "X greater than", "x = 6");
-		test1.run(4);
+		Query test1 = new QueryVariable(new Condition("x > 4"), "B1", "X greater than", "x = 6");
+		test1.run();
 	}
-	*/
+	
 	
 	
 }
