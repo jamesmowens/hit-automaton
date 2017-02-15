@@ -1,6 +1,6 @@
 package edu.usfca.vas.layout;
 
-import edu.usfca.vas.analytics.AnalyticsView;
+import edu.usfca.vas.layout.Views.AnalyticsView;
 import edu.usfca.xj.appkit.frame.XJWindow;
 
 import javax.swing.*;

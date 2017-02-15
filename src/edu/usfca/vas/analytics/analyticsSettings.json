@@ -12,7 +12,10 @@
       "xLabel" : "Hour",
       "yLabel" : "Duration",
       "lineColor" : "#2CBA41"
-    }
+    },
+    "pie1" : {},
+    "pie2" : {},
+    "pie3" : {}
   },
   "Drivers" : {
     "graph1" : {
@@ -25,7 +28,10 @@
       "title" : "More Driver Stuff",
       "xLabel" : "",
       "yLabel" : ""
-    }
+    },
+    "pie1" : {},
+    "pie2" : {},
+    "pie3" : {}
   },
   "Riders" : {
     "graph1" : {
@@ -37,6 +43,9 @@
       "title" : "More Rider Stuff",
       "xLabel" : "",
       "yLabel" : ""
-    }
+    },
+    "pie1" : {},
+    "pie2" : {},
+    "pie3" : {}
   }
 }

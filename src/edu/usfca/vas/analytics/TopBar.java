@@ -1,6 +1,5 @@
 package edu.usfca.vas.analytics;
 
-import edu.usfca.vas.layout.SideBar;
 
 import javax.swing.*;
 
@@ -9,7 +8,7 @@ import javax.swing.*;
  *
  * Sidebar (JTabbedPane) along the top of Analytics View
  */
-public class TopBar extends SideBar {
+public class TopBar extends JTabbedPane {
     public TopBar() {
         super(JTabbedPane.TOP);
     }

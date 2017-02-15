@@ -11,8 +11,6 @@ import org.jfree.data.xy.XYDataset;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.util.Collection;
 
 /**
  * Created by Thomas Schweich on 2/8/2017.

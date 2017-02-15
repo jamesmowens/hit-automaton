@@ -1,6 +1,9 @@
-package edu.usfca.vas.analytics;
+package edu.usfca.vas.layout.Views;
 
+import edu.usfca.vas.analytics.AnalyticsPanel;
 import edu.usfca.vas.layout.JSONReader;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -40,10 +43,36 @@ public class AnalyticsView {
         panel.add(tabbedPane);
         XYDataset set1 = createDataset("Test1", xVals, yVals);
         XYDataset set2 = createDataset("Test2", xVals, yVals);
-        AnalyticsPanel
+        PieDataset pie1Set = createPieDataset(), pie2Set = createPieDataset(), pie3Set = createPieDataset();
+        /*AnalyticsPanel
                 context = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Context")), set1, set2),
                 drivers = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Drivers")), set1, set2),
-                riders = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Riders")), set1, set2);
+                riders = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Riders")), set1, set2);*/
+        JSONReader contextSettings, driversSettings, ridersSettings;
+        contextSettings = new JSONReader(jsonReader.getJsonObject("Context"));
+        driversSettings = new JSONReader(jsonReader.getJsonObject("Drivers"));
+        ridersSettings = new JSONReader(jsonReader.getJsonObject("Riders"));
+        AnalyticsPanel context = new AnalyticsPanel(
+                contextSettings.getAsSSMap("graph1"),
+                contextSettings.getAsSSMap("graph2"),
+                contextSettings.getAsSSMap("pie1"),
+                contextSettings.getAsSSMap("pie2"),
+                contextSettings.getAsSSMap("pie3"),
+                set1, set2, pie1Set, pie2Set, pie3Set);
+        AnalyticsPanel drivers = new AnalyticsPanel(
+                driversSettings.getAsSSMap("graph1"),
+                driversSettings.getAsSSMap("graph2"),
+                driversSettings.getAsSSMap("pie1"),
+                driversSettings.getAsSSMap("pie2"),
+                driversSettings.getAsSSMap("pie3"),
+                set1, set2, pie1Set, pie2Set, pie3Set);
+        AnalyticsPanel riders = new AnalyticsPanel(
+                ridersSettings.getAsSSMap("graph1"),
+                ridersSettings.getAsSSMap("graph2"),
+                ridersSettings.getAsSSMap("pie1"),
+                ridersSettings.getAsSSMap("pie2"),
+                ridersSettings.getAsSSMap("pie3"),
+                set1, set2, pie1Set, pie2Set, pie3Set);
         tabbedPane.add(context);
         tabbedPane.add(drivers);
         tabbedPane.add(riders);
@@ -62,6 +91,17 @@ public class AnalyticsView {
         }
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
+        return dataset;
+    }
+
+    private PieDataset createPieDataset() {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("One", new Double(43.2));
+        dataset.setValue("Two", new Double(10.0));
+        dataset.setValue("Three", new Double(27.5));
+        dataset.setValue("Four", new Double(17.5));
+        dataset.setValue("Five", new Double(11.0));
+        dataset.setValue("Six", new Double(19.4));
         return dataset;
     }
 

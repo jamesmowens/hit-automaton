@@ -77,7 +77,12 @@ public class JSONReader {
      * @return The desired setting as a Map
      */
     public Map<String, String> getAsSSMap(String location) {
-        return (new Gson()).fromJson(readTerminalElement(location), (new HashMap<String, String>()).getClass());
+        Map<String, String> result = (new Gson()).fromJson(readTerminalElement(location), (new HashMap<String, String>()).getClass());
+        if (result == null) {
+            System.err.println("Couldn't find entry for: " + location);
+            result = new HashMap<>();
+        }
+        return result;
     }
 
     /**
