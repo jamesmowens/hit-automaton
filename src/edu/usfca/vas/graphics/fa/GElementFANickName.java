@@ -152,6 +152,16 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		setPanel.add(setFill);
 		setPanel.add(Box.createRigidArea(new Dimension(656,0)));
 		
+		JPanel destinationPanel = new JPanel();
+		JLabel destination = new JLabel("Destination");
+		JComboBox destinationList = new JComboBox(new String[] {"once","continuous"});
+		destinationPanel.setLayout(new BoxLayout(destinationPanel, BoxLayout.X_AXIS));
+		destinationPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		destinationPanel.add(destination);
+		destinationPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		destinationPanel.add(destinationList);
+		destinationPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
 		JPanel buttons = new JPanel();
 		JButton clear = new JButton("Clear");
 		clear.addActionListener(this);
@@ -172,6 +182,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		queryEditPanel.add(frequencyPanel);
 		queryEditPanel.add(conditionPanel);
 		queryEditPanel.add(setPanel);
+		queryEditPanel.add(destinationPanel);
 		queryEditPanel.add(buttons);
 	}
 	
