@@ -4,14 +4,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.LinkedList;
 import javax.swing.*;
 
 import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
-public class GElementFANickName extends JPanel {
+public class GElementFANickName extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = -511482713793989551L;
 	//hold the links stuff (for links)
@@ -29,8 +30,21 @@ public class GElementFANickName extends JPanel {
 	JPanel linkPanel;
 	JPanel elementPanel;
 	JPanel executionPanel;
+	JPanel queryPanel;
+	JPanel queryEditPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
+	
+	DefaultComboBoxModel model = new DefaultComboBoxModel();
+	
+	JComboBox contextList = new JComboBox(model);
+	String condition = "";
+	String set = "";
+	ArrayList<String> states = new ArrayList<String>();
+	HashMap<String,JButton> buttonCache = new HashMap<String,JButton>();
+	TextField setFill = new TextField("Press enter to submit command", 20);
+	TextField conditionFill = new TextField("Press enter to submit command", 20);
+	//HashMap<String, LinkedList<Query>> database = new HashMap();
 	
 	//creates the naming panel
 	public GElementFANickName() {
@@ -42,15 +56,21 @@ public class GElementFANickName extends JPanel {
 		this.linkPanel = new JPanel();
 		this.elementPanel = new JPanel();
 		this.executionPanel = new JPanel();
+		this.queryPanel  = new JPanel();
+		this.queryEditPanel = new JPanel();
 		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+//		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+//		this.queryEditPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		executionPanel.add(activeStateLabel);
 		//this.linkPanel.setSize(new Dimension(600, 100));
 		//this.elementPanel.setSize(new Dimension(600, 100));
 		tabs.addTab("Transition Labels", this.linkPanel);
 		tabs.addTab("State Names", this.elementPanel);
 		tabs.addTab("Process Summaries", this.executionPanel);
+		
+		makeQueryStuff();
 		//tabs.addTab("New Tab", null);
 		tabs.setVisible(true);
 		setVisible(true);
@@ -60,6 +80,102 @@ public class GElementFANickName extends JPanel {
 		
 		//this.setSize(new Dimension(600, 100));
 		//return namingPanel;
+		
+	}
+	
+	private void makeQueryStuff(){
+		//Query Creation
+		this.queryPanel = new JPanel();
+		this.queryEditPanel = new JPanel();
+		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.queryEditPanel.setLayout(new BoxLayout(queryEditPanel, BoxLayout.Y_AXIS));
+		tabs.addTab("Pertaining Queries", this.queryPanel);
+		tabs.addTab("Query Editor", this.queryEditPanel);
+		
+		JLabel context = new JLabel("Context");
+		JPanel contextPanel = new JPanel(); 
+		JButton addContext = new JButton("+");
+		contextPanel.setLayout(new BoxLayout(contextPanel, BoxLayout.X_AXIS));
+		contextPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		contextPanel.add(context);
+		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		contextPanel.add(contextList);
+		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		contextPanel.add(addContext);
+		contextPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
+		JLabel pertaining =  new JLabel("For");
+		JComboBox pertainingList = new JComboBox();
+		JButton addPertain = new JButton("+");
+		JPanel pertainPanel = new JPanel();
+		pertainPanel.setLayout(new BoxLayout(pertainPanel, BoxLayout.X_AXIS));
+		pertainPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		pertainPanel.add(pertaining);
+		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		pertainPanel.add(pertainingList);
+		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		pertainPanel.add(addPertain);
+		pertainPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
+		JPanel frequencyPanel = new JPanel();
+		JLabel frequency = new JLabel("Frequency");
+		JComboBox frequencyList = new JComboBox(new String[] {"once","continuous"});
+		frequencyPanel.setLayout(new BoxLayout(frequencyPanel, BoxLayout.X_AXIS));
+		frequencyPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		frequencyPanel.add(frequency);
+		frequencyPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		frequencyPanel.add(frequencyList);
+		frequencyPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
+		JPanel conditionPanel = new JPanel();
+		JLabel condition = new JLabel("Condition");
+		conditionFill.addActionListener(this);
+		conditionPanel.setLayout(new BoxLayout(conditionPanel, BoxLayout.X_AXIS));
+		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		conditionPanel.add(condition);
+		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		conditionPanel.add(conditionFill);
+		conditionPanel.add(Box.createRigidArea(new Dimension(693,0)));
+		
+		JPanel setPanel = new JPanel();
+		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		JLabel set = new JLabel("set");
+		setFill.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+			}
+		});
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		setPanel.add(set);
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		setPanel.add(setFill);
+		setPanel.add(Box.createRigidArea(new Dimension(656,0)));
+		
+		JPanel buttons = new JPanel();
+		JButton clear = new JButton("Clear");
+		clear.addActionListener(this);
+		JButton submit = new JButton("Submit");
+		submit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+			}
+		});
+		buttonCache.put("Clear", clear);
+		buttonCache.put("Submit", submit);
+		submit.addActionListener(this);
+		buttons.add(clear);
+		buttons.add(submit);
+				
+		queryEditPanel.add(contextPanel);
+		queryEditPanel.add(pertainPanel);
+		queryEditPanel.add(frequencyPanel);
+		queryEditPanel.add(conditionPanel);
+		queryEditPanel.add(setPanel);
+		queryEditPanel.add(buttons);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
 		
 	}
 	
