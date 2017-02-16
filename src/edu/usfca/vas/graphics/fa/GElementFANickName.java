@@ -34,6 +34,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	JPanel queryEditPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
+
 	
 	DefaultComboBoxModel model = new DefaultComboBoxModel();
 	
@@ -155,6 +156,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		JPanel destinationPanel = new JPanel();
 		JLabel destination = new JLabel("Destination");
 		JComboBox destinationList = new JComboBox();
+		
 		destinationPanel.setLayout(new BoxLayout(destinationPanel, BoxLayout.X_AXIS));
 		destinationPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		destinationPanel.add(destination);
@@ -187,6 +189,21 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource().equals(buttonCache.get("Clear"))){
+			conditionFill.setText("");
+			setFill.setText("");
+			System.out.println("Cleared");}
+		else if(e.getSource().equals(buttonCache.get("Submit"))){
+			String eval = conditionFill.getText();
+			String set = setFill.getText();
+			Query query = new QueryImpl(eval, set);
+			System.out.println(query.queryInfo());
+			//If its not in there, put it in there
+			if(database.get(contextList.getSelectedItem()) == null){
+				database.put((String)contextList.getSelectedItem(), new LinkedList<Query>());
+			}
+			database.get((String)contextList.getSelectedItem()).add(query);
+			System.out.println("Submitted");}
 		
 	}
 	
