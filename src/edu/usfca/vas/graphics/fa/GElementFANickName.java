@@ -154,7 +154,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		
 		JPanel destinationPanel = new JPanel();
 		JLabel destination = new JLabel("Destination");
-		JComboBox destinationList = new JComboBox(new String[] {"once","continuous"});
+		JComboBox destinationList = new JComboBox();
 		destinationPanel.setLayout(new BoxLayout(destinationPanel, BoxLayout.X_AXIS));
 		destinationPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		destinationPanel.add(destination);
