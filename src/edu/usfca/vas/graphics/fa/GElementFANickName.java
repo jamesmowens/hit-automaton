@@ -221,6 +221,36 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		
 	}
 	
+	private void updateQueryDropdown(String stateIn, Boolean flag){
+		//System.out.println("State in: " + stateIn);
+		for(String state: states)
+			if(state.equals(stateIn))
+			{
+				if(flag){
+					states.remove(stateIn);
+					model.removeElement(stateIn);
+					contextList.setModel(model);
+				}
+				else
+					return;
+			}
+		
+		states.add(stateIn);
+		model.addElement(stateIn);
+		contextList.setModel(model);
+		
+		String[] stuff = new String[states.size()];
+		int ind = 0;
+		for(String state: states){
+			stuff[ind] = state;
+			ind++;
+		}
+		
+		//System.out.println(Arrays.toString(stuff));
+	}
+	
+
+	
 	//gets a state based on its name 
 	public GElement getElement(String name){
 		for (GElement element: gelements){
@@ -329,6 +359,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		p.add(tf2);
 		this.linkPanel.add(p);
 		tf2.addActionListener(new ActionListener(){
+			
 		public void actionPerformed(ActionEvent ae) {
 			//if the user enters a new nickname, update the GLink to show that
 				instance.setNickname(tf2.getText());
@@ -556,6 +587,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				this.tabs.setPreferredSize(new Dimension(950, 180));
 		 	JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 			JLabel tf = new JLabel(newElement.getLabel());
+			updateQueryDropdown(newElement.getLabel(),false);
 			int width = tf.getBounds().width;
 			tf.setForeground(newElement.getColor());
 			//add spacing to make it look neat...
