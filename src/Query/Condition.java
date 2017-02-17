@@ -14,10 +14,16 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class Condition {
@@ -56,7 +62,7 @@ public class Condition {
 			System.err.println("Expression not evaluable: no variable specified");
 			return false;
 		}
-		
+
 		// Search for variable in global variable list. If exists, update comparable with value
 		// If does not exist, replaces variable with 0. That variable will then be added to the global var list
 		double value;
@@ -65,13 +71,13 @@ public class Condition {
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			System.out.println("Variable not found");
 			return false;
-		}
-		
+		}		
+
 		comparable = comparable.replaceAll(variable, ""+value);
 		System.out.println(comparable);
 
-		
 		try {
 			return simpleEvaluate(comparable);
 		} catch (Exception e) {
@@ -92,28 +98,39 @@ public class Condition {
 	private double getVariable(String name) throws Exception { //TODO should this be static?
 
 		// Retrieves variables.txt from relative file path
-		Path currentRelativePath = Paths.get("");
-		String s = currentRelativePath.toAbsolutePath().toString();
-		System.out.println(s);
-		
-		return 0;
-		/*
-		BufferedReader file = new BufferedReader(new FileReader(s +"/variables.txt")); //TODO stored in hit_automaton
+		String inputFile = "variables.txt";
 
-		// Checks for line matching
-		String line = file.readLine();
-		while (line != null) {
-			if (line.startsWith(name + " =")) {
-				// assuming the var to the right of the equals is an int
-				double temp = Float.parseFloat(line.substring(line.lastIndexOf("= ") + 2));
-				return temp;
+		try {			
+			File inputfile = new File(inputFile);
+
+			// check if the file exists
+			if(inputfile.exists()) {
+				System.out.println("File exists");
+
+				BufferedReader file = new BufferedReader(new FileReader(inputFile));
+
+				String line = file.readLine();
+				while (line != null) {
+					if (line.startsWith(name + " =")) {
+						// assuming the var to the right of the equals is an int
+						double temp = Float.parseFloat(line.substring(line.lastIndexOf("= ") + 2));
+						file.close();
+						return temp;
+
+					}
+					line = file.readLine();
+				}
+				System.err.println("Error: no variable of that name present"); //TODO
+				file.close();
+				return 0;
 			}
-			line = file.readLine();
+			else {
+				System.out.println("The system cannot find the file specified");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		System.err.println("Error: no variable of that name present"); //TODO
-		file.close();
 		return 0;
-		*/
 	}
 
 	private boolean simpleEvaluate(String comparable) { //TODO handle exception

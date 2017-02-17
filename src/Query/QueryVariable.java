@@ -32,6 +32,8 @@ public class QueryVariable extends Query {
 	}
 	
 	private void execute(String set){
+		System.out.println("Set is being run");
+		
 		//Parse string, search for variable name and assignment operator
 	}
 	
