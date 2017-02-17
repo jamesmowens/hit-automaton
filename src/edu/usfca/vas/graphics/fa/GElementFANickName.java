@@ -11,6 +11,8 @@ import javax.swing.*;
 import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
+import Query.*;
+import connection.Step;
 
 public class GElementFANickName extends JPanel implements ActionListener {
 
@@ -36,16 +38,17 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	GViewFAMachine mac;
 
 	
-	DefaultComboBoxModel model = new DefaultComboBoxModel();
+	DefaultComboBoxModel model  = new DefaultComboBoxModel();
 	
 	JComboBox contextList = new JComboBox(model);
+	JComboBox destinationList = new JComboBox(model);
 	String condition = "";
 	String set = "";
 	ArrayList<String> states = new ArrayList<String>();
 	HashMap<String,JButton> buttonCache = new HashMap<String,JButton>();
 	TextField setFill = new TextField("Press enter to submit command", 20);
 	TextField conditionFill = new TextField("Press enter to submit command", 20);
-	//HashMap<String, LinkedList<Query>> database = new HashMap();
+	HashMap<String, LinkedList<Query>> database = new HashMap();
 	
 	//creates the naming panel
 	public GElementFANickName() {
@@ -155,7 +158,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		
 		JPanel destinationPanel = new JPanel();
 		JLabel destination = new JLabel("Destination");
-		JComboBox destinationList = new JComboBox();
+		
 		
 		destinationPanel.setLayout(new BoxLayout(destinationPanel, BoxLayout.X_AXIS));
 		destinationPanel.add(Box.createRigidArea(new Dimension(5,0)));
@@ -194,10 +197,21 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			setFill.setText("");
 			System.out.println("Cleared");}
 		else if(e.getSource().equals(buttonCache.get("Submit"))){
-			String eval = conditionFill.getText();
+			Condition eval = new Condition(conditionFill.getText());
 			String set = setFill.getText();
-			Query query = new QueryImpl(eval, set);
+			String start = (String) contextList.getSelectedItem();
+			String dest  = (String) destinationList.getSelectedItem();
+			Query query;
+			
+			if (set.equals("")){
+				Step transition = new Step(start,dest,"TransStep");
+				query = new TransitionQuery(eval,start,"TransQuery",transition);
+			} else {
+				query = new QueryVariable(eval, start, "SetQuery", set); 
+			}
+			
 			System.out.println(query.queryInfo());
+			
 			//If its not in there, put it in there
 			if(database.get(contextList.getSelectedItem()) == null){
 				database.put((String)contextList.getSelectedItem(), new LinkedList<Query>());
