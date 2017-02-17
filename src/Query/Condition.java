@@ -9,25 +9,18 @@
 package Query;
 
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
+
 
 public class Condition {
-	// Query expression, contains "?" that will be replaced with parameter of interest
 	private String ex;
 
 	public Condition(){}
@@ -49,11 +42,9 @@ public class Condition {
 	public boolean evaluate(String comparable) {
 
 		// Searches for an alphabetic string
-		// TODO: Right now, variable name must be strictly alphabetic, maybe we want this to be alphanumeric later
 		Pattern pattern = Pattern.compile("([a-zA-Z_0-9]+).*");
-		//System.out.println(pattern.toString());
 		Matcher matcher = pattern.matcher(comparable);
-		//System.out.println(matcher.toString());
+
 		String variable;
 		if(matcher.matches()) {
 			System.out.println(matcher.group(1));
@@ -64,7 +55,6 @@ public class Condition {
 		}
 
 		// Search for variable in global variable list. If exists, update comparable with value
-		// If does not exist, replaces variable with 0. That variable will then be added to the global var list
 		double value;
 		try {
 			value = getVariable(variable);
