@@ -584,7 +584,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 			if(machine.findState(currentStep.getTarget())!=null) {
 				machine.findState(currentStep.getTarget()).setHighLight(true);
-<<<<<<< HEAD
 				//Runs the query
 				LinkedList<Query> updatedQueries = namingPanel.getUpdatedQueries(machine.findState(currentStep.getTarget()));
 				if(updatedQueries != null){
@@ -595,8 +594,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				}
 				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
 
-=======
->>>>>>> origin/QueriesNewImplementation
+
 				GElement state = machine.findState(currentStep.getTarget());
 				while(state != null){
 					state.runQueries();

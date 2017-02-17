@@ -23,14 +23,13 @@ public class TransitionQuery extends Query {
 	}
 
 	@Override
-	public void run(int parameter) {
+	public void run() {
 		// TODO Auto-generated method stub
 		String expression = ex.getExpression();
 		// An expression has an existing variable, a comparison operator, and a parameter to compare
 		// TODO parameter to compare is currently stored as "?" in expression string
-		String evaluable = expression.replace("?", ""+parameter);
 		// search expression, input parameter, evaluate new expression
-		boolean result = this.ex.evaluate(evaluable);
+		boolean result = this.ex.evaluate(expression);
 		if (result) {
 			currentStep =  successStep;
 		} else {
