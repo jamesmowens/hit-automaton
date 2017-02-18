@@ -115,6 +115,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     Object playingFlagLock = new Object();
 	boolean playingFlag = false;
 	int timeBetweenStep = 1500;
+	String dataDocPath;
 
     public WindowMachineFA(XJFrame parent) {
         super(parent);
@@ -184,12 +185,14 @@ public class WindowMachineFA extends WindowMachineAbstract {
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
-                //TODO
             	String docPath = changeSave();  //uncomment this to get doc path, save for Chaos, etc..
+            	System.out.println(docPath);
+            	//dataDocPath = docPath;
             	if (docPath == null){
             		return;
             	}
-            	
+            	currentDocPath = docPath;
+            	/*
             	BufferedReader br = null;
             	ArrayList<String> input = new ArrayList<String>();
             	
@@ -211,10 +214,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	for(String event: input) {
             		sidePanel.add(event);
             	}
+            	*/
             	
-            	currentDocPath = docPath;
             }
-          
         });
         
         startButton = new JButton("Start");
@@ -225,30 +227,31 @@ public class WindowMachineFA extends WindowMachineAbstract {
         			
         			//assignQueriesInMachine();
         			
-        			String data = new String("<data>\n");
+        			//String data = new String("<data>\n");
 
         			//data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
         			
         			//This is what adds the state to the parser... at least thats what I think
-        			String systemXMLfile = getWindow().getDocument().getDocumentPath();
-        	        systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
-        	        systemXMLfile = systemXMLfile.concat("XML.xml");		//adds XML.xml to file path
+        			//String systemXMLfile = getWindow().getDocument().getDocumentPath();
+        	        //systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
+        	        //systemXMLfile = systemXMLfile.concat("XML.xml");		//adds XML.xml to file path
         	        
-        	        data += CHAOSUtil.getStringFromFile(systemXMLfile);
-        	        data += "</data>";
+        	        //data += CHAOSUtil.getStringFromFile(systemXMLfile);
+        	        //data += "</data>";
         	        
-        	        System.out.println(data);
+        	        //System.out.println(data);
         	        //while(true);
         	        
-        	        if(!Connection.sendData(data)) return;
+        	        //if(!Connection.sendData(data)) return;
         	        
         	        //This means that the step list only gets the first one, so after that the steps are recursive
         	        //stepList.add(XMLParser.getListHighlightObjects().get(0));
         	        //activeStates = XMLParser.getActiveStates();
         	        //stepList = XMLParser.getListHighlightObjects();
-        	        dataList = XMLParser.getListDataNodes();
         	        
-
+        			//TODO uncomment this out
+        			dataList = XMLParser.getListDataNodes(currentDocPath);
+        	        
         	        //What step do we need to initialize this
         	        //stepList.add(null);
         	        //Guts sets the red highlighting in the side panel to the first
@@ -298,6 +301,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
     
     protected Step grabFirstStep(){
     	//TODO implement
+    	String source = "";
+    	Step firstStep = new Step(source, source, "firstStep");
     	return null;
     }
 
@@ -569,7 +574,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				state.runQueries();
 				//This grabs the step list from the state, then the step list in the state should clear.
 				addSteps(state.grabStepList());
-				state = state.getParentState();
+				//TODO Gets the parents once the parent methods work
+				//state = state.getParentState();
+				state = null;
 			}
 		}
 		repaint();
