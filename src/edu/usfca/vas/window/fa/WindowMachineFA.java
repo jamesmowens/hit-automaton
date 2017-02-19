@@ -547,6 +547,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 
 	private void highLightObject() {
+		updateSidePanelVariables();
 		//Always grabs the first one by default
 		//Step currentStep = stepList.get(0);
 		//Not sure if we need this anymore
@@ -567,7 +568,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			
 			//This is the part that updates the query list, then runs the queries, then grabs any steps from the queries and puts it in
 			//The reason we want to run this while the highlighting is happening is so the user can update the queries at any point
-			LinkedList<Query> updatedQueries = namingPanel.getQueries(state);
+			LinkedList<Query> updatedQueries = namingPanel.getQueries(state.getLabel());
 			machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
 			this.stepList.clear();
 			while(state != null){
@@ -580,6 +581,30 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 		}
 		repaint();
+	}
+	
+	private void updateSidePanelVariables(){
+		BufferedReader br = null;
+    	ArrayList<String> input = new ArrayList<String>();
+    	
+    	try {
+			br = new BufferedReader(new FileReader("variables.txt"));
+			String temp = null;
+			while ((temp = br.readLine()) != null){
+				input.add(temp);
+			}
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+			changeSaveError(e1);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			changeSaveError(e1);
+		}
+
+    	sidePanel.clear();
+    	for(String event: input) {
+    		sidePanel.add(event);
+    	}
 	}
 	
 	private void addSteps(ArrayList<Step> stepList){

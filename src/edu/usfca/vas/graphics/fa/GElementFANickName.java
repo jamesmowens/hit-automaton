@@ -708,8 +708,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			 }
 		 }
 		 
-		 public LinkedList<Query> getQueries(String nickName){
-			 return database.get(nickName);
+		 public LinkedList<Query> getQueries(String state){
+			 return database.get(state);
 		 }
 		 
 		 public ArrayList<GLink> getGLinks() {
