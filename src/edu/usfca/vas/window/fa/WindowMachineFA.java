@@ -103,7 +103,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected GElement currentState = null;
     
     //This is the stepList that is set by the XML parser
-    protected ArrayList<Step> stepList;
+    //protected ArrayList<Step> stepList;
+    protected ArrayList<Step> stepList = new ArrayList<Step>();
     JButton startButton;
     protected String currentDocPath;
     protected ArrayList<String> activeStates;
@@ -239,7 +240,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					 */
         			unHighlight();
         			//sidePanel.unHighlight();
-        			stepList = new ArrayList<Step>();
+        			//stepList = new ArrayList<Step>();
         			//namingPanel.setActiveStates("");
 
         			WindowMachineFA.this.setStart(true);
@@ -256,7 +257,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     
     protected Step grabFirstStep(){
     	//TODO implement
-    	String source = "A0";
+    	String source = "0";
     	Step firstStep = new Step(source, source, "firstStep");
     	return firstStep;
     }

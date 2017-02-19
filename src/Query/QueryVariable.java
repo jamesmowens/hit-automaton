@@ -4,6 +4,7 @@
  * The following signature indicates that the author above pertains all rights to any ideas implemented in the code below.
  * Signature: Nicholas Fajardo
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/06/2017, implemented method stubs
+ * Modified: MaryAnn VanValkenburg (mevanvalkneburg@wpi.edu) 02/19/2017, implemented execute()
  */
 
 package Query;
@@ -14,7 +15,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,7 +44,7 @@ public class QueryVariable extends Query {
 	}
 
 	/**
-	 * Called in ex.evaluate is true
+	 * Called when ex.evaluate is true
 	 * @param set Expression that defines the variable to be changed and the value to change it to
 	 */
 	private void execute(String set){
@@ -85,7 +85,7 @@ public class QueryVariable extends Query {
 			}
 			file.close();
 			temp.close();
-			
+
 			// Copy over new file
 			Files.copy(new File("temp.txt").toPath(), new File("variables.txt").toPath(), StandardCopyOption.REPLACE_EXISTING);
 			Files.delete(new File("temp.txt").toPath());
@@ -95,12 +95,12 @@ public class QueryVariable extends Query {
 		}
 	}
 
-
-
+	/*
 	public static void main(String args[]) {
 
 		Query test1 = new QueryVariable(new Condition("x > 4"), "B1", "x greater than", "x = 6");
 		test1.run();
 	}
+	*/
 
 }
