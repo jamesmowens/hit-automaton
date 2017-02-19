@@ -240,7 +240,9 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		
 		states.add(stateIn);
 		model.addElement(stateIn);
+		destinationModel.addElement(stateIn);
 		contextList.setModel(model);
+		destinationList.setModel(destinationModel);
 		
 		String[] stuff = new String[states.size()];
 		int ind = 0;
