@@ -192,29 +192,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
             		return;
             	}
             	currentDocPath = docPath;
-            	/*
-            	BufferedReader br = null;
-            	ArrayList<String> input = new ArrayList<String>();
             	
-            	try {
-					br = new BufferedReader(new FileReader(docPath));
-					String temp = null;
-					while ((temp = br.readLine()) != null){
-						input.add(temp);
-					}
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-					changeSaveError(e1);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-					changeSaveError(e1);
-				}
-
-            	sidePanel.clear();
-            	for(String event: input) {
-            		sidePanel.add(event);
-            	}
-            	*/
             	
             }
         });
@@ -225,30 +203,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
         	public void actionPerformed(ActionEvent e) {
         		if(WindowMachineFA.this.isStart()) {
         			
-        			//assignQueriesInMachine();
-        			
-        			//String data = new String("<data>\n");
-
-        			//data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
-        			
-        			//This is what adds the state to the parser... at least thats what I think
-        			//String systemXMLfile = getWindow().getDocument().getDocumentPath();
-        	        //systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
-        	        //systemXMLfile = systemXMLfile.concat("XML.xml");		//adds XML.xml to file path
-        	        
-        	        //data += CHAOSUtil.getStringFromFile(systemXMLfile);
-        	        //data += "</data>";
-        	        
-        	        //System.out.println(data);
-        	        //while(true);
-        	        
-        	        //if(!Connection.sendData(data)) return;
-        	        
-        	        //This means that the step list only gets the first one, so after that the steps are recursive
-        	        //stepList.add(XMLParser.getListHighlightObjects().get(0));
-        	        //activeStates = XMLParser.getActiveStates();
-        	        //stepList = XMLParser.getListHighlightObjects();
-        	        
+        		updateSidePanelVariables();
         			//TODO uncomment this out
         			dataList = XMLParser.getListDataNodes(currentDocPath);
         	        
