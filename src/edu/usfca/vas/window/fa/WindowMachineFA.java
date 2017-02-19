@@ -303,7 +303,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     	//TODO implement
     	String source = "";
     	Step firstStep = new Step(source, source, "firstStep");
-    	return null;
+    	return firstStep;
     }
 
     protected void startPlaying() {
