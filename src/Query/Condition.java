@@ -123,6 +123,11 @@ public class Condition {
 		return 0;
 	}
 
+	/**
+	 * Evaluates a boolean expression using JavaScript engine
+	 * @param comparable String form of boolean expression to be evaluated
+	 * @return The result of evaluating the boolean expression
+	 */
 	private boolean simpleEvaluate(String comparable) { //TODO handle exception
 		ScriptEngineManager factory = new ScriptEngineManager();
 		ScriptEngine engine = factory.getEngineByName("JavaScript");
