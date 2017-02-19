@@ -41,34 +41,6 @@ public class XMLParser {
 		return document;
 	}
 	
-	public static ArrayList<DataNode> getListDataNodes(){
-		ArrayList<DataNode> nodes = new ArrayList();
-		//TODO implement this to grab a file of a subset of data from somewhere, parse it, and then return the list of data
-		String file = "sampleUberData.xml";
-		
-		try{
-			File inputfile = new File(file);  // TODO: receive list from server
-			if(inputfile.exists()) // check if file exists
-			{
-				Document doc = fileParser(file); // parse into DOM document
-
-				NodeList nodeListDoc = doc.getElementsByTagName("node");
-				for(int i=0;i < nodeListDoc.getLength(); i++) {
-					Node nodeDoc = nodeListDoc.item(i);
-					nodes.add(getEachDataPoint(nodeDoc));
-				}
-			}
-			else
-			{
-				System.out.println("The system cannot find the file specified");
-			}
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		return nodes;
-	}
-	
 	public static ArrayList<Step> getListHighlightObjects() {
 		
 		ArrayList<Step> list = new ArrayList<Step>();
@@ -112,6 +84,33 @@ public class XMLParser {
 			}
 		}
 		return new Step(source,target,label);
+	}
+	
+	public static ArrayList<DataNode> getListDataNodes(String docPath){
+		ArrayList<DataNode> nodes = new ArrayList();
+		//String file = "sampleUberData.xml";
+		try{
+			File inputfile = new File(docPath);  // TODO: receive list from server
+			if(inputfile.exists()) // check if file exists
+			{
+				Document doc = fileParser(docPath); // parse into DOM document
+
+				NodeList nodeListDoc = doc.getElementsByTagName("node");
+				for(int i=0;i < nodeListDoc.getLength(); i++) {
+					Node nodeDoc = nodeListDoc.item(i);
+					nodes.add(getEachDataPoint(nodeDoc));
+					System.out.println(nodeDoc);
+				}
+			}
+			else
+			{
+				System.out.println("The system cannot find the file specified");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return nodes;
 	}
 	
 	private static DataNode getEachDataPoint(Node dataDoc){

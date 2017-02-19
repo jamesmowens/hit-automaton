@@ -34,6 +34,7 @@ public class QueryVariable extends Query {
 	 */
 	@Override
 	public void run(){
+		System.out.println("VariableQuery running");
 		String expression = ex.getExpression();
 
 		boolean result = this.ex.evaluate(expression);

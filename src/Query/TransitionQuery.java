@@ -24,6 +24,7 @@ public class TransitionQuery extends Query {
 
 	@Override
 	public void run() {
+		System.out.println("Transition Query being run");
 		// TODO Auto-generated method stub
 		String expression = ex.getExpression();
 		// An expression has an existing variable, a comparison operator, and a parameter to compare

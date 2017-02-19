@@ -39,9 +39,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 	
 	DefaultComboBoxModel model  = new DefaultComboBoxModel();
+	DefaultComboBoxModel destinationModel = new DefaultComboBoxModel();
+	
+	
 	
 	JComboBox contextList = new JComboBox(model);
-	JComboBox destinationList = new JComboBox(model);
+	JComboBox destinationList = new JComboBox(destinationModel);
 	String condition = "";
 	String set = "";
 	ArrayList<String> states = new ArrayList<String>();
@@ -218,7 +221,6 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			}
 			database.get((String)contextList.getSelectedItem()).add(query);
 			System.out.println("Submitted");}
-		
 	}
 	
 	private void updateQueryDropdown(String stateIn, Boolean flag){
@@ -229,6 +231,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				if(flag){
 					states.remove(stateIn);
 					model.removeElement(stateIn);
+					destinationModel.removeElement(stateIn);
 					contextList.setModel(model);
 				}
 				else
@@ -237,7 +240,9 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		
 		states.add(stateIn);
 		model.addElement(stateIn);
+		destinationModel.addElement(stateIn);
 		contextList.setModel(model);
+		destinationList.setModel(destinationModel);
 		
 		String[] stuff = new String[states.size()];
 		int ind = 0;
@@ -701,6 +706,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				 Etextfields.get(i).setForeground(Color.BLACK);
 				 i++;
 			 }
+		 }
+		 
+		 public LinkedList<Query> getQueries(String nickName){
+			 return database.get(nickName);
 		 }
 		 
 		 public ArrayList<GLink> getGLinks() {

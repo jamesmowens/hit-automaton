@@ -73,6 +73,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import Query.*;
 
@@ -108,10 +109,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected ArrayList<String> activeStates;
     
     protected ArrayList<DataNode> dataList;
+    protected int dataIndex = 0;
+    protected DataNode currentData;
     
     Object playingFlagLock = new Object();
 	boolean playingFlag = false;
 	int timeBetweenStep = 1500;
+	String dataDocPath;
 
     public WindowMachineFA(XJFrame parent) {
         super(parent);
@@ -131,21 +135,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
         setLayout(new BorderLayout());
         
-        add(createUpperPanel(), BorderLayout.NORTH);
-        
-        /*
-        JSplitPane split1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, createAutomataPanel(), createSidePanel());
-        split1.setResizeWeight(0);
-        split1.setEnabled(false);
-        split1.setDividerLocation(335);
-        
-        JSplitPane split2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, split1, createNamingPanel());
-        split2.setResizeWeight(1);
-        split2.setDividerLocation(625);
-        
-        add(split2);
-        */
-        
+        add(createUpperPanel(), BorderLayout.NORTH);        
         
         JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,createAutomataPanel(),createSidePanel());
         split1.setResizeWeight(1); // REIGHT view gets all extra space
@@ -190,36 +180,19 @@ public class WindowMachineFA extends WindowMachineAbstract {
         JPanel panel = new JPanel();
         panel.setMaximumSize(new Dimension(99999, 30));
 
-        /*
-        //Next Button
-        JButton next = new JButton(Localized.getString("faWMNext"));
-        next.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {            	
-            	stopPlaying();
-
-            	//In this, we will put the methods to overwrite the steplist, and use the current "data piece" from side panel
-            	
-            	unHighLightObject(sidePanel.getCurrent());
-            	sidePanel.setCurrent(sidePanel.getCurrent()+1);
-            	highLightObject(sidePanel.getCurrent());
-            	setActiveStates(sidePanel.getCurrent());
-            }
-          
-        });*/
-        
-      
-        
         //Load Button
         JButton load = new JButton(Localized.getString("faWMLoad"));
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
-                //TODO
             	String docPath = changeSave();  //uncomment this to get doc path, save for Chaos, etc..
+            	System.out.println(docPath);
+            	//dataDocPath = docPath;
             	if (docPath == null){
             		return;
             	}
-            	
+            	currentDocPath = docPath;
+            	/*
             	BufferedReader br = null;
             	ArrayList<String> input = new ArrayList<String>();
             	
@@ -241,58 +214,53 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	for(String event: input) {
             		sidePanel.add(event);
             	}
+            	*/
             	
-            	currentDocPath = docPath;
             }
-          
         });
         
-        
-        //Back Button
-        /*
-        JButton back = new JButton(Localized.getString("faWMBack"));
-        back.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	stopPlaying();
-            	
-            	unHighLightObject(sidePanel.getCurrent());
-            	sidePanel.setCurrent(sidePanel.getCurrent()-1);
-            	highLightObject(sidePanel.getCurrent());
-    			setActiveStates(sidePanel.getCurrent());
-            }
-        });*/
-
         startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
         	
         	public void actionPerformed(ActionEvent e) {
         		if(WindowMachineFA.this.isStart()) {
         			
+        			//assignQueriesInMachine();
         			
-        			String data = new String("<data>\n");
+        			//String data = new String("<data>\n");
 
         			//data += StreamXMLGenerator.generate(sidePanel.getStringLabels()) + "\n";        			
         			
-        			String systemXMLfile = getWindow().getDocument().getDocumentPath();
-        	        systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
-        	        systemXMLfile = systemXMLfile.concat("XML.xml");		//adds XML.xml to file path
+        			//This is what adds the state to the parser... at least thats what I think
+        			//String systemXMLfile = getWindow().getDocument().getDocumentPath();
+        	        //systemXMLfile = systemXMLfile.substring(0, systemXMLfile.length() - 3);	//removes .fa from file path
+        	        //systemXMLfile = systemXMLfile.concat("XML.xml");		//adds XML.xml to file path
         	        
-        	        data += CHAOSUtil.getStringFromFile(systemXMLfile);
-        	        data += "</data>";
+        	        //data += CHAOSUtil.getStringFromFile(systemXMLfile);
+        	        //data += "</data>";
         	        
-        	        if(!Connection.sendData(data)) return;
+        	        //System.out.println(data);
+        	        //while(true);
+        	        
+        	        //if(!Connection.sendData(data)) return;
         	        
         	        //This means that the step list only gets the first one, so after that the steps are recursive
-        	        stepList.add(XMLParser.getListHighlightObjects().get(0));
-        	        dataList = XMLParser.getListDataNodes();
+        	        //stepList.add(XMLParser.getListHighlightObjects().get(0));
         	        //activeStates = XMLParser.getActiveStates();
-
+        	        //stepList = XMLParser.getListHighlightObjects();
+        	        
+        			//TODO uncomment this out
+        			dataList = XMLParser.getListDataNodes(currentDocPath);
+        	        
         	        //What step do we need to initialize this
         	        //stepList.add(null);
         	        //Guts sets the red highlighting in the side panel to the first
-        			sidePanel.setCurrent(0);
-        			highLightObject(0);
-        			setActiveStates(0);
+        	        Step firstStep = grabFirstStep();
+        	        stepList.add(firstStep);
+        			//sidePanel.setCurrent(0);
+        	        currentData = dataList.get(dataIndex);
+        			highLightObject();
+        			//setActiveStates(0);
         			
         			WindowMachineFA.this.setStart(false);
         			WindowMachineFA.this.startButton.setLabel("Stop");
@@ -314,8 +282,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					 * Replace this logic (go form previous state to next)
 					 * With new logic (Run queries on current state, and if a query that wants to change a state happens, we go to the next state)
 					 */
-        			unHighLightObject(sidePanel.getCurrent());
-        			sidePanel.unHighlight();
+        			unHighlight();
+        			//sidePanel.unHighlight();
         			stepList = new ArrayList<Step>();
         			//namingPanel.setActiveStates("");
 
@@ -326,12 +294,16 @@ public class WindowMachineFA extends WindowMachineAbstract {
         });
 
         panel.add(load);
-        //panel.add(back);
         panel.add(startButton);
-        //panel.add(next);
-
 
         return panel;
+    }
+    
+    protected Step grabFirstStep(){
+    	//TODO implement
+    	String source = "";
+    	Step firstStep = new Step(source, source, "firstStep");
+    	return null;
     }
 
     protected void startPlaying() {
@@ -357,13 +329,15 @@ public class WindowMachineFA extends WindowMachineAbstract {
     		
     		//This goes in order of the indexes of the current line in the flows of the side panel.
     		//runQueriesOnCurrentStates();
-        	unHighLightObject(sidePanel.getCurrent());
-        	sidePanel.setCurrent(sidePanel.getCurrent()+1);
-        	highLightObject(sidePanel.getCurrent());
+        	unHighlight();
+        	//sidePanel.setCurrent(sidePanel.getCurrent()+1);
+        	GElement state = machine.getCurrentState();
+        	highLightObject();
         	setActiveStates(sidePanel.getCurrent());    		
     	}
     	
-    	while(sidePanel.getCurrent()!=stepList.size()-1);
+    	while(stepList.size() > 0);
+    	//while(true);
     	
     	stopPlaying();
 	}
@@ -572,42 +546,44 @@ public class WindowMachineFA extends WindowMachineAbstract {
     }
 
 
-	private void highLightObject(int i) {
-		if(i>=0 && i < stepList.size()) {
-			Step currentStep = stepList.get(i);
-			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
-			}
-			else
-			{
-				System.out.println("can't find transition " + currentStep.getSource() + " " + currentStep.getTarget());
-			}
-			if(machine.findState(currentStep.getTarget())!=null) {
-				machine.findState(currentStep.getTarget()).setHighLight(true);
-				//Runs the query
-				LinkedList<Query> updatedQueries = namingPanel.getUpdatedQueries(machine.findState(currentStep.getTarget()));
-				if(updatedQueries != null){
-					System.out.println("WindowMachineFA highlightObject if updatedQueries is not null");
-					machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
-					System.out.println("WindowMachineFA, Current step is: " + currentStep.getTarget());
-					//machine.findState(currentStep.getTarget()).runQuery();
-				}
-				System.out.println("WindowMachineFA highlightObject target true"); //highlighting atomic state
-
-
-				GElement state = machine.findState(currentStep.getTarget());
-				while(state != null){
-					state.runQueries();
-					addSteps(state.grabStepList());
-					state = state.getParentState();
-				}
-			}
-			repaint();
+	private void highLightObject() {
+		//Always grabs the first one by default
+		//Step currentStep = stepList.get(0);
+		//Not sure if we need this anymore
+		/*
+		if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
+			machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
 		}
+		else
+		{
+			System.out.println("can't find transition " + currentStep.getSource() + " " + currentStep.getTarget());
+		}*/
+		Step currentStep = stepList.get(0);
+		if(machine.findState(currentStep.getTarget())!=null) {
+			GElement state = machine.findState(currentStep.getTarget());
+			
+			//This is the highlighting part
+			state.setHighLight(true);
+			
+			//This is the part that updates the query list, then runs the queries, then grabs any steps from the queries and puts it in
+			//The reason we want to run this while the highlighting is happening is so the user can update the queries at any point
+			LinkedList<Query> updatedQueries = namingPanel.getQueries(state);
+			machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
+			this.stepList.clear();
+			while(state != null){
+				state.runQueries();
+				//This grabs the step list from the state, then the step list in the state should clear.
+				addSteps(state.grabStepList());
+				//TODO Gets the parents once the parent methods work
+				//state = state.getParentState();
+				state = null;
+			}
+		}
+		repaint();
 	}
 	
 	private void addSteps(ArrayList<Step> stepList){
-		//TODO implement and make it add only one step, which would be the latest one in the list insrted into here
+		//TODO implement and make it add only one step, which would be the latest one in the list inserted into here
 	}
 	
 	private void setActiveStates(int i) {
@@ -616,18 +592,17 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		}
 	}
 	
-	private void unHighLightObject(int i) {
+	private void unHighLightObject() {
 		//iterates through step list...keep this
-		if(i>=0 && i<stepList.size()) {
-			Step currentStep = stepList.get(i);
-			if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-				machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(false);
-			}
-			if(machine.findState(currentStep.getTarget())!=null) {
-				machine.findState(currentStep.getTarget()).setHighLight(false);
-			}
-			repaint();
+		//Gets the first step in the step list right now
+		Step currentStep = stepList.get(0);
+		if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
+			machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(false);
 		}
+		if(machine.findState(currentStep.getTarget())!=null) {
+			machine.findState(currentStep.getTarget()).setHighLight(false);
+		}
+		repaint();
 	}
 
     public boolean isStart() {

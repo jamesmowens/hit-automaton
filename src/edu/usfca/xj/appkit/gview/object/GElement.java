@@ -42,6 +42,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+import Query.*;
 import connection.Step;
 
 public abstract class GElement implements XJXMLSerializable {
@@ -84,6 +85,10 @@ public abstract class GElement implements XJXMLSerializable {
     protected final Object lock = new Object();
     
     protected boolean highlight = false;
+    
+    protected LinkedList<Query> queryList = new LinkedList();
+    protected ArrayList<Step> stepList = new ArrayList();
+    protected GElement parent;
 
 	public GElement () {
     }
@@ -631,7 +636,32 @@ public abstract class GElement implements XJXMLSerializable {
 		return highlight;
 	}
     
-    public void runQueries(){}
-    public ArrayList<Step> grabStepList(){return null;}
-    public GElement getParentState(){return null;}
+    public void runQueries(){System.out.println("Quereis are being ran on this state" + this.label);
+    clearSteps();
+    	for(Query query : queryList){
+    		query.run();
+    		if(query instanceof TransitionQuery)
+    		{
+    			this.stepList.add(((TransitionQuery)query).getStep());
+    		}
+    	}
+    }
+    
+    public ArrayList<Step> grabStepList(){
+    	return this.stepList;
+    }
+    
+    public void clearSteps(){
+    	this.stepList.clear();
+    }
+    
+    public GElement getParentState(){
+    	//return this.parent;
+    	//TODO make sure the parent is implemented correctly
+    	return null;
+    }
+
+	public void addQueries(LinkedList<Query> updatedQueries) {
+		this.queryList = updatedQueries;
+	}
 }
