@@ -49,6 +49,8 @@ import edu.usfca.xj.foundation.XJXMLSerializable;
 
 import javax.swing.*;
 
+import Query.Query;
+
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -69,6 +71,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     public Color oldColor;
     public ArrayList<Color> colors = new ArrayList<Color>();
     public ArrayList<GElement> highlighted = new ArrayList<GElement>();
+    public GElement currentState;
     
     public GElementFAMachine() {
     	updateAll();
@@ -93,12 +96,17 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
         return machine;
     }
 
+    public GElement getCurrentState(){
+    	return this.currentState;
+    }
+    
     /**
      * highlights a given shape in red
      * @param ge - gelement to be highlighted
      */
     public void highlightShape(GElement ge){
     	if (elements.contains(ge)){
+    		currentState = ge;
     		oldColor = ge.getColor();
     		colors.add(oldColor);
     		highlighted.add(ge);
@@ -1429,5 +1437,19 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 			}
 		}
 		return false;
+	}
+	
+	public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
+		String stateName = findState.getLabel();
+		for(GElement state: this.elements){
+			if(stateName.equals(state.getLabel())){
+				state.addQueries(updatedQueries);
+				System.out.println("GElementFAMachine addQueries, element was found: "+ state);
+				break;
+			} 
+			else {
+				System.out.println("GElementFAMachine addQueries, element was not found");
+			}
+		}
 	}
 }

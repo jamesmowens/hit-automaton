@@ -218,7 +218,6 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			}
 			database.get((String)contextList.getSelectedItem()).add(query);
 			System.out.println("Submitted");}
-		
 	}
 	
 	private void updateQueryDropdown(String stateIn, Boolean flag){
