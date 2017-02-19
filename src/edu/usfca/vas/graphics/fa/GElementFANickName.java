@@ -39,9 +39,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 	
 	DefaultComboBoxModel model  = new DefaultComboBoxModel();
+	DefaultComboBoxModel destinationModel = new DefaultComboBoxModel();
+	
+	
 	
 	JComboBox contextList = new JComboBox(model);
-	JComboBox destinationList = new JComboBox(model);
+	JComboBox destinationList = new JComboBox(destinationModel);
 	String condition = "";
 	String set = "";
 	ArrayList<String> states = new ArrayList<String>();
@@ -228,6 +231,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				if(flag){
 					states.remove(stateIn);
 					model.removeElement(stateIn);
+					destinationModel.removeElement(stateIn);
 					contextList.setModel(model);
 				}
 				else
