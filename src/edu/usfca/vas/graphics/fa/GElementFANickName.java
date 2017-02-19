@@ -49,7 +49,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	String set = "";
 	ArrayList<String> states = new ArrayList<String>();
 	HashMap<String,JButton> buttonCache = new HashMap<String,JButton>();
-	TextField setFill = new TextField("Press enter to submit command", 20);
+	TextField setFill = new TextField("Leave this blank for transition query (delete this comment)", 20);
 	TextField conditionFill = new TextField("Press enter to submit command", 20);
 	HashMap<String, LinkedList<Query>> database = new HashMap();
 	

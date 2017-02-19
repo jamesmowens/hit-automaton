@@ -193,7 +193,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
             	}
             	currentDocPath = docPath;
             	
-            	
+            	updateSidePanelVariables();
             }
         });
         
@@ -256,7 +256,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     
     protected Step grabFirstStep(){
     	//TODO implement
-    	String source = "";
+    	String source = "A0";
     	Step firstStep = new Step(source, source, "firstStep");
     	return firstStep;
     }
