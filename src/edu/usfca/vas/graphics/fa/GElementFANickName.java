@@ -703,6 +703,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			 }
 		 }
 		 
+		 public LinkedList<Query> getQueries(String nickName){
+			 return database.get(nickName);
+		 }
+		 
 		 public ArrayList<GLink> getGLinks() {
 			 return this.glinks;
 		 }
