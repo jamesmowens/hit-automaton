@@ -107,7 +107,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     protected ArrayList<Step> stepList = new ArrayList<Step>();
     JButton startButton;
     protected String currentDocPath;
-    protected ArrayList<String> activeStates;
+    protected ArrayList<String> activeStates = new ArrayList();;
     
     protected ArrayList<DataNode> dataList;
     protected int dataIndex = 0;
@@ -116,7 +116,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
     Object playingFlagLock = new Object();
 	boolean playingFlag = false;
 	int timeBetweenStep = 1500;
-	String dataDocPath;
+	String dataDocPath = "";
 
     public WindowMachineFA(XJFrame parent) {
         super(parent);
