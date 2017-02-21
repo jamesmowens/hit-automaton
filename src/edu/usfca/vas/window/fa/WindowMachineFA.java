@@ -515,6 +515,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		{
 			System.out.println("can't find transition " + currentStep.getSource() + " " + currentStep.getTarget());
 		}*/
+		if(stepList.size() < 0){return;}
 		Step currentStep = stepList.get(0);
 		if(machine.findState(currentStep.getTarget())!=null) {
 			GElement state = machine.findState(currentStep.getTarget());
