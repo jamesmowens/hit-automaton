@@ -631,7 +631,7 @@ public abstract class GElement implements XJXMLSerializable {
 	public void setHighLight(boolean b) {
 		highlight = b;
 	}
-
+	
 	public boolean isHighlight() {
 		return highlight;
 	}
