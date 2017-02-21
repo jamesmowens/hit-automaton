@@ -333,11 +333,14 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	//unhighlights everything in the drawing panel
 	public void unHighlight(){
+		System.out.println("We made it to the unHighlight() method");
+		System.out.println("Highlighted list size: "+highlighted.size());
 		for (GElement element: highlighted){
-			machine.unhighlightShape(element);
+			System.out.println("unhighlighting this element: "+element.getLabel());
+			machine.findState(element.getLabel()).setHighLight(false);
+			//machine.unhighlightShape(element);
 		}
 		highlighted.clear();
-
 	}
 
 	public JComponent createAutomataPanel() {
@@ -522,6 +525,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 			//This is the highlighting part
 			state.setHighLight(true);
+			// add to list of highlighted states
+			highlighted.add(state);
 
 			//This is the part that updates the query list, then runs the queries, then grabs any steps from the queries and puts it in
 			//The reason we want to run this while the highlighting is happening is so the user can update the queries at any point

@@ -179,6 +179,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     
     public void unhighlightShape(GElement ge){
     	if (elements.contains(ge)){
+    		System.out.println("Elements contains this element (to be unhighlighted): "+ge.getLabel());
     		int i = 0;
     		int value = -1;
     		for (GElement test: highlighted){
