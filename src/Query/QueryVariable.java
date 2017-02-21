@@ -68,7 +68,7 @@ public class QueryVariable extends Query {
 
 		//Update variables.txt
 		try {			
-			System.out.println("File exists");
+			//System.out.println("File exists");
 			BufferedReader file = new BufferedReader(new FileReader(new File("variables.txt")));
 			BufferedWriter temp = new BufferedWriter(new FileWriter(new File("temp.txt")));
 

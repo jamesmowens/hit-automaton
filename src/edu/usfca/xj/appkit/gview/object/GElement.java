@@ -636,16 +636,17 @@ public abstract class GElement implements XJXMLSerializable {
 		return highlight;
 	}
 
-	public void runQueries(){System.out.println("Quereis are being ran on this state" + this.label);
-	clearSteps();
-	for(Query query : queryList){
-		query.run();
-		if(query instanceof TransitionQuery) {
-			this.stepList.add(((TransitionQuery)query).getStep());
-		} else if (query instanceof QueryVariable) {
+	public void runQueries(){
+		System.out.println("Queries are being run on this state: " + this.label);
+		clearSteps();
+		for(Query query : queryList){
 			query.run();
+			if(query instanceof TransitionQuery) {
+				this.stepList.add(((TransitionQuery)query).getStep());
+			} else if (query instanceof QueryVariable) {
+				query.run();
+			}
 		}
-	}
 	}
 
 	public ArrayList<Step> grabStepList(){
