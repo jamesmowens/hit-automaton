@@ -4,15 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d21224d-f20d-4fff-9322-777f691a3786" name="Default" comment="Graphs are significantly more customizable.&#10;&#10;Each graph has an entry in src/edu/usfca/vas/analytics/analyticsSettings.json which can optionally specify a wide range of settings such as title, labels, and colors.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/preprocessor/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/preprocessor/head.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/preprocessor/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="2d21224d-f20d-4fff-9322-777f691a3786" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hit-automaton.eml" afterPath="$PROJECT_DIR$/hit-automaton.eml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hit-automaton.iml" afterPath="$PROJECT_DIR$/hit-automaton.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/preprocessor/main.py" afterPath="$PROJECT_DIR$/preprocessor/main.py" />
     </list>
     <ignored path="hit-automaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,8 +95,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/preprocessor/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="369">
+              <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -113,8 +107,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19762">
-              <caret line="482" column="72" lean-forward="false" selection-start-line="482" selection-start-column="72" selection-end-line="482" selection-end-column="72" />
+            <state relative-caret-position="19557">
+              <caret line="477" column="72" lean-forward="false" selection-start-line="477" selection-start-column="72" selection-end-line="477" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -974,7 +968,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486705824177</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Created preprocessor in python. The output was successful!">
+      <created>1487788602029</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1487788602029</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1081,7 +1082,8 @@
     <MESSAGE value="Rudimentary Analytics View Added&#10;&#10;Also:&#10;&#10;- Analytics branch created&#10;- Significant changes to JSONReader&#10;- Restructuring of LeftSideBar to inherit from a new SideBar class&#10;- Addition __but not use__ of a View interface. This will be used in the future." />
     <MESSAGE value="Fixed resize issue with MainWindow.&#10;&#10;Also in process of making graphs more customizable." />
     <MESSAGE value="Graphs are significantly more customizable.&#10;&#10;Each graph has an entry in src/edu/usfca/vas/analytics/analyticsSettings.json which can optionally specify a wide range of settings such as title, labels, and colors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Graphs are significantly more customizable.&#10;&#10;Each graph has an entry in src/edu/usfca/vas/analytics/analyticsSettings.json which can optionally specify a wide range of settings such as title, labels, and colors." />
+    <MESSAGE value="Created preprocessor in python. The output was successful!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created preprocessor in python. The output was successful!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1325,8 +1327,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19762">
-          <caret line="482" column="72" lean-forward="false" selection-start-line="482" selection-start-column="72" selection-end-line="482" selection-end-column="72" />
+        <state relative-caret-position="19557">
+          <caret line="477" column="72" lean-forward="false" selection-start-line="477" selection-start-column="72" selection-end-line="477" selection-end-column="72" />
           <folding />
         </state>
       </provider>
@@ -1349,8 +1351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/preprocessor/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="369">
+          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
