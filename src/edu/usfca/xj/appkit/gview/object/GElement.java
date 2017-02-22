@@ -639,7 +639,7 @@ public abstract class GElement implements XJXMLSerializable {
 	public void runQueries(){
 		System.out.println("Queries are being run on this state: " + this.label);
 		clearSteps();
-		if(queryList.size() < 1){return;}
+		if(queryList == null || queryList.size() < 1){return;}
 		for(Query query : queryList){
 			query.run();
 			if(query instanceof TransitionQuery) {
