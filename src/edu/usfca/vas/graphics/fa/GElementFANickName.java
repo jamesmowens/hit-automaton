@@ -135,9 +135,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		conditionPanel.add(condition);
 		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		conditionPanel.add(conditionFill);
+		conditionPanel.add(conditionFill).setForeground(Color.BLACK);
 		conditionPanel.add(Box.createRigidArea(new Dimension(693,0)));
-		
 		JPanel setPanel = new JPanel();
 		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
@@ -150,7 +149,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		setPanel.add(set);
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		setPanel.add(setFill);
+		setPanel.add(setFill).setForeground(Color.BLACK);
 		setPanel.add(Box.createRigidArea(new Dimension(656,0)));
 		
 		JPanel buttons = new JPanel();
