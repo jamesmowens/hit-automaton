@@ -4,7 +4,7 @@
  * The following signature indicates that the author above pertains all rights to any ideas implemented in the code below.
  * Signature: Nicholas Fajardo
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/06/2017, implemented method stubs
- * Modified: MaryAnn VanValkenburg (mevanvalkneburg@wpi.edu) 02/19/2017, implemented execute()
+ * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/19/2017, implemented execute()
  */
 
 package Query;
