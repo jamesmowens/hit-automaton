@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="libs/servlet.jar"/>
 	<classpathentry kind="lib" path="libs/swtgraphics2d.jar"/>
 	<classpathentry kind="lib" path="libs/nimrodlf-1.2d.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Python 2.7.12 (C:\Users\thoma\Anaconda2\python.exe) interpreter library"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
