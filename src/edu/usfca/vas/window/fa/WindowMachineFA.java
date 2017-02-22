@@ -29,7 +29,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
  */
 
-
 package edu.usfca.vas.window.fa;
 
 import edu.usfca.xj.appkit.gview.object.GElement;
@@ -86,9 +85,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	protected JTextField stringTextField;
 	protected JComboBox typeComboBox;
 	protected JPanel mainPanel;
-	//Bottom Panel
+	// Bottom Panel
 	protected GElementFANickName namingPanel;
-	//Side panel
+	// Side panel
 	protected GElementFASidePanel sidePanel;
 	protected JSplitPane mainPanelSplit;
 	protected JScrollPane mainPanelScrollPane;
@@ -102,8 +101,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	protected boolean overlayVisible;
 	protected GElement currentState = null;
 
-	//This is the stepList that is set by the XML parser
-	//protected ArrayList<Step> stepList;
+	// This is the stepList that is set by the XML parser
+	// protected ArrayList<Step> stepList;
 	protected ArrayList<Step> stepList = new ArrayList<Step>();
 	JButton startButton;
 	protected String currentDocPath;
@@ -123,12 +122,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		this.machine = machine;
 	}
 
-	public void setMachine(GElementFAMachine machine){
+	public void setMachine(GElementFAMachine machine) {
 		this.machine = machine;
 	}
 
 	public void init() {
-		setGraphicPanel(new GViewFAMachine(parent,null));
+		setGraphicPanel(new GViewFAMachine(parent, null));
 		getFAGraphicPanel().setDelegate(this);
 		getFAGraphicPanel().setMachine(getDataWrapperFA().getGraphicMachine());
 		getFAGraphicPanel().setRealSize(getDataWrapperFA().getSize());
@@ -136,14 +135,16 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 		setLayout(new BorderLayout());
 
-		add(createUpperPanel(), BorderLayout.NORTH);        
+		add(createUpperPanel(), BorderLayout.NORTH);
 
-		JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,createAutomataPanel(),createSidePanel());
+		JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, createAutomataPanel(), createSidePanel());
 		split1.setResizeWeight(1); // REIGHT view gets all extra space
 		split1.setEnabled(false); // Do not allow user to set divider
 		split1.setDividerLocation(625);
 
-		JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why add(); ??
+		JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why
+																											// add();
+																											// ??
 		split2.setResizeWeight(1);
 		split2.setDividerLocation(360);
 
@@ -154,15 +155,15 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	}
 
 	public WindowFA getWindowFA() {
-		return (WindowFA)getWindow();
+		return (WindowFA) getWindow();
 	}
 
 	public DataWrapperFA getDataWrapperFA() {
-		return (DataWrapperFA)getDataWrapper();
+		return (DataWrapperFA) getDataWrapper();
 	}
 
 	public GViewFAMachine getFAGraphicPanel() {
-		return (GViewFAMachine)getGraphicPanel();
+		return (GViewFAMachine) getGraphicPanel();
 	}
 
 	public JPanel createUpperPanel() {
@@ -181,15 +182,17 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		JPanel panel = new JPanel();
 		panel.setMaximumSize(new Dimension(99999, 30));
 
-		//Load Button
+		// Load Button
 		JButton load = new JButton(Localized.getString("faWMLoad"));
 		load.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("createControlPanel in vas.window.fa.WindowMachineFA");
-				String docPath = changeSave();  //uncomment this to get doc path, save for Chaos, etc..
+				// System.out.println("createControlPanel in
+				// vas.window.fa.WindowMachineFA");
+				String docPath = changeSave(); // uncomment this to get doc
+												// path, save for Chaos, etc..
 				System.out.println(docPath);
-				//dataDocPath = docPath;
-				if (docPath == null){
+				// dataDocPath = docPath;
+				if (docPath == null) {
 					return;
 				}
 				currentDocPath = docPath;
@@ -202,21 +205,14 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		startButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				if(WindowMachineFA.this.isStart()) {
+				if (WindowMachineFA.this.isStart()) {
 
 					updateSidePanelVariables();
-					//TODO uncomment this out
+					// TODO uncomment this out
 					dataList = XMLParser.getListDataNodes(currentDocPath);
-
-					//What step do we need to initialize this
-					//stepList.add(null);
-					//Guts sets the red highlighting in the side panel to the first
-					Step firstStep = grabFirstStep();
-					stepList.add(firstStep);
-					//sidePanel.setCurrent(0);
-					currentData = dataList.get(dataIndex);
+					stepList.add(grabFirstStep());
+					currentData = dataList.get(0);
 					highLightObject();
-					//setActiveStates(0);
 
 					WindowMachineFA.this.setStart(false);
 					WindowMachineFA.this.startButton.setLabel("Stop");
@@ -235,13 +231,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					stopPlaying();
 
 					/**
-					 * Replace this logic (go form previous state to next)
-					 * With new logic (Run queries on current state, and if a query that wants to change a state happens, we go to the next state)
+					 * Replace this logic (go form previous state to next) With
+					 * new logic (Run queries on current state, and if a query
+					 * that wants to change a state happens, we go to the next
+					 * state)
 					 */
 					unHighlight();
-					//sidePanel.unHighlight();
-					//stepList = new ArrayList<Step>();
-					//namingPanel.setActiveStates("");
+					stepList = new ArrayList<Step>();
 
 					WindowMachineFA.this.setStart(true);
 					WindowMachineFA.this.startButton.setLabel("Start");
@@ -255,8 +251,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		return panel;
 	}
 
-	protected Step grabFirstStep(){
-		//TODO implement
+	protected Step grabFirstStep() {
+		// TODO implement
 		String source = "0";
 		Step firstStep = new Step(source, source, "firstStep");
 		return firstStep;
@@ -267,10 +263,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			playingFlag = true;
 		}
 
-		do
-		{
+		do {
 			try {
-				//This is what dictates the speed at which the switching occurs
+				// This is what dictates the speed at which the switching occurs
 				Thread.sleep(timeBetweenStep);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -278,50 +273,59 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 
 			synchronized (playingFlagLock) {
-				if(!playingFlag) {
+				if (!playingFlag) {
 					return;
 				}
 			}
 
-			//This goes in order of the indexes of the current line in the flows of the side panel.
-			//runQueriesOnCurrentStates();
+			// This goes in order of the indexes of the current line in the
+			// flows of the side panel.
+			// runQueriesOnCurrentStates();
 			unHighlight();
-			//sidePanel.setCurrent(sidePanel.getCurrent()+1);
+			updateData();
 			GElement state = machine.getCurrentState();
 			highLightObject();
-			setActiveStates(sidePanel.getCurrent());    		
+			setActiveStates(sidePanel.getCurrent());
+			setNewData();
 		}
 
-		while(stepList.size() > 0);
-		//while(true);
+		while (stepList.size() > 0);
+		// while(true);
 
 		stopPlaying();
-	}
-
-	private void runQueriesOnCurrentStates(){
-		//TODO implement
-	}
-
+}
+	
 	private void stopPlaying() {
 		synchronized (playingFlagLock) {
 			playingFlag = false;
 		}
 	}
+	
+	private void updateData(){
+		//TODO Implement this method to update Data to the variables list
+	}
+	
+	private void setNewData(){
+		this.dataIndex++;
+		if(dataIndex < dataList.size()){stopPlaying();}
+		this.currentData = this.dataList.get(this.dataIndex);
+	}
 
-	public String next(){
+	public String next() {
 		System.out.println("Highlight Next");
 		unHighlight();
 		namingPanel.unColor();
 		String next = sidePanel.highlightNext();
-		//if something is highlighted, highlight it in the naming panel and drawing as well
+		// if something is highlighted, highlight it in the naming panel and
+		// drawing as well
 		GLink transition = sidePanel.getTransition();
 		GElement target = sidePanel.getTarget();
-		if (next != null){
-			//highlight in the namingPanel
+		if (next != null) {
+			// highlight in the namingPanel
 			System.out.println(transition.getPattern());
 			namingPanel.highlightLink(transition);
 			namingPanel.highlightElement(target);
-			//highlight in the drawingPanel
+			// highlight in the drawingPanel
 			machine.highlightShape(transition);
 			machine.highlightShape(transition.getTarget());
 			highlighted.add(transition);
@@ -331,14 +335,14 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		return next;
 	}
 
-	//unhighlights everything in the drawing panel
-	public void unHighlight(){
+	// unhighlights everything in the drawing panel
+	public void unHighlight() {
 		System.out.println("We made it to the unHighlight() method");
-		System.out.println("Highlighted list size: "+highlighted.size());
-		for (GElement element: highlighted){
-			System.out.println("unhighlighting this element: "+element.getLabel());
+		System.out.println("Highlighted list size: " + highlighted.size());
+		for (GElement element : highlighted) {
+			System.out.println("unhighlighting this element: " + element.getLabel());
 			machine.findState(element.getLabel()).setHighLight(false);
-			//machine.unhighlightShape(element);
+			// machine.unhighlightShape(element);
 		}
 		highlighted.clear();
 	}
@@ -357,12 +361,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		return mainPanel;
 	}
 
-	//makes the naming panel
+	// makes the naming panel
 	public JPanel createNamingPanel() {
 		GElementFANickName names = new GElementFANickName();
 		names.setFAMac(getFAGraphicPanel());
-		//names.setSize(new Dimension(640, 350));
-		namingPanel=names;
+		// names.setSize(new Dimension(640, 350));
+		namingPanel = names;
 		namingPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		namingPanel.setPreferredSize(new Dimension(300, 200));
 
@@ -372,14 +376,17 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		return namingPanel;
 
 	}
-	//makes the side panel
+
+	// makes the side panel
 	public JPanel createSidePanel() {
 		GElementFASidePanel side = new GElementFASidePanel();
-		//side.setSize(new Dimension(250, 400)); // Why commented?
-		sidePanel=side;
-		//sidePanel.setLayout(new GridLayout(0,1));
-		sidePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5)); // Align to RIGHT
-		//sidePanel.setLayout(new BorderLayout());
+		// side.setSize(new Dimension(250, 400)); // Why commented?
+		sidePanel = side;
+		// sidePanel.setLayout(new GridLayout(0,1));
+		sidePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5)); // Align
+																		// to
+																		// RIGHT
+		// sidePanel.setLayout(new BorderLayout());
 		sidePanel.setPreferredSize(new Dimension(350, 335));
 		setVisible(true);
 		getDataWrapperFA().getMachine().setSide(sidePanel);
@@ -387,11 +394,11 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	}
 
-	//when a new GLink is added to the system.. add it with this function. 
-	public void addGLinkName(GLink newLink){
+	// when a new GLink is added to the system.. add it with this function.
+	public void addGLinkName(GLink newLink) {
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		JLabel tf = new JLabel(newLink.pattern + " is: ");
-		tf.setForeground(newLink.getColor()); 
+		tf.setForeground(newLink.getColor());
 		p.add(tf);
 		final JTextField tf2 = new JTextField(35);
 		final GLink instance = newLink;
@@ -399,9 +406,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		tf2.setForeground(Color.BLACK);
 		p.add(tf2);
 		namingPanel.add(p);
-		tf2.addActionListener(new ActionListener(){
+		tf2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				//if the user enters a new nickname, update the GLink to show that
+				// if the user enters a new nickname, update the GLink to show
+				// that
 				instance.setNickname(tf2.getText());
 			}
 		});
@@ -413,9 +421,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		if(visible && overlayVisible)
+		if (visible && overlayVisible)
 			overlay.setVisible(true);
-		else if(!visible && overlayVisible)
+		else if (!visible && overlayVisible)
 			overlay.setVisible(false);
 	}
 
@@ -432,7 +440,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void handleAlphabetTextFieldEvent() {
 		String s = alphabetTextField.getText();
-		if(!s.equals(getDataWrapperFA().getSymbolsString())) {
+		if (!s.equals(getDataWrapperFA().getSymbolsString())) {
 			getDataWrapperFA().setSymbolsString(s);
 			changeOccured();
 		}
@@ -440,7 +448,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void handleStringTextFieldEvent() {
 		String s = stringTextField.getText();
-		if(!s.equals(getDataWrapperFA().getString())) {
+		if (!s.equals(getDataWrapperFA().getString())) {
 			getDataWrapperFA().setString(s);
 			overlay.textChanged();
 			changeOccured();
@@ -475,7 +483,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	public void setTitle(String title) {
 		getWindowFA().setWindowMachineTitle(this, title);
 		getDataWrapperFA().setName(title);
-		changeOccured();        
+		changeOccured();
 	}
 
 	public String getTitle() {
@@ -483,7 +491,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	}
 
 	public void displaySettings() {
-		if(settings == null)
+		if (settings == null)
 			settings = new WindowMachineFASettings(this);
 
 		settings.display();
@@ -501,58 +509,62 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	public void setDebugInfo(String remaining) {
 		String original = stringTextField.getText();
-		overlay.setString(original, original.length()-remaining.length());
+		overlay.setString(original, original.length() - remaining.length());
 	}
-
 
 	private void highLightObject() {
 		updateSidePanelVariables();
-		//Always grabs the first one by default
-		//Step currentStep = stepList.get(0);
-		//Not sure if we need this anymore
+		// Always grabs the first one by default
+		// Step currentStep = stepList.get(0);
+		// Not sure if we need this anymore
 		/*
-		if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-			machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(true);
+		 * if(machine.findTransition(currentStep.getSource(),currentStep.
+		 * getTarget(),currentStep.getLabel())!=null) {
+		 * machine.findTransition(currentStep.getSource(),currentStep.getTarget(
+		 * ),currentStep.getLabel()).setHighLight(true); } else {
+		 * System.out.println("can't find transition " + currentStep.getSource()
+		 * + " " + currentStep.getTarget()); }
+		 */
+		if (stepList.size() < 1) {
+			return;
 		}
-		else
-		{
-			System.out.println("can't find transition " + currentStep.getSource() + " " + currentStep.getTarget());
-		}*/
-		if(stepList.size() < 1){return;}
 		Step currentStep = stepList.get(0);
-		if(machine.findState(currentStep.getTarget())!=null) {
+		if (machine.findState(currentStep.getTarget()) != null) {
 			GElement state = machine.findState(currentStep.getTarget());
 
-			//This is the highlighting part
+			// This is the highlighting part
 			state.setHighLight(true);
 			// add to list of highlighted states
 			highlighted.add(state);
 
-			//This is the part that updates the query list, then runs the queries, then grabs any steps from the queries and puts it in
-			//The reason we want to run this while the highlighting is happening is so the user can update the queries at any point
+			// This is the part that updates the query list, then runs the
+			// queries, then grabs any steps from the queries and puts it in
+			// The reason we want to run this while the highlighting is
+			// happening is so the user can update the queries at any point
 			LinkedList<Query> updatedQueries = namingPanel.getQueries(state.getLabel());
 			machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
 			this.stepList.clear();
-			while(state != null){
+			while (state != null) {
 				state.runQueries();
-				//This grabs the step list from the state, then the step list in the state should clear.
+				// This grabs the step list from the state, then the step list
+				// in the state should clear.
 				addSteps(state.grabStepList());
-				//TODO Gets the parents once the parent methods work
-				//state = state.getParentState();
+				// TODO Gets the parents once the parent methods work
+				// state = state.getParentState();
 				state = null;
 			}
 		}
 		repaint();
 	}
 
-	private void updateSidePanelVariables(){
+	private void updateSidePanelVariables() {
 		BufferedReader br = null;
 		ArrayList<String> input = new ArrayList<String>();
 
 		try {
 			br = new BufferedReader(new FileReader("variables.txt"));
 			String temp = null;
-			while ((temp = br.readLine()) != null){
+			while ((temp = br.readLine()) != null) {
 				input.add(temp);
 			}
 		} catch (FileNotFoundException e1) {
@@ -564,29 +576,30 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		}
 
 		sidePanel.clear();
-		for(String event: input) {
+		for (String event : input) {
 			sidePanel.add(event);
 		}
 	}
 
-	private void addSteps(ArrayList<Step> stepList){
+	private void addSteps(ArrayList<Step> stepList) {
 		this.stepList.addAll(stepList);
 	}
 
 	private void setActiveStates(int i) {
-		if(i>=0 && i<activeStates.size()) {
+		if (i >= 0 && i < activeStates.size()) {
 			namingPanel.setActiveStates(activeStates.get(i));
 		}
 	}
 
 	private void unHighLightObject() {
-		//iterates through step list...keep this
-		//Gets the first step in the step list right now
+		// iterates through step list...keep this
+		// Gets the first step in the step list right now
 		Step currentStep = stepList.get(0);
-		if(machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel())!=null) {
-			machine.findTransition(currentStep.getSource(),currentStep.getTarget(),currentStep.getLabel()).setHighLight(false);
+		if (machine.findTransition(currentStep.getSource(), currentStep.getTarget(), currentStep.getLabel()) != null) {
+			machine.findTransition(currentStep.getSource(), currentStep.getTarget(), currentStep.getLabel())
+					.setHighLight(false);
 		}
-		if(machine.findState(currentStep.getTarget())!=null) {
+		if (machine.findState(currentStep.getTarget()) != null) {
 			machine.findState(currentStep.getTarget()).setHighLight(false);
 		}
 		repaint();
