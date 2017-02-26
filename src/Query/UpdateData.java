@@ -24,21 +24,21 @@ public class UpdateData {
 		}
 		
 		if (varMap.containsKey("latitude")) {
-			varMap.get("latitude").setValue(node.getCost());
+			varMap.get("latitude").setValue(node.getLatitude());
 		} else {
-			varMap.put("latitude", new Variable("latitude",node.getCost(),true));
+			varMap.put("latitude", new Variable("latitude",node.getLatitude(),true));
 		}
 		
 		if (varMap.containsKey("longitude")) {
-			varMap.get("longitude").setValue(node.getCost());
+			varMap.get("longitude").setValue(node.getLongitude());
 		} else {
-			varMap.put("longitude", new Variable("longitude",node.getCost(),true));
+			varMap.put("longitude", new Variable("longitude",node.getLongitude(),true));
 		}
 		
 		if (varMap.containsKey("time")) {
-			varMap.get("time").setValue(node.getCost());
+			varMap.get("time").setValue(node.getTime());
 		} else {
-			varMap.put("time", new Variable("time",node.getCost(),true));
+			varMap.put("time", new Variable("time",node.getTime(),true));
 		}
 
 	}
