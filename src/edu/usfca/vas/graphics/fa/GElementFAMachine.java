@@ -50,6 +50,7 @@ import edu.usfca.xj.foundation.XJXMLSerializable;
 import javax.swing.*;
 
 import Query.Query;
+import Query.Variable;
 
 import java.awt.*;
 import java.util.*;
@@ -72,6 +73,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     public ArrayList<Color> colors = new ArrayList<Color>();
     public ArrayList<GElement> highlighted = new ArrayList<GElement>();
     public GElement currentState;
+    public static Map<String, Variable> variableMap = new HashMap<String, Variable>();
     
     public GElementFAMachine() {
     	updateAll();

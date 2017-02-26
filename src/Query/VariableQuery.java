@@ -5,26 +5,23 @@
  * Signature: Nicholas Fajardo
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/06/2017, implemented method stubs
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/19/2017, implemented execute()
+ * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/24/2017, refactored to "VariableQuery" (from QueryVariable)
  */
 
 package Query;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class QueryVariable extends Query {
+import edu.usfca.vas.graphics.fa.GElementFAMachine;
+
+public class VariableQuery extends Query {
 
 	//This is the string that has the set value and name of the variable
 	private String set;
 
-	public QueryVariable(Condition expression, String pertainingState, String queryName, String setValue) {
+	public VariableQuery(Condition expression, String pertainingState, String queryName, String setValue) {
 		super(expression, pertainingState, queryName);
 		this.set = setValue;
 	}
@@ -55,52 +52,58 @@ public class QueryVariable extends Query {
 		Matcher matcher = pattern.matcher(set);
 
 		String variable = "";
-		String value = "";
+		double value = 0;
 
 		if(matcher.matches()) {
 			System.out.println(matcher.group(1)); // variable to be reset
 			System.out.println(matcher.group(2)); // value to set it to
 			variable = matcher.group(1);
-			value = matcher.group(2);
+			value = Double.parseDouble(matcher.group(2));
+
+			if (GElementFAMachine.variableMap.containsKey(variable)) {
+				GElementFAMachine.variableMap.get(variable).setValue(value);
+			} else {
+				GElementFAMachine.variableMap.put(variable, new Variable(variable,value,true));
+			}			
 		} else {
 			System.err.println("Expression not evaluable: no variable specified");
 		}
 
-		//Update variables.txt
-		try {			
-			//System.out.println("File exists");
-			BufferedReader file = new BufferedReader(new FileReader(new File("variables.txt")));
-			BufferedWriter temp = new BufferedWriter(new FileWriter(new File("temp.txt")));
-
-			String line = file.readLine();
-			while (line != null) {
-				if (line.startsWith(variable + " =")) {
-					//System.out.println(line);
-					temp.append(variable + " = " + value + "\n");
-					//System.out.println(variable + " = " + value + "\n");
-				} else {
-					temp.append(line+"\n");
-				}
-				line = file.readLine();
-			}
-			file.close();
-			temp.close();
-
-			// Copy over new file
-			Files.copy(new File("temp.txt").toPath(), new File("variables.txt").toPath(), StandardCopyOption.REPLACE_EXISTING);
-			Files.delete(new File("temp.txt").toPath());
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		//		//Update variables.txt
+		//		try {			
+		//			//System.out.println("File exists");
+		//			BufferedReader file = new BufferedReader(new FileReader(new File("variables.txt")));
+		//			BufferedWriter temp = new BufferedWriter(new FileWriter(new File("temp.txt")));
+		//
+		//			String line = file.readLine();
+		//			while (line != null) {
+		//				if (line.startsWith(variable + " =")) {
+		//					//System.out.println(line);
+		//					temp.append(variable + " = " + value + "\n");
+		//					//System.out.println(variable + " = " + value + "\n");
+		//				} else {
+		//					temp.append(line+"\n");
+		//				}
+		//				line = file.readLine();
+		//			}
+		//			file.close();
+		//			temp.close();
+		//
+		//			// Copy over new file
+		//			Files.copy(new File("temp.txt").toPath(), new File("variables.txt").toPath(), StandardCopyOption.REPLACE_EXISTING);
+		//			Files.delete(new File("temp.txt").toPath());
+		//		}
+		//		catch (Exception e) {
+		//			e.printStackTrace();
+		//		}
 	}
 
 	/*
 	public static void main(String args[]) {
 
-		Query test1 = new QueryVariable(new Condition("x > 4"), "B1", "x greater than", "x = 6");
+		Query test1 = new VariableQuery(new Condition("x > 4"), "B1", "x greater than", "x = 6");
 		test1.run();
 	}
-	*/
+	 */
 
 }

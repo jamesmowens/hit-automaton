@@ -647,7 +647,7 @@ public abstract class GElement implements XJXMLSerializable {
 				System.out.println("current step is, source: "+((TransitionQuery) query).getStep().getSource()
 					+" target: "+(((TransitionQuery) query).getStep().getTarget()));
 				this.stepList.add(((TransitionQuery)query).getStep());
-			} else if (query instanceof QueryVariable) {
+			} else if (query instanceof VariableQuery) {
 				query.run();
 			}
 		}

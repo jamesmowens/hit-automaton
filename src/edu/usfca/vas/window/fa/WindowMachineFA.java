@@ -286,7 +286,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// flows of the side panel.
 			// runQueriesOnCurrentStates();
 			unHighlight();
-			UpdateData.updateData(currentData);
+			//machine.variableMap.put(key, value)
+			UpdateData.updateData(currentData,GElementFAMachine.variableMap); //TODO is this the right map?
 			GElement state = machine.getCurrentState();
 			highLightObject();
 			setActiveStates(sidePanel.getCurrent());

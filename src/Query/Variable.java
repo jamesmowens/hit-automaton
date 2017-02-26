@@ -11,8 +11,8 @@ package Query;
 /**
  * Container class for variables to be used by queries
  * A variable is an intermediate data point created by parsing a raw data stream. Variables represent any piece of
- * data relevant to the state at that particular moment in time. Variables can be queried by QueryVariable and
- * TransitionQuery. A QueryVariable will query one particular variable (a "simple" variable) and, based on the result 
+ * data relevant to the state at that particular moment in time. Variables can be queried by VariableQuery and
+ * TransitionQuery. A VariableQuery will query one particular variable (a "simple" variable) and, based on the result 
  * of the query, will update another variable (a "complex" variable). A TransitionQuery will query a complex variable
  * and, based on the result of the query, will change the current state of the machine.
  * 
@@ -20,25 +20,34 @@ package Query;
  *
  * @param <T> A value of a variable, can be any numeric type
  */
-public class Variable<T extends Number> {
+public class Variable { //change to <N extends Number>, for now all are doubles
 	private String name;
-	private T value;
+	private double value;
+	private boolean simple;
 	
-	public Variable(String name, T value) {
+	public Variable() {
+	}
+	
+	public Variable(String name, double value, boolean simple) {
 		this.name = name;
 		this.value = value;
+		this.simple = simple;
 	}
 	
 	public String getName() {
 		return name;
 	}
 	
-	public void setValue(T value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 	
-	public T getValue() {
+	public double getValue() {
 		return value;
+	}
+	
+	public boolean isSimple() {
+		return this.simple;
 	}
 	
 }

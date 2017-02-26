@@ -15,9 +15,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import edu.usfca.vas.graphics.fa.GElementFAMachine;
 
 
 public class Condition {
@@ -56,72 +54,79 @@ public class Condition {
 
 		// Search for variable in global variable list. If exists, update comparable with value
 		double value;
-		try {
-			value = getVariable(variable);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			System.out.println("Variable not found");
+		if (GElementFAMachine.variableMap.containsKey(variable)) {
+			value = GElementFAMachine.variableMap.get(variable).getValue();
+			comparable = comparable.replaceAll(variable, ""+value);
+			System.out.println(comparable);
+
+			try {
+				return simpleEvaluate(comparable);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			System.err.println("Variable does not exist in map");
 			return false;
-		}		
-
-		comparable = comparable.replaceAll(variable, ""+value);
-		System.out.println(comparable);
-
-		try {
-			return simpleEvaluate(comparable);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		}	
 		return false;
+		//		double value;
+		//		try {
+		//			value = getVariable(variable);
+		//		} catch (Exception e1) {
+		//			// TODO Auto-generated catch block
+		//			e1.printStackTrace();
+		//			System.out.println("Variable not found");
+		//			return false;
+		//		}		
+		//
 	}
 
-	/**
-	 * Pulls the current value of a variable from global "variables.txt"
-	 *
-	 * @param name name of variable
-	 * @return integer value of variable
-	 * @throws Exception //TODO
-	 */
-	private double getVariable(String name) throws Exception { //TODO should this be static?
 
-		// Retrieves variables.txt from relative file path
-		String inputFile = "variables.txt";
-
-		try {			
-			File inputfile = new File(inputFile);
-
-			// check if the file exists
-			if(inputfile.exists()) {
-				System.out.println("File exists");
-
-				BufferedReader file = new BufferedReader(new FileReader(inputFile));
-
-				String line = file.readLine();
-				while (line != null) {
-					if (line.startsWith(name + " =")) {
-						// assuming the var to the right of the equals is an int
-						double temp = Float.parseFloat(line.substring(line.lastIndexOf("= ") + 2));
-						file.close();
-						return temp;
-
-					}
-					line = file.readLine();
-				}
-				System.err.println("Error: no variable of that name present"); //TODO
-				file.close();
-				return 0;
-			}
-			else {
-				System.out.println("The system cannot find the file specified");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
+//	/**
+//	 * Pulls the current value of a variable from global "variables.txt"
+//	 *
+//	 * @param name name of variable
+//	 * @return integer value of variable
+//	 * @throws Exception //TODO
+//	 */
+//	private double getVariable(String name) throws Exception { //TODO should this be static?
+//
+//		// Retrieves variables.txt from relative file path
+//		String inputFile = "variables.txt";
+//
+//		try {			
+//			File inputfile = new File(inputFile);
+//
+//			// check if the file exists
+//			if(inputfile.exists()) {
+//				System.out.println("File exists");
+//
+//				BufferedReader file = new BufferedReader(new FileReader(inputFile));
+//
+//				String line = file.readLine();
+//				while (line != null) {
+//					if (line.startsWith(name + " =")) {
+//						// assuming the var to the right of the equals is an int
+//						double temp = Float.parseFloat(line.substring(line.lastIndexOf("= ") + 2));
+//						file.close();
+//						return temp;
+//
+//					}
+//					line = file.readLine();
+//				}
+//				System.err.println("Error: no variable of that name present"); //TODO
+//				file.close();
+//				return 0;
+//			}
+//			else {
+//				System.out.println("The system cannot find the file specified");
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return 0;
+//	}
 
 	/**
 	 * Evaluates a boolean expression using JavaScript engine
