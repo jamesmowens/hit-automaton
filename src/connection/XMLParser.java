@@ -96,7 +96,7 @@ public class XMLParser {
 				Document doc = fileParser(docPath); // parse into DOM document
 
 				NodeList nodeListDoc = doc.getElementsByTagName("node");
-				for(int i=0;i < nodeListDoc.getLength(); i++) {
+				for(int i=0; i < nodeListDoc.getLength(); i++) {
 					Node nodeDoc = nodeListDoc.item(i);
 					nodes.add(getEachDataPoint(nodeDoc));
 					System.out.println(nodeDoc);
