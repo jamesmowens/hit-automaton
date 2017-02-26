@@ -12,5 +12,10 @@
 		<longitude>28.20969</longitude>
 		<cost>146</cost>
 	</node>
+	<node>
+		<time>06:43</time><latitude>32.4567</latitude><longitude>345.4325</longitude><cost>42</cost>
+		
+		
+		</node>
 </nodes>
 </uberData>
