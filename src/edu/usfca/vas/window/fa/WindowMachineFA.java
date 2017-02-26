@@ -282,7 +282,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// flows of the side panel.
 			// runQueriesOnCurrentStates();
 			unHighlight();
-			updateData();
+			UpdateData.updateData(currentData);
 			GElement state = machine.getCurrentState();
 			highLightObject();
 			setActiveStates(sidePanel.getCurrent());
@@ -301,9 +301,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		}
 	}
 	
+	/*
 	private void updateData(){
-		//TODO Implement this method to update Data to the variables list
+		// from UpdateData.java in Query package
+
 	}
+	*/
 	
 	private void setNewData(){
 		this.dataIndex++;
