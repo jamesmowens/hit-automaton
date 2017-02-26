@@ -23,23 +23,31 @@ public class GElementFASidePanel extends JPanel {
 	static ArrayList<GElement> starts = new ArrayList<GElement>();
 	static ArrayList<GElement> targets = new ArrayList<GElement>();
 	int currentIndex = -1;
+	JTabbedPane tabs;
+	JPanel dataFeed;
+	JPanel complexVariables;
 
 
 	//creates the side panel
 	public GElementFASidePanel() {
 		super();
+		this.tabs = new JTabbedPane();
+		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		tabs.setPreferredSize(new Dimension(100, 800));
+
+		this.dataFeed = new JPanel();
+		this.complexVariables = new JPanel();
 		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.setPreferredSize(new Dimension(100, 500));
-		setVisible(true);
-		panel = new JPanel();
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		panel.setPreferredSize(new Dimension(500, 25));
-		panel.setVisible(true);
-		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(325, 345));
+		tabs.add("Data Feed" , dataFeed);
+		tabs.add("Complex Variables" , complexVariables);
+		tabs.setVisible(true);
+		this.setVisible(true);
+		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
+		scroll.setPreferredSize(new Dimension(950, 190));
 		this.add(scroll);
 	}
-//gets the transition that should be highlighted
+	//gets the transition that should be highlighted
 	public GLink getTransition(){
 		int i = 0;
 		for (JLabel label: labels){
@@ -52,16 +60,16 @@ public class GElementFASidePanel extends JPanel {
 	}
 
 	//gets the state that should be highlighted
-		public GElement getTarget(){
-			int i = 0;
-			for (JLabel label: labels){
-				if (label.getForeground() == Color.RED){
-					return targets.get(i);
-				}
-				i++;
+	public GElement getTarget(){
+		int i = 0;
+		for (JLabel label: labels){
+			if (label.getForeground() == Color.RED){
+				return targets.get(i);
 			}
-			return null;
+			i++;
 		}
+		return null;
+	}
 
 	//parses to a readable format
 	public static String parse(String flow){
@@ -75,8 +83,8 @@ public class GElementFASidePanel extends JPanel {
 				break;
 			//else if (isInteger(tokens[i])){
 
-				//if (tokens.length > i+1 && !tokens[i+1].startsWith("from"))
-					//parsed = parsed.concat(", ");
+			//if (tokens.length > i+1 && !tokens[i+1].startsWith("from"))
+			//parsed = parsed.concat(", ");
 
 			//}
 			else{
@@ -96,13 +104,13 @@ public class GElementFASidePanel extends JPanel {
 	}
 	//figures out if something is an integer
 	public static boolean isInteger(String s) {
-	    try {
-	        Integer.parseInt(s);
-	    } catch(NumberFormatException e) {
-	        return false;
-	    }
-	    // only got here if we didn't return false
-	    return true;
+		try {
+			Integer.parseInt(s);
+		} catch(NumberFormatException e) {
+			return false;
+		}
+		// only got here if we didn't return false
+		return true;
 	}
 
 	//returns the size of the current flow
@@ -188,26 +196,26 @@ public class GElementFASidePanel extends JPanel {
 	}
 
 	//highlights the previous thing in the stream (if there is a next thing.)
-		public String highlightPrevious(){
-			int i = -1;
-			int j = 0;
-			for (JLabel test: labels){
-				if (test.getForeground() == Color.RED)
-					i = j;
-				j++;
-			}
-			//make sure there is something highlighted...
-			if (i == -1 && labels.size() > 0){
-				labels.get(labels.size()-1).setForeground(Color.RED);
-				return strings.get(labels.size()-1);
-			}
-			unHighlight();
-			if (i != 0){
-				labels.get(i-1).setForeground(Color.RED);
-				return strings.get(i-1);
-			}
-			return null;
+	public String highlightPrevious(){
+		int i = -1;
+		int j = 0;
+		for (JLabel test: labels){
+			if (test.getForeground() == Color.RED)
+				i = j;
+			j++;
 		}
+		//make sure there is something highlighted...
+		if (i == -1 && labels.size() > 0){
+			labels.get(labels.size()-1).setForeground(Color.RED);
+			return strings.get(labels.size()-1);
+		}
+		unHighlight();
+		if (i != 0){
+			labels.get(i-1).setForeground(Color.RED);
+			return strings.get(i-1);
+		}
+		return null;
+	}
 
 	//unhighlights everything
 	public void unHighlight(){

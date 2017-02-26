@@ -40,12 +40,12 @@ public class XMLParser {
 
 		return document;
 	}
-	
+
 	public static ArrayList<Step> getListHighlightObjects() {
-		
+
 		ArrayList<Step> list = new ArrayList<Step>();
 		String file = "feedback.xml";
-		
+
 		try {			
 			File inputfile = new File(file);  // TODO: receive list from server
 			if(inputfile.exists()) // check if file exists
@@ -65,7 +65,7 @@ public class XMLParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
@@ -85,7 +85,7 @@ public class XMLParser {
 		}
 		return new Step(source,target,label);
 	}
-	
+
 	public static ArrayList<DataNode> getListDataNodes(String docPath){
 		ArrayList<DataNode> nodes = new ArrayList();
 		//String file = "sampleUberData.xml";
@@ -112,7 +112,7 @@ public class XMLParser {
 		}
 		return nodes;
 	}
-	
+
 	private static DataNode getEachDataPoint(Node dataDoc){
 		String cost = "";
 		String time = "";
