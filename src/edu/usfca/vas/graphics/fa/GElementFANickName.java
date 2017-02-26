@@ -196,7 +196,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				Step transition = new Step(start,dest,"TransStep");
 				query = new TransitionQuery(eval,start,"TransQuery",transition);
 			} else {
-				query = new QueryVariable(eval, start, "SetQuery", set); 
+				query = new VariableQuery(eval, start, "SetQuery", set); 
 			}
 
 			System.out.println(query.queryInfo());

@@ -1,2 +1,6 @@
 x = 6
-cars = 5
+cars = 3
+cost = 23
+latitude = 49.32452
+longitude = -192.81745
+time = 1284.0
