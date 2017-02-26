@@ -26,7 +26,10 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 
+/**
+ * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/26/2017, updateSidePanelVariables
  */
 
 package edu.usfca.vas.window.fa;
@@ -286,7 +289,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// flows of the side panel.
 			// runQueriesOnCurrentStates();
 			unHighlight();
-			//machine.variableMap.put(key, value)
+
+			// Put currentData node into variableMap
 			UpdateData.updateData(currentData,GElementFAMachine.variableMap); //TODO is this the right map?
 			GElement state = machine.getCurrentState();
 			highLightObject();
@@ -305,13 +309,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			playingFlag = false;
 		}
 	}
-	
-	/*
-	private void updateData(){
-		// from UpdateData.java in Query package
-
-	}
-	*/
 	
 	private void setNewData(){
 		this.dataIndex++;
@@ -568,20 +565,26 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	private void updateSidePanelVariables() {
 		BufferedReader br = null;
 		ArrayList<String> input = new ArrayList<String>();
-
-		try {
-			br = new BufferedReader(new FileReader("variables.txt"));
-			String temp = null;
-			while ((temp = br.readLine()) != null) {
-				input.add(temp);
-			}
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-			changeSaveError(e1);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-			changeSaveError(e1);
+		
+		// Add every element of the variableMap to sidepanel
+		for (String key : GElementFAMachine.variableMap.keySet()) {
+			double value = GElementFAMachine.variableMap.get(key).getValue();
+			input.add(key+" = "+value);
 		}
+
+//		try {
+//			br = new BufferedReader(new FileReader("variables.txt"));
+//			String temp = null;
+//			while ((temp = br.readLine()) != null) {
+//				input.add(temp);
+//			}
+//		} catch (FileNotFoundException e1) {
+//			e1.printStackTrace();
+//			changeSaveError(e1);
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//			changeSaveError(e1);
+//		}
 
 		sidePanel.clear();
 		for (String event : input) {

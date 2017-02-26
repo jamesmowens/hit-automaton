@@ -29,9 +29,9 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	ArrayList<JTextField> Etextfields = new ArrayList<JTextField>();
 	//present active states
 	JLabel activeStateLabel = new JLabel();	
-	JPanel linkPanel;
-	JPanel elementPanel;
-	JPanel executionPanel;
+	//JPanel linkPanel;
+	//JPanel elementPanel;
+	//JPanel executionPanel;
 	JPanel queryPanel;
 	JPanel queryEditPanel;
 	JTabbedPane tabs;
@@ -348,7 +348,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		tf2.setText(newLink.nickname);
 		tf2.setForeground(Color.BLACK);
 		p.add(tf2);
-		this.linkPanel.add(p);
+		//this.linkPanel.add(p);
 		tf2.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent ae) {
@@ -446,11 +446,11 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			for(JLabel label: labels){
 				if (label.getText().equals(link.getPattern())){
 					//System.out.println("Removing from panel");
-					linkPanel.remove(panels.get(i));
+					//linkPanel.remove(panels.get(i));
 					panels.remove(i);
 					labels.remove(i);
 					textfields.remove(i);
-					linkPanel.updateUI();
+					//linkPanel.updateUI();
 					return;
 				}
 				i++;
@@ -463,12 +463,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	public void clearLink(){
 		//System.out.println("clearLink");
 		int i = 0;
-		this.linkPanel = new JPanel();
-		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		//this.linkPanel = new JPanel();
+		//this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		panels.clear();
 		labels.clear();
 		textfields.clear();
-		linkPanel.updateUI();
+		//linkPanel.updateUI();
 	}
 
 	//finds a transition with a longname that contains this string and highlights it. 
@@ -591,7 +591,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		tf2.setText(newElement.getNickname());
 		tf2.setForeground(Color.BLACK);
 		p.add(tf2);
-		this.elementPanel.add(p);
+		//this.elementPanel.add(p);
 		tf2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
 				//if the user enters a new nickname, update the GLink to show that
@@ -656,7 +656,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		for (GElement test: gelements){
 			if (test == element){
 				gelements.remove(element);
-				elementPanel.remove(Epanels.get(i));
+				//elementPanel.remove(Epanels.get(i));
 				Epanels.remove(i);
 				Elabels.remove(i);
 				Etextfields.remove(i);
@@ -705,15 +705,15 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	//clears everything from the NamingPanel (all links and transitions are deleted)
 	public void clear(){
 		//get rid of all the links
-		linkPanel.removeAll();
-		linkPanel.updateUI();
+		//linkPanel.removeAll();
+		//linkPanel.updateUI();
 		panels.clear();
 		textfields.clear();
 		labels.clear();
 		glinks.clear(); 
 		//get rid of all the elements
-		elementPanel.removeAll();
-		elementPanel.updateUI();
+		//elementPanel.removeAll();
+		//elementPanel.updateUI();
 		Epanels.clear();
 		Etextfields.clear();
 		Elabels.clear();
