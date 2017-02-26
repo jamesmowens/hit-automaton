@@ -58,24 +58,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		super();
 		this.tabs = new JTabbedPane();
 		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		tabs.setPreferredSize(new Dimension(950, 180));
+		tabs.setPreferredSize(new Dimension(1980, 180));
 		//this.add(tabs);
-		this.linkPanel = new JPanel();
-		this.elementPanel = new JPanel();
-		this.executionPanel = new JPanel();
 		this.queryPanel  = new JPanel();
 		this.queryEditPanel = new JPanel();
-		this.linkPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.elementPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.executionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		//		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		//		this.queryEditPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		executionPanel.add(activeStateLabel);
-		//this.linkPanel.setSize(new Dimension(600, 100));
-		//this.elementPanel.setSize(new Dimension(600, 100));
-		tabs.addTab("Transition Labels", this.linkPanel);
-		tabs.addTab("State Names", this.elementPanel);
-		tabs.addTab("Process Summaries", this.executionPanel);
 
 		makeQueryStuff();
 		//tabs.addTab("New Tab", null);

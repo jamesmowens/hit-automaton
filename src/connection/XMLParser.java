@@ -157,7 +157,7 @@ public class XMLParser {
 			}
 			else
 			{
-				System.out.println("The system cannot find the file specified)");
+				System.out.println("The system cannot find the file specified");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
