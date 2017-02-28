@@ -536,6 +536,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		Step currentStep = stepList.get(0);
 		if (machine.findState(currentStep.getTarget()) != null) {
 			GElement state = machine.findState(currentStep.getTarget());
+			//System.out.println("State should be highlighted");
 
 			// This is the highlighting part
 			state.setHighLight(true);
