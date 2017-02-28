@@ -278,13 +278,15 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
+			/*
 			synchronized (playingFlagLock) {
 				if (!playingFlag) {
 					return;
 				}
-			}
+			}*/
 
+			{
 			// This goes in order of the indexes of the current line in the
 			// flows of the side panel.
 			// runQueriesOnCurrentStates();
@@ -301,12 +303,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			System.out.println("Setting new data");
 			setNewData();
 			//stepList
+			}
 		}
-
+		while(stepList.size() > 0);
 		//Might be a bug here
 		//while (stepList.size() >= 0);
-		while(true);
-		//stopPlaying();
+		
+		stopPlaying();
 }
 	
 	private void stopPlaying() {
