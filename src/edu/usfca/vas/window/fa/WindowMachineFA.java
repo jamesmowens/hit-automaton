@@ -109,7 +109,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	protected ArrayList<Step> stepList = new ArrayList<Step>();
 	JButton startButton;
 	protected String currentDocPath;
-	protected ArrayList<String> activeStates = new ArrayList();;
+	protected ArrayList<String> activeStates = new ArrayList();
 
 	protected ArrayList<DataNode> dataList;
 	protected int dataIndex = 0;
@@ -215,7 +215,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					// TODO uncomment this out
 					dataList = XMLParser.getListDataNodes(currentDocPath);
 					for(DataNode node : dataList){
-						System.out.println(node.getCost());
+						System.out.println("Window machine fa perspective: " + node.getCost());
 					}
 					stepList.add(grabFirstStep());
 					currentData = dataList.get(0);
@@ -288,20 +288,25 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// This goes in order of the indexes of the current line in the
 			// flows of the side panel.
 			// runQueriesOnCurrentStates();
+			System.out.println("Unhighliting");
 			unHighlight();
-
 			// Put currentData node into variableMap
+			System.out.println("updating data");
 			UpdateData.updateData(currentData,GElementFAMachine.variableMap); //TODO is this the right map?
+			System.out.println("Getting the current State");
 			GElement state = machine.getCurrentState();
+			System.out.println("Highlighting & running queries");
 			highLightObject();
-			setActiveStates(sidePanel.getCurrent());
+			//setActiveStates(sidePanel.getCurrent());
+			System.out.println("Setting new data");
 			setNewData();
+			//stepList
 		}
 
-		while (stepList.size() > 0);
-		// while(true);
-
-		stopPlaying();
+		//Might be a bug here
+		//while (stepList.size() >= 0);
+		while(true);
+		//stopPlaying();
 }
 	
 	private void stopPlaying() {
@@ -313,7 +318,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	private void setNewData(){
 		this.dataIndex++;
 		if(dataIndex < dataList.size()){stopPlaying();}
+		System.out.println("The data that is gonna be next for stuff(window machine FA pespective): " + this.dataList.get(this.dataIndex).getCost());
 		this.currentData = this.dataList.get(this.dataIndex);
+		System.out.println("The current Data was sucsesfully set to the new node");
 	}
 
 	public String next() {
@@ -396,7 +403,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		setVisible(true);
 		getDataWrapperFA().getMachine().setSide(sidePanel);
 		return sidePanel;
-
 	}
 
 	// when a new GLink is added to the system.. add it with this function.
@@ -539,7 +545,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			//System.out.println("State should be highlighted");
 
 			// This is the highlighting part
+			System.out.println("The hilight is about to be set");
 			state.setHighLight(true);
+			System.out.println("The hilight was set");
 			// add to list of highlighted states
 			highlighted.add(state);
 
@@ -572,20 +580,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			double value = GElementFAMachine.variableMap.get(key).getValue();
 			input.add(key+" = "+value);
 		}
-
-//		try {
-//			br = new BufferedReader(new FileReader("variables.txt"));
-//			String temp = null;
-//			while ((temp = br.readLine()) != null) {
-//				input.add(temp);
-//			}
-//		} catch (FileNotFoundException e1) {
-//			e1.printStackTrace();
-//			changeSaveError(e1);
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//			changeSaveError(e1);
-//		}
 
 		sidePanel.clear();
 		for (String event : input) {

@@ -37,11 +37,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	JTabbedPane tabs;
 	GViewFAMachine mac;
 
-
 	DefaultComboBoxModel model  = new DefaultComboBoxModel();
 	DefaultComboBoxModel destinationModel = new DefaultComboBoxModel();
-
-
 
 	JComboBox contextList = new JComboBox(model);
 	JComboBox destinationList = new JComboBox(destinationModel);

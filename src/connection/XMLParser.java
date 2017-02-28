@@ -99,7 +99,7 @@ public class XMLParser {
 				for(int i=0; i < nodeListDoc.getLength(); i++) {
 					Node nodeDoc = nodeListDoc.item(i);
 					nodes.add(getEachDataPoint(nodeDoc));
-					System.out.println(nodeDoc);
+					System.out.println("This is data: " + getEachDataPoint(nodeDoc).getCost());
 				}
 			}
 			else

@@ -19,19 +19,22 @@ public class UpdateData {
 	public static void updateData(DataNode node, Map<String, Variable> varMap){
 		if (varMap.containsKey("cost")) {
 			varMap.get("cost").setValue(node.getCost());
-		} else {
+		} 
+		else {
 			varMap.put("cost", new Variable("cost",node.getCost(),true));
 		}
 		
 		if (varMap.containsKey("latitude")) {
 			varMap.get("latitude").setValue(node.getLatitude());
-		} else {
+		} 
+		else {
 			varMap.put("latitude", new Variable("latitude",node.getLatitude(),true));
 		}
 		
 		if (varMap.containsKey("longitude")) {
 			varMap.get("longitude").setValue(node.getLongitude());
-		} else {
+		} 
+		else {
 			varMap.put("longitude", new Variable("longitude",node.getLongitude(),true));
 		}
 		
@@ -40,8 +43,5 @@ public class UpdateData {
 		} else {
 			varMap.put("time", new Variable("time",node.getTime(),true));
 		}
-
 	}
-
-
 }

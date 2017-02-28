@@ -9,6 +9,7 @@
 			<outgoingTransitions>
 				<transition>from_Normal_to_Preparation_label_NtoH</transition>
 				<transition>from_Normal_to_Congestion_label_NtoC</transition>
+				<transition>from_Normal_to_END_label_nto3</transition>
 			</outgoingTransitions>
 		</state>
 		<state>
@@ -65,6 +66,15 @@
 				<transition>from_Normal_to_Preparation_label_NtoH</transition>
 				<transition>from_Congestion_to_Completion_label_CtoCom</transition>
 			</ingoingTransitions>
+		</state>
+		<state>
+			<name>END</name>
+			<start>true</start>
+			<end>true</end>
+			<contains>
+			</contains>
+			<outgoingTransitions>
+			</outgoingTransitions>
 		</state>
 	</states>
 	<transitions>
@@ -133,6 +143,26 @@
 			<source>Congestion</source>
 			<target>Completion</target>
 			<label>CtoCom</label>
+			<entering>false</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_0_to_Normal_label_enter</identifier>
+			<source></source>
+			<target>Normal</target>
+			<label>enter</label>
+			<entering>true</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_Normal_to_END_label_nto3</identifier>
+			<source>Normal</source>
+			<target>END</target>
+			<label>nto3</label>
 			<entering>false</entering>
 			<instantiating>true</instantiating>
 			<terminating>false</terminating>
