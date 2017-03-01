@@ -13,9 +13,70 @@
 		<cost>146</cost>
 	</node>
 	<node>
-		<time>06:43</time><latitude>32.4567</latitude><longitude>345.4325</longitude><cost>42</cost>
-		
-		
-		</node>
+		<time>06:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>42</cost>
+	</node>
+	<node>
+		<time>07:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>12</cost>
+	</node>
+	<node>
+		<time>08:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>455</cost>
+	</node>
+	<node>
+		<time>09:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>2356</cost>
+	</node>
+	<node>
+		<time>10:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>4</cost>
+	</node>
+	<node>
+		<time>11:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>89</cost>
+	</node>
+	<node>
+		<time>12:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>09</cost>
+	</node>
+	<node>
+		<time>13:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>27</cost>
+	</node>
+	<node>
+		<time>14:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>945</cost>
+	</node>
+	<node>
+		<time>15:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>2232</cost>
+	</node>
+	<node>
+		<time>16:43</time>
+		<latitude>32.4567</latitude>
+		<longitude>345.4325</longitude>
+		<cost>3950</cost>
+	</node>
 </nodes>
 </uberData>
