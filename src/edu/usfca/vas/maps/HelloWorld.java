@@ -18,10 +18,10 @@ public class HelloWorld extends MapView {
             public void onMapReady(MapStatus status) {
                 if (status == MapStatus.MAP_STATUS_OK) {
                     final Map map = getMap();
-                    map.setZoom(5.0);
+                    map.setZoom(12);
                     GeocoderRequest request = new GeocoderRequest(map);
-                    request.setAddress("Kharkiv, UA");
-
+                    //request.setAddress("New York, USA");
+                    request.setLocation(new LatLng(40.775048, -73.971120));
                     getServices().getGeocoder().geocode(request, new GeocoderCallback(map) {
                         @Override
                         public void onComplete(GeocoderResult[] result, GeocoderStatus status) {
