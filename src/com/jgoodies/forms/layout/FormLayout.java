@@ -1444,7 +1444,7 @@ public final class FormLayout implements LayoutManager2, Serializable {
     }
     
     /**
-     * Computes and returns a table that maps a column/row index
+     * Computes and returns a table that edu.usfca.vas.maps a column/row index
      * to the maximum number of columns/rows that a component can span
      * without spanning a growing column.<p>
      * 
@@ -1463,7 +1463,7 @@ public final class FormLayout implements LayoutManager2, Serializable {
      * [4, 3,    2, 1,    0]
      * 
      * @param formSpecs  the column specs or row specs
-     * @return a table that maps a spec index to the maximum span for 
+     * @return a table that edu.usfca.vas.maps a spec index to the maximum span for
      *    fixed size specs
      */
     private int[] computeMaximumFixedSpanTable(List formSpecs) {

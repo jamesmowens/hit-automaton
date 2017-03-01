@@ -115,7 +115,7 @@ public final class Sizes {
     // Singleton State *******************************************************
      
     /**
-     * Holds the current converter that maps non-pixel sizes to pixels.
+     * Holds the current converter that edu.usfca.vas.maps non-pixel sizes to pixels.
      */
     private static UnitConverter unitConverter;
     

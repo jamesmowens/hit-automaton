@@ -1,7 +1,7 @@
 package edu.usfca.vas.layout;
 
 import edu.usfca.xj.appkit.frame.XJWindow;
-
+import edu.usfca.vas.maps.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -30,7 +30,7 @@ public abstract class MainWindow extends XJWindow {
         addSideTab(subFrame, "Model", 25, 25);
         // The below lines will be replaced with additions of the actual new views
         addSideTab(new JPanel(), "Analytics", 25, 25);
-        addSideTab(new JPanel(), "Map", 25, 25);
+        addSideTab(HelloWorld.makeMap().getPanel(), "Map", 25, 25);
         leftSideBar.setSelectedIndex(1);
         leftSideBar.setVisible(true);
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component inheritJdk="true">
+<component LANGUAGE_LEVEL="JDK_1_8" inheritJdk="true">
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
 	<lib name="gson-2.2.2.jar" scope="COMPILE">
@@ -40,6 +40,24 @@
 	</lib>
 	<lib name="nimrodlf-1.2d.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/nimrodlf-1.2d.jar!/"/>
+	</lib>
+	<lib name="jxmaps-1.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jxmaps-1.3.jar!/"/>
+	</lib>
+	<lib name="jxmaps-linux32-1.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jxmaps-linux32-1.3.jar!/"/>
+	</lib>
+	<lib name="jxmaps-linux64-1.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jxmaps-linux64-1.3.jar!/"/>
+	</lib>
+	<lib name="jxmaps-mac-1.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jxmaps-mac-1.3.jar!/"/>
+	</lib>
+	<lib name="jxmaps-win-1.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/jxmaps-win-1.3.jar!/"/>
+	</lib>
+	<lib name="license.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/license.jar!/"/>
 	</lib>
 	<levels>
 		<level name="nimrodlf-1.2d" value="project"/>

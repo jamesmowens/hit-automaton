@@ -183,7 +183,7 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
 //                        " be the set of transition labels. A HIT automaton H is a quintuple" +
 //                        " (S; Start;End; children; T) where:\n\r- S is a set of states." +
 //                        " Start ⊆ S is a set of start states. End ⊆ S is a set of end states.\n\r" +
-//                        " - Children : S → 2^S maps each state to the set of its direct substates." +
+//                        " - Children : S → 2^S edu.usfca.vas.maps each state to the set of its direct substates." +
 //                        " A state s is atomic if children(s) = ∅. An atomic state corresponds" +
 //                        " to a state of a classical Finite State Automaton. Otherwise s is non-atomic," +
 //                        " i.e., a HIT automaton itself. s is said to be parent of the states in" +
