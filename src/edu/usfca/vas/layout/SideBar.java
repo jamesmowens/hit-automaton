@@ -20,7 +20,7 @@ public abstract class SideBar extends JTabbedPane {
      * @param comp The component to add a tab for
      * @param name The name of the tab which is also the key for its entry in sidebar.json
      */
-    public void addSideTab(Component comp, String imgPath, String name, int width, int height) {
+    public void addSideTab(Component comp, String imgPath, String name, int width, int height, Boolean Enabled) {
         addTab("<html> " +
                 "<img src=" + imgPath +
                 " height=" + height +
@@ -29,6 +29,7 @@ public abstract class SideBar extends JTabbedPane {
                 "<br> " +
                 "<p>" + name + "</p> " +
                 "</html>", comp);
+        setEnabledAt(getTabCount() - 1, Enabled);
     }
 
     /**
@@ -39,8 +40,8 @@ public abstract class SideBar extends JTabbedPane {
      * @param width The width to display the image
      * @param height The height to display the image
      */
-    public void addSideTab(Component comp, String imgPath, String name, boolean displayText, int width, int height) {
-        if(displayText) addSideTab(comp, imgPath, name, width, height);
+    public void addSideTab(Component comp, String imgPath, String name, boolean displayText, int width, int height, Boolean Enabled) {
+        if(displayText) addSideTab(comp, imgPath, name, width, height, Enabled);
         else {
             addTab("<html> " +
                     "<img src=" + imgPath +
@@ -48,6 +49,7 @@ public abstract class SideBar extends JTabbedPane {
                     " width=" + width +
                     " hspace=10> " +
                     "</html>", comp);
+             setEnabledAt(getTabCount() - 1, Enabled);
         }
     }
 }

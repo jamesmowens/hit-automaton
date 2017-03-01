@@ -23,9 +23,17 @@ public class LeftSideBar extends SideBar {
      * @param comp The component to add a tab for
      * @param name The name of the tab which is also the key for its entry in sidebar.json
      */
+
+
     public void addTab(Component comp, String name, int width, int height) {
+    	addTab(comp, name, width, height, true);
+    	}
+
+    
+    
+    public void addTab(Component comp, String name, int width, int height, Boolean Enabled) {
         super.addSideTab(comp, getClass().getResource(settings.getValue("sidebar/" + name)).toString(), name,
-                width, height);
+                width, height, Enabled);
     }
 
     /**
@@ -37,9 +45,9 @@ public class LeftSideBar extends SideBar {
      * @param width The width to display the image
      * @param height The height to display the image
      */
-    public void addTab(Component comp, String name, boolean displayText, int width, int height) {
+    public void addTab(Component comp, String name, boolean displayText, int width, int height, Boolean Enabled) {
         super.addSideTab(comp, getClass().getResource(settings.getValue("sidebar/" + name)).toString(), name,
-                displayText, width, height);
+                displayText, width, height, Enabled);
     }
 
 }
