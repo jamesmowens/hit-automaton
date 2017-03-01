@@ -27,7 +27,7 @@ public abstract class MainWindow extends XJWindow {
         getJFrame().add(subFrame);
         leftSideBar = new LeftSideBar(JTabbedPane.LEFT);
         getJFrame().add(leftSideBar);
-        addSideTab(new JPanel(), "Logo", false, 70, 25);
+        addSideTab(new JPanel(), "Logo", false, 70, 25, false);
         addSideTab(subFrame, "Model", 25, 25);
         // The below lines will be replaced with additions of the actual new views
         addSideTab(new AnalyticsView().getPanel(), "Analytics", 25, 25);
@@ -59,13 +59,20 @@ public abstract class MainWindow extends XJWindow {
      *             image in sidebar.json
      */
     public void addSideTab(Container tab, String name, boolean displayText, int width, int height) {
+        addSideTab(tab, name, displayText, width, height, true);
+    }
+
+    public void addSideTab(Container tab, String name, boolean displayText, int width, int height, Boolean TabControl) {
         if(displayText) {
             leftSideBar.addTab(tab, name, width, height);
         } else {
-            leftSideBar.addTab(tab, name, false, width, height);
+            leftSideBar.addTab(tab, name, false, width, height, TabControl);
         }
     }
 
+    
+    
+    
     /**
      * Instead of returning the base JFrame, the content pane is now set to a JPanel within the LeftSideBar for
      * creation of model view.
