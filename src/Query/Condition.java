@@ -70,63 +70,7 @@ public class Condition {
 			return false;
 		}	
 		return false;
-		//		double value;
-		//		try {
-		//			value = getVariable(variable);
-		//		} catch (Exception e1) {
-		//			// TODO Auto-generated catch block
-		//			e1.printStackTrace();
-		//			System.out.println("Variable not found");
-		//			return false;
-		//		}		
-		//
 	}
-
-
-//	/**
-//	 * Pulls the current value of a variable from global "variables.txt"
-//	 *
-//	 * @param name name of variable
-//	 * @return integer value of variable
-//	 * @throws Exception //TODO
-//	 */
-//	private double getVariable(String name) throws Exception { //TODO should this be static?
-//
-//		// Retrieves variables.txt from relative file path
-//		String inputFile = "variables.txt";
-//
-//		try {			
-//			File inputfile = new File(inputFile);
-//
-//			// check if the file exists
-//			if(inputfile.exists()) {
-//				System.out.println("File exists");
-//
-//				BufferedReader file = new BufferedReader(new FileReader(inputFile));
-//
-//				String line = file.readLine();
-//				while (line != null) {
-//					if (line.startsWith(name + " =")) {
-//						// assuming the var to the right of the equals is an int
-//						double temp = Float.parseFloat(line.substring(line.lastIndexOf("= ") + 2));
-//						file.close();
-//						return temp;
-//
-//					}
-//					line = file.readLine();
-//				}
-//				System.err.println("Error: no variable of that name present"); //TODO
-//				file.close();
-//				return 0;
-//			}
-//			else {
-//				System.out.println("The system cannot find the file specified");
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return 0;
-//	}
 
 	/**
 	 * Evaluates a boolean expression using JavaScript engine

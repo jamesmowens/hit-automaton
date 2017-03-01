@@ -290,7 +290,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// This goes in order of the indexes of the current line in the
 			// flows of the side panel.
 			// runQueriesOnCurrentStates();
-			System.out.println("Unhighliting");
+			System.out.println("Unhighlighting");
 			unHighlight();
 			// Put currentData node into variableMap
 			System.out.println("updating data");
@@ -323,7 +323,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		if(dataIndex < dataList.size()){stopPlaying();}
 		System.out.println("The data that is gonna be next for stuff(window machine FA pespective): " + this.dataList.get(this.dataIndex).getCost());
 		this.currentData = this.dataList.get(this.dataIndex);
-		System.out.println("The current Data was sucsesfully set to the new node");
+		System.out.println("The current Data was succesfully set to the new node");
 	}
 
 	public String next() {
@@ -548,9 +548,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			//System.out.println("State should be highlighted");
 
 			// This is the highlighting part
-			System.out.println("The hilight is about to be set");
+			System.out.println("The highlight is about to be set");
 			state.setHighLight(true);
-			System.out.println("The hilight was set");
+			System.out.println("The highlight was set");
 			// add to list of highlighted states
 			highlighted.add(state);
 
@@ -581,7 +581,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		// Add every element of the variableMap to sidepanel
 		for (String key : GElementFAMachine.variableMap.keySet()) {
 			double value = GElementFAMachine.variableMap.get(key).getValue();
+			if (key == "time") {
+				int time_hr = (int) value / 60;
+				int time_min = (int) value % 60;
+				input.add(key+" = "+time_hr+":"+time_min);
+			} else {
 			input.add(key+" = "+value);
+			}
 		}
 
 		sidePanel.clear();
