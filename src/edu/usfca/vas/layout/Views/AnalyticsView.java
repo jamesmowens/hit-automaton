@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Random;
 
 /**
  * Created by Thomas Schweich on 2/1/2017.
@@ -24,10 +25,20 @@ public class AnalyticsView {
     JPanel panel;
     JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 
-    private static final float[] xSample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    private static final float[] ySample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    //private static final float[] xSample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    //private static final float[] ySample = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private float[] xSample, ySample;
 
     public AnalyticsView() {
+        final int dataSize = 20;
+        xSample = new float[dataSize];
+        ySample = new float[dataSize];
+        Random random = new Random();
+        random.setSeed(123456789);
+        for(int i = 0; i < dataSize; i++) {
+            ySample[i] = random.nextFloat() * i + .5f * i;
+            xSample[i] = i;
+        }
         ArrayList<Float> xVals = new ArrayList<Float>(), yVals = new ArrayList<Float>();
         for(float f : xSample) xVals.add(f);
         for(float f : ySample) yVals.add(f);

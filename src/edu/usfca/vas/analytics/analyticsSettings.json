@@ -13,9 +13,15 @@
       "yLabel" : "Duration",
       "lineColor" : "#2CBA41"
     },
-    "pie1" : {},
-    "pie2" : {},
-    "pie3" : {}
+    "pie1" : {
+      "title" : "Avg Usual Base Price"
+    },
+    "pie2" : {
+      "title" : "Avg Usual Wait Time"
+    },
+    "pie3" : {
+      "title" : "Avg Usual Driver/Rider Ratio"
+    }
   },
   "Drivers" : {
     "graph1" : {

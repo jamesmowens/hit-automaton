@@ -3,6 +3,7 @@ package edu.usfca.vas.analytics;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.PieDataset;
 
 import javax.swing.*;
@@ -37,8 +38,9 @@ public class PiePanel extends JPanel {
                 true,
                 false
         );
-
+        chart.setBackgroundPaint(settings.getBackground());
         //PiePlot plot = (PiePlot) chart.getPlot();
+
         //TODO Customization
         return chart;
     }
