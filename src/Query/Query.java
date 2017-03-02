@@ -27,10 +27,10 @@ public abstract class Query {
 	public abstract void run();
 	
 	//This is the method that will be run when the query is asked for what it does and other information
-	public String queryInfo(){return "";}
+	public String queryInfo(){return info;}
 	
 	private void constructInfo(String name){
-		info = "Name of query: " + name + "\n belongs to this State: " + this.state + ".\nFunction of this query: " + ex.toString() + ".";
+		info = name + ": Condition" + ex.getExpression() + ".";
 	}
 	
 	public void printinfo(){
