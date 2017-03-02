@@ -32,6 +32,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package edu.usfca.xj.appkit.gview.object;
 
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
+import edu.usfca.vas.graphics.fa.GElementFANickName;
 import edu.usfca.xj.appkit.gview.GView;
 import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Rect;
@@ -524,19 +525,30 @@ public abstract class GElement implements XJXMLSerializable {
 		move(dx, dy, null);
 	}
 
+	//Method that helps the nickname panel
 	public void drawRecursive(Graphics2D g) {
+		
 		synchronized(lock) {
 			for (int i = 0; i < elements.size(); i++) {
 				GElement element = (GElement) elements.get(i);
+				String elementLabel = element.getLabel();
+				if((element instanceof GElementCircle || element instanceof GElementDoubleCircle) && element.isFocused()){
+					//if (element.isFocused()) {
+					//	System.out.println("It is focused!");
+					//}
+					System.out.println("trying to reset da query list in the tab");
+					GElementFANickName.putPertainingQueriesIn(elementLabel);}
 				element.drawRecursive(g);
 			}
 		}
 
 		draw(g);
+		
 		if(isSelected()){
 			drawSelected(g);
 		}
 		else if(isFocused()){
+			System.out.println("Blue is being the thing");
 			drawFocused(g);
 		}
 	}
@@ -669,5 +681,9 @@ public abstract class GElement implements XJXMLSerializable {
 
 	public void addQueries(LinkedList<Query> updatedQueries) {
 		this.queryList = updatedQueries;
+	}
+	
+	public LinkedList<Query> fetchQueries(){
+		return queryList;
 	}
 }
