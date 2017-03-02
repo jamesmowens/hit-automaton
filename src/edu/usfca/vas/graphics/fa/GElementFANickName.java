@@ -126,7 +126,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		pertainPanel.setLayout(new BoxLayout(pertainPanel, BoxLayout.X_AXIS));
 		pertainPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		pertainPanel.add(pertaining);
-		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		pertainPanel.add(Box.createRigidArea(new Dimension(40,0)));
 		pertainPanel.add(pertainingList);
 		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
 		pertainPanel.add(addPertain);
@@ -155,14 +155,9 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		conditionPanel.add(Box.createRigidArea(new Dimension(693,0)));
 
 		JPanel setPanel = new JPanel();
+		JLabel set = new JLabel("Set");
+		setFill.addActionListener(this);
 		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
-		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		JLabel set = new JLabel("set");
-		setFill.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-
-			}
-		});
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		setPanel.add(set);
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
