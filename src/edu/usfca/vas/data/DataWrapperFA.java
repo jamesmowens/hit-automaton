@@ -37,10 +37,6 @@ import edu.usfca.xj.foundation.XJXMLSerializable;
 
 import java.awt.*;
 
-/**
- * Handles the GElementFAMachine.
- */
-
 public class DataWrapperFA extends DataWrapperAbstract implements XJXMLSerializable {
 
     private FAMachine machine = null;

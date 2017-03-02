@@ -4,10 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/**
- * Converting event stream texts file into XML format.
- */
-
 public class StreamXMLGenerator {
 
 	public static String generate(ArrayList<String> events) {

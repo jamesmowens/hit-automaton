@@ -35,10 +35,6 @@ import edu.usfca.vas.app.Localized;
 import edu.usfca.xj.foundation.XJObject;
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
-/**
- * Sets the name seen on the tab/application top.
- */
-
 public abstract class DataWrapperAbstract extends XJObject implements XJXMLSerializable {
 
     protected String name = Localized.getString("untitled");

@@ -219,6 +219,7 @@ public class CHAOSConnection {
 	}
 
 	public static String getStep(Transition t) {
+		System.out.println("getStep() has started");
 		String s = "\t<step>\n";
 		s+="\t\t<source>" + adaptForXML(t.getHitVisSourceLabel()) + "</source>\n";
 		s+="\t\t<target>" + adaptForXML(t.getHitVisTargetLabel()) + "</target>\n";

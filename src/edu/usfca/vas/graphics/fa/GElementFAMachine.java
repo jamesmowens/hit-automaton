@@ -46,18 +46,15 @@ import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.xj.appkit.gview.shape.SLink;
 import edu.usfca.xj.appkit.gview.shape.SLinkArc;
 import edu.usfca.xj.foundation.XJXMLSerializable;
-import query.Query;
 
 import javax.swing.*;
+
+import Query.Query;
+import Query.Variable;
 
 import java.awt.*;
 import java.util.*;
 import java.util.List;
-
-/**
- * Handles drawing elements (states & transitions), collapsing, expanding, setting to accepting, 
- * coloring, etc.....
- */
 
 public class GElementFAMachine extends GElement implements XJXMLSerializable {
 
@@ -75,12 +72,16 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     public Color oldColor;
     public ArrayList<Color> colors = new ArrayList<Color>();
     public ArrayList<GElement> highlighted = new ArrayList<GElement>();
+    public GElement currentState;
+    public static Map<String, Variable> variableMap = new HashMap<String, Variable>();
     
     public GElementFAMachine() {
+    	variableMap.put("x", new Variable("x",5,true));
     	updateAll();
     }
 
     public GElementFAMachine(FAMachine faMachine) {
+    	variableMap.put("x", new Variable("x",5,true));
         setMachine(faMachine);
         updateAll();
     }
@@ -99,24 +100,26 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
         return machine;
     }
 
+    public GElement getCurrentState(){
+    	return this.currentState;
+    }
+    
     /**
      * highlights a given shape in red
      * @param ge - gelement to be highlighted
      */
     public void highlightShape(GElement ge){
     	if (elements.contains(ge)){
+    		currentState = ge;
     		oldColor = ge.getColor();
     		colors.add(oldColor);
     		highlighted.add(ge);
     		ge.setColor(Color.RED);
-    		System.out.println("Set Color happened");
     		ge.getPosition().color = Color.RED;
     		if (ge instanceof GElementFAState){
     			((GElementFAState)ge).setColor2(Color.RED);
     			((GElementFAState)ge).setColor3(Color.RED);
     			((GElementFAState)ge).highlighted = true;
-    			System.out.println("GElementFAMachine highlightShape");
-    			((GElementFAState)ge).runQuery();
     		}
     		if (ge instanceof GElementFAStateDoubleCircle){
     			((GElementFAStateDoubleCircle)ge).setColor2(Color.RED);
@@ -180,6 +183,7 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     
     public void unhighlightShape(GElement ge){
     	if (elements.contains(ge)){
+    		System.out.println("Elements contains this element (to be unhighlighted): "+ge.getLabel());
     		int i = 0;
     		int value = -1;
     		for (GElement test: highlighted){
@@ -482,6 +486,30 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
         updateAll();
         machine.addState(state); // add state to FAMachine
         GElementFAState newFAState = new GElementFAState(state, x, y,this); // create GElementFAState
+        
+        // pop-up for color
+        /*Object[] possibilities = {"Black", "Blue", "Yellow", "Green"};
+    	String s2 = (String)JOptionPane.showInputDialog(null, "Choose Color", "Choose Color", JOptionPane.PLAIN_MESSAGE, null, possibilities, 
+    			"Black");
+    	Color c;
+    	if (s2.equals("Black"))
+    		c = Color.BLACK;
+    	//else if (s2.equals("Red"))
+    		//c = Color.RED;
+    	else if (s2.equals("Blue"))
+    		c = Color.BLUE;
+    	else if (s2.equals("Yellow"))
+    		c = Color.YELLOW;
+    	else if (s2.equals("Green"))
+    		c = Color.GREEN;
+    	else
+    		c = Color.BLACK;
+        // set color
+    	newFAState.setColor(c);
+		newFAState.setColor2(c);
+		newFAState.setColor3(c);
+		newFAState.getPosition().color = c;*/
+        
         addElement(newFAState); // add GElement to GElement array
         //add the element to the nickname panel
         getMachine().getNaming().addElement(newFAState);
@@ -503,6 +531,31 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
        // updateAll();
         machine.addState(state); // add state to FAMachine
         GElementFAStateDoubleCircle newFAState = new GElementFAStateDoubleCircle(state, x, y,this); // create GElement
+        // pop-up for color
+        /*Object[] possibilities = {"Black", "Blue", "Yellow", "Green"};
+    	String s2 = (String)JOptionPane.showInputDialog(null, "Choose Color", "Choose Color", JOptionPane.PLAIN_MESSAGE, null, possibilities, 
+    			"Black");
+    	Color c;
+    	if (s2.equals("Black"))
+    		c = Color.BLACK;
+    	//else if (s2.equals("Red"))
+    		//c = Color.RED;
+    	else if (s2.equals("Blue"))
+    		c = Color.BLUE;
+    	else if (s2.equals("Yellow"))
+    		c = Color.YELLOW;
+    	else if (s2.equals("Green"))
+    		c = Color.GREEN;
+    	else
+    		c = Color.BLACK;
+        // set color
+    	newFAState.setColor(c);
+		newFAState.setColor2(c);
+		newFAState.setColor3(c);
+		newFAState.getPosition().color = c;*/
+        
+        
+    	
         addElement(newFAState); // add GElement to GElement array
         // add element to nickname panel
         getMachine().getNaming().addElement(newFAState);
@@ -1355,7 +1408,6 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 		for(GElement e : elements) {
 			if(e instanceof GElementFAStateInterface) {
 				if(getStateFullName(e).equals(target)) {
-					System.out.println("GElementFAMachine findState: "+e);
 					return e;
 				}
 			}
@@ -1363,7 +1415,6 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 		for(GElement e : collapsed) {
 			if(e instanceof GElementFAStateInterface) {
 				if(getStateFullName(e).equals(target)) {
-					System.out.println("GElementFAMachine findState: "+e);
 					return e;
 				}
 			}
@@ -1395,13 +1446,13 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
 	
 	public void addQueries(GElement findState, LinkedList<Query> updatedQueries) {
 		String stateName = findState.getLabel();
-		for(int i = 0; i < elements.size(); i++){
-			System.out.println("GElementFAMachine addQueries, the for loop is running right now at iteration"+i);
-			if(stateName.equals(elements.get(i).getLabel())) {
-				elements.get(i).addQueries(updatedQueries);
-				System.out.println("GElementFAMachine addQueries, element was found: "+elements.get(i));
+		for(GElement state: this.elements){
+			if(stateName.equals(state.getLabel())){
+				state.addQueries(updatedQueries);
+				System.out.println("GElementFAMachine addQueries, element was found: "+ state);
 				break;
-			} else {
+			} 
+			else {
 				System.out.println("GElementFAMachine addQueries, element was not found");
 			}
 		}

@@ -41,10 +41,6 @@ import edu.usfca.xj.appkit.frame.XJPanel;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Controls components and boundary declaration for File->Preferences menu.
- */
-
 public class Preferences extends XJPanel {
 
     public static final String PREF_STARTUP_ACTION = "PREF_STARTUP_ACTION";

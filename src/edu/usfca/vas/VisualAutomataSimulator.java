@@ -28,16 +28,15 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 */
 
-/**
- * Help glossary set up here & some startup options. MAIN FILE.
- */
+
+
 
 import java.awt.Frame;
 import java.awt.Window;
 import java.lang.reflect.Method;
-import java.net.URL;
 
 import edu.usfca.vas.app.*;
 import edu.usfca.vas.data.DataFA;
@@ -50,10 +49,6 @@ import edu.usfca.xj.appkit.update.XJUpdateManager;
 import edu.usfca.xj.foundation.XJSystem;
 
 import javax.swing.*;
-import javax.swing.plaf.synth.SynthLookAndFeel;
-
-import com.nilo.plaf.nimrod.NimRODLookAndFeel;
-import com.nilo.plaf.nimrod.NimRODTheme;
 
 public class VisualAutomataSimulator extends XJApplicationDelegate {
 
@@ -205,7 +200,6 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
     }
 
     public static void main(String[] args) {
-        setTheme();
         if (args.length == 7 && args[0].equals("-t")) {
             new Test(Integer.parseInt(args[1]), Integer.parseInt(args[2]),
                     Integer.parseInt(args[3]), Integer.parseInt(args[4]),
@@ -217,40 +211,6 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         }
 
         XJApplication.run(new VisualAutomataSimulator(), args);
-    }
-
-    private static void setTheme() {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    initLookAndFeel();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-    }
-
-    private static void initLookAndFeel() {
-        SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
-        try {
-        	
-         UIManager.setLookAndFeel( new com.nilo.plaf.nimrod.NimRODLookAndFeel());
-         NimRODTheme nt = new NimRODTheme( "NimRODThemeFile.theme");
-         System.out.println(System.getProperty("user.dir"));
-       	 NimRODLookAndFeel nf = new NimRODLookAndFeel();
-        	 nf.setCurrentTheme(nt);
-        	 UIManager.setLookAndFeel( nf);
-        }
-
-        catch (Exception e) {
-            System.err.println("Couldn't get specified look and feel ("
-                    + lookAndFeel
-                    + "), for some reason.");
-            System.err.println("Using the default look and feel.");
-            e.printStackTrace();
-        }
-
     }
 
     public void appDidLaunch(String[] args) {

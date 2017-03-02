@@ -10,13 +10,6 @@ import java.net.UnknownHostException;
 
 import edu.usfca.vas.window.WindowMachineAbstract;
 
-/**
- * The file contains all contents that create connection between ServerLauncher and 
- * HITvis – sending automaton and stream events from HITvis to ServerLauncher then 
- * receiving feedbacks from ServerLauncher to HITvis.
- */
-
-
 public class Connection {
     static Socket serverSocket = null;
     static PrintWriter out = null;
