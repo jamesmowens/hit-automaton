@@ -112,7 +112,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		contextPanel.setLayout(new BoxLayout(contextPanel, BoxLayout.X_AXIS));
 		contextPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		contextPanel.add(context);
-		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		contextPanel.add(Box.createRigidArea(new Dimension(33,0)));
 		contextPanel.add(contextList);
 		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
 		//contextPanel.add(addContext);
@@ -150,9 +150,9 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		conditionPanel.setLayout(new BoxLayout(conditionPanel, BoxLayout.X_AXIS));
 		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		conditionPanel.add(condition);
-		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		conditionPanel.add(Box.createRigidArea(new Dimension(25,0)));
 		conditionPanel.add(conditionFill);
-		conditionPanel.add(Box.createRigidArea(new Dimension(693,0)));
+		conditionPanel.add(Box.createRigidArea(new Dimension(600,0)));
 
 		JPanel setPanel = new JPanel();
 		JLabel set = new JLabel("Set");
@@ -160,14 +160,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		setPanel.add(set);
-		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		setPanel.add(Box.createRigidArea(new Dimension(68,0)));
 		setPanel.add(setFill);
-		setPanel.add(Box.createRigidArea(new Dimension(656,0)));
+		setPanel.add(Box.createRigidArea(new Dimension(600,0))); //was 656
 
 		JPanel destinationPanel = new JPanel();
 		JLabel destination = new JLabel("Destination");
-
-
 		destinationPanel.setLayout(new BoxLayout(destinationPanel, BoxLayout.X_AXIS));
 		destinationPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		destinationPanel.add(destination);
