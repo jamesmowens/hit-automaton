@@ -40,6 +40,7 @@ import edu.usfca.vas.graphics.IconManager;
 import edu.usfca.vas.graphics.device.Console;
 import edu.usfca.vas.graphics.device.OutputDevice;
 import edu.usfca.vas.VisualAutomataSimulator;
+import edu.usfca.vas.layout.MainWindow;
 import edu.usfca.xj.appkit.frame.XJWindow;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.menu.XJMainMenuBar;
@@ -67,7 +68,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class WindowAbstract extends XJWindow implements XJMenuItemDelegate {
+public abstract class WindowAbstract extends MainWindow implements XJMenuItemDelegate {
 
     // ** Menu constants
 

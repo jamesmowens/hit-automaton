@@ -28,16 +28,19 @@ public class GElementFASidePanel extends JPanel {
 	//creates the side panel
 	public GElementFASidePanel() {
 		super();
-		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.setPreferredSize(new Dimension(100, 500));
+//		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.setPreferredSize(new Dimension(350, 500));
+		this.setLayout(new GridLayout(0, 1));
 		setVisible(true);
-		panel = new JPanel();
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		panel.setPreferredSize(new Dimension(500, 25));
+		panel = new JPanel(new GridLayout(0, 1));
+		//panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+//		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(325, 345));
-		this.add(scroll);
+		//scroll.setLayout(new GridLayout(0, 1));
+		this.add(scroll, BorderLayout.CENTER);
+
 	}
 //gets the transition that should be highlighted
 	public GLink getTransition(){
@@ -49,6 +52,7 @@ public class GElementFASidePanel extends JPanel {
 			i++;
 		}
 		return null;
+
 	}
 
 	//gets the state that should be highlighted
@@ -60,7 +64,9 @@ public class GElementFASidePanel extends JPanel {
 				}
 				i++;
 			}
+
 			return null;
+
 		}
 
 	//parses to a readable format
@@ -92,6 +98,20 @@ public class GElementFASidePanel extends JPanel {
 		parsed = parsed.concat(")");
 		parsed = parsed.concat(" at [" + tokens[1] + "," + tokens[2] + "]");
 
+		//get the transition and target state starting with the 10th elements
+		//System.out.println("Start: " + tokens[i+1]);
+		//System.out.println("Target: " + tokens[i+2]);
+		//System.out.println("Transition: " + tokens[i+3]);
+		//GLink transition = null;
+		//GElement start = null;
+		//GElement target = null;
+
+		//tokens[9]
+		//transitions.add(transition);
+		//starts.add(target);
+		//targets.add(target);
+
+
 		return parsed;
 	}
 	//figures out if something is an integer
@@ -110,13 +130,36 @@ public class GElementFASidePanel extends JPanel {
 		return strings;
 	}
 
+	//adds a flow element
+	public void add(String flow, GLink transition, GElement start, GElement target){
+		transitions.add(transition);
+		starts.add(start);
+		targets.add(target);
+		//highlight in the flow panel
+		strings.add(flow);
+		panel.setPreferredSize(new Dimension(500, strings.size()*25));
+		flow = parse(flow);
+		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		p.setSize(new Dimension(15, 500));
+		JLabel tf = new JLabel(flow);
+		tf.setPreferredSize(new Dimension(400, 15));
+		p.add(tf);
+		//this.add(p);
+		panel.add(p);
+		labels.add(tf);
+		panels.add(p);
+		if (strings.size() == 1){
+			labels.get(0).setForeground(Color.RED);
+		}
+		this.updateUI();
+	}
+
 	public void add(String flow) {
 		strings.add(flow);
 		panel.setPreferredSize(new Dimension(500, strings.size()*25));
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		p.setSize(new Dimension(15, 500));
 		JLabel tf = new JLabel(flow);
-		System.out.println("This is a flow: " + flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
 		panel.add(p);
@@ -134,6 +177,7 @@ public class GElementFASidePanel extends JPanel {
 		int i = 0;
 		for (JLabel test: labels){
 			if (test.getText().equals(flow)){
+				//this.remove(panels.get(i));
 				panel.remove(panels.get(i));
 				panels.remove(i);
 				labels.remove(i);
@@ -172,7 +216,8 @@ public class GElementFASidePanel extends JPanel {
 				i = j;
 			j++;
 		}
-		
+
+    
 		//make sure there is something highlighted...
 		if (i == -1 && labels.size() > 0){
 			labels.get(0).setForeground(Color.RED);

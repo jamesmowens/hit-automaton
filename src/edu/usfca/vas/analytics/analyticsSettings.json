@@ -1,0 +1,57 @@
+{
+  "_comment" : "Possible graph settings: title, xLabel, yLabel, background, lineColor, shape, shapeSize, gridColor",
+  "Context" : {
+    "graph1" : {
+      "title" : "High Demand Occurrences",
+      "xLabel" : "Hour",
+      "yLabel" : "Number of High Demand Occurrences",
+      "lineColor" : "#478DFF"
+    },
+    "graph2" : {
+      "title" : "Average Duration of High Demand",
+      "xLabel" : "Hour",
+      "yLabel" : "Duration",
+      "lineColor" : "#2CBA41"
+    },
+    "pie1" : {
+      "title" : "Avg Usual Base Price"
+    },
+    "pie2" : {
+      "title" : "Avg Usual Wait Time"
+    },
+    "pie3" : {
+      "title" : "Avg Usual Driver/Rider Ratio"
+    }
+  },
+  "Drivers" : {
+    "graph1" : {
+      "title" : "Driver Stuff",
+      "xLabel" : "",
+      "yLabel" : "",
+      "shape" : "square"
+    },
+    "graph2" : {
+      "title" : "More Driver Stuff",
+      "xLabel" : "",
+      "yLabel" : ""
+    },
+    "pie1" : {},
+    "pie2" : {},
+    "pie3" : {}
+  },
+  "Riders" : {
+    "graph1" : {
+      "title" : "Rider Stuff",
+      "xLabel" : "",
+      "yLabel" : ""
+    },
+    "graph2" : {
+      "title" : "More Rider Stuff",
+      "xLabel" : "",
+      "yLabel" : ""
+    },
+    "pie1" : {},
+    "pie2" : {},
+    "pie3" : {}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "sidebar": {
+    "Logo": "SidebarIcons/WPILogo.png",
+    "Model": "SidebarIcons/ModelIcon.png",
+    "Analytics": "SidebarIcons/AnalyticsIcon.png",
+    "Map": "SidebarIcons/MapIcon.png"
+  },
+  "colors": {
+    "LinkPanel": "#FFFFFF",
+    "SidePanel": "#FFFFFF"
+  }
+}

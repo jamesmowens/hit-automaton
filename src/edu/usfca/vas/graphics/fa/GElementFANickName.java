@@ -152,9 +152,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		conditionPanel.setLayout(new BoxLayout(conditionPanel, BoxLayout.X_AXIS));
 		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		conditionPanel.add(condition);
-		conditionPanel.add(Box.createRigidArea(new Dimension(25,0)));
-		conditionPanel.add(conditionFill);
-		conditionPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		conditionPanel.add(conditionFill).setForeground(Color.BLACK);
+		conditionPanel.add(Box.createRigidArea(new Dimension(693,0)));
+
 
 		JPanel setPanel = new JPanel();
 		JLabel set = new JLabel("Set");
@@ -162,9 +163,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
 		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		setPanel.add(set);
-		setPanel.add(Box.createRigidArea(new Dimension(68,0)));
-		setPanel.add(setFill);
-		setPanel.add(Box.createRigidArea(new Dimension(600,0))); //was 656
+		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		setPanel.add(setFill).setForeground(Color.BLACK);
+		setPanel.add(Box.createRigidArea(new Dimension(656,0)));
+
 
 		JPanel destinationPanel = new JPanel();
 		JLabel destination = new JLabel("Destination");
@@ -215,6 +217,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				Step transition = new Step(start,dest,"TransStep");
 				query = new TransitionQuery(eval,start,"Transition Query",transition);
 			} else {
+
 				query = new VariableQuery(eval, start, "Variable Query", set); 
 			}
 
@@ -410,7 +413,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		} 
+		}
 	}
 
 	//updates the name, nickname, and color of a GLink based on the old name
@@ -430,7 +433,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		} 
+		}
 	}
 
 	//deletes a link
@@ -442,7 +445,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		if(max > 6){
 			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
 		}
-		else 
+		else
 			this.tabs.setPreferredSize(new Dimension(950, 180));
 		int i = 0;
 		//remove the GLink
@@ -490,7 +493,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		//linkPanel.updateUI();
 	}
 
-	//finds a transition with a longname that contains this string and highlights it. 
+	//finds a transition with a longname that contains this string and highlights it.
 	public void highlight(String name){
 		//System.out.println("highlighting with name: " + name);
 		int j = -1;
@@ -593,7 +596,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		if(max > 6){
 			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
 		}
-		else 
+		else
 			this.tabs.setPreferredSize(new Dimension(950, 180));
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		JLabel tf = new JLabel(newElement.getLabel());
@@ -639,7 +642,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		} 
+		}
 	}
 
 	//updates the name, nickname, and color of a GLink based on the old name
@@ -658,7 +661,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		} 
+		}
 	}
 
 	//deletes an element
@@ -669,7 +672,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		if(max > 6){
 			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
 		}
-		else 
+		else
 			this.tabs.setPreferredSize(new Dimension(950, 180));
 		int i = 0;
 		for (GElement test: gelements){
@@ -729,7 +732,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		panels.clear();
 		textfields.clear();
 		labels.clear();
-		glinks.clear(); 
+		glinks.clear();
 		//get rid of all the elements
 		//elementPanel.removeAll();
 		//elementPanel.updateUI();
