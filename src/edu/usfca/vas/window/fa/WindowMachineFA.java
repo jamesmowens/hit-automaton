@@ -279,13 +279,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				e.printStackTrace();
 			}
 			
-			/*
-			synchronized (playingFlagLock) {
-				if (!playingFlag) {
-					return;
-				}
-			}*/
-
 			{
 			// This goes in order of the indexes of the current line in the
 			// flows of the side panel.

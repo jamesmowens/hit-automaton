@@ -15,7 +15,7 @@ import Query.*;
 import connection.Step;
 
 public class GElementFANickName extends JPanel implements ActionListener {
-
+	
 	private static final long serialVersionUID = -511482713793989551L;
 	//hold the links stuff (for links)
 	ArrayList<GLink> glinks = new ArrayList<GLink>();
@@ -32,7 +32,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	//JPanel linkPanel;
 	//JPanel elementPanel;
 	//JPanel executionPanel;
-	JPanel queryPanel;
+	public static JPanel queryPanel;
 	JPanel queryEditPanel;
 	JTabbedPane tabs;
 	GViewFAMachine mac;
@@ -48,7 +48,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	HashMap<String,JButton> buttonCache = new HashMap<String,JButton>();
 	TextField setFill = new TextField("Leave this blank for transition query (delete this comment)", 20);
 	TextField conditionFill = new TextField("Press enter to submit command", 20);
-	HashMap<String, LinkedList<Query>> database = new HashMap();
+	static HashMap<String, LinkedList<Query>> database = new HashMap();
+	static String currentDisplayName = "";
 
 	//creates the naming panel
 	public GElementFANickName() {
@@ -72,28 +73,52 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		//return namingPanel;
 
 	}
-
+	
+	public static void putPertainingQueriesIn(String label){
+		if(database.get(label) != null){
+			if(!currentDisplayName.equals(label) && false){
+				GElementFANickName.queryPanel.removeAll();
+				currentDisplayName = label;
+			}
+			//System.out.println(label + "Being displayed");
+			for(Query que: database.get(label)){
+			JLabel name = new JLabel(que.queryInfo());
+			//System.out.println("It should be doing stuff rn with this query: " + que.queryInfo());
+			//if(GElementFANickName.queryPanel.get(name) == null)
+			for(Component pan: GElementFANickName.queryPanel.getComponents()){
+				if(((JLabel)pan).getText().equals(name.getText())){
+					return;
+				}
+			}
+			GElementFANickName.queryPanel.add(name);
+		}
+	}
+}
+	
 	private void makeQueryStuff(){
 		//Query Creation
 		this.queryPanel = new JPanel();
 		this.queryEditPanel = new JPanel();
-		this.queryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.queryPanel.setLayout(new BoxLayout(queryPanel, BoxLayout.Y_AXIS));
 		this.queryEditPanel.setLayout(new BoxLayout(queryEditPanel, BoxLayout.Y_AXIS));
 		tabs.addTab("Pertaining Queries", this.queryPanel);
 		tabs.addTab("Query Editor", this.queryEditPanel);
 
+		//putPertainingQueriesIn();
+		
 		JLabel context = new JLabel("Context");
 		JPanel contextPanel = new JPanel(); 
-		JButton addContext = new JButton("+");
+		//JButton addContext = new JButton("+");
 		contextPanel.setLayout(new BoxLayout(contextPanel, BoxLayout.X_AXIS));
 		contextPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		contextPanel.add(context);
 		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
 		contextPanel.add(contextList);
 		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
-		contextPanel.add(addContext);
+		//contextPanel.add(addContext);
 		contextPanel.add(Box.createRigidArea(new Dimension(700,0)));
 
+		/*
 		JLabel pertaining =  new JLabel("For");
 		JComboBox pertainingList = new JComboBox();
 		JButton addPertain = new JButton("+");
@@ -106,6 +131,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
 		pertainPanel.add(addPertain);
 		pertainPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		
 
 		JPanel frequencyPanel = new JPanel();
 		JLabel frequency = new JLabel("Frequency");
@@ -116,7 +142,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		frequencyPanel.add(Box.createRigidArea(new Dimension(10,0)));
 		frequencyPanel.add(frequencyList);
 		frequencyPanel.add(Box.createRigidArea(new Dimension(700,0)));
-
+*/
+		
 		JPanel conditionPanel = new JPanel();
 		JLabel condition = new JLabel("Condition");
 		conditionFill.addActionListener(this);
@@ -169,8 +196,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		buttons.add(submit);
 
 		queryEditPanel.add(contextPanel);
-		queryEditPanel.add(pertainPanel);
-		queryEditPanel.add(frequencyPanel);
+		//queryEditPanel.add(pertainPanel);
+		//queryEditPanel.add(frequencyPanel);
 		queryEditPanel.add(conditionPanel);
 		queryEditPanel.add(setPanel);
 		queryEditPanel.add(destinationPanel);
@@ -191,9 +218,9 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 			if (set.equals("")){
 				Step transition = new Step(start,dest,"TransStep");
-				query = new TransitionQuery(eval,start,"TransQuery",transition);
+				query = new TransitionQuery(eval,start,"Transition Query",transition);
 			} else {
-				query = new VariableQuery(eval, start, "SetQuery", set); 
+				query = new VariableQuery(eval, start, "Variable Query", set); 
 			}
 
 			System.out.println(query.queryInfo());

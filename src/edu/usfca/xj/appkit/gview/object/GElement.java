@@ -32,6 +32,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package edu.usfca.xj.appkit.gview.object;
 
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
+import edu.usfca.vas.graphics.fa.GElementFANickName;
 import edu.usfca.xj.appkit.gview.GView;
 import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Rect;
@@ -528,6 +529,9 @@ public abstract class GElement implements XJXMLSerializable {
 		synchronized(lock) {
 			for (int i = 0; i < elements.size(); i++) {
 				GElement element = (GElement) elements.get(i);
+				String elementLabel = element.getLabel();
+				if(element instanceof GElementCircle || element instanceof GElementDoubleCircle)
+					GElementFANickName.putPertainingQueriesIn(elementLabel);
 				element.drawRecursive(g);
 			}
 		}
@@ -669,5 +673,9 @@ public abstract class GElement implements XJXMLSerializable {
 
 	public void addQueries(LinkedList<Query> updatedQueries) {
 		this.queryList = updatedQueries;
+	}
+	
+	public LinkedList<Query> fetchQueries(){
+		return queryList;
 	}
 }
