@@ -31,18 +31,18 @@ public class GElementFASidePanel extends JPanel {
 	//creates the side panel
 	public GElementFASidePanel() {
 		super();
-		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.setPreferredSize(new Dimension(100, 500));
+//		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		this.setPreferredSize(new Dimension(350, 500));
+		this.setLayout(new BorderLayout());
 		setVisible(true);
 		panel = new JPanel();
 		panel.setName("SidePanel");
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		panel.setPreferredSize(new Dimension(500, 25));
+//		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(325, 345));
-		this.add(scroll);
-		
+//		scroll.setPreferredSize(new Dimension(325, 345));
+		this.add(scroll, BorderLayout.CENTER);		
 		
 	}
 //gets the transition that should be highlighted

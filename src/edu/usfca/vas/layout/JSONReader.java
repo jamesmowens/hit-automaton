@@ -1,52 +1,106 @@
 package edu.usfca.vas.layout;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import com.orsoncharts.util.json.JSONArray;
+import jdk.nashorn.internal.parser.JSONParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
- * Created by Thomas on 2/1/2017.
+ * Created by Thomas Schweich on 2/1/2017.
  *
  * Class for reading JSON files in "root_setting/sub_setting/sub_setting2/..." format
  */
 public class JSONReader {
-    String path;
+    JsonObject json;
 
     /**
      * Creates a reader for a  file at the given path
      * @param path The path to the .json file
      */
-    public JSONReader(String path) {
-        this.path = path;
+    public JSONReader(String path) throws FileNotFoundException {
+        String txt;
+        txt = new Scanner(new File(path)).useDelimiter("\\Z").next();
+        json = new JsonParser().parse(txt).getAsJsonObject();
     }
 
     /**
-     * Gets the value stored under location in the JSON file given by jsonPath
+     * Creates a reader for the given JsonObject
+     * @param jsonObject The JsonObject to read
+     */
+    public JSONReader(JsonObject jsonObject) {
+        this.json = jsonObject;
+    }
+
+    /**
+     * Gets the JsonObject at the given location
+     * @param location Slash-separated path to the desired JsonObject
+     * @return JsonObject at the given locatin
+     */
+    public JsonObject getJsonObject(String location) {
+        return readTerminalElement(location).getAsJsonObject();
+    }
+
+    /**
+     * Gets the value stored under location in the JSON file given by jsonPath as a String
      * @param location Slash-separated path to the desired setting
      * @return The desired setting in String form
      */
     public String getValue(String location) {
-        String txt;
-        try {
-            txt = new Scanner(new File(path)).useDelimiter("\\Z").next();
-            JsonObject json = new JsonParser().parse(txt).getAsJsonObject();
-            String lastTerm;
-            int lastSlashIndex = location.lastIndexOf("/");
-            if(lastSlashIndex > 0)
-                lastTerm = location.substring(lastSlashIndex + 1);
-            else
-                lastTerm = location;
-            JsonObject terminal = getTerminalJsonObject(location, json);
-            return terminal.get(lastTerm).getAsString();
-        } catch (FileNotFoundException e) {
-            System.err.println("Couldn't find " + path + ". CWD: " + new File(".").getAbsoluteFile());
-            e.printStackTrace();
+        return readTerminalElement(location).getAsString();
+    }
+
+    /**
+     * Gets the value stored under location in the JSON file given by jsonPath as a Number
+     * @param location Slash-separated path to the desired setting
+     * @return The desired setting in String form
+     */
+    public Number getNumberValue(String location) {
+        return readTerminalElement(location).getAsNumber();
+    }
+
+    /**
+     * Gets the value stored under location in the JSON file given by jsonPath as a JsonArray
+     * @param location Slash-separated path to the desired setting
+     * @return The desired setting in String form
+     */
+    public JsonArray getJsonArrayValue(String location) {
+        return readTerminalElement(location).getAsJsonArray();
+    }
+
+    /**
+     * Gets the value stored under location in the JSON file as a Map with Strings as keys and values.
+     * Underlying map is a HashMap.
+     * @param location Slash-separated path to the desired setting
+     * @return The desired setting as a Map
+     */
+    public Map<String, String> getAsSSMap(String location) {
+        Map<String, String> result = (new Gson()).fromJson(readTerminalElement(location), (new HashMap<String, String>()).getClass());
+        if (result == null) {
+            System.err.println("Couldn't find entry for: " + location);
+            result = new HashMap<>();
         }
-        return "";
+        return result;
+    }
+
+    /**
+     * Gives the last JsonElement, free of type, found by following location in the file given by this JSONReader's
+     * path
+     * @param location The slash-separated location of the value to find
+     * @return JsonElement representing the object at the location
+     * @throws FileNotFoundException if
+     */
+    private JsonElement readTerminalElement(String location) {
+        String lastTerm;
+        int lastSlashIndex = location.lastIndexOf("/");
+        if(lastSlashIndex > 0)
+            lastTerm = location.substring(lastSlashIndex + 1);
+        else
+            lastTerm = location;
+        JsonObject terminal = getTerminalJsonObject(location, json);
+        return terminal.get(lastTerm);
     }
 
     /**

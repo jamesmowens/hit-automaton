@@ -4,14 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Thomas on 1/17/2017.
+ * Created by Thomas Schweich on 1/17/2017.
  *
  * A JTabbedPane which reads an image destination from sidebar.json intended for use as the switcher between views
  */
-public class LeftSideBar extends JTabbedPane {
+public class LeftSideBar extends SideBar {
+
+    private JSONReader settings;
 
     public LeftSideBar(int layout) {
         super(layout);
+        settings = JSONReaders.SETTINGS.getReader();
     }
 
     /**
@@ -20,15 +23,17 @@ public class LeftSideBar extends JTabbedPane {
      * @param comp The component to add a tab for
      * @param name The name of the tab which is also the key for its entry in sidebar.json
      */
+
+
     public void addTab(Component comp, String name, int width, int height) {
-        addTab("<html> " +
-                "<img src=" + getClass().getResource(JSONReaders.SETTINGS.getValue("sidebar/" + name)).toString() +
-                " height=" + height +
-                " width=" + width +
-                " hspace=10> " +
-                "<br> " +
-                "<p>" + name + "</p> " +
-                "</html>", comp);
+    	addTab(comp, name, width, height, true);
+    	}
+
+    
+    
+    public void addTab(Component comp, String name, int width, int height, Boolean Enabled) {
+        super.addSideTab(comp, getClass().getResource(settings.getValue("sidebar/" + name)).toString(), name,
+                width, height, Enabled);
     }
 
     /**
@@ -40,16 +45,9 @@ public class LeftSideBar extends JTabbedPane {
      * @param width The width to display the image
      * @param height The height to display the image
      */
-    public void addTab(Component comp, String name, boolean displayText, int width, int height) {
-        if(displayText) addTab(comp, name, width, height);
-        else {
-            addTab("<html> " +
-                    "<img src=" + getClass().getResource(JSONReaders.SETTINGS.getValue("sidebar/" + name)).toString() +
-                    " height=" + height +
-                    " width=" + width +
-                    " hspace=10> " +
-                    "</html>", comp);
-        }
+    public void addTab(Component comp, String name, boolean displayText, int width, int height, Boolean Enabled) {
+        super.addSideTab(comp, getClass().getResource(settings.getValue("sidebar/" + name)).toString(), name,
+                displayText, width, height, Enabled);
     }
 
 }

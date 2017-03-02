@@ -32,32 +32,23 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
-import edu.usfca.vas.layout.ICard;
 import edu.usfca.vas.layout.LeftSideBar;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
-import edu.usfca.xj.appkit.utils.XJAlert;
-import edu.usfca.xj.appkit.utils.XJFileChooser;
-import edu.usfca.xj.appkit.utils.XJLocalizable;
 import query.Query;
 import edu.usfca.vas.app.Localized;
 import edu.usfca.vas.data.DataWrapperFA;
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
 import edu.usfca.vas.graphics.fa.GElementFANickName;
 import edu.usfca.vas.graphics.fa.GElementFASidePanel;
-import edu.usfca.vas.graphics.fa.GElementFAState;
 import edu.usfca.vas.graphics.fa.GViewFAMachine;
 import edu.usfca.vas.machine.fa.FAMachine;
 import edu.usfca.vas.window.WindowMachineAbstract;
 import edu.usfca.vas.window.tools.DesignToolsFA;
-import edu.usfca.xj.appkit.app.XJApplication;
 import edu.usfca.xj.appkit.document.CHAOSUtil;
-import edu.usfca.xj.appkit.document.XJData;
 import edu.usfca.xj.appkit.frame.XJFrame;
 
 import javax.swing.*;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 
 import connection.Connection;
 import connection.Step;
@@ -68,13 +59,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -82,7 +69,7 @@ import java.util.LinkedList;
  * Creates the panels for the application, the Load, Next, Back buttons are declared here.
  */
 
-public class WindowMachineFA extends WindowMachineAbstract implements ICard {
+public class WindowMachineFA extends WindowMachineAbstract {
 
     protected WindowMachineFASettings settings = null;
     protected GElementFAMachine machine;
@@ -413,9 +400,9 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
     	//side.setSize(new Dimension(250, 400)); // Why commented?
     	sidePanel=side;
     	//sidePanel.setLayout(new GridLayout(0,1));
-    	sidePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5)); // Align to RIGHT
+    	//sidePanel.setLayout(new BorderLayout()); // Align to RIGHT
     	//sidePanel.setLayout(new BorderLayout());
-		sidePanel.setPreferredSize(new Dimension(350, 335));
+		//sidePanel.setPreferredSize(new Dimension(350, 335));
     	setVisible(true);
     	getDataWrapperFA().getMachine().setSide(sidePanel);
     	return sidePanel;
@@ -602,8 +589,4 @@ public class WindowMachineFA extends WindowMachineAbstract implements ICard {
 		this.start = start;
 	}
 
-	@Override
-	public Component getMasterComp() {
-		return mainPanel;
-	}
 }
