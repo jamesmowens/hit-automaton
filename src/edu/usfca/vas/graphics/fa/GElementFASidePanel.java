@@ -2,17 +2,14 @@
 package edu.usfca.vas.graphics.fa;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
-import edu.usfca.vas.layout.JSONReaders;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
-
-/**
- * Sets up the stream side-panel, handles the stream.
- */
 
 public class GElementFASidePanel extends JPanel {
 
@@ -26,24 +23,24 @@ public class GElementFASidePanel extends JPanel {
 	static ArrayList<GElement> starts = new ArrayList<GElement>();
 	static ArrayList<GElement> targets = new ArrayList<GElement>();
 	int currentIndex = -1;
-	 
+
 
 	//creates the side panel
 	public GElementFASidePanel() {
 		super();
 //		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.setPreferredSize(new Dimension(350, 500));
-		this.setLayout(new BorderLayout());
+		this.setLayout(new GridLayout(0, 1));
 		setVisible(true);
-		panel = new JPanel();
-		panel.setName("SidePanel");
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		panel = new JPanel(new GridLayout(0, 1));
+		//panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 //		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//		scroll.setPreferredSize(new Dimension(325, 345));
-		this.add(scroll, BorderLayout.CENTER);		
-		
+		scroll.setPreferredSize(new Dimension(325, 345));
+		//scroll.setLayout(new GridLayout(0, 1));
+		this.add(scroll, BorderLayout.CENTER);
+
 	}
 //gets the transition that should be highlighted
 	public GLink getTransition(){
@@ -55,9 +52,9 @@ public class GElementFASidePanel extends JPanel {
 			i++;
 		}
 		return null;
-		
+
 	}
-	
+
 	//gets the state that should be highlighted
 		public GElement getTarget(){
 			int i = 0;
@@ -67,11 +64,11 @@ public class GElementFASidePanel extends JPanel {
 				}
 				i++;
 			}
-				
+
 			return null;
-			
+
 		}
-	
+
 	//parses to a readable format
 	public static String parse(String flow){
 		String delims = "[ ]+";
@@ -83,10 +80,10 @@ public class GElementFASidePanel extends JPanel {
 			if (tokens[i].equals("nothing")) //done parsing
 				break;
 			//else if (isInteger(tokens[i])){
-				
+
 				//if (tokens.length > i+1 && !tokens[i+1].startsWith("from"))
 					//parsed = parsed.concat(", ");
-			
+
 			//}
 			else{
 				parsed = parsed.concat(tokens[i] + "(");
@@ -97,43 +94,43 @@ public class GElementFASidePanel extends JPanel {
 					parsed = parsed.concat(", ");
 			}
 		}
-		
+
 		parsed = parsed.concat(")");
 		parsed = parsed.concat(" at [" + tokens[1] + "," + tokens[2] + "]");
-		
-		//get the transition and target state starting with the 10th elements 
+
+		//get the transition and target state starting with the 10th elements
 		//System.out.println("Start: " + tokens[i+1]);
 		//System.out.println("Target: " + tokens[i+2]);
 		//System.out.println("Transition: " + tokens[i+3]);
 		//GLink transition = null;
 		//GElement start = null;
 		//GElement target = null;
-		
-		//tokens[9] 
+
+		//tokens[9]
 		//transitions.add(transition);
 		//starts.add(target);
 		//targets.add(target);
-		
-				
+
+
 		return parsed;
 	}
 	//figures out if something is an integer
 	public static boolean isInteger(String s) {
-	    try { 
-	        Integer.parseInt(s); 
-	    } catch(NumberFormatException e) { 
-	        return false; 
+	    try {
+	        Integer.parseInt(s);
+	    } catch(NumberFormatException e) {
+	        return false;
 	    }
 	    // only got here if we didn't return false
 	    return true;
 	}
-	
+
 	//returns the size of the current flow
 	public ArrayList<String> getStrings(){
 		return strings;
 	}
 
-	//adds a flow element 
+	//adds a flow element
 	public void add(String flow, GLink transition, GElement start, GElement target){
 		transitions.add(transition);
 		starts.add(start);
@@ -156,7 +153,7 @@ public class GElementFASidePanel extends JPanel {
 		}
 		this.updateUI();
 	}
-	
+
 	public void add(String flow) {
 		strings.add(flow);
 		panel.setPreferredSize(new Dimension(500, strings.size()*25));
@@ -173,7 +170,7 @@ public class GElementFASidePanel extends JPanel {
 
 	//deletes a flow
 	public void removeFlow(String flow){
-		if (!strings.contains(flow))//the flow doesn't exist,  so don't remove it. 
+		if (!strings.contains(flow))//the flow doesn't exist,  so don't remove it.
 			return;
 		strings.remove(flow);
 		flow = parse(flow);
@@ -192,16 +189,16 @@ public class GElementFASidePanel extends JPanel {
 		return;
 	}
 
-	//colors a entry (label ) red to indicate that it is being looked at. 
+	//colors a entry (label ) red to indicate that it is being looked at.
 	public void highlightFlow(String flow){
-		
+
 		if (!strings.contains(flow)) //if the flow doesnt exist, we cant highlight it
 			return;
 		int i = 0;
 		//System.out.println("high");
 		for (String test: strings){
 			if (test.equals(flow)){
-				//System.out.println("highlighting"); 
+				//System.out.println("highlighting");
 				labels.get(i).setForeground(Color.RED);
 				return;
 			}
@@ -209,8 +206,8 @@ public class GElementFASidePanel extends JPanel {
 		}
 		this.updateUI();
 	}
-	
-	//highlights the next thing in the stream (if there is a next thing.) 
+
+	//highlights the next thing in the stream (if there is a next thing.)
 	public String highlightNext(){
 		int i = -1;
 		int j = 0;
@@ -219,8 +216,9 @@ public class GElementFASidePanel extends JPanel {
 				i = j;
 			j++;
 		}
-		
-		//make sure there is something highlighted... 
+
+    
+		//make sure there is something highlighted...
 		if (i == -1 && labels.size() > 0){
 			labels.get(0).setForeground(Color.RED);
 			return strings.get(0);
@@ -232,8 +230,8 @@ public class GElementFASidePanel extends JPanel {
 		}
 		return null;
 	}
-	
-	//highlights the previous thing in the stream (if there is a next thing.) 
+
+	//highlights the previous thing in the stream (if there is a next thing.)
 		public String highlightPrevious(){
 			int i = -1;
 			int j = 0;
@@ -242,7 +240,7 @@ public class GElementFASidePanel extends JPanel {
 					i = j;
 				j++;
 			}
-			//make sure there is something highlighted... 
+			//make sure there is something highlighted...
 			if (i == -1 && labels.size() > 0){
 				labels.get(labels.size()-1).setForeground(Color.RED);
 				return strings.get(labels.size()-1);
@@ -254,7 +252,7 @@ public class GElementFASidePanel extends JPanel {
 			}
 			return null;
 		}
-	
+
 	//unhighlights everything
 	public void unHighlight(){
 		int i = 0;
@@ -264,7 +262,7 @@ public class GElementFASidePanel extends JPanel {
 		}
 		return;
 	}
-	
+
 	//removes everything from the side panel
 	public void clear(){
 		for (JPanel panel: panels){
@@ -277,7 +275,7 @@ public class GElementFASidePanel extends JPanel {
 		panel.removeAll();
 		return;
 	}
-	
+
 	public void setCurrent(int i) {
 		if(i<0 || i >= panels.size()) return;
 		if(currentIndex>=0) {
@@ -290,7 +288,7 @@ public class GElementFASidePanel extends JPanel {
 	public int getCurrent() {
 		return currentIndex;
 	}
-	
+
 	public ArrayList<String> getStringLabels() {
 		ArrayList<String> list = new ArrayList<String>();
 		for(JLabel l : labels) {

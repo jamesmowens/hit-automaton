@@ -34,10 +34,6 @@ package edu.usfca.vas.graphics.device;
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
 
-/**
- * Used to handle the console during runtime, showing each step.
- */
-
 public class Console implements OutputDevice {
 
     private JScrollPane component;

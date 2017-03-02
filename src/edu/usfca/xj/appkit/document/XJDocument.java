@@ -314,7 +314,7 @@ public class XJDocument extends XJObject {
     
     public String performLoadSave() {
     	System.out.println("Get doc path here for XML file location. In appkit.document.XJDocument");
-    	if(!XJFileChooser.shared().displayOpenDialog(null, "txt", "Text File", false)) {
+    	if(!XJFileChooser.shared().displayOpenDialog(null, "xml", "XML File", false)) {
     		//XJAlert.display(getJavaContainer(), XJLocalizable.getXJString("DocError"), XJLocalizable.getXJString("DocLoadButError"));
             return null;
     	}

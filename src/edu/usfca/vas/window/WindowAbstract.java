@@ -50,7 +50,6 @@ import edu.usfca.xj.appkit.menu.XJMenuItemDelegate;
 import edu.usfca.xj.appkit.utils.XJAlert;
 import edu.usfca.xj.appkit.utils.XJFileChooser;
 import edu.usfca.xj.foundation.XJUtils;
-import sun.applet.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -68,14 +67,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-/**
- * Handles the Machine menu and the former run menu.
- * EDIT by Thomas Schweich 2/1/2017: This class actually causes the creation of the entire contents of the window as
- * it stood with only the model view. It is instantiated in the XJ library via reflection due to being added in
- * VisualAutomataSimulator.java. This class is responsible only for generating the model view and the file menus, and
- * other views are generated in MainWindow.java.
- */
 
 public abstract class WindowAbstract extends MainWindow implements XJMenuItemDelegate {
 
@@ -127,8 +118,7 @@ public abstract class WindowAbstract extends MainWindow implements XJMenuItemDel
     protected int currentWindowMachineIndex = 0;
 
     public WindowAbstract() {
-        super();
-        setSize(1150, 700);
+        setSize(1000, 700);
     }
 
     public void awake() {

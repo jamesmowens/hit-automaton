@@ -33,10 +33,6 @@ package edu.usfca.vas.machine.fa;
 
 import edu.usfca.xj.foundation.XJXMLSerializable;
 
-/**
- * Deals with circles (atomic states).
- */
-
 public class FAState extends State implements XJXMLSerializable {
 
     public static FAState createStartState(String name) {

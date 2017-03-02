@@ -38,10 +38,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Saves each element.
- */
-
 public class DebugWrapper {
     private List elements = new ArrayList();
 

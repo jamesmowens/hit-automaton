@@ -31,9 +31,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.data;
 
-/**
- * Calls superclass for DataAbstract. 
- */
+
 
 public class DataFA extends DataAbstract {
 

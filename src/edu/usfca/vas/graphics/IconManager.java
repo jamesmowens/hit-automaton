@@ -35,11 +35,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
-
-/**
- * Handles icons and graphics for elements, draws actual element on panel.
- */
-
 /*
  * gets icons for menu buttons
  */
