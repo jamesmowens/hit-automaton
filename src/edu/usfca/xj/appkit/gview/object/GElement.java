@@ -525,22 +525,30 @@ public abstract class GElement implements XJXMLSerializable {
 		move(dx, dy, null);
 	}
 
+	//Method that helps the nickname panel
 	public void drawRecursive(Graphics2D g) {
+		
 		synchronized(lock) {
 			for (int i = 0; i < elements.size(); i++) {
 				GElement element = (GElement) elements.get(i);
 				String elementLabel = element.getLabel();
-				if(element instanceof GElementCircle || element instanceof GElementDoubleCircle)
-					GElementFANickName.putPertainingQueriesIn(elementLabel);
+				if((element instanceof GElementCircle || element instanceof GElementDoubleCircle) && element.isFocused()){
+					//if (element.isFocused()) {
+					//	System.out.println("It is focused!");
+					//}
+					System.out.println("trying to reset da query list in the tab");
+					GElementFANickName.putPertainingQueriesIn(elementLabel);}
 				element.drawRecursive(g);
 			}
 		}
 
 		draw(g);
+		
 		if(isSelected()){
 			drawSelected(g);
 		}
 		else if(isFocused()){
+			System.out.println("Blue is being the thing");
 			drawFocused(g);
 		}
 	}

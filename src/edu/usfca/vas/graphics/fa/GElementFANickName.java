@@ -82,7 +82,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				GElementFANickName.queryPanel.removeAll();
 				currentDisplayName = label;
 			}
-			//Htis runs through all the queries to displa it
+			//This runs through all the queries to display it
 			for(Query que: database.get(label)){
 			JLabel name = new JLabel(que.queryInfo());
 			//Gets rid of repeating
