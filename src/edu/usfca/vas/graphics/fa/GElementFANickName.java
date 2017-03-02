@@ -75,16 +75,18 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	}
 	
 	public static void putPertainingQueriesIn(String label){
+		System.out.println(label);
 		if(database.get(label) != null){
-			if(!currentDisplayName.equals(label) && false){
+			//logic sequence that checks if the panel is already displaying the same state, and if its not then it clears
+			if(!currentDisplayName.equals(label)){
 				GElementFANickName.queryPanel.removeAll();
 				currentDisplayName = label;
 			}
-			//System.out.println(label + "Being displayed");
+			//Htis runs through all the queries to displa it
 			for(Query que: database.get(label)){
 			JLabel name = new JLabel(que.queryInfo());
-			//System.out.println("It should be doing stuff rn with this query: " + que.queryInfo());
-			//if(GElementFANickName.queryPanel.get(name) == null)
+			//Gets rid of repeating
+			if(GElementFANickName.queryPanel.getComponents().length > 0)
 			for(Component pan: GElementFANickName.queryPanel.getComponents()){
 				if(((JLabel)pan).getText().equals(name.getText())){
 					return;
