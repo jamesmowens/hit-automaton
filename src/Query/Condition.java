@@ -38,39 +38,76 @@ public class Condition {
 	 * @throws Exception 
 	 */
 	public boolean evaluate(String comparable) {
+		boolean result = false;
 
-		// Searches for an alphabetic string
-		Pattern pattern = Pattern.compile("([a-zA-Z_0-9]+).*");
-		Matcher matcher = pattern.matcher(comparable);
+		//Split string by whitespace
+		String[] splitSet = comparable.split("\\s+");
 
-		String variable;
-		if(matcher.matches()) {
-			System.out.println(matcher.group(1));
-			variable = matcher.group(1);
-		} else {
-			System.err.println("Expression not evaluable: no variable specified");
-			return false;
-		}
+		// For remaining values, convert to numbers and operators, concatenate into a string
+		StringBuilder toEvaluate = new StringBuilder();
 
-		// Search for variable in global variable list. If exists, update comparable with value
-		double value;
-		if (GElementFAMachine.variableMap.containsKey(variable)) {
-			value = GElementFAMachine.variableMap.get(variable).getValue();
-			comparable = comparable.replaceAll(variable, ""+value);
-			System.out.println(comparable);
-
-			try {
-				return simpleEvaluate(comparable);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		for (int i = 0; i < splitSet.length; i++) {
+			// multiple comparison strings, evaluate first one
+			if (splitSet[i].equals("AND")) {
+				// evaluate string, set result to new value
+				String evaluable = toEvaluate.toString();
+				if (simpleEvaluate(evaluable)) {
+					result = true;
+					toEvaluate = new StringBuilder();
+				} else {
+					return false;
+				}
 			}
-		} else {
-			System.err.println("Variable does not exist in map");
-			return false;
-		}	
-		return false;
+			// Check if string is a comparison
+			else if (isComparison(splitSet[i])) {
+				toEvaluate.append(splitSet[i]);
+			}
+			// Check if string is a number
+			else if (isNumeric(splitSet[i])) {
+				//System.out.println("String "+i+" is a double: "+value);
+				toEvaluate.append(splitSet[i]);
+			} 
+			// Check if string is an operator
+			else if (isOperator(splitSet[i])) {
+				//System.out.println("String "+i+" is an operator: "+value);
+				toEvaluate.append(splitSet[i]);
+			} 
+			// Check if string is a variable in the map
+			else if (GElementFAMachine.variableMap.containsKey(splitSet[i])) {
+				double tempValue = GElementFAMachine.variableMap.get(splitSet[i]).getValue();
+				toEvaluate.append(tempValue);
+			} else {
+				System.err.println("Cannot evaluate the following: "+splitSet[i]);
+			}
+		}
+		// Evaluate the concatenated string (should only be numbers and operators)
+		String evaluable = toEvaluate.toString();
+		return simpleEvaluate(evaluable);
 	}
+
+
+
+	// Checks if string is a double
+	private static boolean isNumeric(String str) {  
+		try {  
+			Double.parseDouble(str);  
+		} catch (NumberFormatException e)   {  
+			return false;  
+		}  
+		return true;  
+	}
+
+	// Checks if string is an arithmetic operator
+	private static boolean isOperator(String str) {
+		return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
+	}
+
+	// Checks if string is a comparison operator
+	private static boolean isComparison(String str) {
+		return str.equals(">") || str.equals("<") || str.equals("==") || str.equals(">=") ||
+				str.equals("<=") || str.equals("!=");
+	}
+
 
 	/**
 	 * Evaluates a boolean expression using JavaScript engine
@@ -82,12 +119,20 @@ public class Condition {
 		ScriptEngine engine = factory.getEngineByName("JavaScript");
 
 		try {
-			System.out.println(engine.eval(comparable));
+			//System.out.println(engine.eval(comparable));
 			return (Boolean) engine.eval(comparable);
 		} catch (ScriptException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		} //TODO remove when done
+	}
+
+
+	public static void main(String[] args) {
+		GElementFAMachine.variableMap.put("x", new Variable("x",4.0,true));
+		Condition myCondition = new Condition();
+		System.out.println(myCondition.evaluate("x > 2"));
+		System.out.println(myCondition.evaluate("x > 2 AND 3 != 1"));
 	}
 }
