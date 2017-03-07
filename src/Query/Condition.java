@@ -129,10 +129,10 @@ public class Condition {
 	}
 
 
-	public static void main(String[] args) {
-		GElementFAMachine.variableMap.put("x", new Variable("x",4.0,true));
-		Condition myCondition = new Condition();
-		System.out.println(myCondition.evaluate("x > 2"));
-		System.out.println(myCondition.evaluate("x > 2 AND 3 != 1"));
-	}
+//	public static void main(String[] args) {
+//		GElementFAMachine.variableMap.put("x", new Variable("x",4.0,true));
+//		Condition myCondition = new Condition();
+//		System.out.println(myCondition.evaluate("x > 2"));
+//		System.out.println(myCondition.evaluate("x > 2 AND 3 != 1"));
+//	}
 }
