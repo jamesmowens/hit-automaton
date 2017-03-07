@@ -51,6 +51,8 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
     protected transient SArrow startArrow = new SArrow();
     protected transient Vector2D startArrowDirection = new Vector2D(-1, 0);
     public boolean highlighted = false;
+    
+    private int xString; //width of the string
 
     public GElementFAState() {
     	super();
@@ -62,7 +64,7 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         setDraggable(true);
     }
     
-    public GElementFAState(State state, double x, double y,GElementFAMachine machine) {
+    public GElementFAState(State state, double x, double y, GElementFAMachine machine) {
     	super(machine);
         setState(state);
         setPosition(x, y);
@@ -118,34 +120,60 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
         return true;
     }
 
+    
+    @Override
     public void updateAnchors() {
-        setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
+    	//System.out.println("GElementFAState updateAnchors started"); //TODO
+    	setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
+        //setAnchor(ANCHOR_TOP, position.add(new Vector2D(xString*0.5-radius*0.5, -radius)), Anchor2D.DIRECTION_TOP);
+        //setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(xString*0.5-radius*0.5, radius)), Anchor2D.DIRECTION_BOTTOM);
+        //setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius, 0)), Anchor2D.DIRECTION_LEFT);
+        //setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius*0.5+xString, 0)), Anchor2D.DIRECTION_RIGHT); 	
     }
+    
+    
+    /*
+    public void updateAnchors() {
+    	Vector2D alteredPosition = new Vector2D((int)(position.x + INCREMENT*.25), position.y);
+    	
+        setAnchor(ANCHOR_CENTER, alteredPosition, Anchor2D.DIRECTION_FREE);
+        //setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-radius-INCREMENT*.25, 0)), Anchor2D.DIRECTION_LEFT);
+        //setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius+INCREMENT*.25, 0)), Anchor2D.DIRECTION_RIGHT);
+    }
+    private int INCREMENT;
+    */
+    
 
     public void drawShape(Graphics2D g) {
-        super.drawShape(g);
+        //super.drawShape(g);
 
         color = getPosition().color; 
         
         int x = (int)(getPositionX()-getRadius());
         int y = (int)(getPositionY()-getRadius());
+        
+        String stateName = state.getName();
+        FontMetrics fm = g.getFontMetrics();
+        xString = (int)(fm.stringWidth(stateName));
+        //System.out.println("String: " + stateName + "Length " + xString);
+        //int yString = (int)(fm.getHeight());
+        // INCREMENT = (int)(xString); //commented out with updateAnchors      
 
         if(state.start) {
+        	System.out.println("GElementFAState drawShape() state.start"); //TODO
             startArrow.setAnchor(x, y+getRadius());
             startArrow.setDirection(startArrowDirection);
             startArrow.setLength(20);
             startArrow.setAngle(30);
             startArrow.draw(g);
         }
+
+        g.drawOval((int) (x-(xString/2)+getRadius()/2), y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
         
-        g.drawOval(x, y, (int)(getRadius()*2), (int)(getRadius()*2)); //draw outer circle
-        if(state.accepted){
-        	g.drawOval(x + 4, y + 4, (int)(getRadius2() *2), (int)(getRadius2()*2));  //draw inner circle
-        }
         if(highlighted == true){
         	Stroke previousStroke = g.getStroke();
         	g.setStroke(new BasicStroke(3.0f));//2 pixel width
-        	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()*2));
+        	g.drawOval(x, y, (int)(getRadius() *2), (int)(getRadius()));
         	g.setStroke(previousStroke);
         }
     }

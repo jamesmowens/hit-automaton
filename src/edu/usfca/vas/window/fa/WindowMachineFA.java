@@ -260,7 +260,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	protected Step grabFirstStep() {
 		// TODO implement
-		String source = "0";
+		String source = "Normal";
 		Step firstStep = new Step(source, source, "firstStep");
 		return firstStep;
 	}
