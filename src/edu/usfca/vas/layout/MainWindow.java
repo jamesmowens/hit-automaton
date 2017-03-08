@@ -1,10 +1,13 @@
 package edu.usfca.vas.layout;
 
 import edu.usfca.vas.layout.Views.AnalyticsView;
-import edu.usfca.vas.layout.Views.HelloWorld;
+import edu.usfca.vas.layout.Views.MapsView;
 import edu.usfca.xj.appkit.frame.XJWindow;
 
 import javax.swing.*;
+
+import com.teamdev.jxmaps.MapViewOptions;
+
 import java.awt.*;
 
 /**
@@ -26,13 +29,14 @@ public abstract class MainWindow extends XJWindow {
         subFrame = new JPanel(new BorderLayout());
         subFrame.setPreferredSize(getJFrame().getPreferredSize());
         getJFrame().add(subFrame);
+        MapViewOptions options = new MapViewOptions();
         leftSideBar = new LeftSideBar(JTabbedPane.LEFT);
         getJFrame().add(leftSideBar);
         addSideTab(new JPanel(), "Logo", false, 70, 25, false);
         addSideTab(subFrame, "Model", 25, 25);
         // The below lines will be replaced with additions of the actual new views
         addSideTab(new AnalyticsView().getPanel(), "Analytics", 25, 25);
-        addSideTab(HelloWorld.makeMap().getPanel(), "Map", 25, 25);
+        addSideTab(new MapsView(options).getPanel(), "Map", 25, 25);
         leftSideBar.setSelectedIndex(1);
         leftSideBar.setVisible(true);
     }

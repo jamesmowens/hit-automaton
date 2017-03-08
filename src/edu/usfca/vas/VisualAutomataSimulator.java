@@ -1,5 +1,7 @@
 package edu.usfca.vas;
 
+import java.awt.BorderLayout;
+
 /*
 
 [The "BSD licence"]
@@ -41,6 +43,7 @@ import java.net.URL;
 
 import edu.usfca.vas.app.*;
 import edu.usfca.vas.data.DataFA;
+import edu.usfca.vas.layout.Views.MapsView;
 import edu.usfca.vas.window.fa.WindowFA;
 import edu.usfca.xj.appkit.app.XJApplication;
 import edu.usfca.xj.appkit.app.XJApplicationDelegate;
@@ -54,6 +57,7 @@ import javax.swing.plaf.synth.SynthLookAndFeel;
 
 import com.nilo.plaf.nimrod.NimRODLookAndFeel;
 import com.nilo.plaf.nimrod.NimRODTheme;
+import com.teamdev.jxmaps.MapViewOptions;
 
 public class VisualAutomataSimulator extends XJApplicationDelegate {
 
@@ -217,6 +221,8 @@ public class VisualAutomataSimulator extends XJApplicationDelegate {
         }
 
         XJApplication.run(new VisualAutomataSimulator(), args);
+        
+        
     }
 
     private static void setTheme() {
