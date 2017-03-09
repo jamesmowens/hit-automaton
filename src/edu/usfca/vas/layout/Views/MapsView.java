@@ -49,8 +49,26 @@ public class MapsView extends  MapView {
             }
           });
         }
+        MapViewOptions options = new MapViewOptions();
+        options.importPlaces();
+        final MapsView mapView = new MapsView(options);
+        mapPanel.add(MapsView.makeMap(), BorderLayout.CENTER);
+        mapPanel.setSize(700, 500);
+        mapPanel.setLocation(null);
+        mapPanel.setVisible(true);
+        mapPanel.add(mapView);
       }
     });
+  }
+  
+  public JPanel getPanel() {
+    return mapPanel;
+  }
+  
+  public static MapsView makeMap(){
+    MapViewOptions options = new MapViewOptions();
+    options.importPlaces();
+    return new MapsView(options);
   }
   
   public void markLatLng(double lat, double lng){
