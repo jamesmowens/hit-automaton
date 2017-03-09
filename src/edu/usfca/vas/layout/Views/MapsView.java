@@ -51,14 +51,14 @@ public class MapsView extends  MapView {
             }
           });
         }
-        MapViewOptions options = new MapViewOptions();
+        /*MapViewOptions options = new MapViewOptions();
         options.importPlaces();
         final MapsView mapView = new MapsView(options);
         mapPanel.add(MapsView.makeMap(), BorderLayout.CENTER);
         mapPanel.setSize(700, 500);
         mapPanel.setLocation(null);
         mapPanel.setVisible(true);
-        mapPanel.add(mapView);
+        mapPanel.add(mapView);*/
       }
     });
   }
@@ -68,6 +68,7 @@ public class MapsView extends  MapView {
   }
   
   public static MapsView makeMap(){
+    System.out.println("This is called");
     MapViewOptions options = new MapViewOptions();
     options.importPlaces();
     return new MapsView(options);

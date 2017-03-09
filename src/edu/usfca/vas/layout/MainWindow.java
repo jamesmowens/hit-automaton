@@ -21,6 +21,7 @@ import java.awt.*;
 public abstract class MainWindow extends XJWindow {
     private LeftSideBar leftSideBar;
     private Container subFrame;
+    private JPanel mapPanel;
 
     /**
      * Creates a sub-JPanel within the main JFrame window, and adds the LeftSideBar and its contents to it
@@ -36,7 +37,17 @@ public abstract class MainWindow extends XJWindow {
         addSideTab(subFrame, "Model", 25, 25);
         // The below lines will be replaced with additions of the actual new views
         addSideTab(new AnalyticsView().getPanel(), "Analytics", 25, 25);
-        addSideTab(new MapsView(options).getPanel(), "Map", 25, 25);
+
+        JPanel mapPanel = new JPanel();
+        mapPanel.add(MapsView.makeMap(), BorderLayout.CENTER);
+        mapPanel.setSize(700, 500);
+//        mapPanel.setLocation(null);
+        mapPanel.setVisible(true);
+        mapPanel.add(MapsView.makeMap());
+        System.out.println("Here!!!");
+        addSideTab(mapPanel, "Map", 25, 25);
+        //addSideTab(new JPanel(),"Map",25,25);
+
         leftSideBar.setSelectedIndex(1);
         leftSideBar.setVisible(true);
     }
