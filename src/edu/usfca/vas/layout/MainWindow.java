@@ -38,7 +38,7 @@ public abstract class MainWindow extends XJWindow {
         // The below lines will be replaced with additions of the actual new views
         addSideTab(new AnalyticsView().getPanel(), "Analytics", 25, 25);
 
-        JPanel mapPanel = new JPanel();
+        JPanel mapPanel = new JPanel(new BorderLayout());
         mapPanel.add(MapsView.makeMap(), BorderLayout.CENTER);
         mapPanel.setSize(700, 500);
 //        mapPanel.setLocation(null);
