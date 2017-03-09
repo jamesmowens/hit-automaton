@@ -740,6 +740,14 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 	}
 
+	public static HashMap<String, LinkedList<Query>> getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(HashMap<String, LinkedList<Query>> database) {
+		this.database = database;
+	}
+
 	public ArrayList<GElement> getGElements() {
 		return this.gelements;
 	}

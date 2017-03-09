@@ -36,44 +36,27 @@ package edu.usfca.vas.window.fa;
 
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
-import edu.usfca.xj.appkit.utils.XJAlert;
-import edu.usfca.xj.appkit.utils.XJFileChooser;
-import edu.usfca.xj.appkit.utils.XJLocalizable;
 import edu.usfca.vas.app.Localized;
 import edu.usfca.vas.data.DataWrapperFA;
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
 import edu.usfca.vas.graphics.fa.GElementFANickName;
 import edu.usfca.vas.graphics.fa.GElementFASidePanel;
-import edu.usfca.vas.graphics.fa.GElementFAState;
 import edu.usfca.vas.graphics.fa.GViewFAMachine;
 import edu.usfca.vas.machine.fa.FAMachine;
 import edu.usfca.vas.window.WindowMachineAbstract;
 import edu.usfca.vas.window.tools.DesignToolsFA;
-import edu.usfca.xj.appkit.app.XJApplication;
-import edu.usfca.xj.appkit.document.CHAOSUtil;
-import edu.usfca.xj.appkit.document.XJData;
 import edu.usfca.xj.appkit.frame.XJFrame;
 
 import javax.swing.*;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-import connection.Connection;
 import connection.Step;
-import connection.StreamXMLGenerator;
 import connection.XMLParser;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -108,6 +91,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	// protected ArrayList<Step> stepList;
 	protected ArrayList<Step> stepList = new ArrayList<Step>();
 	JButton startButton;
+	JButton querySaveButton, queryLoadButton;
 	protected String currentDocPath;
 	protected ArrayList<String> activeStates = new ArrayList();
 
@@ -204,6 +188,36 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				updateSidePanelVariables();
 			}
 		});
+
+		querySaveButton = new JButton("Save Queries");
+		querySaveButton.addActionListener(e -> {
+			JFileChooser chooser = new JFileChooser();
+			chooser.setFileFilter(new FileNameExtensionFilter("Context-Aware Event Stream Analytics Report (.caesar)", ".caesar"));
+			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+				String chosenName = chooser.getSelectedFile().getAbsolutePath();
+				if(chosenName.lastIndexOf(".") < 0 || !chosenName.substring(chosenName.lastIndexOf(".")).equals("caesar")) {
+					chosenName += ".caesar";
+				}
+				DataQuerySave save = new DataQuerySave(namingPanel.getDatabase());
+				save.writeToFile(chosenName);
+			} else {
+				System.err.println("Nothing to write");
+			}
+		});
+		panel.add(querySaveButton);
+
+		queryLoadButton = new JButton("Load Queries");
+		queryLoadButton.addActionListener(e -> {
+			JFileChooser chooser = new JFileChooser();
+			chooser.setFileFilter(new FileNameExtensionFilter("Context-Aware Event Stream Analytics Report (.caesar)", ".caesar"));
+			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+				DataQuerySave save = new DataQuerySave(chooser.getSelectedFile());
+				namingPanel.setDatabase(save.getQueryDatabase());
+			} else {
+				System.err.println("Nothing to write");
+			}
+		});
+		panel.add(queryLoadButton);
 
 		startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener() {
