@@ -13,6 +13,8 @@ import java.util.HashMap;
 
 public class MapsView extends  MapView {
   HashMap<String, Marker> markerDict;
+  JPanel mapPanel;
+  JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
   
   public MapsView(MapViewOptions options) {
     super(options);
