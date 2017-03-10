@@ -13,11 +13,13 @@ public abstract class Query {
 	//This is the state the query belongs to
 	protected String state;
 	protected String info;
+	protected String pattern;
 	protected Condition ex;
 	
 	public Query(Condition expression, String pertainingState, String queryName){
 		this.ex = expression;
 		this.state = pertainingState;
+		this.pattern = "";
 		constructInfo(queryName);
 	}
 	
@@ -29,6 +31,12 @@ public abstract class Query {
 	//This is the method that will be run when the query is asked for what it does and other information
 	public String queryInfo(){return info;}
 	
+	public String queryPattern(){return pattern;}
+	
+	public void setPattern(String pat){
+		this.pattern = pat;
+	}
+	
 	private void constructInfo(String name){
 		info = name + ": Condition" + ex.getExpression() + ".";
 	}
@@ -39,4 +47,5 @@ public abstract class Query {
 		else
 			System.out.println("the query does not contain any information or has not been instantiated.");
 	}
+	
 }

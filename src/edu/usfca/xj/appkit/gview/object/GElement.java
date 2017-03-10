@@ -532,12 +532,15 @@ public abstract class GElement implements XJXMLSerializable {
 			for (int i = 0; i < elements.size(); i++) {
 				GElement element = (GElement) elements.get(i);
 				String elementLabel = element.getLabel();
+				/*
 				if((element instanceof GElementCircle || element instanceof GElementDoubleCircle) && element.isFocused()){
 					//if (element.isFocused()) {
 					//	System.out.println("It is focused!");
 					//}
 					System.out.println("trying to reset da query list in the tab");
 					GElementFANickName.putPertainingQueriesIn(elementLabel);}
+				}
+				*/
 				element.drawRecursive(g);
 			}
 		}

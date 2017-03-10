@@ -132,6 +132,12 @@ public class VariableQuery extends Query {
 		} //TODO remove when done
 	}	
 	
+	public String queryPattern(){return pattern;}
+	
+	public void setPattern(String pat){
+		this.pattern = pat;
+	}
+	
 	
 
 //	public static void main(String args[]) {

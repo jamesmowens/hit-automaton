@@ -108,51 +108,6 @@
 				<transition>from_Driver Attraction_to_Price Decrease_label_</transition>
 			</ingoingTransitions>
 		</state>
-		<state>
-			<name>Dummy State 1</name>
-			<start>true</start>
-			<end>false</end>
-			<contains>
-			</contains>
-			<outgoingTransitions>
-			</outgoingTransitions>
-		</state>
-		<state>
-			<name>Dummy State 2</name>
-			<start>true</start>
-			<end>false</end>
-			<contains>
-			</contains>
-			<outgoingTransitions>
-			</outgoingTransitions>
-		</state>
-		<state>
-			<name>Dummy State 3</name>
-			<start>true</start>
-			<end>false</end>
-			<contains>
-			</contains>
-			<outgoingTransitions>
-			</outgoingTransitions>
-		</state>
-		<state>
-			<name>Dummy State 4</name>
-			<start>true</start>
-			<end>false</end>
-			<contains>
-			</contains>
-			<outgoingTransitions>
-			</outgoingTransitions>
-		</state>
-		<state>
-			<name>Dummy State 5</name>
-			<start>true</start>
-			<end>false</end>
-			<contains>
-			</contains>
-			<outgoingTransitions>
-			</outgoingTransitions>
-		</state>
 	</states>
 	<transitions>
 		<transition>
@@ -197,20 +152,20 @@
 		</transition>
 		<transition>
 			<identifier>from_Traffic Monitoring_to_Price Increase C_label_</identifier>
-			<source>Traffic Monitoring</source>
+			<source></source>
 			<target>Price Increase C</target>
 			<label></label>
-			<entering>false</entering>
+			<entering>true</entering>
 			<instantiating>true</instantiating>
 			<terminating>false</terminating>
 			<container></container>
 		</transition>
 		<transition>
 			<identifier>from_Traffic Monitoring_to_Price Increase HD_label_</identifier>
-			<source>Traffic Monitoring</source>
+			<source></source>
 			<target>Price Increase HD</target>
 			<label></label>
-			<entering>false</entering>
+			<entering>true</entering>
 			<instantiating>true</instantiating>
 			<terminating>false</terminating>
 			<container></container>

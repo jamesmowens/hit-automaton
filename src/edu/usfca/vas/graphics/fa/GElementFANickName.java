@@ -37,43 +37,60 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	JTabbedPane tabs;
 	GViewFAMachine mac;
 
-	DefaultComboBoxModel model  = new DefaultComboBoxModel();
+	DefaultComboBoxModel contextModel  = new DefaultComboBoxModel();
 	DefaultComboBoxModel destinationModel = new DefaultComboBoxModel();
 
-	JComboBox contextList = new JComboBox(model);
+	//These are the combo boxes, declared here for some reason
+	JComboBox contextList = new JComboBox(contextModel);
 	JComboBox destinationList = new JComboBox(destinationModel);
+	TextField setFill = new TextField("Leave this blank for transition query (delete this comment)", 20);
+	TextField conditionFill = new TextField("fill with condition", 20);
+	
+	//these are for the new list, specifically the Derivation queries
+	JComboBox switchList = new JComboBox(destinationModel);
+	JComboBox contextDerivationList = new JComboBox(contextModel);
+	TextField patternDerivationFill = new TextField("*", 20);
+	TextField whereDerivationFill = new TextField("This is the if condition",20);
+	
+	//these are for the new list, specifically the Processing queries
+	JComboBox contextProcessingList = new JComboBox(contextModel);
+	TextField setProcessingFill = new TextField("this is the set condition",20);
+	TextField patternProcessingFill = new TextField("This is the pattern statement",20);
+	TextField whereProcessingFill = new TextField("This is the where statement",20);
+	
 	String condition = "";
 	String set = "";
 	ArrayList<String> states = new ArrayList<String>();
 	HashMap<String,JButton> buttonCache = new HashMap<String,JButton>();
-	TextField setFill = new TextField("Leave this blank for transition query (delete this comment)", 20);
-	TextField conditionFill = new TextField("Press enter to submit command", 20);
+	
 	static HashMap<String, LinkedList<Query>> database = new HashMap();
+	LinkedList<Query> allQueries = new LinkedList();
 	static String currentDisplayName = "";
+	
+	JPanel queriesPanel = new JPanel();
 
 	//creates the naming panel
 	public GElementFANickName() {
 		super();
 		this.tabs = new JTabbedPane();
 		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		tabs.setPreferredSize(new Dimension(1980, 180));
-		//this.add(tabs);
+		tabs.setPreferredSize(new Dimension(960, 500));
+		
 		this.queryPanel  = new JPanel();
 		this.queryEditPanel = new JPanel();
-
-		makeQueryStuff();
-		//tabs.addTab("New Tab", null);
+		makeQueryPanels();
+		
 		tabs.setVisible(true);
 		setVisible(true);
-		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // TODO Check
-		scroll.setPreferredSize(new Dimension(950, 190));
+		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // TODO Check
+		scroll.setPreferredSize(new Dimension(960, 500));
 		this.add(scroll);
-
-		//this.setSize(new Dimension(600, 100));
-		//return namingPanel;
 
 	}
 	
+	//public static void putPertainingQueriesIn(String label){}
+	
+	/*
 	public static void putPertainingQueriesIn(String label){
 		System.out.println(label);
 		if(database.get(label) != null){
@@ -96,136 +113,209 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		}
 	}
 }
+	*/
 	
-	private void makeQueryStuff(){
-		//Query Creation
+	private void makeQueryPanels(){
 		this.queryPanel = new JPanel();
 		this.queryEditPanel = new JPanel();
 		this.queryPanel.setLayout(new BoxLayout(queryPanel, BoxLayout.Y_AXIS));
 		this.queryEditPanel.setLayout(new BoxLayout(queryEditPanel, BoxLayout.Y_AXIS));
-		tabs.addTab("Pertaining Queries", this.queryPanel);
+		tabs.addTab("Query Display", this.queryPanel);
 		tabs.addTab("Query Editor", this.queryEditPanel);
-
-		//putPertainingQueriesIn();
 		
-		JLabel context = new JLabel("Context");
-		JPanel contextPanel = new JPanel(); 
-		//JButton addContext = new JButton("+");
-		contextPanel.setLayout(new BoxLayout(contextPanel, BoxLayout.X_AXIS));
-		contextPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		contextPanel.add(context);
-		contextPanel.add(Box.createRigidArea(new Dimension(33,0)));
-		contextPanel.add(contextList);
-		contextPanel.add(Box.createRigidArea(new Dimension(10,0)));
-		//contextPanel.add(addContext);
-		contextPanel.add(Box.createRigidArea(new Dimension(700,0)));
-
-		/*
-		JLabel pertaining =  new JLabel("For");
-		JComboBox pertainingList = new JComboBox();
-		JButton addPertain = new JButton("+");
-		JPanel pertainPanel = new JPanel();
-		pertainPanel.setLayout(new BoxLayout(pertainPanel, BoxLayout.X_AXIS));
-		pertainPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		pertainPanel.add(pertaining);
-		pertainPanel.add(Box.createRigidArea(new Dimension(40,0)));
-		pertainPanel.add(pertainingList);
-		pertainPanel.add(Box.createRigidArea(new Dimension(10,0)));
-		pertainPanel.add(addPertain);
-		pertainPanel.add(Box.createRigidArea(new Dimension(700,0)));
+		JLabel contextDerivationLabel = new JLabel("Context Derivation");
+		JPanel contextDerivationPanel = new JPanel();
+		contextDerivationPanel.add(contextDerivationLabel);
+		contextDerivationPanel.add(Box.createRigidArea(new Dimension(600,0)));
 		
-
-		JPanel frequencyPanel = new JPanel();
-		JLabel frequency = new JLabel("Frequency");
-		JComboBox frequencyList = new JComboBox(new String[] {"once","continuous"});
-		frequencyPanel.setLayout(new BoxLayout(frequencyPanel, BoxLayout.X_AXIS));
-		frequencyPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		frequencyPanel.add(frequency);
-		frequencyPanel.add(Box.createRigidArea(new Dimension(10,0)));
-		frequencyPanel.add(frequencyList);
-		frequencyPanel.add(Box.createRigidArea(new Dimension(700,0)));
-*/
+		JLabel switchLabel = new JLabel("Switch");
+		JPanel switchPanel = new JPanel();
+		switchPanel.add(switchLabel);
+		switchPanel.add(switchList);
+		switchPanel.add(Box.createRigidArea(new Dimension(600,0)));
 		
-		JPanel conditionPanel = new JPanel();
-		JLabel condition = new JLabel("Condition");
-		conditionFill.addActionListener(this);
-		conditionPanel.setLayout(new BoxLayout(conditionPanel, BoxLayout.X_AXIS));
-		conditionPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		conditionPanel.add(condition);
-		conditionPanel.add(Box.createRigidArea(new Dimension(25,0)));
-		conditionPanel.add(conditionFill);
-		conditionPanel.add(Box.createRigidArea(new Dimension(600,0)));
-
+		JLabel patternLabel = new JLabel("Pattern");
+		JPanel patternPanel = new JPanel();
+		patternPanel.add(patternLabel);
+		patternPanel.add(patternDerivationFill);
+		patternPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel whereLabel = new JLabel("Where");
+		JPanel wherePanel = new JPanel();
+		wherePanel.add(whereLabel);
+		wherePanel.add(whereDerivationFill);
+		wherePanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel contextUpLabel = new JLabel("Context");
+		JPanel contextUpPanel = new JPanel();
+		contextUpPanel.add(contextUpLabel);
+		contextUpPanel.add(contextDerivationList);
+		contextUpPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel contextProcessingLabel = new JLabel("Context Processing");
+		JPanel contextProcessingPanel = new JPanel();
+		contextProcessingPanel.add(contextProcessingLabel);
+		contextProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel setLabel = new JLabel("Set");
 		JPanel setPanel = new JPanel();
-		JLabel set = new JLabel("Set");
-		setFill.addActionListener(this);
-		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
-		setPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		setPanel.add(set);
-		setPanel.add(Box.createRigidArea(new Dimension(68,0)));
-		setPanel.add(setFill);
-		setPanel.add(Box.createRigidArea(new Dimension(600,0))); //was 656
-
-		JPanel destinationPanel = new JPanel();
-		JLabel destination = new JLabel("Destination");
-		destinationPanel.setLayout(new BoxLayout(destinationPanel, BoxLayout.X_AXIS));
-		destinationPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		destinationPanel.add(destination);
-		destinationPanel.add(Box.createRigidArea(new Dimension(10,0)));
-		destinationPanel.add(destinationList);
-		destinationPanel.add(Box.createRigidArea(new Dimension(700,0)));
-
-		JPanel buttons = new JPanel();
-		JButton clear = new JButton("Clear");
-		clear.addActionListener(this);
-		JButton submit = new JButton("Submit");
-		submit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-
-			}
-		});
-		buttonCache.put("Clear", clear);
-		buttonCache.put("Submit", submit);
-		submit.addActionListener(this);
-		buttons.add(clear);
-		buttons.add(submit);
-
-		queryEditPanel.add(contextPanel);
-		//queryEditPanel.add(pertainPanel);
-		//queryEditPanel.add(frequencyPanel);
-		queryEditPanel.add(conditionPanel);
+		setPanel.add(setLabel);
+		setPanel.add(setProcessingFill);
+		setPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel patternProcessingLabel = new JLabel("Pattern");
+		JPanel patternProcessingPanel = new JPanel();
+		patternProcessingPanel.add(patternProcessingLabel);
+		patternProcessingPanel.add(patternProcessingFill);
+		patternProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel whereProcessingLabel = new JLabel("Where");
+		JPanel whereProcessingPanel = new JPanel();
+		whereProcessingPanel.add(whereProcessingLabel);
+		whereProcessingPanel.add(whereProcessingFill);
+		whereProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		JLabel contextDownLabel = new JLabel("Context");
+		JPanel contextDownPanel = new JPanel();
+		contextDownPanel.add(contextDownLabel);
+		contextDownPanel.add(contextProcessingList);
+		contextDownPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		
+		//Put Buttons Here
+		JButton clearDerivation = new JButton("Clear Derivation Query");
+		clearDerivation.addActionListener(this);
+		JButton submitDerivation = new JButton("Submit Derivation Query");
+		submitDerivation.addActionListener(this);
+		buttonCache.put("Clear Derivation", clearDerivation);
+		buttonCache.put("Submit Derivation", submitDerivation);
+		JPanel derivationButtonsPanel = new JPanel();
+		derivationButtonsPanel.add(clearDerivation);
+		derivationButtonsPanel.add(submitDerivation);
+				
+		//put Buttons Here
+		JButton clearProcessing = new JButton("Clear Processing Query");
+		clearProcessing.addActionListener(this);
+		JButton submitProcessing = new JButton("Submit Processing Query");
+		submitProcessing.addActionListener(this);
+		buttonCache.put("Clear Processing", clearProcessing);
+		buttonCache.put("Submit Processing", submitProcessing);
+		JPanel processingButtonsPanel = new JPanel();
+		processingButtonsPanel.add(clearProcessing);
+		processingButtonsPanel.add(submitProcessing);
+		
+		//wrote this to debug the size increase with states present thing going on with the resizing
+		//Object[] nums = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		//queryEditPanel.add(new JComboBox(new DefaultComboBoxModel(nums)));
+		
+		queryEditPanel.add(contextDerivationPanel);
+		queryEditPanel.add(switchPanel);
+		queryEditPanel.add(patternPanel);
+		queryEditPanel.add(wherePanel);
+		queryEditPanel.add(contextUpPanel);
+		
+		queryEditPanel.add(derivationButtonsPanel);
+		
+		queryEditPanel.add(contextProcessingPanel);
 		queryEditPanel.add(setPanel);
-		queryEditPanel.add(destinationPanel);
-		queryEditPanel.add(buttons);
+		queryEditPanel.add(patternProcessingPanel);
+		queryEditPanel.add(whereProcessingPanel);
+		queryEditPanel.add(contextDownPanel);
+		queryEditPanel.add(processingButtonsPanel);
+		
+		//That is all the stuff for the query maker, so now lets go to the query displayer (playa)
+		
+		JButton queryRefresh = new JButton("Refresh list of queries");
+		queryRefresh.addActionListener(this);
+		buttonCache.put("Query List Refresh",queryRefresh);
+		JPanel queryRefreshPanel = new JPanel();
+		queryRefreshPanel.add(queryRefresh);
+		queryPanel.add(queriesPanel);
+		queryPanel.add(queryRefreshPanel);
+		//queryPanel.add(new JLabel("Testing text init"));
+		
 	}
-
+	
+	/**
+	 * This is how the buttons work, and they call whatever is in the set functions
+	 */
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(buttonCache.get("Clear"))){
-			conditionFill.setText("");
-			setFill.setText("");
-			System.out.println("Cleared");}
-		else if(e.getSource().equals(buttonCache.get("Submit"))){
-			Condition eval = new Condition(conditionFill.getText());
-			String set = setFill.getText();
-			String start = (String) contextList.getSelectedItem();
-			String dest  = (String) destinationList.getSelectedItem();
+		
+		if(e.getSource().equals(buttonCache.get("Clear Derivation"))){
+			System.out.println("clearing stuff from deriv.");
+			//This is supposed to clear the derivation fields
+			patternDerivationFill.setText("*");
+			whereDerivationFill.setText("*");}
+		
+		else if(e.getSource().equals(buttonCache.get("Submit Derivation"))){
+			String dest  = (String) switchList.getSelectedItem();
+			String pattern = (String) patternDerivationFill.getText();
+			Condition eval = new Condition(whereDerivationFill.getText());
+			String start = (String) contextDerivationList.getSelectedItem();
 			Query query;
-
-			if (set.equals("")){
-				Step transition = new Step(start,dest,"TransStep");
-				query = new TransitionQuery(eval,start,"Transition Query",transition);
-			} else {
-				query = new VariableQuery(eval, start, "Variable Query", set); 
+			Step transition = new Step(start,dest,"TransStep: " + start + " to " + dest);
+			
+			query = new TransitionQuery(eval,start,"Transition Query",transition);
+			query.setPattern(pattern);
+			
+			//If its not in there, put it in there
+			if(database.get(contextDerivationList.getSelectedItem()) == null){
+				database.put((String)contextDerivationList.getSelectedItem(), new LinkedList<Query>());
 			}
+			database.get((String)contextDerivationList.getSelectedItem()).add(query);
+			allQueries.add(query);
+			System.out.println("Submitted");
+		}
+		
+		else if(e.getSource().equals(buttonCache.get("Clear Processing"))){
+			System.out.println("clearing stuff from processing");
+			setProcessingFill.setText("*");
+			patternProcessingFill.setText("*");
+			whereProcessingFill.setText("*");
+			System.out.println("Cleared the processing text fill boxes");
+			//This is supposed to clear the processing fields
+		}
+		
+		else if(e.getSource().equals(buttonCache.get("Submit Processing"))){
+			String set = setProcessingFill.getText();
+			String pattern = (String) patternProcessingFill.getText();
+			Condition eval = new Condition(whereProcessingFill.getText());
+			String start = (String) contextProcessingList.getSelectedItem();
+			Query query;
+			
+			query = new VariableQuery(eval, start, "Variable Query: " + start + " evaluates " + conditionFill.getText() + "" + set , set); 
+			query.setPattern(pattern);
 
 			System.out.println(query.queryInfo());
 
 			//If its not in there, put it in there
-			if(database.get(contextList.getSelectedItem()) == null){
-				database.put((String)contextList.getSelectedItem(), new LinkedList<Query>());
+			if(database.get(contextProcessingList.getSelectedItem()) == null){
+				database.put((String)contextProcessingList.getSelectedItem(), new LinkedList<Query>());
 			}
-			database.get((String)contextList.getSelectedItem()).add(query);
+			database.get((String)contextProcessingList.getSelectedItem()).add(query);
+			allQueries.add(query);
 			System.out.println("Submitted");}
+		else if(e.getSource().equals(buttonCache.get("Query List Refresh"))){
+			queriesPanel.removeAll();
+			LinkedList<Query> transQueries = new LinkedList();
+			
+			System.out.println("List size for queries: " + allQueries.size());
+			
+			for(Query q: allQueries){
+				JLabel queryDesc = new JLabel();
+				if(q instanceof VariableQuery){
+					System.out.println("It senses the force of the VariableQuery");
+					queryDesc.setText("Testing Variable");
+					queryPanel.add(queryDesc);
+				}
+				else
+					transQueries.add(q);
+			}
+			for(Query q : transQueries){
+				JLabel queryDesc = new JLabel();
+				queryDesc.setText("Testing Transition");
+				queryPanel.add(queryDesc);
+			}
+		}
 	}
 
 	private void updateQueryDropdown(String stateIn, Boolean flag){
@@ -235,18 +325,18 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			{
 				if(flag){
 					states.remove(stateIn);
-					model.removeElement(stateIn);
+					contextModel.removeElement(stateIn);
 					destinationModel.removeElement(stateIn);
-					contextList.setModel(model);
+					contextList.setModel(contextModel);
 				}
 				else
 					return;
 			}
 
 		states.add(stateIn);
-		model.addElement(stateIn);
+		contextModel.addElement(stateIn);
 		destinationModel.addElement(stateIn);
-		contextList.setModel(model);
+		contextList.setModel(contextModel);
 		destinationList.setModel(destinationModel);
 
 		String[] stuff = new String[states.size()];

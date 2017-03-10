@@ -48,5 +48,11 @@ public class TransitionQuery extends Query {
 	public Step getStep() {
 		return currentStep; 
 	}
+	
+	public String queryPattern(){return pattern;}
+	
+	public void setPattern(String pat){
+		this.pattern = pat;
+	}
 
 }

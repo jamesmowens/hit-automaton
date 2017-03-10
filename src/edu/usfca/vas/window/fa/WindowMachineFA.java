@@ -214,9 +214,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					updateSidePanelVariables();
 					// TODO uncomment this out
 					dataList = XMLParser.getListDataNodes(currentDocPath);
-					for(DataNode node : dataList){
-						System.out.println("Window machine fa perspective: " + node.getCost());
-					}
 					stepList.add(grabFirstStep());
 					currentData = dataList.get(0);
 					highLightObject();
