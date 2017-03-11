@@ -35,9 +35,10 @@ public class StreamPanel extends JPanel {
      */
     public void initDataList() {
         super.removeAll();
+        currNodeIdx = 0;
         streamLabels = new JLabel[MAX_DATA_NODES];
         for(int i = 0; i < MAX_DATA_NODES && i < allNodes.size(); i++) {
-            streamLabels[i] = new JLabel(parseDataNode(allNodes.get(i)));
+            streamLabels[i] = new JLabel();
             futureNodes.add(allNodes.get(i));
             super.add(streamLabels[i], i);
         }
@@ -51,11 +52,15 @@ public class StreamPanel extends JPanel {
         if(futureNodes.size() == 0) return;
         pastNodes.add(futureNodes.removeFirst());
         if(pastNodes.size() > futureNodes.size()) {
-            final int lastIdx = currNodeIdx + futureNodes.size();
+            final int lastIdx = currNodeIdx + futureNodes.size() + pastNodes.size();
             pastNodes.removeFirst();
-            futureNodes.add(allNodes.get(lastIdx));
-            currNodeIdx++;
+            if(allNodes.size() > lastIdx) {
+                futureNodes.add(allNodes.get(lastIdx));
+            } else {
+                futureNodes.add(null);
+            }
         }
+        currNodeIdx++;
         updateNodeDisplay();
     }
 
@@ -72,14 +77,23 @@ public class StreamPanel extends JPanel {
         Iterator<DataNode> pastIter = pastNodes.iterator(), futureIter = futureNodes.iterator();
         int i = 0;
         if(pastIter.hasNext()) {
+
+            //Handle past nodes
             while (pastIter.hasNext()) {
                 streamLabels[i++].setText(parseDataNode(pastIter.next()));
             }
         }
         if(futureIter.hasNext()) {
+
+            //Color previous node
             if(i > 0) streamLabels[i-1].setForeground(Color.BLACK);
-            streamLabels[i].setForeground(Color.CYAN);
+
+            //Handle current node
+            streamLabels[i].setForeground(Color.blue);
             streamLabels[i].setText(parseDataNode(futureIter.next()));
+            i++;
+
+            //Handle rest of nodes
             while(futureIter.hasNext()) {
                 streamLabels[i++].setText(parseDataNode(futureIter.next()));
             }
@@ -88,7 +102,9 @@ public class StreamPanel extends JPanel {
     }
 
     private String parseDataNode(DataNode d) {
-        return d.getTime() + ": (" + d.getLatitude() + ", " + d.getLongitude() + ") $" + d.getCost();
+        if(d != null) {
+            return d.getTime() + ", (" + d.getLatitude() + ", " + d.getLongitude() + ") $" + d.getCost();
+        } else return "";
     }
 
 
