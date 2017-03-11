@@ -42,7 +42,8 @@ public class StreamPanel extends JPanel {
             futureNodes.add(allNodes.get(i));
             super.add(streamLabels[i], i);
         }
-        updateNodeDisplay();
+        advanceDataNodes();
+        //updateNodeDisplay();
     }
 
     /**
@@ -51,8 +52,8 @@ public class StreamPanel extends JPanel {
     public void advanceDataNodes() {
         if(futureNodes.size() == 0) return;
         pastNodes.add(futureNodes.removeFirst());
-        if(pastNodes.size() > futureNodes.size()) {
-            final int lastIdx = currNodeIdx + futureNodes.size() + pastNodes.size();
+        if(pastNodes.size() >= futureNodes.size()) {
+            final int lastIdx = currNodeIdx + futureNodes.size();
             pastNodes.removeFirst();
             if(allNodes.size() > lastIdx) {
                 futureNodes.add(allNodes.get(lastIdx));
