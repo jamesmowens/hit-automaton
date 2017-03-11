@@ -48,11 +48,11 @@ public class StreamPanel extends JPanel {
      * Move to the next data node in the display
      */
     public void advanceDataNodes() {
-        if(!(futureNodes.size() > 0)) return;
-        if(pastNodes.size() > 0) pastNodes.removeFirst();
+        if(futureNodes.size() == 0) return;
         pastNodes.add(futureNodes.removeFirst());
-        final int lastIdx = currNodeIdx + futureNodes.size();
-        if(allNodes.size() >= lastIdx) {
+        if(pastNodes.size() > futureNodes.size()) {
+            final int lastIdx = currNodeIdx + futureNodes.size();
+            pastNodes.removeFirst();
             futureNodes.add(allNodes.get(lastIdx));
             currNodeIdx++;
         }
@@ -77,6 +77,7 @@ public class StreamPanel extends JPanel {
             }
         }
         if(futureIter.hasNext()) {
+            if(i > 0) streamLabels[i-1].setForeground(Color.BLACK);
             streamLabels[i].setForeground(Color.CYAN);
             streamLabels[i].setText(parseDataNode(futureIter.next()));
             while(futureIter.hasNext()) {

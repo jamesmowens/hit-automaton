@@ -247,12 +247,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					stepList.add(grabFirstStep());
 					currentData = dataList.get(0);
 
-					sidePanel.initDataPanel(dataList);
+
 					highLightObject();
 
 					WindowMachineFA.this.setStart(false);
 					WindowMachineFA.this.startButton.setLabel("Stop");
 
+					sidePanel.initDataPanel(dataList);
 					Thread th = new Thread() {
 						public void run() {
 							startPlaying();
@@ -323,6 +324,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			//setActiveStates(sidePanel.getCurrent());
 			System.out.println("Setting new data");
 			setNewData();
+			sidePanel.advanceDataList(); //Advance the currently displayed data
+			//LAYOUTTODO
 			//stepList
 			}
 		}
@@ -581,9 +584,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// happening is so the user can update the queries at any point
 			LinkedList<Query> updatedQueries = namingPanel.getQueries(state.getLabel());
 			machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
-
-			sidePanel.advanceDataList(); //Advance the currently displayed data
-			//LAYOUTTODO
 
 			this.stepList.clear();
 			while (state != null) {

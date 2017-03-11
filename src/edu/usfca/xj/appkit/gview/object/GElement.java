@@ -536,7 +536,7 @@ public abstract class GElement implements XJXMLSerializable {
 					//if (element.isFocused()) {
 					//	System.out.println("It is focused!");
 					//}
-					System.out.println("trying to reset da query list in the tab");
+					//System.out.println("trying to reset da query list in the tab");
 					GElementFANickName.putPertainingQueriesIn(elementLabel);}
 				element.drawRecursive(g);
 			}
@@ -548,7 +548,7 @@ public abstract class GElement implements XJXMLSerializable {
 			drawSelected(g);
 		}
 		else if(isFocused()){
-			System.out.println("Blue is being the thing");
+			//System.out.println("Blue is being the thing");
 			drawFocused(g);
 		}
 	}
