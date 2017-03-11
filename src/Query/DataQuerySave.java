@@ -1,7 +1,13 @@
 package Query;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import connection.Step;
+
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.HashMap;
@@ -17,7 +23,7 @@ import java.util.Scanner;
  */
 public class DataQuerySave {
 
-    HashMap<String, LinkedList<Query>> queryDatabase;
+    private HashMap<String, LinkedList<Query>> queryDatabase;
 
     /**
      * Creates a DataQuerySave containing the given data. Does not write to disk.
@@ -65,8 +71,11 @@ public class DataQuerySave {
      * @param source The JSON string
      */
     public void loadFromString(String source) {
-        Gson gson = new Gson();
-        DataQuerySave result = gson.fromJson(source, getClass());
+        System.out.println("String being loaded: " + source);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Query.class, new QueryDeserializer())
+                .create();
+        DataQuerySave result = gson.fromJson(source, DataQuerySave.class);
         queryDatabase = result.queryDatabase;
     }
 
@@ -104,4 +113,57 @@ public class DataQuerySave {
     public HashMap<String, LinkedList<Query>> getQueryDatabase() {
         return queryDatabase;
     }
+
+    /**
+     * Class to deserialize Queries using GSON
+     */
+    class QueryDeserializer implements JsonDeserializer<Query> {
+        @Override
+        public Query deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException {
+            JsonObject obj = element.getAsJsonObject();
+            if(obj.has("successStep")) {
+                return new TransitionQuery(
+                        obj.get("state").getAsString(),
+                        obj.get("info").getAsString(),
+                        context.deserialize(obj.get("ex"), Condition.class),
+                        context.deserialize(obj.get("successStep"), Step.class));
+            } else {
+                return new VariableQuery(
+                        obj.get("state").getAsString(),
+                        obj.get("info").getAsString(),
+                        context.deserialize(obj.get("ex"), Condition.class),
+                        obj.get("set").getAsString());
+            }
+        }
+    }
+
+    /*class QueryDeserializer extends TypeAdapter<Query> {
+
+        /**
+         * Used by GSON internally. Encodes the type of query as well as all of its data.
+         */
+        //@Override
+        /*public void write(JsonWriter jsonWriter, Query query) throws IOException {
+            if(query == null) {
+                jsonWriter.nullValue();
+            } else {
+                JsonElement asJson = new Gson().toJsonTree(query);
+                if(query instanceof TransitionQuery) {
+                    asJson.getAsJsonObject().addProperty("type", "transition");
+                } else if (query instanceof VariableQuery) {
+                    asJson.getAsJsonObject().addProperty("type", "variable");
+                }
+                Streams.write(asJson, jsonWriter);
+            }
+        }
+
+        @Override
+        public Query read(JsonReader jsonReader) throws IOException {
+            JsonObject obj = Streams.parse(jsonReader).getAsJsonObject();
+            Gson gson = new Gson();
+            if(obj.get("type").getAsString().equals("transition")) {
+                return new TransitionQuery((Condition) obj.get("condition"), obj.get());
+            }
+        }
+    }*/
 }

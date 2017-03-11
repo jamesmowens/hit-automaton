@@ -58,7 +58,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import Query.*;
 
@@ -192,7 +194,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		querySaveButton = new JButton("Save Queries");
 		querySaveButton.addActionListener(e -> {
 			JFileChooser chooser = new JFileChooser();
-			chooser.setFileFilter(new FileNameExtensionFilter("Context-Aware Event Stream Analytics Report (.caesar)", ".caesar"));
+			chooser.setFileFilter(new FileNameExtensionFilter(
+					"Context-Aware Event Stream Analytics Report (.caesar)",
+					".caesar", "caesar", ".CAESAR", "CAESAR"));
 			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 				String chosenName = chooser.getSelectedFile().getAbsolutePath();
 				if(chosenName.lastIndexOf(".") < 0 || !chosenName.substring(chosenName.lastIndexOf(".")).equals("caesar")) {
@@ -209,12 +213,21 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		queryLoadButton = new JButton("Load Queries");
 		queryLoadButton.addActionListener(e -> {
 			JFileChooser chooser = new JFileChooser();
-			chooser.setFileFilter(new FileNameExtensionFilter("Context-Aware Event Stream Analytics Report (.caesar)", ".caesar"));
+			chooser.setFileFilter(new FileNameExtensionFilter(
+					"Context-Aware Event Stream Analytics Report (.caesar)",
+					".caesar", "caesar", ".CAESAR", "CAESAR"));
 			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 				DataQuerySave save = new DataQuerySave(chooser.getSelectedFile());
-				namingPanel.setDatabase(save.getQueryDatabase());
+				final Map<String, LinkedList<Query>> loadedDatabase = save.getQueryDatabase();
+				for(String k : loadedDatabase.keySet()) {
+					final LinkedList<Query> queries = loadedDatabase.get(k);
+					for(Query q : queries) {
+						namingPanel.submitQuery(k, q);
+					}
+				}
+				//namingPanel.setDatabase(save.getQueryDatabase());
 			} else {
-				System.err.println("Nothing to write");
+				System.err.println("WindowMachineFA: queryLoadButton: Nothing to write");
 			}
 		});
 		panel.add(queryLoadButton);
@@ -233,6 +246,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					}
 					stepList.add(grabFirstStep());
 					currentData = dataList.get(0);
+
+					sidePanel.initDataPanel(dataList);
 					highLightObject();
 
 					WindowMachineFA.this.setStart(false);
@@ -243,7 +258,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 							startPlaying();
 						}
 					};
-
 					th.start();
 				}
 
@@ -274,7 +288,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	protected Step grabFirstStep() {
 		// TODO implement
-		String source = "0";
+		String source = "Normal";
 		Step firstStep = new Step(source, source, "firstStep");
 		return firstStep;
 	}
@@ -567,6 +581,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			// happening is so the user can update the queries at any point
 			LinkedList<Query> updatedQueries = namingPanel.getQueries(state.getLabel());
 			machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
+
+			sidePanel.advanceDataList(); //Advance the currently displayed data
+			//LAYOUTTODO
+
 			this.stepList.clear();
 			while (state != null) {
 				state.runQueries();

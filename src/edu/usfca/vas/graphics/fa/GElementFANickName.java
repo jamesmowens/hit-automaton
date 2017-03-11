@@ -228,6 +228,14 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			System.out.println("Submitted");}
 	}
 
+	public void submitQuery(String context, Query query) {
+		if(database.get(context) == null) {
+			database.put(context, new LinkedList<Query>());
+		}
+		database.get(context).add(query);
+		System.out.println("Query submitted by save file");
+	}
+
 	private void updateQueryDropdown(String stateIn, Boolean flag){
 		//System.out.println("State in: " + stateIn);
 		for(String state: states)
