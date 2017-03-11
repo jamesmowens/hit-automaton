@@ -93,10 +93,11 @@ implements GElementFAStateInterface, XJXMLSerializable {
 
 	@Override
 	public void updateAnchors() {
-		setAnchor(ANCHOR_TOP, position.add(new Vector2D(0, -radius)), Anchor2D.DIRECTION_TOP);
-		setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(0, radius)), Anchor2D.DIRECTION_BOTTOM);
-		setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-xString*0.6, 0)), Anchor2D.DIRECTION_LEFT);
-		setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(xString*0.6, 0)), Anchor2D.DIRECTION_RIGHT); 	
+		setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
+		//setAnchor(ANCHOR_TOP, position.add(new Vector2D(0, -radius)), Anchor2D.DIRECTION_TOP);
+		//setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(0, radius)), Anchor2D.DIRECTION_BOTTOM);
+		//setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-xString*0.6, 0)), Anchor2D.DIRECTION_LEFT);
+		//setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(xString*0.6, 0)), Anchor2D.DIRECTION_RIGHT); 	
 	}
 
 

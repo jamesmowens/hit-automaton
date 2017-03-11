@@ -40,6 +40,7 @@ import edu.usfca.xj.appkit.gview.object.GElementCircle;
 import edu.usfca.xj.appkit.gview.object.GElementDoubleRectangle;
 import edu.usfca.xj.appkit.gview.object.GElementRectangle;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
+import edu.usfca.xj.appkit.gview.shape.SLabel;
 import edu.usfca.xj.foundation.XJXMLSerializable;
 import java.awt.*;
 
@@ -119,11 +120,11 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
 
 	@Override
 	public void updateAnchors() {
-		//setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
-		setAnchor(ANCHOR_TOP, position.add(new Vector2D(0, -radius)), Anchor2D.DIRECTION_TOP);
-		setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(0, radius)), Anchor2D.DIRECTION_BOTTOM);
-		setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-xString*0.6, 0)), Anchor2D.DIRECTION_LEFT);
-		setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(xString*0.6, 0)), Anchor2D.DIRECTION_RIGHT); 	
+		setAnchor(ANCHOR_CENTER, position, Anchor2D.DIRECTION_FREE);
+		//setAnchor(ANCHOR_RIGHT, position.add(new Vector2D(radius, 0)), Anchor2D.DIRECTION_RIGHT); 	
+		//setAnchor(ANCHOR_TOP, position.add(new Vector2D(0, -radius)), Anchor2D.DIRECTION_TOP);
+		//setAnchor(ANCHOR_BOTTOM, position.add(new Vector2D(0, radius)), Anchor2D.DIRECTION_BOTTOM);
+		//setAnchor(ANCHOR_LEFT, position.add(new Vector2D(-xString*0.6, 0)), Anchor2D.DIRECTION_LEFT);
 	}
 
 	@Override
@@ -139,9 +140,6 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
 		String stateName = state.getName();
 		FontMetrics fm = g.getFontMetrics();
 		xString = (int)(fm.stringWidth(stateName));
-		//System.out.println("String: " + stateName + "Length " + xString);
-		//int yString = (int)(fm.getHeight());
-		// INCREMENT = (int)(xString); //commented out with updateAnchors      
 
 		// left bound of state (oval)
 		int leftBound = (int) (x-(xString/2)+getRadius()/2);
@@ -157,11 +155,18 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
 
 		if(highlighted == false) {
 			// x, y, x_radius, y_radius
+			//g.setColor(Color.red);
+			//g.fillOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
+			// trying to put the name of the state back on top
+			g.setColor(Color.black);
 			g.drawOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
+            SLabel.drawCenteredString(getLabel(), getPositionX(), getPositionY(), g);
+
 		}
 		else if (highlighted == true){
 			Stroke previousStroke = g.getStroke();
 			g.setStroke(new BasicStroke(3.0f));//2 pixel width
+			//g.setColor(Color.red); //trying to add fill color to the states
 			g.drawOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
 			g.setStroke(previousStroke);
 		}
