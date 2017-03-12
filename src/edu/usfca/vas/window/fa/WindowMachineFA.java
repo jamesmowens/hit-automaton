@@ -34,8 +34,10 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
+import edu.usfca.vas.layout.LeftSideBar;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
+import query.Query;
 import edu.usfca.vas.app.Localized;
 import edu.usfca.vas.data.DataWrapperFA;
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
@@ -304,7 +306,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			{
 			// This goes in order of the indexes of the current line in the
 			// flows of the side panel.
@@ -329,16 +331,16 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		while(stepList.size() > 0);
 		//Might be a bug here
 		//while (stepList.size() >= 0);
-		
+
 		stopPlaying();
 }
-	
+
 	private void stopPlaying() {
 		synchronized (playingFlagLock) {
 			playingFlag = false;
 		}
 	}
-	
+
 	private void setNewData(){
 		this.dataIndex++;
 		if(dataIndex < dataList.size()){stopPlaying();}
@@ -405,33 +407,31 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		namingPanel = names;
 		namingPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		namingPanel.setPreferredSize(new Dimension(300, 200));
-
-		setVisible(true);
-
-		getDataWrapperFA().getMachine().setNaming(namingPanel);
-		return namingPanel;
-
-	}
-
-	// makes the side panel
-	public JPanel createSidePanel() {
-		GElementFASidePanel side = new GElementFASidePanel();
-		// side.setSize(new Dimension(250, 400)); // Why commented?
-		sidePanel = side;
-		// sidePanel.setLayout(new GridLayout(0,1));
-		sidePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5)); // Align
-																		// to
-																		// RIGHT
-		// sidePanel.setLayout(new BorderLayout());
-		sidePanel.setPreferredSize(new Dimension(350, 335));
-		setVisible(true);
-		getDataWrapperFA().getMachine().setSide(sidePanel);
-		return sidePanel;
-	}
-
-	// when a new GLink is added to the system.. add it with this function.
-	public void addGLinkName(GLink newLink) {
-		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		
+    	setVisible(true);
+    	
+    	getDataWrapperFA().getMachine().setNaming(namingPanel);
+    	return namingPanel;
+    	
+    }
+    //makes the side panel
+    public JPanel createSidePanel() {
+    	GElementFASidePanel side = new GElementFASidePanel();
+        //side.setSize(new Dimension(250, 400)); // Why commented?
+    	sidePanel=side;
+    	//sidePanel.setLayout(new GridLayout(0,1));
+    	//sidePanel.setLayout(new BorderLayout()); // Align// to// RIGHT
+    	//sidePanel.setLayout(new BorderLayout());
+		//sidePanel.setPreferredSize(new Dimension(350, 335));
+    	setVisible(true);
+    	getDataWrapperFA().getMachine().setSide(sidePanel);
+    	return sidePanel;
+    	
+    }
+    
+    //when a new GLink is added to the system.. add it with this function. 
+    public void addGLinkName(GLink newLink){
+    	JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		JLabel tf = new JLabel(newLink.pattern + " is: ");
 		tf.setForeground(newLink.getColor());
 		p.add(tf);
@@ -599,7 +599,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	private void updateSidePanelVariables() {
 		BufferedReader br = null;
 		ArrayList<String> input = new ArrayList<String>();
-		
+
 		// Add every element of the variableMap to sidepanel
 		for (String key : GElementFAMachine.variableMap.keySet()) {
 			double value = GElementFAMachine.variableMap.get(key).getValue();
@@ -653,5 +653,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	@Override
 	public void viewSizeDidChange() {
 		// TODO Auto-generated method stub
+	}
+
+	public Component getMasterComp() {
+    	return this.mainPanel;
 	}
 }

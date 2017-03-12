@@ -35,11 +35,11 @@ public class GElementFASidePanel extends JPanel {
 	public GElementFASidePanel() {
 		super(new GridLayout());
 		//this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		this.setPreferredSize(new Dimension(100, 500));
+		this.setPreferredSize(new Dimension(350, 500));this.setLayout(new BorderLayout());
 		setVisible(true);
 		panel = new JPanel(new GridLayout());
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		panel.setPreferredSize(new Dimension(500, 25));
+//		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(325, 345));
