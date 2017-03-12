@@ -49,8 +49,8 @@ import edu.usfca.xj.foundation.XJXMLSerializable;
 
 import javax.swing.*;
 
-import Query.Query;
-import Query.Variable;
+import query.Query;
+import query.Variable;
 
 import java.awt.*;
 import java.util.*;

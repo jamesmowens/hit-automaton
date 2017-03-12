@@ -5,7 +5,6 @@ package edu.usfca.vas.layout.Views;
  */
 import com.teamdev.jxmaps.*;
 import com.teamdev.jxmaps.swing.MapView;
-import sun.jvm.hotspot.oops.Mark;
 
 import javax.swing.*;
 import java.awt.*;

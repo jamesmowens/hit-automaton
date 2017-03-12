@@ -1,5 +1,5 @@
 
-package Query;
+package query;
 
 import connection.Step;
 

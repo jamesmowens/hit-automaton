@@ -6,7 +6,7 @@
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/22/2017, implemented updateData and updateVariables
  */
 
-package Query;
+package query;
 
 import java.util.Map;
 

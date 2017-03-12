@@ -8,7 +8,7 @@
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/24/2017, refactored to "VariableQuery" (from QueryVariable)
  */
 
-package Query;
+package query;
 
 
 import java.util.regex.Matcher;

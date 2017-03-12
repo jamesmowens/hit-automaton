@@ -6,7 +6,7 @@
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/25/2017, first commits
  */
 
-package Query;
+package query;
 
 /**
  * Container class for variables to be used by queries

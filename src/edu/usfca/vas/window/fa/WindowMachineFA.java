@@ -72,7 +72,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import Query.*;
+import query.*;
 
 public class WindowMachineFA extends WindowMachineAbstract {
 
@@ -93,7 +93,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	protected ArrayList<GElement> highlighted = new ArrayList<GElement>();
 	protected boolean start = true;
 
-public class WindowMachineFA extends WindowMachineAbstract {
 	protected DesignToolsFA designToolFA;
 
 	protected WindowMachineFAOverlay overlay;
@@ -370,7 +369,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		namingPanel = names;
 		namingPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		namingPanel.setPreferredSize(new Dimension(300, 200));
-<<<<<<< HEAD
 		
     	setVisible(true);
     	
@@ -394,38 +392,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
     	
     }
     
-    //when a new GLink is added to the system.. add it with this function. 
-    public void addGLinkName(GLink newLink){
-    	JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-=======
+    
 
-		setVisible(true);
-
-		getDataWrapperFA().getMachine().setNaming(namingPanel);
-		return namingPanel;
-
-	}
-
-	// makes the side panel
-	public JPanel createSidePanel() {
-		GElementFASidePanel side = new GElementFASidePanel();
-		// side.setSize(new Dimension(250, 400)); // Why commented?
-		sidePanel = side;
-		// sidePanel.setLayout(new GridLayout(0,1));
-		sidePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5)); // Align
-																		// to
-																		// RIGHT
-		// sidePanel.setLayout(new BorderLayout());
-		sidePanel.setPreferredSize(new Dimension(350, 335));
-		setVisible(true);
-		getDataWrapperFA().getMachine().setSide(sidePanel);
-		return sidePanel;
-	}
+	
 
 	// when a new GLink is added to the system.. add it with this function.
 	public void addGLinkName(GLink newLink) {
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
->>>>>>> origin/QueriesNewImplementation
 		JLabel tf = new JLabel(newLink.pattern + " is: ");
 		tf.setForeground(newLink.getColor());
 		p.add(tf);

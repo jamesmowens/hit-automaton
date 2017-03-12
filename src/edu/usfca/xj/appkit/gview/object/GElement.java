@@ -43,7 +43,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-import Query.*;
+import query.*;
 import connection.Step;
 
 public abstract class GElement implements XJXMLSerializable {

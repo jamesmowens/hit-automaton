@@ -11,7 +11,7 @@ import javax.swing.*;
 import edu.usfca.xj.appkit.frame.XJFrame;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
-import Query.*;
+import query.*;
 import connection.Step;
 
 public class GElementFANickName extends JPanel implements ActionListener {

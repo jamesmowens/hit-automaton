@@ -6,7 +6,7 @@
  * Modified: MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/22/2017, added getters, fixed parsing of time string
  */
 
-package Query;
+package query;
 
 public class DataNode {
 	private int cost;

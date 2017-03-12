@@ -1,7 +1,7 @@
 package connection;
 
 import java.util.ArrayList;
-import Query.*;
+import query.*;
 
 public class parserTester {
 

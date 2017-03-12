@@ -6,7 +6,7 @@
  * Modified by MaryAnn VanValkenburg (mevanvalkenburg@wpi.edu) 02/07/2017, added String ex, implemented evaluate()
  * 	added getVariable() and simpleEvaluate()
  */
-package Query;
+package query;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
