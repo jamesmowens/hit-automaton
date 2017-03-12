@@ -38,10 +38,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-/**
- * Defines a set of symbols for the alphabet.
- */
-
 public class FAAlphabet implements XJXMLSerializable {
 
     protected Set symbols = new LinkedHashSet();

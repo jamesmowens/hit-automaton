@@ -34,10 +34,6 @@ package edu.usfca.vas.app;
 import java.text.MessageFormat;
 import java.util.Locale;
 
-/**
- * Calls getString function located in XJLocalizable (appkit.utils).
- */
-
 public class Localized {
     
     public static String getString(String key) {

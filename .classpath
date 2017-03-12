@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="libs/jxmaps-mac-1.3.jar"/>
 	<classpathentry kind="lib" path="libs/jxmaps-win-1.3.jar"/>
 	<classpathentry kind="lib" path="libs/license.jar"/>
+
 	<classpathentry kind="output" path="bin"/>
 </classpath>

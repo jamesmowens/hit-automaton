@@ -33,10 +33,6 @@ package edu.usfca.vas.machine;
 
 import java.util.*;
 
-/**
- * Used for transition long names.
- */
-
 public class Tool {
 
     public static Set symbolsInPattern(String pattern) {

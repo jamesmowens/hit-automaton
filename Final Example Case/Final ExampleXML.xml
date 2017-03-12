@@ -1,0 +1,204 @@
+<machine>
+	<states>
+		<state>
+			<name>High Demand</name>
+			<start>true</start>
+			<end>true</end>
+			<contains>
+				<state>
+					<name>Price Increase HD</name>
+					<start>true</start>
+					<end>false</end>
+					<contains>
+					</contains>
+					<outgoingTransitions>
+						<transition>from_Price Increase HD_to_Driver Attraction_label_</transition>
+					</outgoingTransitions>
+				</state>
+				<state>
+					<name>Driver Attraction</name>
+					<start>false</start>
+					<end>false</end>
+					<contains>
+					</contains>
+					<outgoingTransitions>
+						<transition>from_Driver Attraction_to_Price Decrease_label_</transition>
+						<transition>from_Driver Attraction_to_Price Increase C_label_</transition>
+					</outgoingTransitions>
+				</state>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Driver Attraction_to_Price Decrease_label_</transition>
+				<transition>from_Driver Attraction_to_Price Increase C_label_</transition>
+			</outgoingTransitions>
+			<ingoingTransitions>
+				<transition>from_Traffic Monitoring_to_Price Increase HD_label_</transition>
+				<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
+			</ingoingTransitions>
+		</state>
+		<state>
+			<name>Congestion</name>
+			<start>true</start>
+			<end>true</end>
+			<contains>
+				<state>
+					<name>Price Increase C</name>
+					<start>true</start>
+					<end>false</end>
+					<contains>
+					</contains>
+					<outgoingTransitions>
+						<transition>from_Price Increase C_to_Traffic Redirection_label_</transition>
+					</outgoingTransitions>
+				</state>
+				<state>
+					<name>Traffic Redirection</name>
+					<start>false</start>
+					<end>false</end>
+					<contains>
+					</contains>
+					<outgoingTransitions>
+						<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
+						<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
+					</outgoingTransitions>
+				</state>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
+				<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
+			</outgoingTransitions>
+			<ingoingTransitions>
+				<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
+				<transition>from_Driver Attraction_to_Price Increase C_label_</transition>
+			</ingoingTransitions>
+		</state>
+		<state>
+			<name>Clear</name>
+			<start>true</start>
+			<end>true</end>
+			<contains>
+				<state>
+					<name>Price Decrease</name>
+					<start>true</start>
+					<end>false</end>
+					<contains>
+					</contains>
+					<outgoingTransitions>
+						<transition>from_Price Decrease_to_Traffic Monitoring_label_</transition>
+					</outgoingTransitions>
+				</state>
+				<state>
+					<name>Traffic Monitoring</name>
+					<start>false</start>
+					<end>false</end>
+					<contains>
+					</contains>
+					<outgoingTransitions>
+						<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
+						<transition>from_Traffic Monitoring_to_Price Increase HD_label_</transition>
+					</outgoingTransitions>
+				</state>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
+				<transition>from_Traffic Monitoring_to_Price Increase HD_label_</transition>
+			</outgoingTransitions>
+			<ingoingTransitions>
+				<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
+				<transition>from_Driver Attraction_to_Price Decrease_label_</transition>
+			</ingoingTransitions>
+		</state>
+	</states>
+	<transitions>
+		<transition>
+			<identifier>from_Price Increase C_to_Traffic Redirection_label_</identifier>
+			<source>Price Increase C</source>
+			<target>Traffic Redirection</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>false</instantiating>
+			<terminating>false</terminating>
+			<container>Congestion</container>
+		</transition>
+		<transition>
+			<identifier>from_Price Increase HD_to_Driver Attraction_label_</identifier>
+			<source>Price Increase HD</source>
+			<target>Driver Attraction</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>false</instantiating>
+			<terminating>false</terminating>
+			<container>High Demand</container>
+		</transition>
+		<transition>
+			<identifier>from_Traffic Redirection_to_Price Decrease_label_</identifier>
+			<source>Traffic Redirection</source>
+			<target>Price Decrease</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_Driver Attraction_to_Price Decrease_label_</identifier>
+			<source>Driver Attraction</source>
+			<target>Price Decrease</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_Traffic Monitoring_to_Price Increase C_label_</identifier>
+			<source></source>
+			<target>Price Increase C</target>
+			<label></label>
+			<entering>true</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_Traffic Monitoring_to_Price Increase HD_label_</identifier>
+			<source></source>
+			<target>Price Increase HD</target>
+			<label></label>
+			<entering>true</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_Price Decrease_to_Traffic Monitoring_label_</identifier>
+			<source>Price Decrease</source>
+			<target>Traffic Monitoring</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>false</instantiating>
+			<terminating>false</terminating>
+			<container>Clear</container>
+		</transition>
+		<transition>
+			<identifier>from_Traffic Redirection_to_Price Increase HD_label_</identifier>
+			<source>Traffic Redirection</source>
+			<target>Price Increase HD</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+		<transition>
+			<identifier>from_Driver Attraction_to_Price Increase C_label_</identifier>
+			<source>Driver Attraction</source>
+			<target>Price Increase C</target>
+			<label></label>
+			<entering>false</entering>
+			<instantiating>true</instantiating>
+			<terminating>false</terminating>
+			<container></container>
+		</transition>
+	</transitions>
+</machine>

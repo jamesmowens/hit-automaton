@@ -32,6 +32,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package edu.usfca.xj.appkit.gview;
 
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
+import edu.usfca.vas.graphics.fa.GElementFANickName;
 import edu.usfca.xj.appkit.frame.XJView;
 import edu.usfca.xj.appkit.gview.base.Rect;
 import edu.usfca.xj.appkit.gview.base.Vector2D;
@@ -485,12 +486,13 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
 
     public GElement getElementAtPoint(Point p) {
         if(rootElement != null) {
-            return rootElement.match(p);
+        	return rootElement.match(p);
         }
         else {
             return null;
         }
     }
+    
         
     public void changeDone() {
         if(delegate == null)
@@ -583,7 +585,6 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
     }
 
     public void handleMousePressed(MouseEvent e) {
-    	System.out.println("GView MousePressed");
         eventManager.performEventObjects(GEventManager.EVENT_MOUSE_PRESSED, e, getMousePosition(e), null);
     }
 
@@ -602,7 +603,6 @@ public class GView extends XJView implements XJMenuItemDelegate, GTimerDelegate,
     }
 
     public void handleMouseEntered(MouseEvent e) {
-    	System.out.println("GView MouseEntered");
         selectionTimer.refresh();
         focusTimer.refresh();
     }

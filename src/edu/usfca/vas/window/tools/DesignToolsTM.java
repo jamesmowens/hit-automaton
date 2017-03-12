@@ -36,10 +36,6 @@ import edu.usfca.vas.graphics.IconManager;
 
 import javax.swing.*;
 
-/**
- * Would be used if TM was used, still needed due to being classed from the above two classes.
- */
-
 public class DesignToolsTM extends DesignToolsAbstract {
 
     public static final int TOOL_ARROW = 0;
