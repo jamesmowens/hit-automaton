@@ -16,6 +16,7 @@ import edu.usfca.vas.machine.fa.State;
 import edu.usfca.xj.appkit.gview.base.Anchor2D;
 import edu.usfca.xj.appkit.gview.base.Vector2D;
 import edu.usfca.xj.appkit.gview.shape.SArrow;
+import edu.usfca.xj.appkit.gview.shape.SLabel;
 
 public class GElementFAStateDoubleCircle extends GElementDoubleCircle 
 implements GElementFAStateInterface, XJXMLSerializable {
@@ -125,21 +126,34 @@ implements GElementFAStateInterface, XJXMLSerializable {
 			startArrow.draw(g);
 		}
 
-		if (highlighted == false) {
-			g.drawOval(leftBound, y, (int)(xString + getRadius()*2), (int)(getRadius()*2));
-			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));
-		}
-
-		//if(state.accepted){
-		//	g.drawOval(leftBound + 4, y + 4, (int)(getRadius2() *2), (int)(getRadius2()*2));
-		//}
-		else if(highlighted == true){
-			Stroke previousStroke = g.getStroke();
-			g.setStroke(new BasicStroke(3.0f));//2 pixel width
+		if (this.isHighlight()) {
+			g.setColor(Color.red);
+			g.fillOval(leftBound, y, (int)(xString + getRadius()*2), (int)(getRadius()*2));
+			g.setColor(Color.black);
 			g.drawOval(leftBound, y, (int)(xString + getRadius() *2), (int)(getRadius()*2));
 			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));
-			g.setStroke(previousStroke);
-		}
+			SLabel.drawCenteredString(getLabel(), getPositionX(), getPositionY(), g);		
+		} else {
+			g.drawOval(leftBound, y, (int)(xString + getRadius()*2), (int)(getRadius()*2));
+			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));
+			}
+		
+		
+//		if (highlighted == false) {
+//			g.drawOval(leftBound, y, (int)(xString + getRadius()*2), (int)(getRadius()*2));
+//			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));
+//		}
+//
+//		//if(state.accepted){
+//		//	g.drawOval(leftBound + 4, y + 4, (int)(getRadius2() *2), (int)(getRadius2()*2));
+//		//}
+//		else if(highlighted == true){
+//			Stroke previousStroke = g.getStroke();
+//			g.setStroke(new BasicStroke(3.0f));//2 pixel width
+//			g.drawOval(leftBound, y, (int)(xString + getRadius() *2), (int)(getRadius()*2));
+//			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));
+//			g.setStroke(previousStroke);
+//		}
 
 	}
 

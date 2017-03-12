@@ -145,7 +145,6 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
 		int leftBound = (int) (x-(xString/2)+getRadius()/2);
 
 		if(state.start) {
-			//System.out.println("GElementFAState drawShape() state.start"); //TODO
 			startArrow.setAnchor(leftBound, y+getRadius());
 			startArrow.setDirection(startArrowDirection);
 			startArrow.setLength(20);
@@ -153,23 +152,16 @@ public class GElementFAState extends GElementCircle implements XJXMLSerializable
 			startArrow.draw(g);
 		}
 
-		if(highlighted == false) {
-			// x, y, x_radius, y_radius
-			//g.setColor(Color.red);
-			//g.fillOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
-			// trying to put the name of the state back on top
+		if (this.isHighlight()) {
+			g.setColor(Color.red);
+			g.fillOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
 			g.setColor(Color.black);
+			g.drawOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2));
+			SLabel.drawCenteredString(getLabel(), getPositionX(), getPositionY(), g);		
+		} else {
 			g.drawOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
-            SLabel.drawCenteredString(getLabel(), getPositionX(), getPositionY(), g);
+		}
 
-		}
-		else if (highlighted == true){
-			Stroke previousStroke = g.getStroke();
-			g.setStroke(new BasicStroke(3.0f));//2 pixel width
-			//g.setColor(Color.red); //trying to add fill color to the states
-			g.drawOval(leftBound, y, (int)((xString + getRadius())), (int)(getRadius()*2)); //draw circle
-			g.setStroke(previousStroke);
-		}
 	}
 
 	@Override
