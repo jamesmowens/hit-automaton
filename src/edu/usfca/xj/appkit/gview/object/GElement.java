@@ -277,14 +277,14 @@ public abstract class GElement implements XJXMLSerializable {
 	}
 
 	public String getAnchorKeyClosestToPoint(Point p) {
-		return "CENTER";
-		/*Anchor2D anchor = getAnchorClosestToPoint(p);
+		//return "CENTER";
+		Anchor2D anchor = getAnchorClosestToPoint(p);
         for (Iterator iterator = anchors.keySet().iterator(); iterator.hasNext();) {
             String key = (String) iterator.next();
             if(anchors.get(key) == anchor)
                 return key;
         }
-        return null;*/
+        return "CENTER";
 	}
 
 	public Anchor2D getAnchorClosestToPoint(Point p) {
@@ -656,14 +656,15 @@ public abstract class GElement implements XJXMLSerializable {
 		clearSteps();
 		if(queryList == null || queryList.size() < 1){return;}
 		for(Query query : queryList){
-			query.run();
-			if(query instanceof TransitionQuery) {
+			//query.run();
+			if (query instanceof VariableQuery) {
+				query.run();
+			} else if(query instanceof TransitionQuery) {
+				query.run();
 				System.out.println("We are now adding a step to the stepList");
 				System.out.println("current step is, source: "+((TransitionQuery) query).getStep().getSource()
 					+" target: "+(((TransitionQuery) query).getStep().getTarget()));
 				this.stepList.add(((TransitionQuery)query).getStep());
-			} else if (query instanceof VariableQuery) {
-				query.run();
 			}
 		}
 	}

@@ -27,7 +27,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-*/
+ */
 
 package edu.usfca.xj.appkit.gview.object;
 
@@ -48,306 +48,307 @@ import java.util.ArrayList;
 
 public class GLink extends GElement implements XJXMLSerializable {
 
-    public static final int SHAPE_ARC = 0;
-    public static final int SHAPE_ELBOW = 1;
-    public static final int SHAPE_BEZIER = 2;
-    
-    public GElement source = null;
-    public GElement target = null;
-    public String sourceAnchorKey = null;
-    public String targetAnchorKey = null;
-    public String pattern = null;
-    public String nickname = null;
+	public static final int SHAPE_ARC = 0;
+	public static final int SHAPE_ELBOW = 1;
+	public static final int SHAPE_BEZIER = 2;
 
-    protected SLink link = null;
-    protected Color color = Color.BLACK;
+	public GElement source = null;
+	public GElement target = null;
+	public String sourceAnchorKey = null;
+	public String targetAnchorKey = null;
+	public String pattern = null;
+	public String nickname = null;
 
-    protected int shape = SHAPE_ARC;
-    protected GElementFAMachine machine;
+	protected SLink link = null;
+	protected Color color = Color.BLACK;
 
-    public ArrayList<GElement> prevSource = new ArrayList<GElement>();
-    public ArrayList<GElement> changeSourceWhenExpand = new ArrayList<GElement>();
-    public ArrayList<GElement> prevTarget = new ArrayList<GElement>();
-    public ArrayList<GElement> changeTargetWhenExpand = new ArrayList<GElement>();
-    public ArrayList<SLink> prevLink = new ArrayList<SLink>();
-    
-    protected GElement container;
+	protected int shape = SHAPE_ARC;
+	protected GElementFAMachine machine;
 
-    public GElementFAMachine getMachine() {
+	public ArrayList<GElement> prevSource = new ArrayList<GElement>();
+	public ArrayList<GElement> changeSourceWhenExpand = new ArrayList<GElement>();
+	public ArrayList<GElement> prevTarget = new ArrayList<GElement>();
+	public ArrayList<GElement> changeTargetWhenExpand = new ArrayList<GElement>();
+	public ArrayList<SLink> prevLink = new ArrayList<SLink>();
+
+	protected GElement container;
+
+	public GElementFAMachine getMachine() {
 		return machine;
 	}
 
 	public void setMachine(GElementFAMachine machine) {
 		this.machine = machine;
 	}
-	
+
 	public GLink() {
 		super();
 	}
 
 	public GLink(GElementFAMachine machine) {
-        super();
-        this.machine=machine;
-    }
+		super();
+		this.machine=machine;
+	}
 
-    public GLink(GElement source, String sourceAnchorKey, GElement target, String targetAnchorKey, int shape, String pattern, Point mouse, double flateness,GElementFAMachine machine) {
-        this.source = source;
-        this.target = target;
-        this.sourceAnchorKey = sourceAnchorKey;
-        this.targetAnchorKey = targetAnchorKey;
-        this.shape = shape;
-        this.pattern = pattern;
-        initializeLink(flateness);
-        setSourceTangentOffset(source.getDefaultAnchorOffset(sourceAnchorKey));
-        setTargetTangentOffset(target.getDefaultAnchorOffset(targetAnchorKey));
-        link.setDirection(Vector2D.vector(mouse).sub(target.getPosition()));
-        this.machine=machine;
-    }
+	public GLink(GElement source, String sourceAnchorKey, GElement target, String targetAnchorKey, int shape, String pattern, Point mouse, double flateness,GElementFAMachine machine) {
+		this.source = source;
+		this.target = target;
+		this.sourceAnchorKey = sourceAnchorKey;
+		this.targetAnchorKey = targetAnchorKey;
+		this.shape = shape;
+		this.pattern = pattern;
+		initializeLink(flateness);
+		setSourceTangentOffset(source.getDefaultAnchorOffset(sourceAnchorKey));
+		setTargetTangentOffset(target.getDefaultAnchorOffset(targetAnchorKey));
+		link.setDirection(Vector2D.vector(mouse).sub(target.getPosition()));
+		this.machine=machine;
+	}
 
-    public GLink(GElement source, String sourceAnchorKey, GElement target, String targetAnchorKey, int shape, String pattern, double flateness) {
-        this.source = source;
-        this.target = target;
-        this.sourceAnchorKey = sourceAnchorKey;
-        this.targetAnchorKey = targetAnchorKey;
-        this.shape = shape;
-        this.pattern = pattern;
-        initializeLink(flateness);
-        if(source == target)
-            link.setDirection(new Vector2D(0, 1));
-        else
-            link.setDirection(source.getPosition().sub(target.getPosition()));
-        setSourceTangentOffset(source.getDefaultAnchorOffset(sourceAnchorKey));
-        setTargetTangentOffset(target.getDefaultAnchorOffset(targetAnchorKey));
-    }
+	public GLink(GElement source, String sourceAnchorKey, GElement target, String targetAnchorKey, int shape, String pattern, double flateness) {
+		this.source = source;
+		this.target = target;
+		this.sourceAnchorKey = sourceAnchorKey;
+		this.targetAnchorKey = targetAnchorKey;
+		this.shape = shape;
+		this.pattern = pattern;
+		initializeLink(flateness);
+		if(source == target)
+			link.setDirection(new Vector2D(0, 1));
+		else
+			link.setDirection(source.getPosition().sub(target.getPosition()));
+		setSourceTangentOffset(source.getDefaultAnchorOffset(sourceAnchorKey));
+		setTargetTangentOffset(target.getDefaultAnchorOffset(targetAnchorKey));
+	}
 
-    public void setBezierControlPoints(Vector2D points[]) {
-        if(link instanceof SLinkBezier) {
-            SLinkBezier lb = (SLinkBezier)link;
-            lb.setControlPoints(points);
-        }
-    }
+	public void setBezierControlPoints(Vector2D points[]) {
+		if(link instanceof SLinkBezier) {
+			SLinkBezier lb = (SLinkBezier)link;
+			lb.setControlPoints(points);
+		}
+	}
 
-    public void setBezierLabelPosition(Vector2D position) {
-        if(link instanceof SLinkBezier) {
-            SLinkBezier lb = (SLinkBezier)link;
-            lb.setLabelPosition(position);
-        }
-    }
+	public void setBezierLabelPosition(Vector2D position) {
+		if(link instanceof SLinkBezier) {
+			SLinkBezier lb = (SLinkBezier)link;
+			lb.setLabelPosition(position);
+		}
+	}
 
-    protected SLink createLinkInstance() {
-        switch(shape) {
-            case SHAPE_ARC: return new SLinkArc();
-            case SHAPE_ELBOW: return new SLinkElbow();
-            case SHAPE_BEZIER: return new SLinkBezier();
-        }
-        return null;
-    }
+	protected SLink createLinkInstance() {
+		switch(shape) {
+		case SHAPE_ARC: return new SLinkArc();
+		case SHAPE_ELBOW: return new SLinkElbow();
+		case SHAPE_BEZIER: return new SLinkBezier();
+		}
+		return null;
+	}
 
-    protected void initializeLink(double flateness) {
-        if(link == null) {
-            link = createLinkInstance();
-            link.setFlateness(flateness);
-        }
-    }
+	protected void initializeLink(double flateness) {
+		if(link == null) {
+			link = createLinkInstance();
+			link.setFlateness(flateness);
+		}
+	}
 
-    public void setSource(GElement source) {
-        this.source = source;
-    }
+	public void setSource(GElement source) {
+		this.source = source;
+	}
 
-    public GElement getSource() {
-        return source;
-    }
+	public GElement getSource() {
+		return source;
+	}
 
-    public void setTarget(GElement target) {
-        this.target = target;
-    }
+	public void setTarget(GElement target) {
+		this.target = target;
+	}
 
-    public GElement getTarget() {
-        return target;
-    }
+	public GElement getTarget() {
+		return target;
+	}
 
-    public void setSourceAnchorKey(String key) {
-        this.sourceAnchorKey = key;
-    }
+	public void setSourceAnchorKey(String key) {
+		this.sourceAnchorKey = key;
+	}
 
-    public String getSourceAnchorKey() {
-        return sourceAnchorKey;
-    }
+	public String getSourceAnchorKey() {
+		return sourceAnchorKey;
+	}
 
-    public void setTargetAnchorKey(String key) {
-        this.targetAnchorKey = key;
-    }
+	public void setTargetAnchorKey(String key) {
+		this.targetAnchorKey = key;
+	}
 
-    public String getTargetAnchorKey() {
-        return targetAnchorKey;
-    }
+	public String getTargetAnchorKey() {
+		return targetAnchorKey;
+	}
 
-    public void setSourceTangentOffset(double offset) {
-        link.setStartTangentOffset(offset);
-    }
+	public void setSourceTangentOffset(double offset) {
+		link.setStartTangentOffset(offset);
+	}
 
-    public void setTargetTangentOffset(double offset) {
-        link.setEndTangentOffset(offset);
-    }
+	public void setTargetTangentOffset(double offset) {
+		link.setEndTangentOffset(offset);
+	}
 
-    public void setSourceOffset(double x, double y) {
-        setSourceOffset(new Vector2D(x, y));
-    }
+	public void setSourceOffset(double x, double y) {
+		setSourceOffset(new Vector2D(x, y));
+	}
 
-    public void setSourceOffset(Vector2D offset) {
-        link.setStartOffset(offset);
-    }
+	public void setSourceOffset(Vector2D offset) {
+		link.setStartOffset(offset);
+	}
 
-    public void setTargetOffset(double x, double y) {
-        setTargetOffset(new Vector2D(x, y));
-    }
+	public void setTargetOffset(double x, double y) {
+		setTargetOffset(new Vector2D(x, y));
+	}
 
-    public void setTargetOffset(Vector2D offset) {
-        link.setEndOffset(offset);
-    }
+	public void setTargetOffset(Vector2D offset) {
+		link.setEndOffset(offset);
+	}
 
-    public void setLink(SLink link) {
-        this.link = link;
-    }
+	public void setLink(SLink link) {
+		this.link = link;
+	}
 
-    public SLink getLink() {
-        return link;
-    }
+	public SLink getLink() {
+		return link;
+	}
 
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
 
-    public String getPattern() {
-        return pattern;
-    }
+	public String getPattern() {
+		return pattern;
+	}
 
-    public void setLabel(String label) {
-        this.pattern = label;
-    }
+	public void setLabel(String label) {
+		this.pattern = label;
+	}
 
-    public void setLabelColor(Color color) {
-        link.setLabelColor(color);
-        setColor(color);
-    }
+	public void setLabelColor(Color color) {
+		link.setLabelColor(color);
+		setColor(color);
+	}
 
-    public void setColor(Color color) {
-    	this.color = color;
-    }
-    
-    public Color getColor(){
-    	return this.color;
-    }
-    
-    public void setLabelVisible(boolean flag) {
-        if(link != null)
-            link.setLabelVisible(flag);
-    }
+	public void setColor(Color color) {
+		this.color = color;
+	}
 
-    public boolean isLabelVisible() {
-        if(link == null)
-            return false;
-        else
-            return link.isLabelVisible();
-    }
+	public Color getColor(){
+		return this.color;
+	}
 
-    public void setShape(int type) {
-        this.shape = type;
-    }
+	public void setLabelVisible(boolean flag) {
+		if(link != null)
+			link.setLabelVisible(flag);
+	}
 
-    public int getShape() {
-        return shape;
-    }
+	public boolean isLabelVisible() {
+		if(link == null)
+			return false;
+		else
+			return link.isLabelVisible();
+	}
 
-    public String getNickname(){
-    	return nickname;
-    }
-    
-    public void setNickname(String newNickname){
-    	this.nickname = newNickname;
-    	//TODO
-    }
-    
-    public void toggleShape() {
-        switch(shape) {
-            case SHAPE_ARC:
-                shape = SHAPE_ELBOW;
-                break;
-            case SHAPE_ELBOW:
-                shape = SHAPE_ARC;
-                break;
-            case SHAPE_BEZIER:
-                // Cannot toggle a bezier link
-                return;
-        }
-        double flateness = link.getFlateness();
-        Vector2D direction = link.getDirection();
+	public void setShape(int type) {
+		this.shape = type;
+	}
 
-        link = createLinkInstance();
-        link.setFlateness(flateness);
-        link.setDirection(direction);
-    }
+	public int getShape() {
+		return shape;
+	}
 
-    public void setMousePosition(Point mouse) {
-        link.setDirection(Vector2D.vector(mouse).sub(target.getPosition()));
-        link.setMousePosition(Vector2D.vector(mouse));
-    }
+	public String getNickname(){
+		return nickname;
+	}
 
-    public Rect getFrame() {
-        update();
-        return link.getFrame();
-    }
+	public void setNickname(String newNickname){
+		this.nickname = newNickname;
+		//TODO
+	}
 
-    public boolean isInside(Point p) {
-        if(link == null)
-            return false;
-        else
-            return link.contains(p.x, p.y);
-    }
+	public void toggleShape() {
+		switch(shape) {
+		case SHAPE_ARC:
+			shape = SHAPE_ELBOW;
+			break;
+		case SHAPE_ELBOW:
+			shape = SHAPE_ARC;
+			break;
+		case SHAPE_BEZIER:
+			// Cannot toggle a bezier link
+			return;
+		}
+		double flateness = link.getFlateness();
+		Vector2D direction = link.getDirection();
 
-    public void update() {
-        initializeLink(0);
+		link = createLinkInstance();
+		link.setFlateness(flateness);
+		link.setDirection(direction);
+	}
 
-        source.updateAnchors();
-        target.updateAnchors();
+	public void setMousePosition(Point mouse) {
+		link.setDirection(Vector2D.vector(mouse).sub(target.getPosition()));
+		link.setMousePosition(Vector2D.vector(mouse));
+	}
 
-        link.setStartAnchor(source.getAnchor(sourceAnchorKey));
-        link.setEndAnchor(target.getAnchor(targetAnchorKey));
-        link.setLabel(pattern);
-        link.setSelfLoop(source == target);
-        if((source instanceof GElementFAStateRectangle) || (source instanceof GElementFAStateDoubleRectangle)) {
-        	link.sourceIsRec = true;
-        }
-        else
-        {
-        	link.sourceIsRec = false;
-        }
-        if((target instanceof GElementFAStateRectangle) || (target instanceof GElementFAStateDoubleRectangle)) {
-        	link.targetIsRec = true;
-        }
-        else
-        {
-        	link.targetIsRec = false;
-        }
+	public Rect getFrame() {
+		update();
+		return link.getFrame();
+	}
 
-        link.update();
-    }
+	public boolean isInside(Point p) {
+		if(link == null)
+			return false;
+		else
+			return link.contains(p.x, p.y);
+	}
 
-    public void draw(Graphics2D g) {
-        update();
+	public void update() {
+		initializeLink(0);
 
-        g.setStroke(new BasicStroke(penSize));
-        
-        if(highlight) {
-        	link.setColor(Color.RED);
-        }
-        else
-        	link.setColor(findColor());
+		source.updateAnchors();
+		target.updateAnchors();
 
-        link.draw(g);
-    }
+		link.setStartAnchor(source.getAnchor(sourceAnchorKey));
+		link.setEndAnchor(target.getAnchor(targetAnchorKey));
+		link.setLabel(pattern);
+		link.setSelfLoop(source == target);
+		if((source instanceof GElementFAStateRectangle) || (source instanceof GElementFAStateDoubleRectangle)) {
+			link.sourceIsRec = true;
+		}
+		else
+		{
+			link.sourceIsRec = false;
+		}
+		if((target instanceof GElementFAStateRectangle) || (target instanceof GElementFAStateDoubleRectangle)) {
+			link.targetIsRec = true;
+		}
+		else
+		{
+			link.targetIsRec = false;
+		}
 
-    private Color findColor() {
+		link.update();
+	}
+
+	public void draw(Graphics2D g) {
+		update();
+
+		g.setStroke(new BasicStroke(penSize));
+
+		if(highlight) {
+			link.setColor(Color.RED);
+		}
+		else {
+			link.setColor(findColor());
+		}
+
+		link.draw(g);
+	}
+
+	private Color findColor() {
 		GElement container = findContainer();
 		/*System.out.println("This link: " + label);
 		if(container!=null) 
@@ -361,21 +362,21 @@ public class GLink extends GElement implements XJXMLSerializable {
 	}
 
 	public GElement findContainer() {
-		
+
 		if(prevSource.size()!=0 || prevTarget.size()!=0) {
 			return container;
 		}
-		
+
 		GElement container = null;
 		int containerX1 = 0,containerY1 = 0,containerX2 = 0,containerY2 = 0;
 		//System.out.println("finding " + this.pattern + " " + machine.getElements().size());
 		for(GElement e : machine.getElements()) {
 			//System.out.println(e.label);
 			if(!source.equals(e) && source.isInside(e) && target.isInside(e) && ((SLinkArc)link).intersectWith(e)) {
-		        int x1 = (int)(e.getPositionX());
-		        int y1 = (int)(e.getPositionY());
-		        int x2 = (int)(e.getPositionX2());
-		        int y2 = (int)(e.getPositionY2());
+				int x1 = (int)(e.getPositionX());
+				int y1 = (int)(e.getPositionY());
+				int x2 = (int)(e.getPositionX2());
+				int y2 = (int)(e.getPositionY2());
 				if(container==null || (x1>=containerX1 && x2<=containerX2 && y1>=containerY1 && y2<=containerY2)) {
 					container=e;
 					containerX1=x1;
@@ -390,8 +391,8 @@ public class GLink extends GElement implements XJXMLSerializable {
 	}
 
 	public void drawShape(Graphics2D g) {
-        link.drawShape(g);
-    }
+		link.drawShape(g);
+	}
 
 	@Override
 	public boolean isInside(GElement e) {
@@ -405,7 +406,7 @@ public class GLink extends GElement implements XJXMLSerializable {
 		}
 		return source;
 	}
-	
+
 	public GElement getRealTarget() {
 		if(prevTarget.size()!=0) {
 			return prevTarget.get(0);

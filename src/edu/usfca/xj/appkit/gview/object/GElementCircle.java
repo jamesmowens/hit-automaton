@@ -121,8 +121,7 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
         if(highlight) {
         	g.setColor(Color.RED);
         }
-        else
-        {
+        else {
         	g.setColor(findColor());
         }
         
