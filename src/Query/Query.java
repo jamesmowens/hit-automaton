@@ -22,6 +22,15 @@ public abstract class Query {
 		this.pattern = "";
 		constructInfo(queryName);
 	}
+
+	/** Explicit constructor */
+	public Query(String state, String info, Condition ex) {
+		this.state = state;
+		this.info = info;
+		this.ex = ex;
+	}
+
+	public Query() {}
 	
 	//TODO add evaluate method here
 	

@@ -4,9 +4,9 @@ package Query;
 import connection.Step;
 
 public class TransitionQuery extends Query {
-	
+
 	Step successStep;  
-	Step currentStep; 
+	transient Step currentStep;
 
 	/**
 	 * 
@@ -19,8 +19,21 @@ public class TransitionQuery extends Query {
 		super(expression, pertainingState, queryName);
 		// TODO Auto-generated constructor 
 		this.successStep = successStep;
-		
+	}
 
+	/**
+	 * Explicit constructor - each field specified specifically
+	 */
+	public TransitionQuery(String state, String info, Condition ex, Step successStep) {
+		super(state, info, ex);
+		this.successStep = successStep;
+	}
+
+	/**
+	 * Create an empty TransitionQuery
+	 */
+	public TransitionQuery() {
+		super();
 	}
 
 	@Override

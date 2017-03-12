@@ -30,6 +30,19 @@ public class VariableQuery extends Query {
 		this.set = setValue;
 	}
 
+	/** Explicit constructor */
+	public VariableQuery(String state, String info, Condition ex, String set) {
+		super(state, info, ex);
+		this.set = set;
+	}
+
+	/**
+	 * Create an empty VariableQuery
+	 */
+	public VariableQuery() {
+		super();
+	}
+
 	/* (non-Javadoc)
 	 * @see Query.Query#run()
 	 */

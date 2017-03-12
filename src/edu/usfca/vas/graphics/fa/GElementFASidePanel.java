@@ -2,23 +2,29 @@
 package edu.usfca.vas.graphics.fa;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import javax.swing.*;
 
+import Query.DataNode;
+import Query.StreamPanel;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 
 public class GElementFASidePanel extends JPanel {
 
 	private static final long serialVersionUID = -511482713793989551L;
+
 	//hold the flow stuff
 	JPanel panel;
+	JTabbedPane tabs;
 	ArrayList<JLabel> labels = new ArrayList<JLabel>();
 	ArrayList<JPanel> panels = new ArrayList<JPanel>();
 	ArrayList<String> strings = new ArrayList<String>();
+	JPanel variablesPanel;
+	StreamPanel streamPanel;
 	static ArrayList<GLink> transitions = new ArrayList<GLink>();
 	static ArrayList<GElement> starts = new ArrayList<GElement>();
 	static ArrayList<GElement> targets = new ArrayList<GElement>();
@@ -27,18 +33,25 @@ public class GElementFASidePanel extends JPanel {
 
 	//creates the side panel
 	public GElementFASidePanel() {
-		super();
-		this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		super(new GridLayout());
+		//this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		this.setPreferredSize(new Dimension(100, 500));
 		setVisible(true);
-		panel = new JPanel();
+		panel = new JPanel(new GridLayout());
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		panel.setPreferredSize(new Dimension(500, 25));
 		panel.setVisible(true);
 		JScrollPane scroll = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(325, 345));
-		this.add(scroll);
+		this.tabs = new JTabbedPane();
+		this.variablesPanel = new JPanel(new GridLayout());
+		variablesPanel.add(scroll);
+		tabs.add("Variables", variablesPanel);
+		streamPanel = new StreamPanel();
+		tabs.add("Data Stream", streamPanel);
+		this.add(tabs);
 	}
+//gets the transition that should be highlighted
 //gets the transition that should be highlighted
 	public GLink getTransition(){
 		int i = 0;
@@ -251,4 +264,21 @@ public class GElementFASidePanel extends JPanel {
 		}
 		return list;
 	}
+
+	/**
+	 * Initialize the text display of data nodes
+	 * @param dataNodes The list of dataNodes
+	 */
+	public void initDataPanel(ArrayList<DataNode> dataNodes) {
+		streamPanel.setData(dataNodes);
+		streamPanel.initDataList();
+	}
+
+	/**
+	 * Advance the text display of data nodes
+	 */
+	public void advanceDataList() {
+		streamPanel.advanceDataNodes();
+	}
+
 }
