@@ -229,6 +229,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		buttonCache.put("Query List Refresh",queryRefresh);
 		JPanel queryRefreshPanel = new JPanel();
 		queryRefreshPanel.add(queryRefresh);
+		this.queriesPanel.setLayout(new BoxLayout(queriesPanel, BoxLayout.Y_AXIS));
 		queryPanel.add(queriesPanel);
 		queryPanel.add(queryRefreshPanel);
 		//queryPanel.add(new JLabel("Testing text init"));
@@ -300,21 +301,21 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			
 			System.out.println("List size for queries: " + allQueries.size());
 			
-			for(Query q: allQueries){
+			for(Query q: allQueries) {
 				JLabel queryDesc = new JLabel();
-				if(q instanceof VariableQuery){
+				if (q instanceof VariableQuery) {
 					System.out.println("It senses the force of the VariableQuery");
-					queryDesc.setText("Testing Variable");
-					queryPanel.add(queryDesc);
-				}
-				else
+					queryDesc.setText(q.queryInfo());
+					queriesPanel.add(queryDesc);
+				} else
 					transQueries.add(q);
 			}
 			for(Query q : transQueries){
 				JLabel queryDesc = new JLabel();
-				queryDesc.setText("Testing Transition");
-				queryPanel.add(queryDesc);
+				queryDesc.setText(q.queryInfo());
+				queriesPanel.add(queryDesc);
 			}
+			queriesPanel.updateUI();
 		}
 	}
 
@@ -323,6 +324,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			database.put(context, new LinkedList<Query>());
 		}
 		database.get(context).add(query);
+		allQueries.add(query);
 		System.out.println("Query submitted by save file");
 	}
 
