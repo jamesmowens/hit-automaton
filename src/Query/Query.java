@@ -23,10 +23,11 @@ public abstract class Query {
 		constructInfo(queryName);
 	}
 
-	/** Explicit constructor */
-	public Query(String state, String info, Condition ex) {
+	/** Explicit constructor used by ProjectSave. Must update all fields. */
+	public Query(String state, String info, String pattern, Condition ex) {
 		this.state = state;
 		this.info = info;
+		this.pattern = pattern;
 		this.ex = ex;
 	}
 
@@ -47,7 +48,7 @@ public abstract class Query {
 	}
 	
 	private void constructInfo(String name){
-		info = name + ": Condition" + ex.getExpression() + ".";
+		info = name + " : Condition " + ex.getExpression() + ".";
 	}
 	
 	public void printinfo(){

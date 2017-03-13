@@ -31,8 +31,8 @@ public class VariableQuery extends Query {
 	}
 
 	/** Explicit constructor */
-	public VariableQuery(String state, String info, Condition ex, String set) {
-		super(state, info, ex);
+	public VariableQuery(String state, String info, String pattern, Condition ex, String set) {
+		super(state, info, pattern, ex);
 		this.set = set;
 	}
 

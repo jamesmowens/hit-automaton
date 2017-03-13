@@ -1,9 +1,6 @@
 package Query;
 
 import com.google.gson.*;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import connection.Step;
 
 import java.io.*;
@@ -12,8 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Created by Thomas Schweich on 3/8/2017.
@@ -21,37 +16,60 @@ import java.util.Scanner;
  * Class representing a saved set of queries. Parsing is super memory inefficient. For now, meant
  * to be robust. Would not work for a huge amount of data in its current state.
  */
-public class DataQuerySave {
+public class ProjectSave {
 
     private HashMap<String, LinkedList<Query>> queryDatabase;
+    private String faLoc, dataLoc;
 
     /**
-     * Creates a DataQuerySave containing the given data. Does not write to disk.
-     * @param toSave The data to save
+     * Creates a ProjectSave containing the given queries. Does not write to disk.
+     * @param toSave The queries to save
      */
-    public DataQuerySave(HashMap<String, LinkedList<Query>> toSave) {
+    public ProjectSave(HashMap<String, LinkedList<Query>> toSave) {
         saveData(toSave);
     }
 
     /**
-     * Creates a DataQuerySave from the contents of the given file
+     * Creates a ProjectSave containing the given queries. Does not write to disk.
+     * @param queries The database of queries to save
+     * @param faLoc The location of the .fa file to save
+     * @param dataLoc The location of the data xml file to save
+     */
+    public ProjectSave(HashMap<String, LinkedList<Query>> queries, String faLoc, String dataLoc) {
+        saveData(queries, faLoc, dataLoc);
+    }
+
+    /**
+     * Creates a ProjectSave from the contents of the given file
      * @param save The json file to create from
      */
-    public DataQuerySave(File save) {
+    public ProjectSave(File save) {
         loadFile(save);
     }
 
     /**
-     * Creates an empty DataQuerySave
+     * Creates an empty ProjectSave. Do not delete; used by GSON.
      */
-    public DataQuerySave() {}
+    public ProjectSave() {}
 
     /**
-     * Adds the given data to this DataQuerySave. Does not write to file.
+     * Adds the given data to this ProjectSave. Does not write to file.
      * @param data The data to add
      */
     public void saveData(HashMap<String, LinkedList<Query>> data) {
         queryDatabase = data;
+    }
+
+    /**
+     * Adds the given data to this ProjectSave. Does not write to file.
+     * @param queries The database of queries
+     * @param faLoc The location of the .fa file
+     * @param dataLoc The location of the data xml file
+     */
+    public void saveData(HashMap<String, LinkedList<Query>> queries, String faLoc, String dataLoc) {
+        this.queryDatabase = queries;
+        this.faLoc = faLoc;
+        this.dataLoc = dataLoc;
     }
 
     /**
@@ -75,8 +93,10 @@ public class DataQuerySave {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Query.class, new QueryDeserializer())
                 .create();
-        DataQuerySave result = gson.fromJson(source, DataQuerySave.class);
-        queryDatabase = result.queryDatabase;
+        ProjectSave result = gson.fromJson(source, ProjectSave.class);
+        this.queryDatabase = result.queryDatabase;
+        this.faLoc = result.faLoc;
+        this.dataLoc = result.dataLoc;
     }
 
     /**
@@ -125,45 +145,17 @@ public class DataQuerySave {
                 return new TransitionQuery(
                         obj.get("state").getAsString(),
                         obj.get("info").getAsString(),
+                        obj.get("pattern").getAsString(),
                         context.deserialize(obj.get("ex"), Condition.class),
                         context.deserialize(obj.get("successStep"), Step.class));
             } else {
                 return new VariableQuery(
                         obj.get("state").getAsString(),
                         obj.get("info").getAsString(),
+                        obj.get("pattern").getAsString(),
                         context.deserialize(obj.get("ex"), Condition.class),
                         obj.get("set").getAsString());
             }
         }
     }
-
-    /*class QueryDeserializer extends TypeAdapter<Query> {
-
-        /**
-         * Used by GSON internally. Encodes the type of query as well as all of its data.
-         */
-        //@Override
-        /*public void write(JsonWriter jsonWriter, Query query) throws IOException {
-            if(query == null) {
-                jsonWriter.nullValue();
-            } else {
-                JsonElement asJson = new Gson().toJsonTree(query);
-                if(query instanceof TransitionQuery) {
-                    asJson.getAsJsonObject().addProperty("type", "transition");
-                } else if (query instanceof VariableQuery) {
-                    asJson.getAsJsonObject().addProperty("type", "variable");
-                }
-                Streams.write(asJson, jsonWriter);
-            }
-        }
-
-        @Override
-        public Query read(JsonReader jsonReader) throws IOException {
-            JsonObject obj = Streams.parse(jsonReader).getAsJsonObject();
-            Gson gson = new Gson();
-            if(obj.get("type").getAsString().equals("transition")) {
-                return new TransitionQuery((Condition) obj.get("condition"), obj.get());
-            }
-        }
-    }*/
 }

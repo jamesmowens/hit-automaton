@@ -22,10 +22,10 @@ public class TransitionQuery extends Query {
 	}
 
 	/**
-	 * Explicit constructor - each field specified specifically
+	 * Explicit constructor - each field must be specified specifically
 	 */
-	public TransitionQuery(String state, String info, Condition ex, Step successStep) {
-		super(state, info, ex);
+	public TransitionQuery(String state, String info, String pattern, Condition ex, Step successStep) {
+		super(state, info, pattern, ex);
 		this.successStep = successStep;
 	}
 

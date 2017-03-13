@@ -34,7 +34,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
-import edu.usfca.vas.layout.LeftSideBar;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.vas.app.Localized;
@@ -59,7 +58,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -203,7 +201,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				if(chosenName.lastIndexOf(".") < 0 || !chosenName.substring(chosenName.lastIndexOf(".")).equals("caesar")) {
 					chosenName += ".caesar";
 				}
-				DataQuerySave save = new DataQuerySave(namingPanel.getDatabase());
+				ProjectSave save = new ProjectSave(namingPanel.getDatabase());
 				save.writeToFile(chosenName);
 			} else {
 				System.err.println("Nothing to write");
@@ -218,7 +216,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					"Context-Aware Event Stream Analytics Report (.caesar)",
 					".caesar", "caesar", ".CAESAR", "CAESAR"));
 			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-				DataQuerySave save = new DataQuerySave(chooser.getSelectedFile());
+				ProjectSave save = new ProjectSave(chooser.getSelectedFile());
 				final Map<String, LinkedList<Query>> loadedDatabase = save.getQueryDatabase();
 				for(String k : loadedDatabase.keySet()) {
 					final LinkedList<Query> queries = loadedDatabase.get(k);
