@@ -34,13 +34,16 @@ public abstract class MainWindow extends XJWindow {
         addSideTab(new AnalyticsView().getPanel(), "Analytics", 25, 25);
 
         JPanel mapPanel = new JPanel(new BorderLayout());
-        mapPanel.add(MapsView.makeMap(), BorderLayout.CENTER);
+        MapsView map = MapsView.makeMap();
+        mapPanel.add(map, BorderLayout.CENTER);
         mapPanel.setSize(700, 500);
         //mapPanel.setLocation(null);
         mapPanel.setVisible(true);
-        mapPanel.add(MapsView.makeMap());
+        //mapPanel.add(MapsView.makeMap());
         System.out.println("Here!!!");
         addSideTab(mapPanel, "Map", 25, 25);
+        MapTest tester = new MapTest(map);
+        tester.start();
         leftSideBar.setSelectedIndex(1);
         leftSideBar.setVisible(true);
     }

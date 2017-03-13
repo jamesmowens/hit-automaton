@@ -25,8 +25,8 @@ public class MapsView extends  MapView {
                     final Map map = getMap();
                     map.setZoom(12);
                     GeocoderRequest request = new GeocoderRequest();
-                    //request.setAddress("New York, USA");
-                    request.setLocation(new LatLng(40.775048, -73.971120));
+                    request.setAddress("New York, USA");
+                    //request.setLocation(new LatLng(40.779581, -73.966830));
                     markLatLng(40.8,-74.0);
                     //markLatLng(40.7234,-73.988);
                     //removeMarker(40.8,-74.0);
@@ -70,12 +70,16 @@ public class MapsView extends  MapView {
         System.out.println("This is called");
         MapViewOptions options = new MapViewOptions();
         options.importPlaces();
+        options.setComponentType(MapComponentType.LIGHTWEIGHT);
         return new MapsView(options);
     }
 
     public void markLatLng(double lat, double lng){
         LatLng location = new LatLng(lat,lng);
         final Map map = getMap();
+        if (map == null) {
+            return;
+        }
         Marker marker = new Marker(map);
         marker.setPosition(location);
 
