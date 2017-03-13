@@ -2,6 +2,7 @@ package Query;
 
 import com.google.gson.*;
 import connection.Step;
+import edu.usfca.xj.appkit.document.XJDocument;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -13,13 +14,13 @@ import java.util.LinkedList;
 /**
  * Created by Thomas Schweich on 3/8/2017.
  *
- * Class representing a saved set of queries. Parsing is super memory inefficient. For now, meant
- * to be robust. Would not work for a huge amount of data in its current state.
+ * Class representing a saved project
  */
 public class ProjectSave {
 
     private HashMap<String, LinkedList<Query>> queryDatabase;
     private String faLoc, dataLoc;
+    private XJDocument faDoc;
 
     /**
      * Creates a ProjectSave containing the given queries. Does not write to disk.
@@ -37,6 +38,16 @@ public class ProjectSave {
      */
     public ProjectSave(HashMap<String, LinkedList<Query>> queries, String faLoc, String dataLoc) {
         saveData(queries, faLoc, dataLoc);
+    }
+
+    /**
+     * Creates a ProjectSave containing the given data. Does not write to disk.
+     * @param queries The database of queries to save
+     * @param faDoc The location of the .fa file to save
+     * @param dataLoc The location of the data xml file to save
+     */
+    public ProjectSave(HashMap<String, LinkedList<Query>> queries, XJDocument faDoc, String dataLoc) {
+        saveData(queries, faDoc, dataLoc);
     }
 
     /**
@@ -72,6 +83,19 @@ public class ProjectSave {
         this.dataLoc = dataLoc;
     }
 
+
+    /**
+     * Adds the given data to this ProjectSave. Does not write to file.
+     * @param queries The database of queries
+     * @param faDoc The location of the .fa file
+     * @param dataLoc The location of the data xml file
+     */
+    public void saveData(HashMap<String, LinkedList<Query>> queries, XJDocument faDoc, String dataLoc) {
+        this.queryDatabase = queries;
+        this.faDoc = faDoc;
+        this.dataLoc = dataLoc;
+    }
+
     /**
      * Loads the file's contents into this object
      * @param f The file to load
@@ -96,6 +120,7 @@ public class ProjectSave {
         ProjectSave result = gson.fromJson(source, ProjectSave.class);
         this.queryDatabase = result.queryDatabase;
         this.faLoc = result.faLoc;
+        this.faDoc = result.faDoc;
         this.dataLoc = result.dataLoc;
     }
 
@@ -133,6 +158,12 @@ public class ProjectSave {
     public HashMap<String, LinkedList<Query>> getQueryDatabase() {
         return queryDatabase;
     }
+
+    public String getFaLoc() { return faLoc; }
+
+    public String getDataLoc() { return dataLoc; }
+
+    public XJDocument getFaDoc() { return faDoc; }
 
     /**
      * Class to deserialize Queries using GSON

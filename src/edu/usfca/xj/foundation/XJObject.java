@@ -36,8 +36,8 @@ import java.util.*;
 
 public class XJObject {
 
-    private List observers = new ArrayList();
-    private Map keyObservers = new HashMap();
+    private transient List observers = new ArrayList();
+    private transient Map keyObservers = new HashMap();
 
     public void awake() {
 

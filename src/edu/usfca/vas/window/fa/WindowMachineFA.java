@@ -34,6 +34,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package edu.usfca.vas.window.fa;
 
+import edu.usfca.xj.appkit.app.XJApplication;
+import edu.usfca.xj.appkit.document.XJDocument;
 import edu.usfca.xj.appkit.gview.object.GElement;
 import edu.usfca.xj.appkit.gview.object.GLink;
 import edu.usfca.vas.app.Localized;
@@ -57,6 +59,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
@@ -190,7 +194,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			}
 		});
 
-		querySaveButton = new JButton("Save Queries");
+		querySaveButton = new JButton("Save Project");
 		querySaveButton.addActionListener(e -> {
 			JFileChooser chooser = new JFileChooser();
 			chooser.setFileFilter(new FileNameExtensionFilter(
@@ -201,15 +205,15 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				if(chosenName.lastIndexOf(".") < 0 || !chosenName.substring(chosenName.lastIndexOf(".")).equals("caesar")) {
 					chosenName += ".caesar";
 				}
-				ProjectSave save = new ProjectSave(namingPanel.getDatabase());
+				ProjectSave save = new ProjectSave(namingPanel.getDatabase(), window.getDocument(), currentDocPath);
 				save.writeToFile(chosenName);
 			} else {
-				System.err.println("Nothing to write");
+				System.err.println("WindowMachineFA: querySaveButton: Nothing to write");
 			}
 		});
 		panel.add(querySaveButton);
 
-		queryLoadButton = new JButton("Load Queries");
+		queryLoadButton = new JButton("Load Project");
 		queryLoadButton.addActionListener(e -> {
 			JFileChooser chooser = new JFileChooser();
 			chooser.setFileFilter(new FileNameExtensionFilter(
@@ -217,6 +221,18 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					".caesar", "caesar", ".CAESAR", "CAESAR"));
 			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 				ProjectSave save = new ProjectSave(chooser.getSelectedFile());
+				//XJApplication.shared().openDocument(save.getFaLoc());
+				/*XJDocument loadedDoc = save.getFaDoc();
+				loadedDoc.setXJWindow(window);
+				window.setXJDocument(save.getFaDoc());
+				XJDocument savedDoc = save.getFaDoc();
+				try {
+					savedDoc.performLoad(new File(savedDoc.getDocumentPath()).getCanonicalPath().toString());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}*/
+				currentDocPath = save.getDataLoc();
+				updateSidePanelVariables();
 				final Map<String, LinkedList<Query>> loadedDatabase = save.getQueryDatabase();
 				for(String k : loadedDatabase.keySet()) {
 					final LinkedList<Query> queries = loadedDatabase.get(k);
@@ -226,7 +242,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				}
 				//namingPanel.setDatabase(save.getQueryDatabase());
 			} else {
-				System.err.println("WindowMachineFA: queryLoadButton: Nothing to write");
+				System.err.println("WindowMachineFA: queryLoadButton: Nothing to read");
 			}
 		});
 		panel.add(queryLoadButton);

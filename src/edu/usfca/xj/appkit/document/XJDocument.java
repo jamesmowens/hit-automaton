@@ -47,7 +47,7 @@ import java.io.*;
 public class XJDocument extends XJObject {
 
     protected XJData documentData = null;
-    protected XJWindow documentWindow = null;
+    protected transient XJWindow documentWindow = null;
     protected String documentTitle = XJLocalizable.getXJString("DocUntitled");
     protected String documentPath = null;
 
@@ -58,7 +58,7 @@ public class XJDocument extends XJObject {
     protected boolean firstDocument = false;
     protected boolean writing = false;
 
-    protected Component javaContainer = null;
+    protected transient Component javaContainer = null;
 
     protected static int absoluteCounter = 0;
 
@@ -69,6 +69,11 @@ public class XJDocument extends XJObject {
     }
 
     // *** Public methods
+
+    /** Used to set the main window after a save */
+    public void setXJWindow(XJWindow win) {
+        this.documentWindow = win;
+    }
 
     public boolean isFirstDocument() {
         return firstDocument;

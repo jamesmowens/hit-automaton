@@ -69,6 +69,10 @@ public class XJWindow extends XJFrame {
         return document;
     }
 
+    public void setXJDocument(XJDocument doc) {
+        this.document = doc;
+    }
+
     public XJData getDocumentData() {
         if(document != null)
             return document.getDocumentData();

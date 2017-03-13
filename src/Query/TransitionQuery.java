@@ -29,6 +29,10 @@ public class TransitionQuery extends Query {
 		this.successStep = successStep;
 	}
 
+	public String returnSetState(){
+		return successStep.getTarget();
+	}
+
 	/**
 	 * Create an empty TransitionQuery
 	 */

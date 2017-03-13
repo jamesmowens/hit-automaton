@@ -43,6 +43,10 @@ public class VariableQuery extends Query {
 		super();
 	}
 
+	public String getSet(){
+		return this.set;
+	}
+
 	/* (non-Javadoc)
 	 * @see Query.Query#run()
 	 */

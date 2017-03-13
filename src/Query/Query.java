@@ -31,6 +31,14 @@ public abstract class Query {
 		this.ex = ex;
 	}
 
+	public String getEx(){
+		return this.ex.getExpression();
+	}
+
+	public String getState(){
+		return this.state;
+	}
+
 	public Query() {}
 	
 	//TODO add evaluate method here
