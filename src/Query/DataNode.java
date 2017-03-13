@@ -49,4 +49,8 @@ public class DataNode {
 	public double getTime() {
 		return this.time;
 	}
+
+	public String getPattern(){
+		return "";
+	}
 }
