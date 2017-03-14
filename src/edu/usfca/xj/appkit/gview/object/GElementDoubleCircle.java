@@ -115,7 +115,7 @@ public abstract class GElementDoubleCircle extends GElement implements XJXMLSeri
     public void draw(Graphics2D g) {
         if(labelVisible) {
             g.setColor(labelColor);
-            SLabel.drawCenteredString(getLabel(), (int)getPositionX(), (int)getPositionY(), g);
+            SLabel.drawCenteredString(getLabel(), (int)getPositionX()+4, (int)getPositionY()-2, g);
         }
 
         if(highlight) {
