@@ -44,8 +44,8 @@ public class StreamPanel extends JPanel {
             futureNodes.add(allNodes.get(i));
             super.add(streamLabels[i], i);
         }
-        advanceDataNodes();
-        //updateNodeDisplay();
+        //advanceDataNodes();
+        updateNodeDisplay();
     }
 
     public void resetStream() {
