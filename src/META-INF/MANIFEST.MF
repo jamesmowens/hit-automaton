@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Class-Path: license.jar servlet.jar gson-2.2.2.jar junit-4.11.jar jxma
+ ps-1.3.jar jfreesvg-2.0.jar nimrodlf-1.2d.jar swtgraphics2d.jar jcomm
+ on-1.0.23.jar jxmaps-mac-1.3.jar jxmaps-win-1.3.jar hamcrest-core-1.3
+ .jar jfreechart-1.0.19.jar orsonpdf-1.6-eval.jar jxmaps-linux32-1.3.j
+ ar jxmaps-linux64-1.3.jar jfreechart-1.0.19-swt.jar orsoncharts-1.4-e
+ val-nofx.jar jfreechart-1.0.19-experimental.jar
+Main-Class: edu.usfca.vas.VisualAutomataSimulator
+
