@@ -36,6 +36,8 @@ public class StreamPanel extends JPanel {
     public void initDataList() {
         super.removeAll();
         currNodeIdx = 0;
+        futureNodes = new LinkedList<DataNode>();
+        pastNodes = new LinkedList<DataNode>();
         streamLabels = new JLabel[MAX_DATA_NODES];
         for(int i = 0; i < MAX_DATA_NODES && i < allNodes.size(); i++) {
             streamLabels[i] = new JLabel();
@@ -44,6 +46,10 @@ public class StreamPanel extends JPanel {
         }
         advanceDataNodes();
         //updateNodeDisplay();
+    }
+
+    public void resetStream() {
+
     }
 
     /**

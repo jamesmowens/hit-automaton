@@ -64,6 +64,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import Query.*;
 
@@ -106,6 +107,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	Object playingFlagLock = new Object();
 	boolean playingFlag = false;
+	AtomicBoolean restart = new AtomicBoolean(true);
 	int timeBetweenStep = 1500;
 	String dataDocPath = "";
 
@@ -253,31 +255,18 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			public void actionPerformed(ActionEvent e) {
 				if (WindowMachineFA.this.isStart()) {
 
-					updateSidePanelVariables();
-					// TODO uncomment this out
-					dataList = XMLParser.getListDataNodes(currentDocPath);
-					stepList.add(grabFirstStep());
-					currentData = dataList.get(0);
-
-
 					highLightObject();
 
 					WindowMachineFA.this.setStart(false);
 					WindowMachineFA.this.startButton.setLabel("Stop");
 
-					sidePanel.initDataPanel(dataList);
-					Thread th = new Thread() {
-						public void run() {
-							startPlaying();
-						}
-					};
+					Thread th = new Thread(() -> startPlaying());
 					th.start();
 				}
 
 				else {
 
 					stopPlaying();
-
 					/**
 					 * Replace this logic (go form previous state to next) With
 					 * new logic (Run queries on current state, and if a query
@@ -306,9 +295,22 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		return firstStep;
 	}
 
+	private void restartSimulation() {
+		updateSidePanelVariables();
+		dataList = XMLParser.getListDataNodes(currentDocPath);
+		stepList.add(grabFirstStep());
+		currentData = dataList.get(0);
+		sidePanel.initDataPanel(dataList);
+		dataIndex = 0;
+	}
+
 	protected void startPlaying() {
 		synchronized (playingFlagLock) {
 			playingFlag = true;
+		}
+
+		if(restart.compareAndSet(true, false)) {
+			restartSimulation();
 		}
 
 		do {
@@ -316,7 +318,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				// This is what dictates the speed at which the switching occurs
 				Thread.sleep(timeBetweenStep);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				restart.set(true);
 				e.printStackTrace();
 			}
 
@@ -344,8 +346,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		while(stepList.size() > 0);
 		//Might be a bug here
 		//while (stepList.size() >= 0);
-
 		stopPlaying();
+		restart.set(true);
+
 }
 
 	private void stopPlaying() {
@@ -356,7 +359,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 	private void setNewData(){
 		this.dataIndex++;
-		if(dataIndex < dataList.size()){stopPlaying();}
+		if(dataIndex > dataList.size() - 1){
+			restartSimulation();
+		}
 		System.out.println("The data that is gonna be next for stuff(window machine FA pespective): " + this.dataList.get(this.dataIndex).getCost());
 		this.currentData = this.dataList.get(this.dataIndex);
 		System.out.println("The current Data was succesfully set to the new node");
