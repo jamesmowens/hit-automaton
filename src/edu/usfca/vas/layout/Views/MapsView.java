@@ -70,6 +70,7 @@ public class MapsView extends  MapView {
         MapViewOptions options = new MapViewOptions();
         options.importPlaces();
         options.setComponentType(MapComponentType.LIGHTWEIGHT);
+        options.setApiKey("AIzaSyAY6OmAHy2GjbJvr45oG-O_jg6RiRie10o");
         return new MapsView(options);
     }
 

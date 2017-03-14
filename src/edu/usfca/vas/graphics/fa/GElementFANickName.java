@@ -161,14 +161,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		JPanel setPanel = new JPanel();
 		setPanel.add(setLabel);
 		setPanel.add(setProcessingFill);
-		setProcessingFill.setForeground(Color.BLACK);
 		setPanel.add(Box.createRigidArea(new Dimension(600,0)));
 
 		JLabel patternProcessingLabel = new JLabel("Pattern");
 		JPanel patternProcessingPanel = new JPanel();
 		patternProcessingPanel.add(patternProcessingLabel);
 		patternProcessingPanel.add(patternProcessingFill);
-		patternProcessingFill.setForeground(Color.BLACK);
 		patternProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
 		
 		JLabel whereProcessingLabel = new JLabel("Where");
