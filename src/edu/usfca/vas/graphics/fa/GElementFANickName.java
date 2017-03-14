@@ -49,14 +49,14 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	//these are for the new list, specifically the Derivation queries
 	JComboBox switchList = new JComboBox(destinationModel);
 	JComboBox contextDerivationList = new JComboBox(contextModel);
-	TextField patternDerivationFill = new TextField("*", 20);
-	TextField whereDerivationFill = new TextField("This is the if condition",20);
+	JTextField patternDerivationFill = new JTextField("*", 20);
+	JTextField whereDerivationFill = new JTextField("This is the if condition",20);
 
 	//these are for the new list, specifically the Processing queries
 	JComboBox contextProcessingList = new JComboBox(contextModel);
-	TextField setProcessingFill = new TextField("this is the set condition",20);
-	TextField patternProcessingFill = new TextField("This is the pattern statement",20);
-	TextField whereProcessingFill = new TextField("This is the where statement",20);
+	JTextField setProcessingFill = new JTextField("this is the set condition",20);
+	JTextField patternProcessingFill = new JTextField("This is the pattern statement",20);
+	JTextField whereProcessingFill = new JTextField("This is the where statement",20);
 
 	String condition = "";
 	String set = "";
@@ -161,12 +161,14 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		JPanel setPanel = new JPanel();
 		setPanel.add(setLabel);
 		setPanel.add(setProcessingFill);
+		setProcessingFill.setForeground(Color.BLACK);
 		setPanel.add(Box.createRigidArea(new Dimension(600,0)));
 
 		JLabel patternProcessingLabel = new JLabel("Pattern");
 		JPanel patternProcessingPanel = new JPanel();
 		patternProcessingPanel.add(patternProcessingLabel);
 		patternProcessingPanel.add(patternProcessingFill);
+		patternProcessingFill.setForeground(Color.BLACK);
 		patternProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
 		
 		JLabel whereProcessingLabel = new JLabel("Where");
