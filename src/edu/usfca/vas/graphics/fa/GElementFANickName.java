@@ -82,7 +82,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 		tabs.setVisible(true);
 		setVisible(true);
-		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // TODO Check
+		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // TODO Check
 		scroll.setPreferredSize(new Dimension(960, 500));
 		this.add(scroll);
 
@@ -364,8 +364,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 					currentPanel.add(currentQueryPanel);
 					if(true){
-						queriesPanel.add(currentPanel);
-						queriesPanel.add(Box.createRigidArea(new Dimension(50,0)));
+						queriesPanel.add(currentQueryPanel);
+						queriesPanel.add(Box.createRigidArea(new Dimension(0,10)));
 						currentPanel = new JPanel();
 						currentPanel.setLayout(new BoxLayout(currentPanel, BoxLayout.X_AXIS));
 					}
@@ -407,8 +407,8 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				//queriesPanel.add(queryDesc);
 				currentPanel.add(currentQueryPanel);
 				if(true){
-					queriesPanel.add(currentPanel);
-					queriesPanel.add(Box.createRigidArea(new Dimension(50,0)));
+					queriesPanel.add(currentQueryPanel);
+					queriesPanel.add(Box.createRigidArea(new Dimension(0,10)));
 					currentPanel = new JPanel();
 					currentPanel.setLayout(new BoxLayout(currentPanel, BoxLayout.X_AXIS));
 				}
