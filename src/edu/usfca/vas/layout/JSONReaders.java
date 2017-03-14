@@ -15,7 +15,7 @@ public enum JSONReaders {
     // Sets the proper JSONReader to instances. EACH INSTANCE MUST HAVE A PROPER JSONReader!
     static {
         try {
-            SETTINGS.reader = new JSONReader("src/edu/usfca/vas/layout/settings.json");
+            SETTINGS.reader = new JSONReader("resources/settings.json");
         } catch (FileNotFoundException f) {
             System.err.println("Couldn't find settings.json");
             f.printStackTrace();
