@@ -25,7 +25,7 @@ public class MapsView extends  MapView {
                     final Map map = getMap();
                     map.setZoom(12);
                     GeocoderRequest request = new GeocoderRequest();
-                    request.setAddress("New York, USA");
+                    request.setAddress("Manhattan, New York, USA");
                     //request.setLocation(new LatLng(40.779581, -73.966830));
                     markLatLng(40.8,-74.0);
                     //markLatLng(40.7234,-73.988);
@@ -38,25 +38,14 @@ public class MapsView extends  MapView {
                             if (status == GeocoderStatus.OK) {
                                 map.setCenter(result[0].getGeometry().getLocation());
                                 System.out.println(map.getBounds());
-                /*Marker marker = new Marker(map);
-                 marker.setPosition(result[0].getGeometry().getLocation());
-                 final InfoWindow window = new InfoWindow(map);
-                 window.setContent("Hello, World!");
-                 window.open(map, marker);*/
+
 
 
                             }
                         }
                     });
                 }
-        /*MapViewOptions options = new MapViewOptions();
-        options.importPlaces();
-        final MapsView mapView = new MapsView(options);
-        mapPanel.add(MapsView.makeMap(), BorderLayout.CENTER);
-        mapPanel.setSize(700, 500);
-        mapPanel.setLocation(null);
-        mapPanel.setVisible(true);
-        mapPanel.add(mapView);*/
+
             }
         });
     }
@@ -84,7 +73,6 @@ public class MapsView extends  MapView {
         marker.setPosition(location);
 
         String key = ""+lat+lng;
-        System.out.println(key);
         markerDict.put(key,marker);
 
     }
@@ -102,7 +90,6 @@ public class MapsView extends  MapView {
         MapViewOptions options = new MapViewOptions();
         options.importPlaces();
         final MapsView mapView = new MapsView(options);
-        //mapView.markLatLng(46.936208, 34.168202);
 
         JFrame frame = new JFrame("JxMaps - Hello, World!");
 
@@ -111,7 +98,6 @@ public class MapsView extends  MapView {
         frame.setSize(700, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        //mapView.markLatLng(46.936208, 34.168202);
 
     }
 
