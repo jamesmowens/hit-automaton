@@ -132,7 +132,7 @@ implements GElementFAStateInterface, XJXMLSerializable {
 			g.setColor(Color.black);
 			g.drawOval(leftBound, y, (int)(xString + getRadius() *2), (int)(getRadius()*2));
 			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));
-			SLabel.drawCenteredString(getLabel(), getPositionX(), getPositionY(), g);		
+			SLabel.drawCenteredString(getLabel(), getPositionX()+4, getPositionY()-2, g);
 		} else {
 			g.drawOval(leftBound, y, (int)(xString + getRadius()*2), (int)(getRadius()*2));
 			g.drawOval(leftBound + 4, y + 4, (int)(xString + getRadius2() *2), (int)(getRadius2()*2));

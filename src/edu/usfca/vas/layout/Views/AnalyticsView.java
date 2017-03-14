@@ -54,7 +54,7 @@ public class AnalyticsView {
         panel.add(tabbedPane);
         XYDataset set1 = createDataset("Test1", xVals, yVals);
         XYDataset set2 = createDataset("Test2", xVals, yVals);
-        PieDataset pie1Set = createPieDataset(), pie2Set = createPieDataset(), pie3Set = createPieDataset();
+        PieDataset pie1Set = createPieDataset(), pie2Set = waitTimeDataset(), pie3Set = driverRiderDataset();
         /*AnalyticsPanel
                 context = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Context")), set1, set2),
                 drivers = new AnalyticsPanel(new JSONReader(jsonReader.getJsonObject("Drivers")), set1, set2),
@@ -107,12 +107,22 @@ public class AnalyticsView {
 
     private PieDataset createPieDataset() {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("One", new Double(43.2));
-        dataset.setValue("Two", new Double(10.0));
-        dataset.setValue("Three", new Double(27.5));
-        dataset.setValue("Four", new Double(17.5));
-        dataset.setValue("Five", new Double(11.0));
-        dataset.setValue("Six", new Double(19.4));
+        dataset.setValue("33% Price increase", new Double(33));
+        dataset.setValue("", new Double(77));
+        return dataset;
+    }
+
+    private PieDataset waitTimeDataset(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("8.5 Fold Increase",new Double(2));
+        dataset.setValue("",new Double(17));
+        return dataset;
+    }
+
+    private PieDataset driverRiderDataset(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("13.5 Fold Increase",new Double(0.2));
+        dataset.setValue("",new Double(2.7));
         return dataset;
     }
 

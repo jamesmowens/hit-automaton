@@ -338,7 +338,6 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			//setActiveStates(sidePanel.getCurrent());
 			System.out.println("Setting new data");
 			setNewData();
-			sidePanel.advanceDataList(); //Advance the currently displayed data
 			//LAYOUTTODO
 			//stepList
 			}
@@ -365,6 +364,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		System.out.println("The data that is gonna be next for stuff(window machine FA pespective): " + this.dataList.get(this.dataIndex).getCost());
 		this.currentData = this.dataList.get(this.dataIndex);
 		System.out.println("The current Data was succesfully set to the new node");
+		sidePanel.advanceDataList(); //Advance the currently displayed data
 	}
 
 	public String next() {
@@ -602,7 +602,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 			this.stepList.clear();
 			while (state != null) {
-				state.runQueries();
+				state.runQueries(currentData);
 				// This grabs the step list from the state, then the step list
 				// in the state should clear.
 				addSteps(state.grabStepList());

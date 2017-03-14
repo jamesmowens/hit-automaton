@@ -46,7 +46,7 @@ import java.util.List;
 import Query.*;
 import connection.Step;
 
-public abstract class GElement implements XJXMLSerializable {
+public abstract class  GElement implements XJXMLSerializable {
 
 	public static final String ANCHOR_CENTER = "CENTER";
 	public static final String ANCHOR_TOP = "TOP";
@@ -651,20 +651,22 @@ public abstract class GElement implements XJXMLSerializable {
 		return highlight;
 	}
 
-	public void runQueries(){
+	public void runQueries(DataNode currentData){
 		System.out.println("Queries are being run on this state: " + this.label);
 		clearSteps();
 		if(queryList == null || queryList.size() < 1){return;}
 		for(Query query : queryList){
 			//query.run();
-			if (query instanceof VariableQuery) {
-				query.run();
-			} else if(query instanceof TransitionQuery) {
-				query.run();
-				System.out.println("We are now adding a step to the stepList");
-				System.out.println("current step is, source: "+((TransitionQuery) query).getStep().getSource()
-					+" target: "+(((TransitionQuery) query).getStep().getTarget()));
-				this.stepList.add(((TransitionQuery)query).getStep());
+			if (query.queryPattern().equals(currentData.getPattern())) {
+				if (query instanceof VariableQuery) {
+					query.run();
+				} else if (query instanceof TransitionQuery) {
+					query.run();
+					System.out.println("We are now adding a step to the stepList");
+					System.out.println("current step is, source: " + ((TransitionQuery) query).getStep().getSource()
+							+ " target: " + (((TransitionQuery) query).getStep().getTarget()));
+					this.stepList.add(((TransitionQuery) query).getStep());
+				}
 			}
 		}
 	}

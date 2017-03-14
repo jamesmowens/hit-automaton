@@ -77,12 +77,16 @@ public abstract class SLink implements XJXMLSerializable {
     public void setStartAnchor(Anchor2D anchor) {
     	if(anchor==null) return;
         setStart(anchor.position);
+        //System.out.println("The anchor's start position is"+anchor.position);
         setStartDirection(anchor.direction);
+        //System.out.println("The anchor's start direction is"+anchor.direction);
     }
 
     public void setEndAnchor(Anchor2D anchor) {
         setEnd(anchor.position);
+        //System.out.println("The anchor's end position is"+anchor.position);
         setEndDirection(anchor.direction);
+        //System.out.println("The anchor's end direction is"+anchor.direction);
     }
 
     public void setStart(Vector2D start) {
