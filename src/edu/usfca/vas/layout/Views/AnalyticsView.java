@@ -45,7 +45,7 @@ public class AnalyticsView {
         panel = new JPanel(new BorderLayout());
         JSONReader jsonReader;
         try {
-            jsonReader = new JSONReader("resources/analyticsSettings.json");
+            jsonReader = new JSONReader("analyticsSettings.json");
         } catch (FileNotFoundException f) {
             System.err.println("Couldn't find analyticsSettings.json");
             f.printStackTrace();

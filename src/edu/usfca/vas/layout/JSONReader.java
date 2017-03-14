@@ -21,7 +21,7 @@ public class JSONReader {
      */
     public JSONReader(String path) throws FileNotFoundException {
         String txt;
-        txt = new Scanner(new File(path)).useDelimiter("\\Z").next();
+        txt = new Scanner(getClass().getClassLoader().getResourceAsStream(path)).useDelimiter("\\Z").next();
         json = new JsonParser().parse(txt).getAsJsonObject();
     }
 
