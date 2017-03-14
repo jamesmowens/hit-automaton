@@ -98,8 +98,8 @@ public class GLink extends GElement implements XJXMLSerializable {
 		this.shape = shape;
 		this.pattern = pattern;
 		initializeLink(flateness);
-		setSourceTangentOffset(source.getDefaultAnchorOffset(sourceAnchorKey));
-		setTargetTangentOffset(target.getDefaultAnchorOffset(targetAnchorKey));
+		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target));
+		setTargetTangentOffset(getTargetOvalRadius(source, target, targetAnchorKey));
 		link.setDirection(Vector2D.vector(mouse).sub(target.getPosition()));
 		this.machine=machine;
 	}
@@ -116,8 +116,98 @@ public class GLink extends GElement implements XJXMLSerializable {
 			link.setDirection(new Vector2D(0, 1));
 		else
 			link.setDirection(source.getPosition().sub(target.getPosition()));
-		setSourceTangentOffset(source.getDefaultAnchorOffset(sourceAnchorKey));
-		setTargetTangentOffset(target.getDefaultAnchorOffset(targetAnchorKey));
+
+		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target));
+		setTargetTangentOffset(getTargetOvalRadius(source, target, targetAnchorKey));
+	}
+
+	// Gets the dynamic radius for a link that starts from a circle
+
+	/**
+	 * Gets the dynamic radius for a link that starts from a state (oval)
+	 * @param source Starting element
+	 * @param sourceAnchorKey Default anchor key (used if element is not a circle or double circle)
+	 * @param target Ending element
+	 * @return Length of radius for that specific point
+	 */
+	public static double getSourceOvalRadius(GElement source, String sourceAnchorKey, GElement target) {
+		if (source instanceof GElementCircle || source instanceof GElementDoubleCircle) {
+			double yRadius;
+			if (source instanceof GElementCircle) {
+				yRadius = ((GElementCircle)source).getRadius();
+			} else {
+				yRadius = ((GElementDoubleCircle)source).getRadius();
+			}
+			// For now, font is hard-coded to be 6
+			int xString = (source.getLabel().length() * 6);
+
+			// per GElementFAState, xRadius is (xString + radius)/2
+			double xRadius = (xString + yRadius)/2;
+
+			// get the components of the vector connecting the target and source
+			double x_len = (-1) * source.getPosition().sub(target.getPosition()).getX();
+			double y_len = (-1) * source.getPosition().sub(target.getPosition()).getY();
+
+			double theta;
+			// avoid dividing by zero
+			if (x_len == 0) {
+				theta = Math.PI/2;
+			} else {
+				theta = Math.atan(y_len / x_len);
+			}
+
+			// Because of bezier, tangent should really be offset by about pi/10
+			double theta_bezier = theta - Math.PI/10; //tweaking it so it looks good
+
+			double  newRadius = ((xRadius * yRadius) / Math.sqrt(
+					Math.pow(xRadius * Math.sin(theta_bezier), 2) +
+					Math.pow(yRadius * Math.cos(theta_bezier), 2)));
+			return newRadius;
+		} else {
+			return source.getDefaultAnchorOffset(sourceAnchorKey);
+		}
+	}
+
+	// Same as getSourceOvalRadius, except gets the radius for the target element
+	// Offset differently because of the bezier
+	public static double getTargetOvalRadius(GElement source, GElement target, String targetAnchorKey) {
+		if (target instanceof GElementCircle || target instanceof GElementDoubleCircle) {
+
+			double yRadius;
+			if (target instanceof GElementCircle) {
+				yRadius = ((GElementCircle)target).getRadius();
+			} else {
+				yRadius = ((GElementDoubleCircle)target).getRadius();
+			}
+
+			// For now, font is hard-coded to be 6
+			int xString = (target.getLabel().length() * 6);
+
+			// per GElementFAState, xRadius is (xString + radius)/2
+			double xRadius = (xString + yRadius)/2;
+
+			// get the components of the vector connecting the target and source
+			double x_len = (-1) * target.getPosition().sub(source.getPosition()).getX();
+			double y_len = (-1) * target.getPosition().sub(source.getPosition()).getY();
+
+			double theta;
+			// avoid dividing by zero
+			if (x_len == 0) {
+				theta = Math.PI/2;
+			} else {
+				theta = Math.atan(y_len / x_len);
+			}
+
+			// Because of bezier, tangent should really be offset by about pi/10
+			double theta_bezier = theta + Math.PI/10; //tweaking it so it looks good
+
+			double  newRadius = ((xRadius * yRadius) / Math.sqrt(
+					Math.pow(xRadius * Math.sin(theta_bezier), 2) +
+							Math.pow(yRadius * Math.cos(theta_bezier), 2)));
+			return newRadius;
+		} else {
+			return target.getDefaultAnchorOffset(targetAnchorKey);
+		}
 	}
 
 	public void setBezierControlPoints(Vector2D points[]) {
@@ -307,9 +397,14 @@ public class GLink extends GElement implements XJXMLSerializable {
 
 	public void update() {
 		initializeLink(0);
+		//System.out.println("I am updating the link");
 
 		source.updateAnchors();
 		target.updateAnchors();
+
+		// Updates the offset for the source and target (computationally heavy)
+		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target));
+		setTargetTangentOffset(getTargetOvalRadius(source, target, targetAnchorKey));
 
 		link.setStartAnchor(source.getAnchor(sourceAnchorKey));
 		link.setEndAnchor(target.getAnchor(targetAnchorKey));

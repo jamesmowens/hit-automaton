@@ -95,7 +95,7 @@ public abstract class GElementCircle extends GElement implements XJXMLSerializab
 
     public double getDefaultAnchorOffset(String anchorKey) {
         if(anchorKey != null && anchorKey.equals(ANCHOR_CENTER))
-            return radius;
+            return radius; //used to be radius TODO
         else
             return 0;
     }

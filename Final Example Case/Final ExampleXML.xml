@@ -1,9 +1,40 @@
 <machine>
 	<states>
 		<state>
+			<name>Price Increase C</name>
+			<start>true</start>
+			<end>false</end>
+			<contains>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Price Increase C_to_Traffic Redirection_label_</transition>
+			</outgoingTransitions>
+		</state>
+		<state>
+			<name>Traffic Redirection</name>
+			<start>false</start>
+			<end>false</end>
+			<contains>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
+				<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
+			</outgoingTransitions>
+		</state>
+		<state>
+			<name>Price Decrease</name>
+			<start>true</start>
+			<end>false</end>
+			<contains>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Price Decrease_to_Traffic Monitoring_label_</transition>
+			</outgoingTransitions>
+		</state>
+		<state>
 			<name>High Demand</name>
 			<start>true</start>
-			<end>true</end>
+			<end>false</end>
 			<contains>
 				<state>
 					<name>Price Increase HD</name>
@@ -37,67 +68,10 @@
 			</ingoingTransitions>
 		</state>
 		<state>
-			<name>Congestion</name>
-			<start>true</start>
-			<end>true</end>
-			<contains>
-				<state>
-					<name>Price Increase C</name>
-					<start>true</start>
-					<end>false</end>
-					<contains>
-					</contains>
-					<outgoingTransitions>
-						<transition>from_Price Increase C_to_Traffic Redirection_label_</transition>
-					</outgoingTransitions>
-				</state>
-				<state>
-					<name>Traffic Redirection</name>
-					<start>false</start>
-					<end>false</end>
-					<contains>
-					</contains>
-					<outgoingTransitions>
-						<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
-						<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
-					</outgoingTransitions>
-				</state>
-			</contains>
-			<outgoingTransitions>
-				<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
-				<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
-			</outgoingTransitions>
-			<ingoingTransitions>
-				<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
-				<transition>from_Driver Attraction_to_Price Increase C_label_</transition>
-			</ingoingTransitions>
-		</state>
-		<state>
 			<name>Clear</name>
 			<start>true</start>
-			<end>true</end>
+			<end>false</end>
 			<contains>
-				<state>
-					<name>Price Decrease</name>
-					<start>true</start>
-					<end>false</end>
-					<contains>
-					</contains>
-					<outgoingTransitions>
-						<transition>from_Price Decrease_to_Traffic Monitoring_label_</transition>
-					</outgoingTransitions>
-				</state>
-				<state>
-					<name>Traffic Monitoring</name>
-					<start>false</start>
-					<end>false</end>
-					<contains>
-					</contains>
-					<outgoingTransitions>
-						<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
-						<transition>from_Traffic Monitoring_to_Price Increase HD_label_</transition>
-					</outgoingTransitions>
-				</state>
 			</contains>
 			<outgoingTransitions>
 				<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
@@ -106,6 +80,21 @@
 			<ingoingTransitions>
 				<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
 				<transition>from_Driver Attraction_to_Price Decrease_label_</transition>
+			</ingoingTransitions>
+		</state>
+		<state>
+			<name>Congestion</name>
+			<start>true</start>
+			<end>false</end>
+			<contains>
+			</contains>
+			<outgoingTransitions>
+				<transition>from_Traffic Redirection_to_Price Decrease_label_</transition>
+				<transition>from_Traffic Redirection_to_Price Increase HD_label_</transition>
+			</outgoingTransitions>
+			<ingoingTransitions>
+				<transition>from_Traffic Monitoring_to_Price Increase C_label_</transition>
+				<transition>from_Driver Attraction_to_Price Increase C_label_</transition>
 			</ingoingTransitions>
 		</state>
 	</states>

@@ -602,7 +602,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 			this.stepList.clear();
 			while (state != null) {
-				state.runQueries();
+				state.runQueries(currentData);
 				// This grabs the step list from the state, then the step list
 				// in the state should clear.
 				addSteps(state.grabStepList());
