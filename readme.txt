@@ -1,4 +1,4 @@
-HIT AUTOMATON readme.txt
+READ ME: HIT AUTOMATON
 
 Version:
 
