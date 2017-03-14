@@ -61,6 +61,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
@@ -207,7 +208,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				if(chosenName.lastIndexOf(".") < 0 || !chosenName.substring(chosenName.lastIndexOf(".")).equals("caesar")) {
 					chosenName += ".caesar";
 				}
-				ProjectSave save = new ProjectSave(namingPanel.getDatabase(), window.getDocument(), currentDocPath);
+				ProjectSave save = new ProjectSave(namingPanel.getDatabase(), window.getDocument(), new File(currentDocPath).toPath().getFileName().toString());
 				save.writeToFile(chosenName);
 			} else {
 				System.err.println("WindowMachineFA: querySaveButton: Nothing to write");
@@ -222,7 +223,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					"Context-Aware Event Stream Analytics Report (.caesar)",
 					".caesar", "caesar", ".CAESAR", "CAESAR"));
 			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-				ProjectSave save = new ProjectSave(chooser.getSelectedFile());
+				File chosen = chooser.getSelectedFile();
+				ProjectSave save = new ProjectSave(chosen);
 				//XJApplication.shared().openDocument(save.getFaLoc());
 				/*XJDocument loadedDoc = save.getFaDoc();
 				loadedDoc.setXJWindow(window);
@@ -233,7 +235,9 @@ public class WindowMachineFA extends WindowMachineAbstract {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}*/
-				currentDocPath = save.getDataLoc();
+
+				currentDocPath = chosen.getParent() + save.getDataLoc();
+				currentDocPath = Paths.get(chosen.getParent(), save.getDataLoc()).toString();
 				updateSidePanelVariables();
 				final Map<String, LinkedList<Query>> loadedDatabase = save.getQueryDatabase();
 				for(String k : loadedDatabase.keySet()) {

@@ -20,7 +20,7 @@ public class ProjectSave {
 
     private HashMap<String, LinkedList<Query>> queryDatabase;
     private String faLoc, dataLoc;
-    private XJDocument faDoc;
+    private transient XJDocument faDoc; //TODO make not transient if needed
 
     /**
      * Creates a ProjectSave containing the given queries. Does not write to disk.
