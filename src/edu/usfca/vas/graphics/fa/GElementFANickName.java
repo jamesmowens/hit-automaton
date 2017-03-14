@@ -15,7 +15,7 @@ import Query.*;
 import connection.Step;
 
 public class GElementFANickName extends JPanel implements ActionListener {
-
+	
 	private static final long serialVersionUID = -511482713793989551L;
 	//hold the links stuff (for links)
 	ArrayList<GLink> glinks = new ArrayList<GLink>();
@@ -57,7 +57,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	JTextField setProcessingFill = new JTextField("this is the set condition",20);
 	JTextField patternProcessingFill = new JTextField("This is the pattern statement",20);
 	JTextField whereProcessingFill = new JTextField("This is the where statement",20);
-
+	
 	String condition = "";
 	String set = "";
 	ArrayList<String> states = new ArrayList<String>();
@@ -66,7 +66,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	static HashMap<String, LinkedList<Query>> database = new HashMap();
 	LinkedList<Query> allQueries = new LinkedList();
 	static String currentDisplayName = "";
-
+	
 	JPanel queriesPanel = new JPanel();
 
 	//creates the naming panel
@@ -79,7 +79,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		this.queryPanel  = new JPanel();
 		this.queryEditPanel = new JPanel();
 		makeQueryPanels();
-
+		
 		tabs.setVisible(true);
 		setVisible(true);
 		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // TODO Check
@@ -89,7 +89,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	}
 	
 	//public static void putPertainingQueriesIn(String label){}
-
+	
 	/*
 	public static void putPertainingQueriesIn(String label){
 		System.out.println(label);
@@ -114,7 +114,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 	}
 }
 	*/
-
+	
 	private void makeQueryPanels(){
 		this.queryPanel = new JPanel();
 		this.queryEditPanel = new JPanel();
@@ -124,63 +124,92 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		tabs.addTab("Query Editor", this.queryEditPanel);
 		
 		JLabel contextDerivationLabel = new JLabel("Context Derivation");
+		contextDerivationLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		JPanel contextDerivationPanel = new JPanel();
+		contextDerivationPanel.setLayout(new BoxLayout(contextDerivationPanel, BoxLayout.X_AXIS));
 		contextDerivationPanel.add(contextDerivationLabel);
-		contextDerivationPanel.add(Box.createRigidArea(new Dimension(600,0)));
-		
+		contextDerivationPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		contextDerivationPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
+
 		JLabel switchLabel = new JLabel("Switch");
 		JPanel switchPanel = new JPanel();
+		switchPanel.setLayout(new BoxLayout(switchPanel, BoxLayout.X_AXIS));
 		switchPanel.add(switchLabel);
+		switchPanel.add(Box.createRigidArea(new Dimension(28,0)));
 		switchPanel.add(switchList);
-		switchPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		switchPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		switchPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
 		
 		JLabel patternLabel = new JLabel("Pattern");
 		JPanel patternPanel = new JPanel();
+		patternPanel.setLayout(new BoxLayout(patternPanel, BoxLayout.X_AXIS));
 		patternPanel.add(patternLabel);
+		patternPanel.add(Box.createRigidArea(new Dimension(25,0)));
 		patternPanel.add(patternDerivationFill);
-		patternPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		patternPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		patternPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
 		
 		JLabel whereLabel = new JLabel("Where");
 		JPanel wherePanel = new JPanel();
+		wherePanel.setLayout(new BoxLayout(wherePanel, BoxLayout.X_AXIS));
 		wherePanel.add(whereLabel);
+		wherePanel.add(Box.createRigidArea(new Dimension(29,0)));
 		wherePanel.add(whereDerivationFill);
-		wherePanel.add(Box.createRigidArea(new Dimension(600,0)));
+		wherePanel.add(Box.createRigidArea(new Dimension(500,0)));
+		wherePanel.setAlignmentY(Component.LEFT_ALIGNMENT);
 		
 		JLabel contextUpLabel = new JLabel("Context");
 		JPanel contextUpPanel = new JPanel();
+		contextUpPanel.setLayout(new BoxLayout(contextUpPanel, BoxLayout.X_AXIS));
 		contextUpPanel.add(contextUpLabel);
+		contextUpPanel.add(Box.createRigidArea(new Dimension(24,0)));
 		contextUpPanel.add(contextDerivationList);
-		contextUpPanel.add(Box.createRigidArea(new Dimension(600,0)));
-
+		contextUpPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		contextUpPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
+		
 		JLabel contextProcessingLabel = new JLabel("Context Processing");
 		JPanel contextProcessingPanel = new JPanel();
+		contextProcessingPanel.setLayout(new BoxLayout(contextProcessingPanel, BoxLayout.X_AXIS));
 		contextProcessingPanel.add(contextProcessingLabel);
-		contextProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
-
+		contextProcessingPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		contextProcessingPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
+		
 		JLabel setLabel = new JLabel("Set");
 		JPanel setPanel = new JPanel();
+		setPanel.setLayout(new BoxLayout(setPanel, BoxLayout.X_AXIS));
 		setPanel.add(setLabel);
+		setPanel.add(Box.createRigidArea(new Dimension(48,0)));
 		setPanel.add(setProcessingFill);
-		setPanel.add(Box.createRigidArea(new Dimension(600,0)));
-
+		setPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		setPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
+		
 		JLabel patternProcessingLabel = new JLabel("Pattern");
 		JPanel patternProcessingPanel = new JPanel();
+		patternProcessingPanel.setLayout(new BoxLayout(patternProcessingPanel, BoxLayout.X_AXIS));
 		patternProcessingPanel.add(patternProcessingLabel);
+		patternProcessingPanel.add(Box.createRigidArea(new Dimension(25,0)));
 		patternProcessingPanel.add(patternProcessingFill);
-		patternProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
+		patternProcessingPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		patternProcessingPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
 		
 		JLabel whereProcessingLabel = new JLabel("Where");
 		JPanel whereProcessingPanel = new JPanel();
+		whereProcessingPanel.setLayout(new BoxLayout(whereProcessingPanel, BoxLayout.X_AXIS));
 		whereProcessingPanel.add(whereProcessingLabel);
+		whereProcessingPanel.add(Box.createRigidArea(new Dimension(29,0)));
 		whereProcessingPanel.add(whereProcessingFill);
-		whereProcessingPanel.add(Box.createRigidArea(new Dimension(600,0)));
-
+		whereProcessingPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		whereProcessingPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
+		
 		JLabel contextDownLabel = new JLabel("Context");
 		JPanel contextDownPanel = new JPanel();
+		contextDownPanel.setLayout(new BoxLayout(contextDownPanel, BoxLayout.X_AXIS));
 		contextDownPanel.add(contextDownLabel);
+		contextDownPanel.add(Box.createRigidArea(new Dimension(23,0)));
 		contextDownPanel.add(contextProcessingList);
-		contextDownPanel.add(Box.createRigidArea(new Dimension(600,0)));
-
+		contextDownPanel.add(Box.createRigidArea(new Dimension(500,0)));
+		contextDownPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
+		
 		//Put Buttons Here
 		JButton clearDerivation = new JButton("Clear Derivation Query");
 		clearDerivation.addActionListener(this);
@@ -202,28 +231,28 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		JPanel processingButtonsPanel = new JPanel();
 		processingButtonsPanel.add(clearProcessing);
 		processingButtonsPanel.add(submitProcessing);
-
+		
 		//wrote this to debug the size increase with states present thing going on with the resizing
 		//Object[] nums = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		//queryEditPanel.add(new JComboBox(new DefaultComboBoxModel(nums)));
-
+		
 		queryEditPanel.add(contextDerivationPanel);
 		queryEditPanel.add(switchPanel);
 		queryEditPanel.add(patternPanel);
 		queryEditPanel.add(wherePanel);
 		queryEditPanel.add(contextUpPanel);
-
+		
 		queryEditPanel.add(derivationButtonsPanel);
-
+		
 		queryEditPanel.add(contextProcessingPanel);
 		queryEditPanel.add(setPanel);
 		queryEditPanel.add(patternProcessingPanel);
 		queryEditPanel.add(whereProcessingPanel);
 		queryEditPanel.add(contextDownPanel);
 		queryEditPanel.add(processingButtonsPanel);
-
+		
 		//That is all the stuff for the query maker, so now lets go to the query displayer (playa)
-
+		
 		JButton queryRefresh = new JButton("Refresh list of queries");
 		queryRefresh.addActionListener(this);
 		buttonCache.put("Query List Refresh",queryRefresh);
@@ -233,20 +262,20 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		queryPanel.add(queriesPanel);
 		queryPanel.add(queryRefreshPanel);
 		//queryPanel.add(new JLabel("Testing text init"));
-
+		
 	}
 	
 	/**
 	 * This is how the buttons work, and they call whatever is in the set functions
 	 */
 	public void actionPerformed(ActionEvent e) {
-
+		
 		if(e.getSource().equals(buttonCache.get("Clear Derivation"))){
 			System.out.println("clearing stuff from deriv.");
 			//This is supposed to clear the derivation fields
 			patternDerivationFill.setText("*");
 			whereDerivationFill.setText("*");}
-
+		
 		else if(e.getSource().equals(buttonCache.get("Submit Derivation"))){
 			String dest  = (String) switchList.getSelectedItem();
 			String pattern = (String) patternDerivationFill.getText();
@@ -254,10 +283,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			String start = (String) contextDerivationList.getSelectedItem();
 			Query query;
 			Step transition = new Step(start,dest,"TransStep: " + start + " to " + dest);
-
+			
 			query = new TransitionQuery(eval,start,"Transition Query",transition);
 			query.setPattern(pattern);
-
+			
 			//If its not in there, put it in there
 			if(database.get(contextDerivationList.getSelectedItem()) == null){
 				database.put((String)contextDerivationList.getSelectedItem(), new LinkedList<Query>());
@@ -266,7 +295,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			allQueries.add(query);
 			System.out.println("Submitted");
 		}
-
+		
 		else if(e.getSource().equals(buttonCache.get("Clear Processing"))){
 			System.out.println("clearing stuff from processing");
 			setProcessingFill.setText("*");
@@ -275,15 +304,15 @@ public class GElementFANickName extends JPanel implements ActionListener {
 			System.out.println("Cleared the processing text fill boxes");
 			//This is supposed to clear the processing fields
 		}
-
+		
 		else if(e.getSource().equals(buttonCache.get("Submit Processing"))){
 			String set = setProcessingFill.getText();
 			String pattern = (String) patternProcessingFill.getText();
 			Condition eval = new Condition(whereProcessingFill.getText());
 			String start = (String) contextProcessingList.getSelectedItem();
 			Query query;
-
-			query = new VariableQuery(eval, start, "Variable Query: " + start + " evaluates " + conditionFill.getText() + "" + set , set);
+			
+			query = new VariableQuery(eval, start, "Variable Query: " + start + " evaluates " + conditionFill.getText() + "" + set , set); 
 			query.setPattern(pattern);
 
 			System.out.println(query.queryInfo());
@@ -298,23 +327,98 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		else if(e.getSource().equals(buttonCache.get("Query List Refresh"))){
 			queriesPanel.removeAll();
 			LinkedList<Query> transQueries = new LinkedList();
-
+			
 			System.out.println("List size for queries: " + allQueries.size());
-
+			double count = 0.0;
+			JPanel currentPanel = new JPanel();
+			currentPanel.setLayout(new BoxLayout(currentPanel, BoxLayout.Y_AXIS));
 			for(Query q: allQueries) {
-				JLabel queryDesc = new JLabel();
 				if (q instanceof VariableQuery) {
-					System.out.println("It senses the force of the VariableQuery");
-					queryDesc.setText(q.queryInfo());
-					queriesPanel.add(queryDesc);
+					//Creates the query that makes the panel
+					JPanel currentQueryPanel = new JPanel();
+					currentQueryPanel.setLayout(new BoxLayout(currentQueryPanel, BoxLayout.Y_AXIS));
+					
+					JLabel querySet = new JLabel();
+					querySet.setText("SET " + ((VariableQuery)q).getSet());
+					querySet.setAlignmentX(Component.LEFT_ALIGNMENT);
+					currentQueryPanel.add(querySet);
+					currentQueryPanel.add(Box.createRigidArea(new Dimension(10,0)));
+					if((q.queryPattern() != null) && (q.queryPattern().equals("Driver") || q.queryPattern().equals("Rider"))){
+						JLabel queryPattern = new JLabel();
+						queryPattern.setText("PATTERN " + q.queryPattern());
+						queryPattern.setAlignmentX(Component.LEFT_ALIGNMENT);
+						currentQueryPanel.add(queryPattern);
+						currentQueryPanel.add(Box.createRigidArea(new Dimension(10,0)));
+					}
+
+					JLabel queryWhere = new JLabel();
+					queryWhere.setText("WHERE " + q.getEx());
+					queryWhere.setAlignmentX(Component.LEFT_ALIGNMENT);
+					currentQueryPanel.add(queryWhere);
+					currentQueryPanel.add(Box.createRigidArea(new Dimension(10,0)));
+
+					JLabel queryContext = new JLabel();
+					queryContext.setText("CONTEXT " + q.getState());
+					queryContext.setAlignmentX(Component.LEFT_ALIGNMENT);
+					currentQueryPanel.add(queryContext);
+
+					currentPanel.add(currentQueryPanel);
+					if(true){
+						queriesPanel.add(currentPanel);
+						queriesPanel.add(Box.createRigidArea(new Dimension(50,0)));
+						currentPanel = new JPanel();
+						currentPanel.setLayout(new BoxLayout(currentPanel, BoxLayout.X_AXIS));
+					}
+					else{
+						currentPanel.add(Box.createRigidArea(new Dimension(75,0)));
+					}
+					count++;
 				} else
 					transQueries.add(q);
 			}
 			for(Query q : transQueries){
-				JLabel queryDesc = new JLabel();
-				queryDesc.setText(q.queryInfo());
-				queriesPanel.add(queryDesc);
+				JPanel currentQueryPanel = new JPanel();
+				currentQueryPanel.setLayout(new BoxLayout(currentQueryPanel, BoxLayout.Y_AXIS));
+				
+				JLabel querySwitch = new JLabel();
+				querySwitch.setText("SWITCH " + ((TransitionQuery)q).returnSetState());
+				querySwitch.setAlignmentX(Component.LEFT_ALIGNMENT);
+				currentQueryPanel.add(querySwitch);
+				currentQueryPanel.add(Box.createRigidArea(new Dimension(10,0)));
+
+				if(q.queryPattern().equals("Driver") || q.queryPattern().equals("Rider")){
+					JLabel queryPattern = new JLabel();
+					queryPattern.setText("PATTERN " + q.queryPattern());
+					queryPattern.setAlignmentX(Component.LEFT_ALIGNMENT);
+					currentQueryPanel.add(queryPattern);
+					currentQueryPanel.add(Box.createRigidArea(new Dimension(10,0)));
+				}
+				JLabel queryWhere = new JLabel();
+				queryWhere.setText("WHERE " + q.getEx());
+				queryWhere.setAlignmentX(Component.LEFT_ALIGNMENT);
+				currentQueryPanel.add(queryWhere);
+				currentQueryPanel.add(Box.createRigidArea(new Dimension(10,0)));
+
+				JLabel queryContext = new JLabel();
+				queryContext.setText("CONTEXT " + q.getState());
+				queryContext.setAlignmentX(Component.LEFT_ALIGNMENT);
+				currentQueryPanel.add(queryContext);
+				
+				//queriesPanel.add(queryDesc);
+				currentPanel.add(currentQueryPanel);
+				if(true){
+					queriesPanel.add(currentPanel);
+					queriesPanel.add(Box.createRigidArea(new Dimension(50,0)));
+					currentPanel = new JPanel();
+					currentPanel.setLayout(new BoxLayout(currentPanel, BoxLayout.X_AXIS));
+				}
+				else{
+					currentQueryPanel.add(Box.createRigidArea(new Dimension(75,0)));
+				}
+				count++;
 			}
+			//makes sure that the last queries were displayed
+			queriesPanel.add(currentPanel);
 			queriesPanel.updateUI();
 		}
 	}
@@ -510,7 +614,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		}
+		} 
 	}
 
 	//updates the name, nickname, and color of a GLink based on the old name
@@ -530,7 +634,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		}
+		} 
 	}
 
 	//deletes a link
@@ -542,7 +646,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		if(max > 6){
 			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
 		}
-		else
+		else 
 			this.tabs.setPreferredSize(new Dimension(950, 180));
 		int i = 0;
 		//remove the GLink
@@ -590,7 +694,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		//linkPanel.updateUI();
 	}
 
-	//finds a transition with a longname that contains this string and highlights it.
+	//finds a transition with a longname that contains this string and highlights it. 
 	public void highlight(String name){
 		//System.out.println("highlighting with name: " + name);
 		int j = -1;
@@ -693,7 +797,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		if(max > 6){
 			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
 		}
-		else
+		else 
 			this.tabs.setPreferredSize(new Dimension(950, 180));
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		JLabel tf = new JLabel(newElement.getLabel());
@@ -739,7 +843,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		}
+		} 
 	}
 
 	//updates the name, nickname, and color of a GLink based on the old name
@@ -758,7 +862,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 				return;
 			}
 			i++;
-		}
+		} 
 	}
 
 	//deletes an element
@@ -769,7 +873,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		if(max > 6){
 			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
 		}
-		else
+		else 
 			this.tabs.setPreferredSize(new Dimension(950, 180));
 		int i = 0;
 		for (GElement test: gelements){
@@ -829,7 +933,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		panels.clear();
 		textfields.clear();
 		labels.clear();
-		glinks.clear();
+		glinks.clear(); 
 		//get rid of all the elements
 		//elementPanel.removeAll();
 		//elementPanel.updateUI();
