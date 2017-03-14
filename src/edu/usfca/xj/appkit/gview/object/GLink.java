@@ -95,10 +95,10 @@ public class GLink extends GElement implements XJXMLSerializable {
 		this.target = target;
 		this.sourceAnchorKey = sourceAnchorKey;
 		this.targetAnchorKey = targetAnchorKey;
-		//this.shape = shape;
+		this.shape = shape;
 		this.pattern = pattern;
 		initializeLink(flateness);
-		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target, targetAnchorKey));
+		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target));
 		setTargetTangentOffset(getTargetOvalRadius(source, target, targetAnchorKey));
 		link.setDirection(Vector2D.vector(mouse).sub(target.getPosition()));
 		this.machine=machine;
@@ -109,7 +109,7 @@ public class GLink extends GElement implements XJXMLSerializable {
 		this.target = target;
 		this.sourceAnchorKey = sourceAnchorKey;
 		this.targetAnchorKey = targetAnchorKey;
-		//this.shape = shape;
+		this.shape = shape;
 		this.pattern = pattern;
 		initializeLink(flateness);
 		if(source == target)
@@ -117,13 +117,20 @@ public class GLink extends GElement implements XJXMLSerializable {
 		else
 			link.setDirection(source.getPosition().sub(target.getPosition()));
 
-		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target, targetAnchorKey));
+		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target));
 		setTargetTangentOffset(getTargetOvalRadius(source, target, targetAnchorKey));
 	}
 
 	// Gets the dynamic radius for a link that starts from a circle
-	public static double getSourceOvalRadius(GElement source, String sourceAnchorKey, GElement target, String targetAnchorKey) {
-		// TODO GElement should know its position on the board
+
+	/**
+	 * Gets the dynamic radius for a link that starts from a state (oval)
+	 * @param source Starting element
+	 * @param sourceAnchorKey Default anchor key (used if element is not a circle or double circle)
+	 * @param target Ending element
+	 * @return Length of radius for that specific point
+	 */
+	public static double getSourceOvalRadius(GElement source, String sourceAnchorKey, GElement target) {
 		if (source instanceof GElementCircle || source instanceof GElementDoubleCircle) {
 			double yRadius;
 			if (source instanceof GElementCircle) {
@@ -131,38 +138,38 @@ public class GLink extends GElement implements XJXMLSerializable {
 			} else {
 				yRadius = ((GElementDoubleCircle)source).getRadius();
 			}
-			// TODO for now, font is going to be 12
+			// For now, font is hard-coded to be 6
 			int xString = (source.getLabel().length() * 6);
-			//System.out.println("The xString is "+xString);
 
-			//System.out.println("The yRadius is "+yRadius);
 			// per GElementFAState, xRadius is (xString + radius)/2
 			double xRadius = (xString + yRadius)/2;
-			//System.out.println("The xRadius is "+xRadius);
+
+			// get the components of the vector connecting the target and source
 			double x_len = (-1) * source.getPosition().sub(target.getPosition()).getX();
-			//System.out.println("This is the vector's x var " + x_len);
 			double y_len = (-1) * source.getPosition().sub(target.getPosition()).getY();
-			//System.out.println("This is the vector's y var " + y_len);
+
 			double theta;
+			// avoid dividing by zero
 			if (x_len == 0) {
 				theta = Math.PI/2;
 			} else {
 				theta = Math.atan(y_len / x_len);
 			}
-			//System.out.println("Theta is "+theta);
-			// Because of bezier, tangent should really be offset by about pi/6
+
+			// Because of bezier, tangent should really be offset by about pi/10
 			double theta_bezier = theta - Math.PI/10; //tweaking it so it looks good
 
 			double  newRadius = ((xRadius * yRadius) / Math.sqrt(
 					Math.pow(xRadius * Math.sin(theta_bezier), 2) +
 					Math.pow(yRadius * Math.cos(theta_bezier), 2)));
-			//System.out.println("The new radius is "+newRadius);
 			return newRadius;
 		} else {
 			return source.getDefaultAnchorOffset(sourceAnchorKey);
 		}
 	}
 
+	// Same as getSourceOvalRadius, except gets the radius for the target element
+	// Offset differently because of the bezier
 	public static double getTargetOvalRadius(GElement source, GElement target, String targetAnchorKey) {
 		if (target instanceof GElementCircle || target instanceof GElementDoubleCircle) {
 
@@ -191,7 +198,7 @@ public class GLink extends GElement implements XJXMLSerializable {
 				theta = Math.atan(y_len / x_len);
 			}
 
-			// Because of bezier, tangent should really be offset by about pi/6
+			// Because of bezier, tangent should really be offset by about pi/10
 			double theta_bezier = theta + Math.PI/10; //tweaking it so it looks good
 
 			double  newRadius = ((xRadius * yRadius) / Math.sqrt(
@@ -396,7 +403,7 @@ public class GLink extends GElement implements XJXMLSerializable {
 		target.updateAnchors();
 
 		// Updates the offset for the source and target (computationally heavy)
-		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target, targetAnchorKey));
+		setSourceTangentOffset(getSourceOvalRadius(source, sourceAnchorKey, target));
 		setTargetTangentOffset(getTargetOvalRadius(source, target, targetAnchorKey));
 
 		link.setStartAnchor(source.getAnchor(sourceAnchorKey));
