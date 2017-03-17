@@ -28,7 +28,7 @@ public abstract class MainWindow extends XJWindow {
         getJFrame().add(subFrame);
         leftSideBar = new LeftSideBar(JTabbedPane.LEFT);
         getJFrame().add(leftSideBar);
-        addSideTab(new JPanel(), "Logo", false, 70, 25, false);
+        addSideTab(new JPanel(), "Logo", false, 130, 43, false);
         addSideTab(subFrame, "Model", 25, 25);
         // The below lines will be replaced with additions of the actual new views
         addSideTab(new AnalyticsView().getPanel(), "Analytics", 25, 25);
