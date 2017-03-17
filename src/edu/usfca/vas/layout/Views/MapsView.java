@@ -80,8 +80,10 @@ public class MapsView extends  MapView {
     public void removeMarker(double lat, double lng){
         String key = ""+lat+lng;
         Marker marker = markerDict.get(key);
-        marker.remove();
-        markerDict.remove(key);
+        if(marker!=null) {
+            marker.remove();
+            markerDict.remove(key);
+        }
     }
 
 
