@@ -10,18 +10,26 @@ import java.util.*;
 public class MapTest implements Runnable {
     private MapsView mapView;
     private Thread t;
-    private HashMap<String,ArrayList<Double>> curMarked;
+    private ArrayList<Double[]> curMarked;
 
     public MapTest(MapsView view) {
         this.mapView =view;
-        curMarked = new HashMap<String,ArrayList<Double>>();
+        curMarked = new ArrayList<>();
     }
 
     public void run(){
         while(true){
             markRandomLocationInNewYork();
+            Random r = new Random();
+            int num = r.nextInt(6);
+            if(curMarked.size()>15) //make sure there are no more than 15 markers on the map
+                num =0;
+
+            if(num !=0){
+                removeRandomLocation();
+            }
             try{
-                Thread.sleep(5000);
+                Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -44,7 +52,20 @@ public class MapTest implements Runnable {
         double lat = 40.709482 + (40.879466 - 40.709482) * r.nextDouble();
         double lng = 73.957904 + (74.004525 - 73.957904) * r.nextDouble();
         lng *= -1;
+        Double[] latLng = {lat,lng};
+        curMarked.add(latLng);
         mapView.markLatLng(lat,lng);
+    }
+
+    private void removeRandomLocation(){
+        if(!curMarked.isEmpty()){
+            Random r = new Random();
+            int randIndex = r.nextInt(curMarked.size());
+            Double[] latlng = curMarked.get(randIndex);
+            mapView.removeMarker(latlng[0],latlng[1]);
+            curMarked.remove(randIndex);
+        }
+
 
     }
 }
