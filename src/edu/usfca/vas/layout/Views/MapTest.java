@@ -23,7 +23,7 @@ public class MapTest implements Runnable {
             Random r = new Random();
             int num = r.nextInt(6);
             if(curMarked.size()>15) //make sure there are no more than 15 markers on the map
-                num =0;
+                num =1;
 
             if(num !=0){
                 removeRandomLocation();
