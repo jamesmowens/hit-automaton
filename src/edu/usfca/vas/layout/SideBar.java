@@ -21,14 +21,18 @@ public abstract class SideBar extends JTabbedPane {
      * @param name The name of the tab which is also the key for its entry in sidebar.json
      */
     public void addSideTab(Component comp, String imgPath, String name, int width, int height, Boolean Enabled) {
-        addTab("<html> " +
-                "<img src=" + imgPath +
-                " height=" + height +
-                " width=" + width +
-                " hspace=10> " +
-                "<br> " +
-                "<p>" + name + "</p> " +
-                "</html>", comp);
+        //addTab("<html> " +
+        //        "<img src=" + imgPath +
+        //        " height=" + height +
+        //        " width=" + width +
+        //        " hspace=10> " +
+        //        "<br> " +
+        //        "<p>" + name + "</p> " +
+        //        "</html>", comp);
+        addTab("<html> "+
+                "<br> "+
+                name +
+                "<br><br> " + "</html>",comp);
         setEnabledAt(getTabCount() - 1, Enabled);
     }
 
