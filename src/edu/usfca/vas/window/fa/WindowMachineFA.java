@@ -133,15 +133,13 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		add(createUpperPanel(), BorderLayout.NORTH);
 
 		JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, createAutomataPanel(), createSidePanel());
-		split1.setResizeWeight(1); // REIGHT view gets all extra space
+		split1.setResizeWeight(1); // RIGHT view gets all extra space
 		split1.setEnabled(true); // Do not allow user to set divider
 		split1.setDividerLocation(625);
 
-		JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why
-																											// add();
-																											// ??
+		JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why add??
 		split2.setResizeWeight(1);
-		split2.setDividerLocation(360);
+		split2.setDividerLocation(300);
 
 		add(split2);
 
@@ -428,7 +426,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		// names.setSize(new Dimension(640, 350));
 		namingPanel = names;
 		namingPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		namingPanel.setPreferredSize(new Dimension(300, 200));
+		namingPanel.setPreferredSize(new Dimension(500, 200));
 		
     	setVisible(true);
     	

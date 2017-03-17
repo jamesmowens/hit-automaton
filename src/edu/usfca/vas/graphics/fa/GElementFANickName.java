@@ -82,8 +82,11 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 		tabs.setVisible(true);
 		setVisible(true);
-		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // TODO Check
-		scroll.setPreferredSize(new Dimension(960, 500));
+		//JPanel buffer = new JPanel();
+		//buffer.add(tabs);
+		//buffer.setPreferredSize(new Dimension(960, 500));
+		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // TODO Check
+		scroll.setPreferredSize(new Dimension(960, 250));
 		this.add(scroll);
 
 	}
@@ -553,11 +556,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		int max = labels.size()+1;
 		if (labels.size() < Elabels.size())
 			max = Elabels.size();
-		if(max > 6){
-			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
-		}
-		else
-			this.tabs.setPreferredSize(new Dimension(950, 180));
+
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		JLabel tf = new JLabel(newLink.getPattern());
 		int width = tf.getBounds().width;
@@ -643,11 +642,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		int max = glinks.size()-1;
 		if (glinks.size() < gelements.size())
 			max = gelements.size();
-		if(max > 6){
-			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
-		}
-		else
-			this.tabs.setPreferredSize(new Dimension(950, 180));
+
 		int i = 0;
 		//remove the GLink
 		for (GLink test: glinks){
@@ -794,11 +789,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		int max = labels.size();
 		if (labels.size() < Elabels.size()+1)
 			max = Elabels.size()+1;
-		if(max > 6){
-			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
-		}
-		else
-			this.tabs.setPreferredSize(new Dimension(950, 180));
+
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		JLabel tf = new JLabel(newElement.getLabel());
 		updateQueryDropdown(newElement.getLabel(),false);
@@ -870,11 +861,7 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		int max = glinks.size();
 		if (glinks.size() < gelements.size()-1)
 			max = gelements.size()-1;
-		if(max > 6){
-			this.tabs.setPreferredSize(new Dimension(950, (max)*30));
-		}
-		else
-			this.tabs.setPreferredSize(new Dimension(950, 180));
+
 		int i = 0;
 		for (GElement test: gelements){
 			if (test == element){
