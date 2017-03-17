@@ -2,8 +2,7 @@ package edu.usfca.vas.layout.Views;
 
 import com.teamdev.jxmaps.LatLng;
 import com.teamdev.jxmaps.swing.MapView;
-
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by jamesowens on 3/13/17.
@@ -11,9 +10,11 @@ import java.util.Random;
 public class MapTest implements Runnable {
     private MapsView mapView;
     private Thread t;
+    private HashMap<String,ArrayList<Double>> curMarked;
 
     public MapTest(MapsView view) {
         this.mapView =view;
+        curMarked = new HashMap<String,ArrayList<Double>>();
     }
 
     public void run(){
