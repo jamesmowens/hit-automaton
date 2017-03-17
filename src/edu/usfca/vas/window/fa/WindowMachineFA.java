@@ -134,7 +134,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 		JSplitPane split1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, createAutomataPanel(), createSidePanel());
 		split1.setResizeWeight(1); // REIGHT view gets all extra space
-		split1.setEnabled(false); // Do not allow user to set divider
+		split1.setEnabled(true); // Do not allow user to set divider
 		split1.setDividerLocation(625);
 
 		JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split1, add(createNamingPanel())); // Why
