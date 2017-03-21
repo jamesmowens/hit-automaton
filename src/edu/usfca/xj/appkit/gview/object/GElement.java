@@ -656,7 +656,8 @@ public abstract class  GElement implements XJXMLSerializable {
 		clearSteps();
 		if(queryList == null || queryList.size() < 1){return;}
 		for(Query query : queryList){
-			if (query.queryPattern().equals(currentData.getPattern())) {
+			if (query.queryPattern().equals(currentData.getPattern()) || query.queryPattern().equals("")
+					|| query.queryPattern().equals("*")) {
 				query.run();
 				if (query instanceof TransitionQuery) {
 					this.stepList.add(((TransitionQuery) query).getStep());
