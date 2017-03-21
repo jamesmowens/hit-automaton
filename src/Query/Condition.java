@@ -16,6 +16,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
+import edu.usfca.xj.appkit.gview.object.GElement;
 
 
 public class Condition {
@@ -38,7 +39,6 @@ public class Condition {
 	 * @throws Exception 
 	 */
 	public boolean evaluate(String comparable) {
-		boolean result = false;
 
 		//Split string by whitespace
 		String[] splitSet = comparable.split("\\s+");
@@ -47,17 +47,33 @@ public class Condition {
 		StringBuilder toEvaluate = new StringBuilder();
 
 		for (int i = 0; i < splitSet.length; i++) {
+			// null case, to initialize state and get first data set
+			if (i == 0 && splitSet[i].equals("NULL")) {
+				return GElementFAMachine.variableMap.isEmpty();
+			}
+
 			// multiple comparison strings, evaluate first one
 			if (splitSet[i].equals("AND")) {
 				// evaluate string, set result to new value
 				String evaluable = toEvaluate.toString();
 				if (simpleEvaluate(evaluable)) {
-					result = true;
 					toEvaluate = new StringBuilder();
 				} else {
 					return false;
 				}
 			}
+
+			// OR
+			if (splitSet[i].equals("OR")) {
+				// evaluate string, set result to new value
+				String evaluable = toEvaluate.toString();
+				if (simpleEvaluate(evaluable)) {
+					return true;
+				} else {
+					toEvaluate = new StringBuilder();
+				}
+			}
+
 			// Check if string is a comparison
 			else if (isComparison(splitSet[i])) {
 				toEvaluate.append(splitSet[i]);

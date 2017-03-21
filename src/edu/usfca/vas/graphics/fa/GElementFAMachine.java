@@ -76,12 +76,10 @@ public class GElementFAMachine extends GElement implements XJXMLSerializable {
     public static Map<String, Variable> variableMap = new HashMap<String, Variable>();
     
     public GElementFAMachine() {
-    	variableMap.put("drivers", new Variable("drivers",0,true));
     	updateAll();
     }
 
     public GElementFAMachine(FAMachine faMachine) {
-		variableMap.put("drivers", new Variable("drivers",0,true));
         setMachine(faMachine);
         updateAll();
     }
