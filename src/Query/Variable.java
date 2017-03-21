@@ -22,13 +22,13 @@ package Query;
  */
 public class Variable { //change to <N extends Number>, for now all are doubles
 	private String name;
-	private double value;
+	private Object value;
 	private boolean simple;
 	
 	public Variable() {
 	}
 	
-	public Variable(String name, double value, boolean simple) {
+	public Variable(String name, Object value, boolean simple) {
 		this.name = name;
 		this.value = value;
 		this.simple = simple;
@@ -38,11 +38,11 @@ public class Variable { //change to <N extends Number>, for now all are doubles
 		return name;
 	}
 	
-	public void setValue(double value) {
+	public void setValue(Object value) {
 		this.value = value;
 	}
 	
-	public double getValue() {
+	public Object getValue() {
 		return value;
 	}
 	

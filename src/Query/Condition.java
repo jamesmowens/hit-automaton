@@ -47,18 +47,6 @@ public class Condition {
 		StringBuilder toEvaluate = new StringBuilder();
 
 		for (int i = 0; i < splitSet.length; i++) {
-			// null case, to initialize state and get first data set
-			if (i == 0 && splitSet[i].equals("NULL")) {
-				return GElementFAMachine.variableMap.isEmpty();
-			}
-			//if (i == 0 && splitSet[i].equals("NULL")) {
-			////	boolean x = GElementFAMachine.variableMap.isEmpty();
-			//	System.out.println("We got to the null case, map is empty: "+x);
-			//	for (String m : GElementFAMachine.variableMap.keySet()) {
-			//		System.out.println(m+ " "+GElementFAMachine.variableMap.get(m));
-			//	}
-			//	return x;
-			//}
 
 			// multiple comparison strings, evaluate first one
 			if (splitSet[i].equals("AND")) {
@@ -98,7 +86,7 @@ public class Condition {
 			} 
 			// Check if string is a variable in the map
 			else if (GElementFAMachine.variableMap.containsKey(splitSet[i])) {
-				double tempValue = GElementFAMachine.variableMap.get(splitSet[i]).getValue();
+				Object tempValue = GElementFAMachine.variableMap.get(splitSet[i]).getValue();
 				toEvaluate.append(tempValue);
 			} else {
 				System.err.println("Cannot evaluate the following: "+splitSet[i]);

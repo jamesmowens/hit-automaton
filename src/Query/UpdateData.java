@@ -8,6 +8,8 @@
 
 package Query;
 
+import edu.usfca.vas.graphics.fa.GElementFAMachine;
+
 import java.util.Map;
 
 public class UpdateData {
@@ -16,32 +18,37 @@ public class UpdateData {
 	 * do not exist, instantiates them within variables.txt. If variables do exist, overwrites them with the new value.
 	 * @param node DataNode with cost, latitude, longitude, time, and associated getter methods.
 	 */
-	public static void updateData(DataNode node, Map<String, Variable> varMap){
-		if (varMap.containsKey("cost")) {
-			varMap.get("cost").setValue(node.getCost());
+	public static void updateData(DataNode node){
+        // cost
+		if (GElementFAMachine.variableMap.containsKey("cost")) {
+            GElementFAMachine.variableMap.get("cost").setValue(node.getCost());
 		} 
 		else {
-			varMap.put("cost", new Variable("cost",node.getCost(),true));
+            GElementFAMachine.variableMap.put("cost", new Variable("cost",node.getCost(),true));
 		}
-		
-		if (varMap.containsKey("latitude")) {
-			varMap.get("latitude").setValue(node.getLatitude());
+
+		// latitude
+		if (GElementFAMachine.variableMap.containsKey("latitude")) {
+            GElementFAMachine.variableMap.get("latitude").setValue(node.getLatitude());
 		} 
 		else {
-			varMap.put("latitude", new Variable("latitude",node.getLatitude(),true));
+            GElementFAMachine.variableMap.put("latitude", new Variable("latitude",node.getLatitude(),true));
 		}
-		
-		if (varMap.containsKey("longitude")) {
-			varMap.get("longitude").setValue(node.getLongitude());
+
+		// longitude
+		if (GElementFAMachine.variableMap.containsKey("longitude")) {
+            GElementFAMachine.variableMap.get("longitude").setValue(node.getLongitude());
 		} 
 		else {
-			varMap.put("longitude", new Variable("longitude",node.getLongitude(),true));
+            GElementFAMachine.variableMap.put("longitude", new Variable("longitude",node.getLongitude(),true));
 		}
-		
-		if (varMap.containsKey("time")) {
-			varMap.get("time").setValue(node.getTime());
-		} else {
-			varMap.put("time", new Variable("time",node.getTime(),true));
+
+		// time
+		if (GElementFAMachine.variableMap.containsKey("time")) {
+            GElementFAMachine.variableMap.get("time").setValue(node.getTime());
+		}
+		else {
+            GElementFAMachine.variableMap.put("time", new Variable("time",node.getTime(),true));
 		}
 	}
 }

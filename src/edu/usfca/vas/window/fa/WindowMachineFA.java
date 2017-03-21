@@ -332,7 +332,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			unHighlight();
 			// Put currentData node into variableMap
 			System.out.println("updating data");
-			UpdateData.updateData(currentData,GElementFAMachine.variableMap); //TODO is this the right map?
+			UpdateData.updateData(currentData);
 			System.out.println("Getting the current State");
 			GElement state = machine.getCurrentState();
 			System.out.println("Highlighting & running queries");
@@ -621,10 +621,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 		// Add every element of the variableMap to sidepanel
 		for (String key : GElementFAMachine.variableMap.keySet()) {
-			double value = GElementFAMachine.variableMap.get(key).getValue();
+			Object value = GElementFAMachine.variableMap.get(key).getValue();
 			if (key == "time") {
-				int time_hr = (int) value / 60;
-				int time_min = (int) value % 60;
+				int time_hr =  (int) ((double) value / 60);
+				int time_min = (int) ((double) value % 60);
 				input.add(key+" = "+time_hr+":"+time_min);
 			} else {
 			input.add(key+" = "+value);

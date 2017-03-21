@@ -70,7 +70,7 @@ public class VariableQuery extends Query {
 
 		//Split string by whitespace
 		String variable = "";
-		double value = 0;
+		Number value = 0;
 		String[] splitSet = set.split("\\s+");
 		
 		// First one should always be variable to add
@@ -96,7 +96,7 @@ public class VariableQuery extends Query {
 			// Check if string is a variable in the map
 			else if (GElementFAMachine.variableMap.containsKey(splitSet[2])) {
 				//System.out.println("String 2 is a variable in the map.");
-				double tempValue = GElementFAMachine.variableMap.get(splitSet[2]).getValue();
+				Object tempValue = GElementFAMachine.variableMap.get(splitSet[2]).getValue();
 				toEvaluate.append(tempValue);
 			} else {
 				System.err.println("Cannot evaluate the following: "+splitSet[2]);
@@ -108,9 +108,11 @@ public class VariableQuery extends Query {
 
 		// If map contains key, overwrite with new value. Otherwise, make new variable
 		if (GElementFAMachine.variableMap.containsKey(variable)) {
+			System.out.println("Now updating variable: "+variable);
 			GElementFAMachine.variableMap.get(variable).setValue(value);
 		} else {
 			GElementFAMachine.variableMap.put(variable, new Variable(variable,value,true));
+			System.out.println("Now adding new variable: "+variable);
 		}			
 
 	}
@@ -135,13 +137,13 @@ public class VariableQuery extends Query {
 	 * @param comparable String form of boolean expression to be evaluated
 	 * @return The result of evaluating the boolean expression
 	 */
-	private static Double evaluateArithmetic(String comparable) { //TODO handle exception
+	private static Number evaluateArithmetic(String comparable) { //TODO handle exception
 		ScriptEngineManager factory = new ScriptEngineManager();
 		ScriptEngine engine = factory.getEngineByName("JavaScript");
 
 		try {
 			System.out.println(engine.eval(comparable));
-			return (Double) engine.eval(comparable);
+			return (Number) engine.eval(comparable);
 		} catch (ScriptException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
