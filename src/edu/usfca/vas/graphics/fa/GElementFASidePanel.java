@@ -131,7 +131,7 @@ public class GElementFASidePanel extends JPanel {
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		p.setSize(new Dimension(15, 500));
 		JLabel tf = new JLabel(flow);
-		System.out.println("This is a flow: " + flow);
+		//System.out.println("This is a flow: " + flow);
 		tf.setPreferredSize(new Dimension(400, 15));
 		p.add(tf);
 		panel.add(p);

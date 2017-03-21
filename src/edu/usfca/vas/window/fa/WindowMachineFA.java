@@ -603,15 +603,14 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			machine.addQueries(machine.findState(currentStep.getTarget()), updatedQueries);
 
 			this.stepList.clear();
-			while (state != null) {
-				state.runQueries(currentData);
-				// This grabs the step list from the state, then the step list
-				// in the state should clear.
-				addSteps(state.grabStepList());
-				// TODO Gets the parents once the parent methods work
-				// state = state.getParentState();
-				state = null;
-			}
+			state.runQueries(currentData);
+			// This grabs the step list from the state, then the step list
+			// in the state should clear.
+			addSteps(state.grabStepList());
+			// TODO Gets the parents once the parent methods work
+			// state = state.getParentState();
+			if(stepList.size() < 1)
+				stepList.add(new Step(state.getLabel(), state.getLabel(), "Self moving"));
 		}
 		repaint();
 	}

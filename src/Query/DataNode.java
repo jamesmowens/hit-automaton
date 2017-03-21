@@ -9,8 +9,10 @@
 package Query;
 
 public class DataNode {
-	private int cost;
+	private int cost, area, id;
 	private double latitude, longitude, time;
+	private String pattern;
+
 
 	public DataNode(){
 		this.cost = 0;
@@ -34,6 +36,27 @@ public class DataNode {
 		this.time = newTime;
 	}
 
+	public DataNode (String c, String lat, String lon, String time, String _pattern, String _id, String _area){
+		int newCost = Integer.parseInt(c);
+		int newID = Integer.parseInt(_id);
+		int newArea = Integer.parseInt(_area);
+		double newLat = Double.parseDouble(lat);
+		double newLon = Double.parseDouble(lon);
+		double newTime = (Double.parseDouble(time.substring(0, 2))*(60) + Double.parseDouble(time.substring(3,5)));
+
+		//System.out.println("newTime is: "+newTime);
+		//System.out.println("Subset 0-2 of time is "+Double.parseDouble(time.substring(0,2)));
+		//System.out.println("Subset 3-5 of time is "+Double.parseDouble(time.substring(3,5)));
+
+		this.cost = newCost;
+		this.latitude = newLat;
+		this.longitude = newLon;
+		this.time = newTime;
+		this.pattern = _pattern;
+		this.id = newID;
+		this.area = newArea;
+	}
+
 	public int getCost() {
 		return this.cost;
 	}
@@ -51,6 +74,10 @@ public class DataNode {
 	}
 
 	public String getPattern(){
-		return "";
+		return this.pattern;
 	}
+
+	public double getArea(){return this.area;}
+
+	public double getID(){return this.id;}
 }

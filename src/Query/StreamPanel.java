@@ -108,7 +108,8 @@ public class StreamPanel extends JPanel {
 
     private String parseDataNode(DataNode d) {
         if(d != null) {
-            return d.getTime() + ", (" + d.getLatitude() + ", " + d.getLongitude() + ") $" + d.getCost();
+            //return d.getTime() + ", (" + d.getLatitude() + ", " + d.getLongitude() + ") $" + d.getCost();
+            return "" + d.getPattern() + "(id(" + (int)d.getID() + "), area(" + (int)d.getArea() + "))";
         } else return "";
     }
 

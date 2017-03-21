@@ -118,6 +118,9 @@ public class XMLParser {
 		String time = "";
 		String lat = "";
 		String lon = "";
+		String pattern = "";
+		String id = "";
+		String area = "";
 		for(int i=0;i<dataDoc.getChildNodes().getLength();i++) {
 			if(dataDoc.getChildNodes().item(i).getNodeName().equals("cost")){
 				cost = dataDoc.getChildNodes().item(i).getTextContent();
@@ -131,8 +134,18 @@ public class XMLParser {
 			else if(dataDoc.getChildNodes().item(i).getNodeName().equals("time")) {
 				time = dataDoc.getChildNodes().item(i).getTextContent();
 			}
+			//New Stuff added by nick at the last minute
+			else if(dataDoc.getChildNodes().item(i).getNodeName().equals("pattern")) {
+				pattern = dataDoc.getChildNodes().item(i).getTextContent();
+			}
+			else if(dataDoc.getChildNodes().item(i).getNodeName().equals("id")) {
+				id = dataDoc.getChildNodes().item(i).getTextContent();
+			}
+			else if(dataDoc.getChildNodes().item(i).getNodeName().equals("area")) {
+				area = dataDoc.getChildNodes().item(i).getTextContent();
+			}
 		}
-		return new DataNode(cost, lat, lon, time);
+		return new DataNode(cost, lat, lon, time, pattern, id, area);
 	}
 
 	public static void sendEventStreamtoServer() {
