@@ -47,6 +47,12 @@ public class Condition {
 		StringBuilder toEvaluate = new StringBuilder();
 
 		for (int i = 0; i < splitSet.length; i++) {
+			String tempVarName = "";
+
+			// Initializing method. If NULL, should check if that var is in map
+			if (splitSet[i].equals("NULL")) {
+				return GElementFAMachine.variableMap.containsKey(tempVarName);
+			}
 
 			// multiple comparison strings, evaluate first one
 			if (splitSet[i].equals("AND")) {
@@ -83,13 +89,22 @@ public class Condition {
 			else if (isOperator(splitSet[i])) {
 				//System.out.println("String "+i+" is an operator: "+value);
 				toEvaluate.append(splitSet[i]);
-			} 
+			}
+
+			// Check the special case where user put "=" and they meant "=="
+			else if (splitSet[i].equals("=")) {
+				toEvaluate.append("==");
+			}
 			// Check if string is a variable in the map
 			else if (GElementFAMachine.variableMap.containsKey(splitSet[i])) {
+				tempVarName = splitSet[i];
 				Object tempValue = GElementFAMachine.variableMap.get(splitSet[i]).getValue();
 				toEvaluate.append(tempValue);
 			} else {
-				System.err.println("Cannot evaluate the following: "+splitSet[i]);
+				tempVarName = splitSet[i];
+				// if doesn't yet exist, assume it is zero (for init cases)
+				toEvaluate.append(0);
+				//System.err.println("Cannot evaluate the following: "+splitSet[i]);
 			}
 		}
 		// Evaluate the concatenated string (should only be numbers and operators)

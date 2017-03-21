@@ -9,6 +9,8 @@
 package Query;
 
 import edu.usfca.vas.graphics.fa.GElementFAMachine;
+import edu.usfca.xj.appkit.gview.event.GEventCreateLinkElement;
+import edu.usfca.xj.appkit.gview.object.GElement;
 
 import java.util.Map;
 
@@ -50,5 +52,19 @@ public class UpdateData {
 		else {
             GElementFAMachine.variableMap.put("time", new Variable("time",node.getTime(),true));
 		}
+
+		// area
+        if (GElementFAMachine.variableMap.containsKey("area")) {
+            GElementFAMachine.variableMap.get("area").setValue(node.getArea());
+        } else {
+            GElementFAMachine.variableMap.put("area", new Variable("area",node.getArea(),true));
+        }
+
+        // id
+        if (GElementFAMachine.variableMap.containsKey("id")) {
+            GElementFAMachine.variableMap.get("id").setValue(node.getArea());
+        } else {
+            GElementFAMachine.variableMap.put("id", new Variable("id",node.getArea(),true));
+        }
 	}
 }

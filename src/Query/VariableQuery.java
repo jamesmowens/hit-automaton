@@ -99,7 +99,9 @@ public class VariableQuery extends Query {
 				Object tempValue = GElementFAMachine.variableMap.get(splitSet[2]).getValue();
 				toEvaluate.append(tempValue);
 			} else {
-				System.err.println("Cannot evaluate the following: "+splitSet[2]);
+                // if variable does not exist, assume it is zero (e.g. init state of drivers=drivers+1)
+                toEvaluate.append(0);
+				//System.err.println("Cannot evaluate the following: "+splitSet[2]);
 			}
 		}
 		// Evaluate the concatenated string (should only be numbers and operators)
@@ -108,11 +110,11 @@ public class VariableQuery extends Query {
 
 		// If map contains key, overwrite with new value. Otherwise, make new variable
 		if (GElementFAMachine.variableMap.containsKey(variable)) {
-			System.out.println("Now updating variable: "+variable);
+			//System.out.println("Now updating variable: "+variable);
 			GElementFAMachine.variableMap.get(variable).setValue(value);
 		} else {
-			GElementFAMachine.variableMap.put(variable, new Variable(variable,value,true));
-			System.out.println("Now adding new variable: "+variable);
+			GElementFAMachine.variableMap.put(variable, new Variable(variable,value,false));
+			//System.out.println("Now adding new variable: "+variable);
 		}			
 
 	}

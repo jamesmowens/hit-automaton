@@ -298,6 +298,12 @@ public class WindowMachineFA extends WindowMachineAbstract {
 	}
 
 	private void restartSimulation() {
+        // TODO this could be better coded
+        for (Variable x : GElementFAMachine.variableMap.values()) {
+            if (x.getName().equals("price"))
+                x.setValue(10);
+            else x.setValue(0);
+        }
 		updateSidePanelVariables();
 		dataList = XMLParser.getListDataNodes(currentDocPath);
 		stepList.add(grabFirstStep());
@@ -621,13 +627,16 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 		// Add every element of the variableMap to sidepanel
 		for (String key : GElementFAMachine.variableMap.keySet()) {
-			Object value = GElementFAMachine.variableMap.get(key).getValue();
-			if (key == "time") {
-				int time_hr =  (int) ((double) value / 60);
-				int time_min = (int) ((double) value % 60);
-				input.add(key+" = "+time_hr+":"+time_min);
-			} else {
-			input.add(key+" = "+value);
+			// Only put in complex variables, written by the user
+			if (!(GElementFAMachine.variableMap.get(key).isSimple())) {
+				Object value = GElementFAMachine.variableMap.get(key).getValue();
+				if (key == "time") {
+					int time_hr = (int) ((double) value / 60);
+					int time_min = (int) ((double) value % 60);
+					input.add(key + " = " + time_hr + ":" + time_min);
+				} else {
+					input.add(key + " = " + value);
+				}
 			}
 		}
 
