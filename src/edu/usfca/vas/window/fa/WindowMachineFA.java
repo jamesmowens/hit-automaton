@@ -201,7 +201,7 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			chooser.setFileFilter(new FileNameExtensionFilter(
 					"Context-Aware Event Stream Analytics Report (.caesar)",
 					".caesar", "caesar", ".CAESAR", "CAESAR"));
-			if(namingPanel != null && chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+			if(namingPanel != null && chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
 				String chosenName = chooser.getSelectedFile().getAbsolutePath();
 				if(chosenName.lastIndexOf(".") < 0 || !chosenName.substring(chosenName.lastIndexOf(".")).equals("caesar")) {
 					chosenName += ".caesar";
