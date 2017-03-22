@@ -107,9 +107,15 @@ public class Condition {
 				//System.err.println("Cannot evaluate the following: "+splitSet[i]);
 			}
 		}
+
 		// Evaluate the concatenated string (should only be numbers and operators)
 		String evaluable = toEvaluate.toString();
-		return simpleEvaluate(evaluable);
+		// if the var condition was empty, query should be processed always
+		if (evaluable.isEmpty()) {
+			return true;
+		} else {
+			return simpleEvaluate(evaluable);
+		}
 	}
 
 

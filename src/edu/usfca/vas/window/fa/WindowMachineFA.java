@@ -615,6 +615,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 			addSteps(state.grabStepList());
 			// TODO Gets the parents once the parent methods work
 			// state = state.getParentState();
+			if(state.getParentState() != null)
+				state.getParentState().runQueries(currentData);
 			if(stepList.size() < 1)
 				stepList.add(new Step(state.getLabel(), state.getLabel(), "Self moving"));
 		}
@@ -634,7 +636,16 @@ public class WindowMachineFA extends WindowMachineAbstract {
 					int time_hr = (int) ((double) value / 60);
 					int time_min = (int) ((double) value % 60);
 					input.add(key + " = " + time_hr + ":" + time_min);
-				} else {
+				}
+				else if(key == "price"){
+					String returnVal = key + " = $" + value;
+					if(returnVal.length() > 14)
+						returnVal = returnVal.substring(0, 14);
+					else if(returnVal.length() == 13)
+						returnVal = returnVal + "0";
+					input.add(returnVal);
+				}
+				else {
 					input.add(key + " = " + value);
 				}
 			}
