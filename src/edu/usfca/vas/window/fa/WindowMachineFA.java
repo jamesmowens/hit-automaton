@@ -610,6 +610,10 @@ public class WindowMachineFA extends WindowMachineAbstract {
 
 			this.stepList.clear();
 			state.runQueries(currentData);
+            if (GElementFAMachine.variableMap.containsKey("drivers")) {
+                System.out.println(state.getLabel());
+                System.out.println("Drivers value is "+GElementFAMachine.variableMap.get("drivers").getValue());
+            }
 			// This grabs the step list from the state, then the step list
 			// in the state should clear.
 			addSteps(state.grabStepList());

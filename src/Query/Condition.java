@@ -40,6 +40,10 @@ public class Condition {
 	 */
 	public boolean evaluate(String comparable) {
 
+		if (comparable.isEmpty() || comparable.equals("")) {
+			return true;
+		}
+
 		//Split string by whitespace
 		String[] splitSet = comparable.split("\\s+");
 
@@ -167,5 +171,6 @@ public class Condition {
 //		Condition myCondition = new Condition();
 //		System.out.println(myCondition.evaluate("x > 2"));
 //		System.out.println(myCondition.evaluate("x > 2 AND 3 != 1"));
+//		System.out.println(myCondition.evaluate("x >= 2"));
 //	}
 }
