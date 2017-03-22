@@ -11,6 +11,9 @@
 - Double-click `finalExample.fa`
 - In the window that opens, click `Open Project`
 - Again navigate to the extracted directory, this time double-clicking `FinalProject.caesar`
+- Click `Start`
+- Click "Data Stream" to view incoming data
+- Queries will be triggered by conditions and reflected in the main panel
 
 #### Dependencies
 
