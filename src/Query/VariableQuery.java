@@ -51,14 +51,15 @@ public class VariableQuery extends Query {
 	 * @see Query.Query#run()
 	 */
 	@Override
-	public void run(){
+	public boolean run(){
 		System.out.println("VariableQuery running");
 		String expression = ex.getExpression();
 
 		boolean result = this.ex.evaluate(expression);
 		if(result){
 			execute(set);
-		} //TODO else, execute different set?
+            return true;
+		} else return false;
 	}
 
 	/**

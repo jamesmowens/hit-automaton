@@ -41,7 +41,7 @@ public class TransitionQuery extends Query {
 	}
 
 	@Override
-	public void run() {
+	public boolean run() {
 		System.out.println("Transition Query being run");
 		// TODO Auto-generated method stub
 		String expression = ex.getExpression();
@@ -51,8 +51,10 @@ public class TransitionQuery extends Query {
 		boolean result = this.ex.evaluate(expression);
 		if (result) {
 			currentStep =  successStep;
+			return true;
 		} else {
-			currentStep = new Step(successStep.getSource(),successStep.getSource(),"Didn't Move");;
+			currentStep = new Step(successStep.getSource(),successStep.getSource(),"Didn't Move");
+			return false;
 		}
 		
 		
