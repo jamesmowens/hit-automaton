@@ -431,8 +431,8 @@ public class WindowMachineFA extends WindowMachineAbstract {
 		names.setFAMac(getFAGraphicPanel());
 		// names.setSize(new Dimension(640, 350));
 		namingPanel = names;
-		namingPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
-		namingPanel.setPreferredSize(new Dimension(500, 200));
+		//namingPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+		//namingPanel.setPreferredSize(new Dimension(500, 200));
 		
     	setVisible(true);
     	

@@ -71,13 +71,12 @@ public class GElementFANickName extends JPanel implements ActionListener {
 
 	//creates the naming panel
 	public GElementFANickName() {
-		super();
+		super(new GridLayout());
 		this.tabs = new JTabbedPane();
-		tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		tabs.setPreferredSize(new Dimension(960, 500));
-
-		this.queryPanel  = new JPanel();
-		this.queryEditPanel = new JPanel();
+		//tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		//tabs.setPreferredSize(new Dimension(960, 500));
+		//this.queryPanel  = new JPanel(new GridLayout());
+		//this.queryEditPanel = new JPanel(new GridLayout());
 		makeQueryPanels();
 
 		tabs.setVisible(true);
@@ -85,9 +84,10 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		//JPanel buffer = new JPanel();
 		//buffer.add(tabs);
 		//buffer.setPreferredSize(new Dimension(960, 500));
-		JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // TODO Check
-		scroll.setPreferredSize(new Dimension(960, 250));
-		this.add(scroll);
+		this.add(tabs);
+		//JScrollPane scroll = new JScrollPane(tabs, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // TODO Check
+		//scroll.setPreferredSize(new Dimension(960, 250));
+		//this.add(scroll);
 
 	}
 
@@ -123,8 +123,15 @@ public class GElementFANickName extends JPanel implements ActionListener {
 		this.queryEditPanel = new JPanel();
 		this.queryPanel.setLayout(new BoxLayout(queryPanel, BoxLayout.Y_AXIS));
 		this.queryEditPanel.setLayout(new BoxLayout(queryEditPanel, BoxLayout.Y_AXIS));
-		tabs.addTab("Query Display", this.queryPanel);
-		tabs.addTab("Query Editor", this.queryEditPanel);
+		JPanel qContainer = new JPanel(new BorderLayout()), qEContainer = new JPanel(new BorderLayout());
+		JScrollPane qScroll = new JScrollPane(queryPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		JScrollPane qEScroll = new JScrollPane(queryEditPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		//qScroll.setPreferredSize(new Dimension(960, 250));
+		//qEScroll.setPreferredSize(new Dimension(960, 250));
+		qContainer.add(qScroll, BorderLayout.CENTER);
+		qEContainer.add(qEScroll, BorderLayout.CENTER);
+		tabs.addTab("Query Display", qContainer);
+		tabs.addTab("Query Editor", qEContainer);
 
 		JLabel contextDerivationLabel = new JLabel("Context Derivation");
 		contextDerivationLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
